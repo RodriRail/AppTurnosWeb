@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>App Turnos Pro v0.7</title>
+<title>App Turnos Pro v0.8</title>
 <meta name="theme-color" content="#8a1a86">
 <style>
 :root{--renfe:#8a1a86;--renfe2:#a43aa0;--work:#efd9f5;--work2:#e6c7ef;--workText:#4b0754;--dd:#ffdce5;--ddText:#d4001a;--rest:#dcfce7;--restText:#166534;--vac:#dff5ff;--manual:#ffeaa7;--bg:#f7f7fb;--card:#fff;--text:#1d1420;--muted:#75657b;--line:#eadfec;--shadow:0 12px 30px rgba(65,20,80,.08)}
@@ -21,9 +21,9 @@ main{min-width:0} .card{padding:14px;margin-bottom:12px} .row{display:flex;gap:1
 .dd .turnbox{font-size:12px}
 .vac .turnbox{font-weight:1000}
 </style></head><body>
-<div class="app"><header><div class="top"><div class="brand"><div class="renfe">renfe</div><div><h1>App Turnos Pro <span class="version">v0.7</span></h1><div class="small muted">Calendario visual · detalles de turno · datos privados en tu dispositivo</div></div></div><div class="topspacer"></div><button class="btn primary" onclick="importPrivateData()">📥 Importar datos privados</button><button class="btn" onclick="lockApp()">🔒 Bloquear</button><button class="iconbtn" onclick="toggleTheme()">⚙️</button></div></header>
+<div class="app"><header><div class="top"><div class="brand"><div class="renfe">renfe</div><div><h1>App Turnos Pro <span class="version">v0.8</span></h1><div class="small muted">Calendario visual · importación privada de cuadro anual y marco</div></div></div><div class="topspacer"></div><button class="btn primary" onclick="importPrivateData()">📦 Importar paquete privado</button><button class="btn" onclick="importAnnual()">📅 Cuadro anual</button><button class="btn" onclick="importMarco()">🚄 Marco mensual</button><button class="btn" onclick="lockApp()">🔒 Bloquear</button><button class="iconbtn" onclick="toggleTheme()">⚙️</button></div></header>
 <div class="layout"><aside><div class="sidecard" id="sideNav"></div><div class="sidefoot" id="nextBox"></div></aside><main><section id="home" class="view"></section><section id="calendar" class="view hidden"></section><section id="turns" class="view hidden"></section><section id="stats" class="view hidden"></section><section id="changes" class="view hidden"></section><section id="settings" class="view hidden"></section></main><div class="rightcol"><div class="card" id="statsBox"></div><div class="card" id="upcomingBox"></div><div class="card notice" id="alertsBox"></div></div></div></div>
-<input type="file" id="privateDataFile" accept="application/json,.json" style="display:none" onchange="handlePrivateDataFile(event)"><nav class="bottomnav" id="bottomNav"></nav><div class="installbar"><span>Los datos de turnos personales se guardan localmente en este dispositivo.</span><button onclick="installApp()">⬇ Instalar aplicación</button></div>
+<input type="file" id="privateDataFile" accept="application/json,.json" style="display:none" onchange="handlePrivateDataFile(event)"><input type="file" id="annualFile" accept="application/json,.json,application/pdf,.pdf" style="display:none" onchange="handleAnnualFile(event)"><input type="file" id="marcoFile" accept="application/json,.json,application/pdf,.pdf" style="display:none" onchange="handleMarcoFile(event)"><nav class="bottomnav" id="bottomNav"></nav><div class="installbar"><span>Los datos de turnos personales se guardan localmente en este dispositivo.</span><button onclick="installApp()">⬇ Instalar aplicación</button></div>
 <script>
 let CALENDAR=JSON.parse(localStorage.getItem('appTurnosCalendar')||'[]');
 let BLOCKS=JSON.parse(localStorage.getItem('appTurnosBlocks')||'[]');
@@ -71,7 +71,7 @@ function renderStats(){if(!CALENDAR.length){document.getElementById('stats').inn
 function renderChanges(){if(!CALENDAR.length){document.getElementById('changes').innerHTML=noDataHtml();return}let ds=selected||CALENDAR[0].fecha;let day=effective(byDate(ds));document.getElementById('changes').innerHTML=`<div class="card"><h2>Cambiar turno</h2><label>Fecha</label><input type="date" id="chgDate" value="${ds}" onchange="selected=this.value;renderChanges()"><label>Nueva clave</label><input id="chgTurn" value="${day.clave_turno}"><label>Motivo</label><input id="chgReason" placeholder="Cambio, licencia, ajuste manual..." value="${day.motivo||''}"><div class="row" style="margin-top:10px"><button class="btn primary" onclick="applyChange()">Guardar cambio</button><button class="btn ghost" onclick="resetChange()">Restaurar original</button></div></div><div class="card"><h3>Cambios guardados</h3>${Object.entries(state.changes).length?Object.entries(state.changes).map(([d,c])=>`<p><b>${dayTitle(d)}</b>: ${c.original} → <b>${c.turno}</b><br><span class="muted small">${c.motivo||''}</span></p>`).join(''):'<p class="muted">No hay cambios manuales.</p>'}</div>`}
 function applyChange(){let ds=document.getElementById('chgDate').value;let original=byDate(ds);if(!original)return alert('Fecha fuera del cuadro cargado');state.changes[ds]={turno:document.getElementById('chgTurn').value.trim(),motivo:document.getElementById('chgReason').value.trim(),tipo:'Trabajo',original:original.clave_turno};selected=ds;save();renderAll()}
 function resetChange(){let ds=document.getElementById('chgDate').value;delete state.changes[ds];save();renderAll()}
-function renderSettings(){document.getElementById('settings').innerHTML=`<div class="card"><h2>Ajustes</h2><div class="row"><button class="btn primary" onclick="importPrivateData()">Importar datos privados</button><button class="btn" onclick="lockApp()">Bloquear app</button><button class="btn primary" onclick="installApp()">Instalar aplicación</button><button class="btn" onclick="toggleTheme()">Modo claro/oscuro</button><button class="btn ghost" onclick="exportData()">Exportar copia</button><button class="btn ghost" onclick="localStorage.removeItem('appTurnosState');location.reload()">Borrar datos locales</button></div><p class="muted small">La app pública no contiene tus PDF privados. Tus notas y cambios manuales se guardan solo en este dispositivo.</p></div>`}
+function renderSettings(){document.getElementById('settings').innerHTML=`<div class="card"><h2>Ajustes e importación privada</h2><p class="muted">La web pública es solo la aplicación. Tus datos se importan y se guardan en este dispositivo.</p><div class="row"><button class="btn primary" onclick="importPrivateData()">📦 Importar paquete completo</button><button class="btn" onclick="importAnnual()">📅 Importar cuadro anual</button><button class="btn" onclick="importMarco()">🚄 Importar Marco mensual</button><button class="btn" onclick="lockApp()">🔒 Bloquear app</button><button class="btn primary" onclick="installApp()">Instalar aplicación</button><button class="btn" onclick="toggleTheme()">Modo claro/oscuro</button><button class="btn ghost" onclick="exportData()">Exportar copia local</button><button class="btn ghost" onclick="clearPrivateData()">Borrar datos privados locales</button></div><hr style="border:0;border-top:1px solid var(--line);margin:16px 0"><h3>Flujo recomendado</h3><ol class="muted"><li>Cuadro anual: importa un JSON de calendario una vez al año.</li><li>Marco mensual: cuando cambie el marco, importa el nuevo JSON del marco.</li><li>Si tienes PDF, pásamelo por ChatGPT y te lo convierto a JSON para la app.</li></ol><p class="small muted">Importar PDF directamente queda reservado como referencia: la app todavía no interpreta PDFs complejos de gráficos de turnos con fiabilidad.</p></div>`}
 function toggleTheme(){document.body.classList.toggle('dark');state.theme=document.body.classList.contains('dark')?'dark':'light';save()}
 function installApp(){if(deferredPrompt){deferredPrompt.prompt();deferredPrompt=null}else alert('En Chrome: menú ⋮ → Añadir a pantalla de inicio.')}
 function exportData(){let blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'});let a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='appturnos-copia.json';a.click()}
@@ -80,10 +80,53 @@ function refreshData(){alert('Próximo paso: importador desde archivo privado. D
 
 function importPrivateData(){document.getElementById('privateDataFile').click()}
 function handlePrivateDataFile(ev){let f=ev.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{let d=JSON.parse(r.result);CALENDAR=d.calendar||d.CALENDAR||[];BLOCKS=d.blocks||d.BLOCKS||[];EVENTS=d.events||d.EVENTS||[];STATIONS=d.stations||d.STATIONS||[];SERVICES=d.services||d.SERVICES||[];localStorage.setItem('appTurnosCalendar',JSON.stringify(CALENDAR));localStorage.setItem('appTurnosBlocks',JSON.stringify(BLOCKS));localStorage.setItem('appTurnosEvents',JSON.stringify(EVENTS));localStorage.setItem('appTurnosStations',JSON.stringify(STATIONS));localStorage.setItem('appTurnosServices',JSON.stringify(SERVICES));alert('Datos privados importados en este dispositivo. No se han subido a GitHub.');selected=null;renderAll()}catch(e){alert('No he podido leer el JSON: '+e.message)}};r.readAsText(f)}
-function noDataHtml(){return `<div class="card notice"><h2>Datos privados no cargados</h2><p>Esta versión pública no contiene tu planning ni el desarrollo de turnos. Pulsa <b>Importar datos privados</b> y selecciona tu archivo JSON privado. Se guardará solo en este navegador.</p><button class="btn primary" onclick="importPrivateData()">📥 Importar datos privados</button></div>`}
+
+function importAnnual(){document.getElementById('annualFile').click()}
+function importMarco(){document.getElementById('marcoFile').click()}
+function clearPrivateData(){
+  if(!confirm('¿Borrar calendario, marco y servicios guardados solo en este dispositivo?')) return;
+  ['appTurnosCalendar','appTurnosBlocks','appTurnosEvents','appTurnosStations','appTurnosServices'].forEach(k=>localStorage.removeItem(k));
+  CALENDAR=[];BLOCKS=[];EVENTS=[];STATIONS=[];SERVICES=[];selected=null;renderAll();alert('Datos privados locales borrados.');
+}
+function parseJsonFile(file,cb){
+  let r=new FileReader();
+  r.onload=()=>{try{cb(JSON.parse(r.result))}catch(e){alert('No he podido leer el JSON: '+e.message)}};
+  r.readAsText(file);
+}
+function isPdf(file){return file && (file.type==='application/pdf' || file.name.toLowerCase().endsWith('.pdf'))}
+function handleAnnualFile(ev){
+  let f=ev.target.files[0]; if(!f)return;
+  if(isPdf(f)){ alert('PDF recibido, pero esta versión no interpreta PDFs complejos directamente. Flujo recomendado: pásame el PDF por ChatGPT y te devuelvo un JSON de cuadro anual para importar aquí.'); return; }
+  parseJsonFile(f,d=>{
+    let calendar=d.calendar||d.CALENDAR||d.calendario||[];
+    if(!Array.isArray(calendar)||!calendar.length) return alert('Ese JSON no contiene un calendario válido. Debe tener una clave "calendar".');
+    CALENDAR=calendar; localStorage.setItem('appTurnosCalendar',JSON.stringify(CALENDAR));
+    let first=CALENDAR[0]?.fecha; if(first){state.y=+first.slice(0,4); state.m=+first.slice(5,7)-1;}
+    save(); selected=null; renderAll(); alert('Cuadro anual importado solo en este dispositivo.');
+  })
+}
+function handleMarcoFile(ev){
+  let f=ev.target.files[0]; if(!f)return;
+  if(isPdf(f)){ alert('PDF recibido, pero esta versión no interpreta gráficos de Marco directamente. Flujo recomendado: pásame el PDF por ChatGPT y te devuelvo un JSON de Marco mensual para importar aquí.'); return; }
+  parseJsonFile(f,d=>{
+    let blocks=d.blocks||d.BLOCKS||d.bloques||[];
+    let events=d.events||d.EVENTS||d.eventos||[];
+    let stations=d.stations||d.STATIONS||d.estaciones||[];
+    let services=d.services||d.SERVICES||d.servicios||[];
+    if(!Array.isArray(blocks)||!blocks.length) return alert('Ese JSON no contiene un Marco válido. Debe tener una clave "blocks".');
+    BLOCKS=blocks; EVENTS=events; STATIONS=stations; SERVICES=services;
+    localStorage.setItem('appTurnosBlocks',JSON.stringify(BLOCKS));
+    localStorage.setItem('appTurnosEvents',JSON.stringify(EVENTS));
+    localStorage.setItem('appTurnosStations',JSON.stringify(STATIONS));
+    localStorage.setItem('appTurnosServices',JSON.stringify(SERVICES));
+    renderAll(); alert('Marco importado/actualizado solo en este dispositivo.');
+  })
+}
+
+function noDataHtml(){return `<div class="card notice"><h2>Datos privados no cargados</h2><p>Esta versión pública no contiene tu planning ni el desarrollo de turnos. Importa un paquete completo o importa por separado el cuadro anual y el Marco mensual. Se guardará solo en este navegador.</p><button class="btn primary" onclick="importPrivateData()">📦 Importar paquete privado</button></div>`}
 function lockApp(){localStorage.setItem('appTurnosLocked','1');location.reload()}
 function unlockApp(){let pin=document.getElementById('pinInput').value;if(!localStorage.getItem('appTurnosPin')){if(pin.length<6)return alert('Pon una contraseña/PIN de al menos 6 caracteres.');localStorage.setItem('appTurnosPin',pin);localStorage.setItem('appTurnosLocked','0');location.reload();return}if(pin===localStorage.getItem('appTurnosPin')){localStorage.setItem('appTurnosLocked','0');location.reload()}else alert('Contraseña incorrecta')}
-function lockScreen(){document.body.innerHTML=`<div class="app"><header><div class="top"><div class="brand"><div class="renfe">renfe</div><div><h1>App Turnos Pro <span class="version">v0.7</span></h1><div class="small muted">Bloqueo local de pantalla</div></div></div></div></header><main><section class="view"><div class="card" style="max-width:520px;margin:40px auto"><h2>🔒 App bloqueada</h2><p class="muted">Este bloqueo protege la visualización en este dispositivo. Los datos privados no están incluidos en el código público.</p><input id="pinInput" type="password" placeholder="Contraseña / PIN"><button class="btn primary" onclick="unlockApp()" style="margin-top:10px;width:100%">Entrar</button><p class="small muted">Primera vez: escribe una contraseña de al menos 6 caracteres para crearla.</p></div></section></main></div>`}
+function lockScreen(){document.body.innerHTML=`<div class="app"><header><div class="top"><div class="brand"><div class="renfe">renfe</div><div><h1>App Turnos Pro <span class="version">v0.8</span></h1><div class="small muted">Bloqueo local de pantalla</div></div></div></div></header><main><section class="view"><div class="card" style="max-width:520px;margin:40px auto"><h2>🔒 App bloqueada</h2><p class="muted">Este bloqueo protege la visualización en este dispositivo. Los datos privados no están incluidos en el código público.</p><input id="pinInput" type="password" placeholder="Contraseña / PIN"><button class="btn primary" onclick="unlockApp()" style="margin-top:10px;width:100%">Entrar</button><p class="small muted">Primera vez: escribe una contraseña de al menos 6 caracteres para crearla.</p></div></section></main></div>`}
 
 function setMonth(y,m){state.y=y;state.m=m;save();renderCalendar();renderSideBoxes();renderStats()}
 function prevMonth(){let y=state.y,m=state.m-1;if(m<0){m=11;y--}setMonth(y,m)}
