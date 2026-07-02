@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>App Turnos Pro v3.3</title>
+<title>App Turnos Pro v3.4</title>
 <meta name="theme-color" content="#8a0f82">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="App Turnos Pro">
@@ -36,7 +36,7 @@ header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line)
 <div id="login" class="login">
   <div class="loginbox">
     <div class="logo">renfe</div>
-    <h1>App Turnos Pro <span class="ver">v3.3</span></h1>
+    <h1>App Turnos Pro <span class="ver">v3.4</span></h1>
     <p class="muted">Acceso privado para administrar tus datos locales.</p>
     <input id="user" class="input" placeholder="Usuario">
     <input id="pass" class="input" placeholder="Contraseña" type="password">
@@ -50,7 +50,7 @@ header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line)
 <header>
   <div class="top">
     <div class="logo">renfe</div>
-    <div><div class="title">App Turnos Pro <span class="ver">v3.3</span></div><div class="sub">Calendario visual · memoria AppTurnosData</div></div>
+    <div><div class="title">App Turnos Pro <span class="ver">v3.4</span></div><div class="sub">Calendario visual · memoria AppTurnosData</div></div>
     <button class="dataToggle" onclick="toggleAdmin()">Datos ▾</button>
   </div>
   <div id="adminPanel" class="adminPanel hidden">
@@ -127,11 +127,16 @@ header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line)
 </nav>
 
 <script>
+const el=(id)=>document.getElementById(id);
+const login=el('login'), user=el('user'), pass=el('pass'), remember=el('remember'), loginMsg=el('loginMsg');
+const adminPanel=el('adminPanel'), importStatus=el('importStatus'), monthTitle=el('monthTitle'), grid=el('grid'), detail=el('detail');
+const recordsBody=el('recordsBody'), pdfOverlay=el('pdfOverlay'), pdfFrame=el('pdfFrame');
+const alarmsEnabled=el('alarmsEnabled'), startAlarm=el('startAlarm'), trainAlarm=el('trainAlarm'), backupInfo=el('backupInfo');
 const ADMIN_USER='rodri', ADMIN_PASS='AppTurnos2026!';
 const AUTH_PREFIX='AppTurnosAuthV30', LOCK_MS=24*60*60*1000, MAX_ATTEMPTS=3;
 const DATA_KEY='AppTurnosData';
 const OLD_KEYS=['appTurnosData','appTurnosV15','appTurnosV19','appTurnosV23','appTurnosV28','appTurnosV29'];
-const DEFAULT={calendar:[],blocks:[],marcos:[],pdf:null,changes:{},records:[],people:[],settings:{alarmsEnabled:true,startAlarm:60,trainAlarm:30,customAlarms:{}},meta:{version:'3.3',lastAutoBackup:null},autoBackups:[]};
+const DEFAULT={calendar:[],blocks:[],marcos:[],pdf:null,changes:{},records:[],people:[],settings:{alarmsEnabled:true,startAlarm:60,trainAlarm:30,customAlarms:{}},meta:{version:'3.4',lastAutoBackup:null},autoBackups:[]};
 let data=loadData(), current=new Date(), selected=null, admin=false;
 
 function clone(o){return JSON.parse(JSON.stringify(o))}
@@ -145,7 +150,7 @@ function loadData(){
   localStorage.setItem(DATA_KEY,JSON.stringify(d));
   return d;
 }
-function save(){ data.meta.version='3.3'; localStorage.setItem(DATA_KEY,JSON.stringify(data)); autoBackupInternal(); updateImportUI(); }
+function save(){ data.meta.version='3.4'; localStorage.setItem(DATA_KEY,JSON.stringify(data)); autoBackupInternal(); updateImportUI(); }
 function autoBackupInternal(){ const today=new Date().toISOString().slice(0,10); if(data.meta.lastAutoBackup===today) return; const copy=clone(data); delete copy.autoBackups; data.autoBackups=[{date:new Date().toISOString(),data:copy},...(data.autoBackups||[])].slice(0,3); data.meta.lastAutoBackup=today; localStorage.setItem(DATA_KEY,JSON.stringify(data)); }
 function pad(n){return String(n).padStart(2,'0')}
 function ymdLocal(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())}
@@ -174,11 +179,19 @@ function pick(id){ if(!admin){checkLogin();return} document.getElementById(id).c
 
 function setupSettings(){
  const opts=[15,30,45,60,90,120].map(v=>`<option value="${v}">${v<60?v+' min':v===60?'1 hora':v===90?'1 h 30 min':'2 horas'}</option>`).join('');
- startAlarm.innerHTML=opts; trainAlarm.innerHTML=opts;
- alarmsEnabled.checked=!!data.settings.alarmsEnabled; startAlarm.value=data.settings.startAlarm; trainAlarm.value=data.settings.trainAlarm;
- backupInfo.textContent='Última copia automática interna: '+(data.meta.lastAutoBackup||'todavía no creada');
+ if(startAlarm) startAlarm.innerHTML=opts;
+ if(trainAlarm) trainAlarm.innerHTML=opts;
+ if(alarmsEnabled) alarmsEnabled.checked=!!data.settings.alarmsEnabled;
+ if(startAlarm) startAlarm.value=data.settings.startAlarm;
+ if(trainAlarm) trainAlarm.value=data.settings.trainAlarm;
+ if(backupInfo) backupInfo.textContent='Última copia automática interna: '+(data.meta.lastAutoBackup||'todavía no creada');
 }
-function saveSettings(){data.settings.alarmsEnabled=alarmsEnabled.checked;data.settings.startAlarm=Number(startAlarm.value);data.settings.trainAlarm=Number(trainAlarm.value);save();setupSettings()}
+function saveSettings(){
+  data.settings.alarmsEnabled=el('alarmsEnabled')?.checked ?? true;
+  data.settings.startAlarm=Number(el('startAlarm')?.value || 60);
+  data.settings.trainAlarm=Number(el('trainAlarm')?.value || 30);
+  save(); setupSettings();
+}
 
 function normCalendar(obj){let arr=Array.isArray(obj)?obj:(obj.calendar||obj.days||obj.cuadro||obj.data||[]);return arr.map(x=>({fecha:String(x.fecha||x.date||x.dia||x.day||'').slice(0,10),clave_turno:String(x.clave_turno||x.turno||x.clave||x.shift||''),tipo_dia:x.tipo_dia||x.tipo||x.type||''})).filter(x=>/^\d{4}-\d{2}-\d{2}$/.test(x.fecha))}
 function pickTime(o,names){for(const n of names){let v=o?.[n]; if(v!=null){let m=String(v).match(/\d{1,2}[:.]\d{2}/); if(m)return m[0].replace('.',':')}} return ''}
@@ -232,7 +245,10 @@ function render(){
  let y=current.getFullYear(),m=current.getMonth();monthTitle.textContent=current.toLocaleDateString('es-ES',{month:'long',year:'numeric'}).replace(/^./,c=>c.toUpperCase());
  let first=new Date(y,m,1,12), start=(first.getDay()+6)%7, gridStart=new Date(y,m,1-start,12), html='';
  for(let i=0;i<42;i++){let d=new Date(gridStart);d.setDate(gridStart.getDate()+i);let ds=ymdLocal(d), dd=effectiveDay(ds), b=blockFor(dd), other=d.getMonth()!==m, cls='day '+(other?'other ':'')+(ymdLocal(new Date())===ds?'today ':'')+(selected===ds?'selected':''); html+=`<div class="${cls}" onclick="selectDay('${ds}')"><div class="num">${d.getDate()}</div>${typeBadge(dd,b)}</div>`}
- grid.innerHTML=html; updateImportUI(); renderRecords(); setupSettings();
+ grid.innerHTML=html;
+try{updateImportUI()}catch(e){console.warn('updateImportUI',e)}
+try{renderRecords()}catch(e){console.warn('renderRecords',e)}
+try{setupSettings()}catch(e){console.warn('setupSettings',e)}
 }
 function typeBadge(d,b){let st=status(d),dot=d?.changed?'<i class="changedDot"></i>':''; if(st==='empty')return''; if(st==='lz')return dot+'<div class="badge lz">LZ</div>'; if(st==='rest')return dot+`<div class="badge rest ${isCompRest(d,b)?'restComp':''}"><div class="bigD">D</div></div>`; if(st==='vac')return dot+'<div class="badge vac">VB</div>'; if(st==='dd')return dot+'<div class="badge dd">DD</div>'; if(st==='ddwork')return dot+`<div class="badge ddwork">${escapeHtml(String(d.clave_turno||'DD'))}</div>`; return dot+`<div class="shiftNo">${escapeHtml(d.clave_turno||'')}</div><div class="badge work"><div class="timeTop">${blockIni(b)||'--:--'}</div><div class="sep">↓</div><div class="timeBot">${blockFin(b)||'--:--'}</div></div>`}
 function selectDay(ds){selected=ds;render();let d=effectiveDay(ds),b=blockFor(d),st=status(d),title=parseLocal(ds).toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long',year:'numeric'}),html='';
@@ -393,7 +409,23 @@ function cleanMove(m){return String(m).replace(/IIII+|>>>>+|<<<<+|>>+|<<+/g,'→
 function tlKind(m,i,total){if(i===0)return'start';if(i===total-1)return'end';if(/\bAC\b|\bRVA\b/i.test(m))return'mid';return'train'}
 function shortTitle(m,i,total){if(/final|deje/i.test(m))return'Fin / deje';if(/\bRVA\b/i.test(m))return'Reserva';if(/\bAC\b/i.test(m))return'Actividad complementaria';if(i===0)return'Presentación / inicio';if(/\bV\d{4,5}\b/.test(m))return'Viajero '+(m.match(/\bV\d{4,5}\b/)||[''])[0];if(/\b\d{4,5}\b/.test(m))return'Tren '+(m.match(/\b\d{4,5}\b/)||[''])[0];return'Movimiento'}
 function changePanelHtml(ds,d,b){let cur=d?.clave_turno||'',names=[...new Set(data.people||[])].map(n=>`<option value="${escapeHtml(n)}">`).join('');return`<div class="changePanel"><b>Cambio del día</b><p class="muted">Comandos: número de turno, LZ, D, DD 123.</p><div class="changeGrid"><input id="chgTurn" class="input" placeholder="Turno / LZ / D / DD 123" value=""><input id="chgPerson" class="input" list="peopleList" placeholder="Con quién"></div><datalist id="peopleList">${names}</datalist><textarea id="chgNote" rows="2" placeholder="Nota"></textarea><div class="changeGrid"><select id="chgBalance"><option value="">Sin deuda</option><option value="debo">Debo a esa persona</option><option value="meDebe">Me debe esa persona</option></select><input id="chgCount" type="number" min="1" value="1" class="input"></div><button class="btn primary" onclick="applyChange('${ds}')">Aplicar cambio</button><button class="btn" onclick="resetChange('${ds}')">Quitar cambio</button></div>`}
-function applyChange(ds){let v=chgTurn.value.trim().toUpperCase(),person=chgPerson.value.trim(),note=chgNote.value.trim(),balance=chgBalance.value,count=Number(chgCount.value||1); if(!v)return;let original=dayData(ds),ch={fecha:ds,originalTurno:original?.clave_turno||'',persona:person,note,balance,count,created:new Date().toISOString()}; if(v==='LZ')ch.tipo='LZ'; else if(v==='D')ch.tipo='D'; else if(v.startsWith('DD')){ch.tipo='DD';ch.turno=(v.replace(/^DD\s*/,'')||'').trim()} else {ch.tipo='Cambio';ch.turno=v} data.changes[ds]=ch;if(person&&!data.people.includes(person))data.people.push(person);data.records.unshift(ch);save();selectDay(ds)}
+function applyChange(ds){
+  let v=(el('chgTurn')?.value||'').trim().toUpperCase();
+  let person=(el('chgPerson')?.value||'').trim();
+  let note=(el('chgNote')?.value||'').trim();
+  let balance=el('chgBalance')?.value||'';
+  let count=Number(el('chgCount')?.value||1);
+  if(!v)return;
+  let original=dayData(ds),ch={fecha:ds,originalTurno:original?.clave_turno||'',persona:person,note,balance,count,created:new Date().toISOString()};
+  if(v==='LZ')ch.tipo='LZ';
+  else if(v==='D')ch.tipo='D';
+  else if(v.startsWith('DD')){ch.tipo='DD';ch.turno=(v.replace(/^DD\s*/,'')||'').trim()}
+  else {ch.tipo='Cambio';ch.turno=v}
+  data.changes[ds]=ch;
+  if(person&&!data.people.includes(person))data.people.push(person);
+  data.records.unshift(ch);
+  save();selectDay(ds);
+}
 function resetChange(ds){delete data.changes[ds];save();selectDay(ds)}
 function renderRecords(){let rec=recordsBody;if(!rec)return;let changes=Object.values(data.changes||{}).sort((a,b)=>a.fecha.localeCompare(b.fecha));let balances={};changes.forEach(c=>{if(!c.persona||!c.balance)return;balances[c.persona]=(balances[c.persona]||0)+(c.balance==='meDebe'?c.count:-c.count)});let html='<h3>Resumen</h3>'+Object.entries(balances).map(([p,n])=>`<div class="recCard"><div class="recTitle">${escapeHtml(p)}</div>${n>0?'Me debe '+n:'Debo '+Math.abs(n)}</div>`).join('');html+='<h3>Movimientos</h3>'+changes.map(c=>`<div class="recCard"><div class="recTitle">${escapeHtml(c.fecha)} · ${escapeHtml(c.tipo)}</div><div>Original: ${escapeHtml(c.originalTurno||'—')} → Nuevo: ${escapeHtml(c.turno||c.tipo||'—')}</div><div>${escapeHtml(c.persona||'')}</div><small>${escapeHtml(c.note||'')}</small></div>`).join('');rec.innerHTML=html||'<p class="muted">Sin cambios registrados.</p>'}
 function openPdfForBlock(){if(!data.pdf)return;let b=blockFor(effectiveDay(selected));let page=b?.pagina_pdf?('#page='+b.pagina_pdf):'';pdfFrame.src=data.pdf.dataUrl+page;pdfOverlay.classList.remove('hidden')}
