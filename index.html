@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>App Turnos Pro v3.2</title>
+<title>App Turnos Pro v3.3</title>
 <meta name="theme-color" content="#8a0f82">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="App Turnos Pro">
@@ -36,7 +36,7 @@ header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line)
 <div id="login" class="login">
   <div class="loginbox">
     <div class="logo">renfe</div>
-    <h1>App Turnos Pro <span class="ver">v3.2</span></h1>
+    <h1>App Turnos Pro <span class="ver">v3.3</span></h1>
     <p class="muted">Acceso privado para administrar tus datos locales.</p>
     <input id="user" class="input" placeholder="Usuario">
     <input id="pass" class="input" placeholder="Contraseña" type="password">
@@ -50,7 +50,7 @@ header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line)
 <header>
   <div class="top">
     <div class="logo">renfe</div>
-    <div><div class="title">App Turnos Pro <span class="ver">v3.2</span></div><div class="sub">Calendario visual · memoria AppTurnosData</div></div>
+    <div><div class="title">App Turnos Pro <span class="ver">v3.3</span></div><div class="sub">Calendario visual · memoria AppTurnosData</div></div>
     <button class="dataToggle" onclick="toggleAdmin()">Datos ▾</button>
   </div>
   <div id="adminPanel" class="adminPanel hidden">
@@ -131,7 +131,7 @@ const ADMIN_USER='rodri', ADMIN_PASS='AppTurnos2026!';
 const AUTH_PREFIX='AppTurnosAuthV30', LOCK_MS=24*60*60*1000, MAX_ATTEMPTS=3;
 const DATA_KEY='AppTurnosData';
 const OLD_KEYS=['appTurnosData','appTurnosV15','appTurnosV19','appTurnosV23','appTurnosV28','appTurnosV29'];
-const DEFAULT={calendar:[],blocks:[],marcos:[],pdf:null,changes:{},records:[],people:[],settings:{alarmsEnabled:true,startAlarm:60,trainAlarm:30,customAlarms:{}},meta:{version:'3.2',lastAutoBackup:null},autoBackups:[]};
+const DEFAULT={calendar:[],blocks:[],marcos:[],pdf:null,changes:{},records:[],people:[],settings:{alarmsEnabled:true,startAlarm:60,trainAlarm:30,customAlarms:{}},meta:{version:'3.3',lastAutoBackup:null},autoBackups:[]};
 let data=loadData(), current=new Date(), selected=null, admin=false;
 
 function clone(o){return JSON.parse(JSON.stringify(o))}
@@ -145,7 +145,7 @@ function loadData(){
   localStorage.setItem(DATA_KEY,JSON.stringify(d));
   return d;
 }
-function save(){ data.meta.version='3.2'; localStorage.setItem(DATA_KEY,JSON.stringify(data)); autoBackupInternal(); updateImportUI(); }
+function save(){ data.meta.version='3.3'; localStorage.setItem(DATA_KEY,JSON.stringify(data)); autoBackupInternal(); updateImportUI(); }
 function autoBackupInternal(){ const today=new Date().toISOString().slice(0,10); if(data.meta.lastAutoBackup===today) return; const copy=clone(data); delete copy.autoBackups; data.autoBackups=[{date:new Date().toISOString(),data:copy},...(data.autoBackups||[])].slice(0,3); data.meta.lastAutoBackup=today; localStorage.setItem(DATA_KEY,JSON.stringify(data)); }
 function pad(n){return String(n).padStart(2,'0')}
 function ymdLocal(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())}
@@ -244,38 +244,35 @@ function extractTrains(b){let t=textOfBlock(b);return [...new Set([...t.matchAll
 function extractRoute(b){let t=textOfBlock(b);let codes=[...t.matchAll(/\b(MA|MH|LE|TN|LG|BR|CE|PP|ZD|OR|VC|TP)\b/g)].map(m=>m[1]);let clean=[];codes.forEach(c=>{if(clean[clean.length-1]!==c)clean.push(c)});return clean.slice(0,4).join(' → ')}
 
 function movesOf(b){
-  let raw = [];
-  if(b?.movimientos && b.movimientos.length) raw = b.movimientos;
-  else if(b?.raw?.movimientos && b.raw.movimientos.length) raw = b.raw.movimientos;
-  else if(b?.resumen) raw = String(b.resumen).split(/\s*\/\s*/).filter(Boolean);
-  else if(b?.raw?.detalle) raw = String(b.raw.detalle).split(/\s*\/\s*/).filter(Boolean);
+  let raw=[];
+  if(b?.movimientos && b.movimientos.length) raw=b.movimientos;
+  else if(b?.raw?.movimientos && b.raw.movimientos.length) raw=b.raw.movimientos;
+  else if(b?.resumen) raw=String(b.resumen).split(/\s*\/\s*/).filter(Boolean);
+  else if(b?.raw?.detalle) raw=String(b.raw.detalle).split(/\s*\/\s*/).filter(Boolean);
   return raw.map(x=>String(x).trim()).filter(Boolean);
 }
-function isTrainLine(txt){return /\bV?\d{4,5}\b/.test(String(txt));}
+function isTrainLine(txt){return /\bV?\d{4,5}\b/.test(String(txt||''));}
 function isReserveOrSC(b){
-  const t = ((b?.tipo||'')+' '+(b?.resumen||'')+' '+(b?.raw?.detalle||'')).toUpperCase();
-  return /\bRVA\b|RESERVA|SERVICIOS COMPLEMENTARIOS|\bSC\b/.test(t);
+  const t=((b?.tipo||'')+' '+(b?.resumen||'')+' '+(b?.raw?.detalle||'')).toUpperCase();
+  return /\bRVA\b|RESERVA|SERVICIOS COMPLEMENTARIOS|\bSC\b|MANIOBRA/.test(t);
 }
 function stationCodes(txt){
   const codes=[...String(txt||'').matchAll(/\b(MA|MH|LE|TN|LG|BR|CE|PP|ZD|OR|VC|TP|PA|VA|SE|SA|CO|GR|AL|LC|VI)\b/g)].map(m=>m[1]);
-  let out=[]; codes.forEach(c=>{if(out[out.length-1]!==c)out.push(c)}); return out;
+  let out=[]; codes.forEach(c=>{ if(out[out.length-1]!==c) out.push(c); });
+  return out;
 }
 function allTimes(txt){return [...String(txt||'').matchAll(/\d{1,2}[:.]\d{2}/g)].map(x=>x[0].replace('.',':'))}
-function addMinutes(hhmm,min){
-  const m=String(hhmm||'').match(/^(\d{1,2}):(\d{2})$/); if(!m)return '';
-  let d=new Date(2000,0,1,Number(m[1]),Number(m[2])+min,0);
-  return String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');
-}
 function minutesOf(hhmm){
-  const m=String(hhmm||'').match(/^(\d{1,2}):(\d{2})$/); if(!m)return null;
+  const m=String(hhmm||'').match(/^(\d{1,2}):(\d{2})$/);
+  if(!m) return null;
   return Number(m[1])*60+Number(m[2]);
 }
 function expandedTimeline(b){
-  const raw = movesOf(b);
-  const out = [];
-  const ini = blockIni(b);
-  const fin = blockFin(b);
-  const reserve = isReserveOrSC(b);
+  const raw=movesOf(b);
+  const out=[];
+  const ini=blockIni(b);
+  const fin=blockFin(b);
+  const reserve=isReserveOrSC(b);
 
   if(ini){
     out.push({
@@ -288,12 +285,12 @@ function expandedTimeline(b){
     });
   }
 
-  let lastTrainArrival = '';
-  let lastTrainDest = '';
-  let lastTrainWasTrain = false;
-  let pendingRestStart = '';
+  let lastTrainArrival='';
+  let lastTrainDest='';
+  let lastTrainWasTrain=false;
+  let pendingRestStart='';
 
-  raw.forEach((line,idx)=>{
+  raw.forEach((line)=>{
     const txt=cleanMove(line);
     const times=allTimes(txt);
     const trains=[...txt.matchAll(/\bV?\d{4,5}\b/g)].map(m=>m[0]);
@@ -307,7 +304,7 @@ function expandedTimeline(b){
       const dest=codes.length>1?codes[codes.length-1]:'';
       const viajero=train.startsWith('V');
 
-      if(pendingRestStart && dep && minutesOf(dep)!==null){
+      if(pendingRestStart && dep){
         const a=minutesOf(pendingRestStart), d=minutesOf(dep);
         if(a!==null && d!==null && d>a){
           out.push({time:pendingRestStart,kind:'mid',title:'Descanso',text:'Hasta '+dep,alarm:false});
@@ -323,20 +320,18 @@ function expandedTimeline(b){
         alarm:true,
         alarmKind:'train'
       });
+
       if(arr){
-        out.push({
-          time:arr,
-          kind:'arrival',
-          title:'Llegada',
-          text: dest || '',
-          alarm:false
-        });
+        out.push({time:arr,kind:'arrival',title:'Llegada',text:dest||'',alarm:false});
         lastTrainArrival=arr;
         lastTrainDest=dest;
         lastTrainWasTrain=true;
         pendingRestStart=arr;
       }
-    } else if(/\bAC\b|ACTIVIDAD/i.test(txt)){
+      return;
+    }
+
+    if(/\bAC\b|ACTIVIDAD/i.test(txt)){
       const acStart=times[0]||lastTrainArrival||'';
       const acEnd=times.length>1?times[times.length-1]:(times[0]||'');
       const place=codes[0]||lastTrainDest||'';
@@ -344,25 +339,30 @@ function expandedTimeline(b){
       if(acEnd && acEnd!==acStart) out.push({time:acEnd,kind:'mid',title:'Fin actividad complementaria',text:place,alarm:false});
       pendingRestStart=acEnd||acStart||pendingRestStart;
       lastTrainWasTrain=false;
-    } else if(/\bRVA\b|RESERVA/i.test(txt)){
+      return;
+    }
+
+    if(/\bRVA\b|RESERVA/i.test(txt)){
       const t1=times[0]||ini||'', t2=times.length>1?times[times.length-1]:fin;
       out.push({time:t1,kind:'mid',title:'Reserva',text:codes.join(' → '),alarm:false});
       if(t2 && t2!==t1) out.push({time:t2,kind:'end',title:'Fin reserva',text:codes[codes.length-1]||'',alarm:false});
       pendingRestStart='';
       lastTrainWasTrain=false;
-    } else if(txt){
+      return;
+    }
+
+    if(txt){
       const t=times[0]||'';
       out.push({time:t,kind:'mid',title:'Movimiento',text:txt,alarm:false});
     }
   });
 
-  // Deje: solo si el servicio acaba con tren. En reservas/SC/AC el fin es el final del turno, no deje.
   if(fin){
-    const already = out.some(e=>e.time===fin && /Fin|Deje/i.test(e.title));
-    const last = out[out.length-1];
+    const already=out.some(e=>e.time===fin && /Fin|Deje/i.test(e.title));
+    const last=out[out.length-1];
     if(!reserve && lastTrainWasTrain && lastTrainArrival && fin!==lastTrainArrival && !already){
       out.push({time:fin,kind:'end',title:'Deje / fin de jornada',text:lastTrainDest||'',alarm:false});
-    } else if(!already && (!last || last.time!==fin)){
+    }else if(!already && (!last || last.time!==fin)){
       out.push({time:fin,kind:'end',title:reserve?'Fin del turno':'Fin de jornada',text:lastTrainDest||'',alarm:false});
     }
   }
