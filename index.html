@@ -1,4 +1,4 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>App Turnos Pro v3.8</title><style>
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>App Turnos Pro v4.0</title><style>
 :root{--r:#8a0f82;--r2:#b65ac0;--bg:#fbf8fc;--line:#ead9ea;--txt:#1f1522;--mut:#75627a;--work:#edd0f4;--workb:#d79ae4;--rest:#d8f8e1;--restb:#62df91;--dd:#ffe0e7;--ddb:#ff9aad;--vac:#dff3ff;--vacb:#8bd4ff;--lz:#ffe0b2;--lzb:#fb923c}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;padding-bottom:74px}.hidden{display:none!important}header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:5;padding:8px 10px}.top{display:flex;gap:8px;align-items:center}.logo{font-weight:900;font-style:italic;color:var(--r);font-size:24px}.title{font-weight:900;font-size:17px}.ver{color:var(--r);font-size:12px}.sub{font-weight:700;color:var(--mut);font-size:11px}.btn{border:1px solid var(--line);background:#fff;border-radius:15px;padding:10px 12px;font-weight:900;color:var(--txt);white-space:nowrap}.primary{background:var(--r)!important;color:#fff!important}.wrap{padding:6px}.bar{display:grid;grid-template-columns:44px 1fr 44px 70px;align-items:center;gap:6px;margin:8px 0}.month{font-size:26px;font-weight:950;text-align:center}.navbtn{width:44px;height:44px;border:1px solid var(--line);border-radius:14px;background:#fff;font-size:24px;font-weight:900}.calendar{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}.week,.grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr))}.week div{padding:10px 2px;text-align:center;font-weight:950;color:#4d3d55;font-size:13px;border-bottom:1px solid var(--line)}.day{min-height:82px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:3px;position:relative;overflow:hidden}.day:nth-child(7n){border-right:0}.num{font-weight:950;font-size:18px}.today .num{background:#0b7cff;color:#fff;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px}.selected{outline:4px solid var(--r);outline-offset:-4px;background:#fff8ff}.today.selected{outline:4px dashed var(--r)}.shiftNo{display:inline-flex;align-items:center;justify-content:center;min-width:42px;height:28px;border-radius:999px;background:#fff;border:2px solid var(--r2);color:#35113d;font-size:18px;font-weight:950;margin:0 auto 4px}.badge{margin-top:2px;border-radius:14px;border:2px solid;padding:6px 2px;min-height:52px;text-align:center;font-weight:900;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2px}.work{background:var(--work);border-color:var(--workb);color:#5b1168}.rest{background:var(--rest);border-color:var(--restb);color:#087139}.restComp{background:repeating-linear-gradient(135deg,#d8f8e1 0 9px,#fff 9px 15px);border-color:#42c979;color:#087139}.dd{background:var(--dd);border-color:var(--ddb);color:#c20d34}.vac{background:var(--vac);border-color:var(--vacb);color:#00608f}.lz{background:var(--lz);border-color:var(--lzb);color:#7c2d12}.rest,.vac,.dd,.lz{position:absolute;left:3px;right:3px;top:30px;bottom:3px;min-height:0}.bigD{font-size:24px}.timeTop,.timeBot{font-size:13px;line-height:1;font-weight:950}.sep{font-size:14px;color:var(--r);font-weight:950}.changedDot{position:absolute;right:5px;top:5px;width:9px;height:9px;background:#facc15;border:2px solid #fff;border-radius:50%;box-shadow:0 0 0 1px #b45309}.dataToggle{margin-left:auto;border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 10px;font-weight:950;color:var(--r)}.adminPanel,.detail{background:#fff;border:1px solid var(--line);border-radius:20px;padding:14px;margin-top:10px}.detail h2{margin:4px 0 8px;font-size:26px}.pill{display:inline-block;border-radius:999px;padding:8px 12px;font-weight:950}.summaryCard{background:linear-gradient(135deg,var(--r),#6e267a);color:#fff;border-radius:20px;padding:16px;margin:12px 0}.summaryTop{display:flex;justify-content:space-between;gap:12px}.summaryTitle{font-size:30px;font-weight:950}.summaryDate{opacity:.92;font-weight:750}.servicePill{background:rgba(255,255,255,.16);padding:7px 10px;border-radius:999px;font-weight:900;display:flex;align-items:center;justify-content:center;text-align:center;min-width:86px}.summaryTimes{display:grid;grid-template-columns:1fr 44px 1fr;gap:8px;align-items:center;background:#fff;color:var(--txt);border-radius:18px;padding:12px;margin-top:14px;text-align:center}.summaryTimes b{display:block;color:var(--r);font-size:26px}.summaryTimes small{color:var(--mut);font-weight:800}.summaryArrow{font-size:26px;color:var(--r);font-weight:950}.miniGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}.miniBox{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center;color:var(--txt)}.miniBox b{display:block}.miniBox small{color:var(--mut);font-weight:800}.timeline{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;margin-top:12px}.timeline h3{margin:0 0 10px;color:var(--r)}.tl{display:grid;grid-template-columns:56px 30px 1fr;gap:10px;align-items:start;padding:9px 0;position:relative}.tl:not(:last-child)::after{content:"";position:absolute;left:70px;top:40px;bottom:-8px;width:2px;background:linear-gradient(var(--r2),#ead9ea)}.tlIcon{width:30px;height:30px;border:2px solid var(--r2);border-radius:50%;display:flex;align-items:center;justify-content:center;background:#fff;font-size:14px;z-index:1}.tlIcon.start{border-color:#4ade80}.tlIcon.train{border-color:#b65ac0}.tlIcon.mid{border-color:#93c5fd}.tlIcon.end{border-color:#fb7185}.tlIcon.arrival{border-color:#60a5fa}.tlIcon.restgap{border-color:#fbbf24}.tlIcon.deje{border-color:#fb7185}.tlIcon.pdf{border-color:#64748b}.pdfOverlay{position:fixed;inset:0;background:#fff;z-index:99;display:flex;flex-direction:column}.pdfTop{display:flex;align-items:center;gap:8px;padding:8px;border-bottom:1px solid var(--line);background:#fff}.pdfFrame{border:0;flex:1;width:100%}.tlText b{display:block}.tlText small{color:var(--mut)}.muted{color:var(--mut)}.row{border-left:4px solid var(--r);background:#faf6fb;padding:10px;border-radius:12px;margin-top:8px}.changePanel{background:#fff7df;border:1px solid #facc15;border-radius:16px;padding:12px;margin-top:12px}.changeGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.input,.select{width:100%;padding:12px;border:1px solid var(--line);border-radius:14px;font-size:15px;background:#fff}.login{position:fixed;inset:0;background:#fbf8fc;z-index:50;display:flex;align-items:center;justify-content:center;padding:20px}.loginbox{background:#fff;border:1px solid var(--line);border-radius:24px;padding:22px;max-width:380px;width:100%;box-shadow:0 12px 35px #0001}.ok{color:#087139;font-weight:900}.err{color:#c20d34;font-weight:900}.changesList{display:grid;gap:10px}.changeItem,.balanceBox{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px}.balanceGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:560px){.month{font-size:22px}.day{min-height:78px;padding:2px}.num{font-size:15px}.shiftNo{min-width:32px;height:22px;font-size:15px}.badge{min-height:42px;border-radius:11px}.timeTop,.timeBot{font-size:11px}.week div{font-size:11px}.bar{grid-template-columns:38px 1fr 38px 58px}.navbtn{width:38px;height:38px}.btn{padding:8px 10px;font-size:13px}.changeGrid{grid-template-columns:1fr}.summaryTitle{font-size:25px}.summaryTimes b{font-size:22px}.miniBox{padding:8px;font-size:12px}}
 
 /* v2.4 DD asignado + registro visual */
@@ -7,10 +7,10 @@
 .badge.ddwork:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(255,255,255,.42) 0 7px,rgba(255,255,255,0) 7px 14px)}
 .badge.ddwork>*{position:relative;z-index:1}.badge.ddwork .ddSmall{font-size:10px;font-weight:950;color:#be123c}.badge.ddwork .ddTurn{font-size:17px;font-weight:950;color:#411045}.lz{background:#fff3d7!important;border-color:var(--lzb)!important;color:#7c2d12!important}.lz .bigLZ{font-size:22px;font-weight:950}.regSection{margin-top:14px}.regTitle{color:var(--r);font-size:19px;font-weight:950;margin:12px 0 8px}.changeItem.license{border-left-color:#f97316;background:#fff7ed}.changeItem.ddreg{border-left-color:#dc2626;background:#fff1f2}.pdfOverlay{position:fixed;inset:0;background:#fff;z-index:99;display:flex;flex-direction:column}.pdfTop{display:flex;gap:8px;align-items:center;padding:8px;border-bottom:1px solid var(--line);background:#fff}.pdfFrame{border:0;flex:1;width:100%}
 
-/* v3.8 alarmas desplegables + corrección memoria/fechas + PDF multipágina + calendario continuo */
+/* v4.0 alarmas desplegables + corrección memoria/fechas + PDF multipágina + calendario continuo */
 .day.outsideMonth{background:#fcf7fd;color:#9b8aa1;opacity:.62}.day.outsideMonth .badge{filter:saturate(.65);opacity:.72}.day.outsideMonth .shiftNo{opacity:.75}.alarmBox{margin-top:8px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}.alarmSelect{border:1px solid var(--line);border-radius:12px;padding:7px 8px;background:#fff;font-weight:800;font-size:12px}.alarmOn{font-size:12px;color:#087139;font-weight:900}.alarmOff{font-size:12px;color:#c20d34;font-weight:900}.alarmDrop{margin-top:8px;border:1px solid var(--line);border-radius:14px;background:#fff;overflow:hidden}.alarmDrop summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 10px;font-weight:950}.alarmDrop summary::-webkit-details-marker{display:none}.alarmStatus{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:999px;color:#fff;font-weight:950}.alarmStatus.on{background:#16a34a}.alarmStatus.off{background:#dc2626}.alarmPanel{padding:10px;border-top:1px solid var(--line);background:#faf6fb}.alarmPanel .btn{font-size:12px;padding:7px 9px}.settingsBlock{background:#faf6fb;border:1px solid var(--line);border-radius:16px;padding:12px;margin:12px 0}.pdfCanvasWrap{overflow:auto;flex:1;background:#f8f3fa;padding:10px}.pdfPage{background:#fff;margin:0 auto 14px;border:1px solid var(--line);box-shadow:0 4px 18px #0002;border-radius:8px;overflow:hidden;max-width:100%}.pdfPage canvas{width:100%;height:auto;display:block}.pdfPageLabel{font-weight:950;color:var(--r);padding:8px 10px;border-bottom:1px solid var(--line);background:#fff}.pdfTools{margin-left:auto;display:flex;gap:6px;align-items:center}.manualRest{background:var(--rest)!important;border-color:var(--restb)!important;color:#087139!important}.changeItem.restreg{border-left-color:#22c55e;background:#f0fdf4}
 </style>
-<!-- v3.8: bloqueo 3 intentos, memoria estable/migrada, fechas sin desplazamiento UTC, alarmas desplegables por evento, PDF multipágina, calendario continuo y registros. -->
+<!-- v4.0: bloqueo 3 intentos, memoria estable/migrada, fechas sin desplazamiento UTC, alarmas desplegables por evento, PDF multipágina, calendario continuo y registros. -->
 
 <style>
 @keyframes todayPulseTurnos{
@@ -37,9 +37,63 @@
 .badge.vac{font-size:18px;line-height:1;min-height:0}
 .day .badge.vac{position:absolute;left:3px;right:3px;top:30px;bottom:3px}
 </style>
+
+<style>
+/* v4.0: tipos integrados en marco.json, celdas uniformes y alarmas en línea */
+.badge.dsc,.badge.sss,.badge.dc,.badge.ss{
+  position:absolute;left:3px;right:3px;top:30px;bottom:3px;min-height:0;
+  background:repeating-linear-gradient(135deg,#d8f8e1 0 9px,#b65ac0 9px 12px,#d8f8e1 12px 18px);
+  border-color:#8a0f82;color:#34113b;font-weight:950;font-size:20px;
+}
+.day .badge.vac{position:absolute;left:3px;right:3px;top:30px;bottom:3px;min-height:0;font-size:18px;line-height:1}
+.tlTitleLine{display:flex;align-items:center;gap:8px;justify-content:space-between}
+.tlTitleLine .alarmDrop.cleanAlarm{display:inline-block;margin:0 0 0 6px}
+.tlTitleLine .alarmDrop.cleanAlarm summary{padding:0;display:inline-flex;gap:4px;align-items:center}
+.alarmDrop.cleanAlarm{border:0;background:transparent;overflow:visible}
+.alarmBell{font-size:17px;font-weight:900}
+.alarmBell.on{color:#087139}.alarmBell.off{color:#c20d34}
+.alarmDrop.cleanAlarm .alarmPanel{position:relative;margin-top:4px;border:1px solid var(--line);border-radius:12px;background:#faf6fb;padding:8px;z-index:4}
+</style>
+
+<style>
+.day{min-height:82px}
+.badge.vac,
+.day .badge.vac{
+  position:absolute!important;
+  left:3px!important;right:3px!important;top:30px!important;bottom:3px!important;
+  min-height:0!important;height:auto!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  font-size:20px!important;line-height:1!important;
+}
+.tlText{min-width:0}
+.tlText b.tlTitleLine{
+  display:flex!important;align-items:center!important;justify-content:flex-start!important;
+  gap:7px!important;width:100%!important;
+}
+.tlTitleText{display:inline-block;min-width:0}
+.tlTitleLine .alarmDrop.cleanAlarm{
+  display:inline-flex!important;align-items:center!important;margin:0!important;padding:0!important;
+  border:0!important;background:transparent!important;vertical-align:middle!important;
+}
+.tlTitleLine .alarmDrop.cleanAlarm summary{
+  display:inline-flex!important;align-items:center!important;gap:3px!important;
+  padding:0!important;margin:0!important;list-style:none!important;cursor:pointer!important;white-space:nowrap!important;
+}
+.tlTitleLine .alarmDrop.cleanAlarm summary::-webkit-details-marker{display:none}
+.alarmBell{font-size:16px!important;line-height:1!important}
+.alarmDrop.cleanAlarm .alarmPanel{
+  position:absolute!important;right:0!important;margin-top:6px!important;border:1px solid var(--line)!important;
+  border-radius:12px!important;background:#faf6fb!important;padding:8px!important;z-index:30!important;
+  min-width:170px!important;box-shadow:0 6px 18px #0002!important;
+}
+@media(max-width:560px){
+  .day{min-height:78px}
+  .badge.vac,.day .badge.vac{font-size:18px!important}
+}
+</style>
 </head><body>
-<div id="login" class="login"><div class="loginbox"><div class="logo">renfe</div><h1>App Turnos Pro <span class="ver">v3.8</span></h1><p class="muted">Acceso privado para administrar datos.</p><input id="user" class="input" placeholder="Usuario"><input id="pass" class="input" placeholder="Contraseña" type="password"><label style="display:flex;gap:8px;align-items:center;margin:8px 0;font-weight:800"><input id="remember" type="checkbox" checked> Recordar sesión 24 horas</label><button class="btn primary" style="width:100%" onclick="doLogin()">Entrar</button><p id="loginMsg" class="err"></p></div></div>
-<header><div class="top"><div class="logo">renfe</div><div><div class="title">App Turnos Pro <span class="ver">v3.8</span></div><div class="sub">Calendario visual · cambios · histórico de marcos</div></div><button class="dataToggle" onclick="toggleAdmin()">Datos ▾</button></div><div id="adminPanel" class="adminPanel hidden"><b>Importación privada</b><p class="muted">Archivos guardados solo en este dispositivo.</p><button class="btn primary" onclick="pick('yearFile')">📅 Importar gráfico anual</button><button class="btn primary" onclick="pick('marcoFile')">🚄 Importar Marco mensual JSON</button><button class="btn primary" onclick="pick('specialFile')">🟩 Importar DSC / SSS JSON</button><button class="btn" onclick="pick('pdfFile')">📄 Importar PDF Marco</button><button class="btn" onclick="exportExcel()">📤 Exportar Excel</button><button class="btn" onclick="exportBackup()">💾 Copia seguridad JSON</button><button class="btn" onclick="pick(\'memoryFile\')">↩️ Reponer calendario histórico</button><button class="btn" onclick="clearData()">Borrar datos locales</button><div id="importStatus" class="muted"></div></div><input id="yearFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'year')"><input id="marcoFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'marco')"><input id="pdfFile" type="file" accept="application/pdf,.pdf" class="hidden" onchange="importPdf(event)"><input id="memoryFile" type="file" accept=".json,application/json" class="hidden" onchange="restoreHistoricalMemory(event)"><input id="specialFile" type="file" accept=".json,application/json" class="hidden" onchange="importSpecialDays(event)"></header>
+<div id="login" class="login"><div class="loginbox"><div class="logo">renfe</div><h1>App Turnos Pro <span class="ver">v4.0</span></h1><p class="muted">Acceso privado para administrar datos.</p><input id="user" class="input" placeholder="Usuario"><input id="pass" class="input" placeholder="Contraseña" type="password"><label style="display:flex;gap:8px;align-items:center;margin:8px 0;font-weight:800"><input id="remember" type="checkbox" checked> Recordar sesión 24 horas</label><button class="btn primary" style="width:100%" onclick="doLogin()">Entrar</button><p id="loginMsg" class="err"></p></div></div>
+<header><div class="top"><div class="logo">renfe</div><div><div class="title">App Turnos Pro <span class="ver">v4.0</span></div><div class="sub">Calendario visual · cambios · histórico de marcos</div></div><button class="dataToggle" onclick="toggleAdmin()">Datos ▾</button></div><div id="adminPanel" class="adminPanel hidden"><b>Importación privada</b><p class="muted">Archivos guardados solo en este dispositivo.</p><button class="btn primary" onclick="pick('yearFile')">📅 Importar desarrollo anual</button><button class="btn primary" onclick="pick('marcoFile')">🚄 Importar marco de turnos JSON</button><button class="btn" onclick="pick('pdfFile')">📄 Importar PDF Marco</button><button class="btn" onclick="exportExcel()">📤 Exportar Excel</button><button class="btn" onclick="exportBackup()">💾 Copia seguridad JSON</button><button class="btn" onclick="pick('memoryFile')">↩️ Reponer calendario histórico</button><button class="btn" onclick="clearData()">Borrar datos locales</button><div id="importStatus" class="muted"></div></div><input id="yearFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'year')"><input id="marcoFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'marco')"><input id="pdfFile" type="file" accept="application/pdf,.pdf" class="hidden" onchange="importPdf(event)"><input id="memoryFile" type="file" accept=".json,application/json" class="hidden" onchange="restoreHistoricalMemory(event)"><input id="specialFile" type="file" accept=".json,application/json" class="hidden" onchange="importSpecialDays(event)"></header>
 <div class="wrap"><section id="calendarView" class="view"><div class="bar"><button class="navbtn" onclick="move(-1)">‹</button><div class="month" id="monthTitle"></div><button class="navbtn" onclick="move(1)">›</button><button class="btn" onclick="today()">Hoy</button></div><div class="calendar"><div class="week"><div>LUN</div><div>MAR</div><div>MIÉ</div><div>JUE</div><div>VIE</div><div>SÁB</div><div>DOM</div></div><div id="grid" class="grid"></div></div><div id="detail" class="detail"><span class="pill" style="background:#f2e3f4;color:var(--r)">Selecciona un día</span><h2>Detalle del turno</h2><p class="muted">Pulsa una casilla para ver inicio, fin, desarrollo y cambios.</p></div></section><section id="changesView" class="view hidden"><div class="detail"><h2>Registro de cambios</h2><div id="balances" class="balanceGrid"></div><h3>Historial</h3><div id="changesList" class="changesList"></div></div></section><section id="settingsView" class="view hidden"><div class="detail"><h2>Ajustes</h2><p>Datos cargados: <b id="dataState"></b></p></div></section></div>
 <nav style="position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);z-index:10"><button class="btn" onclick="show('calendarView')">📅<br>Calendario</button><button class="btn" onclick="scrollToDetail()">📋<br>Detalle</button><button class="btn" onclick="showChanges()">🔁<br>Cambios<br>Registro</button><button class="btn" onclick="show('settingsView')">⚙️<br>Ajustes</button><button class="btn" onclick="lockApp()">🔒<br>Bloq.</button></nav>
 <script>
@@ -90,7 +144,7 @@ function openPdf(page){if(!data.pdf?.dataUrl)return;let o=document.createElement
 
 
 // ===== v2.8 overrides: alarmas, PDF multipágina, memoria estable y calendario continuo =====
-try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v2.8');document.title='App Turnos Pro v3.8'}catch(e){}
+try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v2.8');document.title='App Turnos Pro v4.0'}catch(e){}
 current=new Date();
 data.alarms=data.alarms||{};data.disabledAlarms=data.disabledAlarms||{};data.people=data.people||[];data.alarmSettings=data.alarmSettings||{enabled:true,startOffset:60,trainOffset:30};
 function doLogin(){if(user.value.trim().toLowerCase()===ADMIN_USER&&pass.value.trim()===ADMIN_PASS){localStorage.setItem(AUTH+'Unlocked','1');localStorage.setItem(AUTH+'SessionUntil',Date.now()+(remember.checked?86400000:3600000));localStorage.removeItem(AUTH+'Attempts');localStorage.removeItem(AUTH+'LockUntil');login.classList.add('hidden');admin=true;updateImportUI();return}loginMsg.textContent='Usuario o contraseña incorrectos.'}
@@ -131,7 +185,7 @@ function openPdfFallback(){if(!data.pdf?.dataUrl)return;let w=window.open();if(w
 function showChanges(){show('changesView');let chs=Object.values(data.changes||{}).sort((a,b)=>a.fecha.localeCompare(b.fecha));let bal={};chs.forEach(c=>{if(!c.persona||c.balance==='neutral')return;bal[c.persona]=bal[c.persona]||0;bal[c.persona]+=(c.balance==='meDebe'?1:-1)*(Number(c.cantidad)||1)});let lz=chs.filter(c=>c.tipo==='LZ'), dd=chs.filter(c=>c.tipo==='DD'), rests=chs.filter(c=>c.tipo==='D');balances.innerHTML='<div class="regSection"><div class="regTitle">Balance de cambios</div>'+(Object.keys(bal).length?Object.entries(bal).map(([p,v])=>'<div class="balanceBox"><b>'+esc(p)+'</b><br>'+(v>0?'Me debe '+v:'Debo '+Math.abs(v))+' turno(s)</div>').join(''):'<p class="muted">Sin deudas registradas.</p>')+'</div><div class="regSection"><div class="regTitle">Licencias LZ</div>'+(lz.length?lz.map(c=>'<div class="changeItem license"><b>'+esc(c.fecha)+'</b> · LZ<br><span class="muted">'+esc(c.nota||'')+'</span></div>').join(''):'<p class="muted">Sin licencias registradas.</p>')+'</div><div class="regSection"><div class="regTitle">Descansos manuales D</div>'+(rests.length?rests.map(c=>'<div class="changeItem restreg"><b>'+esc(c.fecha)+'</b> · D<br>Original: '+esc(c.originalTurno||'—')+'<br><span class="muted">'+esc(c.nota||'')+'</span></div>').join(''):'<p class="muted">Sin descansos manuales.</p>')+'</div><div class="regSection"><div class="regTitle">Detraíbles pinchados DD</div>'+(dd.length?dd.map(c=>'<div class="changeItem ddreg"><b>'+esc(c.fecha)+'</b> · DD '+esc(c.turno||'—')+'<br>Original: '+esc(c.originalTurno||'—')+' ('+esc(c.originalInicio||'—')+' → '+esc(c.originalFin||'—')+')<br><span class="muted">'+esc(c.nota||'')+'</span></div>').join(''):'<p class="muted">Sin detraíbles pinchados registrados.</p>')+'</div>';changesList.innerHTML=chs.map(c=>'<div class="changeItem '+(c.tipo==='LZ'?'license':c.tipo==='DD'?'ddreg':c.tipo==='D'?'restreg':'')+'"><b>'+esc(c.fecha)+'</b><br>Original: '+esc(c.originalTurno||'—')+' ('+esc(c.originalInicio||'—')+' → '+esc(c.originalFin||'—')+')<br>Nuevo: '+esc(c.tipo==='DD'?('DD '+(c.turno||'')):(c.tipo||c.turno||'—'))+'<br>Con: '+esc(c.persona||'—')+' · '+esc(c.balance||'registro')+' '+esc(c.cantidad||1)+'<br><span class="muted">'+esc(c.nota||'')+'</span></div>').join('')||'<p class="muted">Aún no hay cambios.</p>'}
 
 
-// ===== v3.8 ajustes mínimos sobre base estable: alarmas limpias, hoy intermitente, memoria histórica =====
+// ===== v4.0 ajustes mínimos sobre base estable: alarmas limpias, hoy intermitente, memoria histórica =====
 function fechaArchivoMemoria(){
   let d=new Date();
   return pad(d.getDate())+'-'+pad(d.getMonth()+1)+'-'+d.getFullYear()+'_memoria_turnos.json';
@@ -194,7 +248,7 @@ function timelineHtml(b){
 }
 
 
-// ===== v3.8: importación DSC/SSS y vacaciones con celda uniforme =====
+// ===== v4.0: importación DSC/SSS y vacaciones con celda uniforme =====
 data.specialDays=data.specialDays||{};
 
 function normalizeSpecialDays(obj){
@@ -277,6 +331,258 @@ restoreHistoricalMemory=function(ev){
   }catch(e){if(window.importStatus)importStatus.innerHTML='<span class="err">No se pudo reponer la memoria: '+e.message+'</span>'}};
   r.readAsText(f);ev.target.value='';
 };
+
+
+// ===== v4.0: marco único con tipos SERVICIO/DESCANSO/VACACIONES/DD/DSC/SSS =====
+function tipoCanon(v){
+  let t=String(v||'').trim().toUpperCase();
+  if(!t)return '';
+  if(t==='SERVICIO'||t==='TRABAJO'||t==='WORK')return 'SERVICIO';
+  if(t==='DESCANSO'||t==='D'||t==='REST')return 'DESCANSO';
+  if(t==='VACACIONES'||t==='VAC'||t==='VB')return 'VACACIONES';
+  if(t==='DD'||t.includes('DETRA'))return 'DD';
+  if(t==='DSC'||t==='DC'||t.includes('COMPENSADO'))return 'DSC';
+  if(t==='SSS'||t==='SS'||t.includes('SIN SERVICIO')||t.includes('SALIDA'))return 'SSS';
+  return t;
+}
+function dayFromAny(x){
+  let fecha=String(x.fecha||x.date||x.dia||x.day||'').slice(0,10);
+  if(!/^\d{4}-\d{2}-\d{2}$/.test(fecha))return null;
+  let tipo=tipoCanon(x.tipo||x.type||x.tipo_dia||x.estado||x.codigo||x.code||'');
+  let turno=String(x.clave_turno||x.turno||x.clave||x.shift||'');
+  if(tipo==='SERVICIO'&&!turno)turno=String(x.id_turno||x.servicio||'');
+  if(tipo==='DSC')turno='DSC';
+  if(tipo==='SSS')turno='SSS';
+  if(tipo==='DESCANSO'&&!turno)turno='D';
+  if(tipo==='VACACIONES'&&!turno)turno='VB';
+  if(tipo==='DD'&&!turno)turno='DD';
+  return {fecha,clave_turno:turno,tipo_dia:tipo||x.tipo_dia||'',tipo_norm:tipo,raw:x};
+}
+function extractDaysFromMarco(obj){
+  let pools=[];
+  ['calendar','calendario','days','dias','cuadro','anual','jornadas'].forEach(k=>{if(Array.isArray(obj?.[k]))pools.push(obj[k])});
+  if(Array.isArray(obj))pools.push(obj);
+  if(Array.isArray(obj?.data))pools.push(obj.data);
+  let out=[];
+  pools.flat().forEach(x=>{let d=dayFromAny(x||{});if(d)out.push(d)});
+  let map={};out.forEach(d=>map[d.fecha]=d);
+  return Object.values(map).sort((a,b)=>a.fecha.localeCompare(b.fecha));
+}
+function mergeCalendarDays(newDays){
+  if(!newDays||!newDays.length)return;
+  let map={};(data.calendar||[]).forEach(d=>{if(d.fecha)map[d.fecha]=d});
+  newDays.forEach(d=>{map[d.fecha]={...(map[d.fecha]||{}),...d}});
+  data.calendar=Object.values(map).sort((a,b)=>a.fecha.localeCompare(b.fecha));
+}
+
+// Sobrescribe importador: el marco JSON puede traer turnos + días especiales en un único archivo.
+const _importFile_v39=importFile;
+importFile=function(ev,type){
+  let f=ev.target.files[0];if(!f)return;let r=new FileReader();
+  r.onload=()=>{try{
+    let obj=JSON.parse(r.result);
+    if(type==='year'){
+      let c=normCalendar(obj);
+      if(!c.length)throw Error('No encuentro desarrollo anual válido');
+      c=c.map(d=>({...d,tipo_norm:tipoCanon(d.tipo_dia||d.tipo||d.type||'')}));
+      data.calendar=c;data.meta.yearImported=new Date().toISOString();
+    }else{
+      let b=normBlocks(obj);
+      let days=extractDaysFromMarco(obj);
+      if(!b.length&&!days.length)throw Error('No encuentro Marco válido');
+      if(b.length){data.blocks=b;data.meta.marcoImported=new Date().toISOString()}
+      if(days.length)mergeCalendarDays(days);
+    }
+    save();importStatus.innerHTML='<span class="ok">Importado correctamente.</span>';render();autoOpenTodayDetail();
+  }catch(e){importStatus.innerHTML='<span class="err">Error: '+e.message+'</span>'}};
+  r.readAsText(f);ev.target.value='';
+};
+
+// Ya no hace falta segundo JSON. Si existe llamada antigua, la redirigimos a marco integrado.
+importSpecialDays=function(ev){
+  if(window.importStatus)importStatus.innerHTML='<span class="err">DSC/SSS ya no se importan aparte. Deben venir integrados en el marco JSON.</span>';
+  ev.target.value='';
+};
+
+function tipoOfDay(d){
+  let t=tipoCanon(d?.tipo_norm||d?.tipo_dia||d?.tipo||d?.raw?.tipo||d?.raw?.type||'');
+  let turn=String(d?.clave_turno||'').toUpperCase();
+  if(['DSC','DC'].includes(turn))return 'DSC';
+  if(['SSS','SS'].includes(turn))return 'SSS';
+  if(turn==='D')return 'DESCANSO';
+  if(turn==='VB')return 'VACACIONES';
+  if(turn==='DD'||turn.startsWith('DD '))return 'DD';
+  if(turn==='LZ')return 'LZ';
+  return t || (turn?'SERVICIO':'');
+}
+
+// Campo tipo manda sobre las horas y sobre la existencia de desarrollo.
+const _status_v39=status;
+status=function(d){
+  if(!d)return 'empty';
+  let t=tipoOfDay(d);
+  if(t==='DSC')return 'dsc';
+  if(t==='SSS')return 'sss';
+  if(t==='DESCANSO')return 'rest';
+  if(t==='VACACIONES')return 'vac';
+  if(t==='DD')return 'dd';
+  if(t==='LZ')return 'lz';
+  if(t==='SERVICIO')return 'work';
+  return _status_v39(d);
+};
+
+const _blockFor_v39=blockFor;
+blockFor=function(d){
+  if(!d)return null;
+  let st=status(d);
+  if(st!=='work')return null;
+  return _blockFor_v39(d);
+};
+
+const _typeBadge_v39=typeBadge;
+typeBadge=function(d,b){
+  let st=status(d);
+  if(st==='dsc')return (d?.changed?'<i class="changedDot"></i>':'')+'<div class="badge dsc">DC</div>';
+  if(st==='sss')return (d?.changed?'<i class="changedDot"></i>':'')+'<div class="badge sss">SS</div>';
+  return _typeBadge_v39(d,b);
+};
+
+const _selectDay_v39=selectDay;
+selectDay=function(ds){
+  let d=effectiveDay(ds),st=status(d);
+  if(d&&(st==='dsc'||st==='sss')){
+    selected=ds;render();
+    let title=new Date(ds+'T12:00:00').toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+    let label=st==='dsc'?'Descanso compensado DC':'Salida sin servicio SS';
+    let html='<span class="pill" style="background:#d8f8e1;color:#34113b;border:1px solid #8a0f82">'+label+'</span><h2>'+title+'</h2><p class="muted">Tipo leído desde el campo <b>tipo</b> del marco JSON.</p>';
+    html+=changePanelHtml(ds,dayData(ds),blockFor(dayData(ds)),d,null);
+    detail.innerHTML=html;scrollToDetail();return;
+  }
+  _selectDay_v39(ds);
+};
+
+// Alarmas en la misma línea del título: presentación/inicio y salida de tren.
+const _alarmControl_v39=alarmControl;
+alarmControl=function(e,i){
+ if(!selected)return'';
+ if(!(e.kind==='start'||e.kind==='train'))return'';
+ let settings=data.alarmSettings||{enabled:true,startOffset:60,trainOffset:30};
+ let id=alarmKey(selected,e,i),a=data.alarms[id]||{},disabled=data.disabledAlarms[id],val=a.offset||alarmDefaultOffset(e);
+ let options=[[15,'15 min antes'],[30,'30 min antes'],[45,'45 min antes'],[60,'1 h antes'],[90,'1 h 30 antes'],[120,'2 h antes']].map(o=>'<option value="'+o[0]+'" '+(Number(val)===o[0]?'selected':'')+'>'+o[1]+'</option>').join('');
+ let inactive=!settings.enabled||disabled;
+ return '<details class="alarmDrop cleanAlarm"><summary><span class="alarmBell '+(inactive?'off':'on')+'">🔔▾</span><span>'+(inactive?'❌':'✅')+'</span></summary><div class="alarmPanel"><div class="'+(inactive?'alarmOff':'alarmOn')+'">'+(inactive?'Alarma apagada':'Alarma activa')+'</div><div class="alarmBox"><select class="alarmSelect" onchange="setAlarm(\''+id+'\',\''+esc(e.time||'')+'\',this.value,\''+esc((e.title||'Evento')+' '+(e.desc||''))+'\')">'+options+'</select><button class="btn" onclick="toggleAlarm(\''+id+'\')">'+(disabled?'Restaurar':'Quitar')+'</button></div></div></details>';
+};
+const _timelineHtml_v39=timelineHtml;
+timelineHtml=function(b){
+ let events=buildTimelineEvents(b);
+ if(!events.length)return'<div class="timeline"><h3>Desarrollo del turno</h3><p class="muted">Sin desarrollo detallado.</p></div>';
+ return '<div class="timeline"><h3>Desarrollo del turno</h3>'+events.map((e,i)=>{
+   let alarm=(e.kind==='start'||e.kind==='train')?alarmControl(e,i):'';
+   return '<div class="tl"><div>'+esc(e.time||'')+'</div><div class="tlIcon '+(e.kind||'mid')+'">'+esc(e.icon||'•')+'</div><div class="tlText"><b class="tlTitleLine"><span>'+esc(e.title||'')+'</span>'+alarm+'</b><small>'+esc(e.desc||'')+'</small></div></div>';
+ }).join('')+'</div>';
+};
+
+// Al abrir, muestra el desarrollo de hoy si existe. Si hay día seleccionado previo, respeta ese.
+function autoOpenTodayDetail(){
+  let target=selected||fmt(new Date());
+  if(effectiveDay(target))selectDay(target);
+}
+setTimeout(autoOpenTodayDetail,80);
+
+
+// ===== v4.0: correcciones finales calendario, alarmas y reponer histórico =====
+function fechaArchivoMemoria(){
+  let d=new Date();
+  return pad(d.getDate())+'-'+pad(d.getMonth()+1)+'-'+d.getFullYear()+'_memoria_turnos.json';
+}
+exportBackup=function(){
+  const memoria={
+    tipo:'AppTurnos_memoria_turnos',
+    version:'4.0',
+    generado:new Date().toISOString(),
+    formato_fecha:'dd-mm-aaaa',
+    changes:data.changes||{},
+    people:data.people||[],
+    alarms:data.alarms||{},
+    disabledAlarms:data.disabledAlarms||{},
+    alarmSettings:data.alarmSettings||{},
+    specialDays:data.specialDays||{},
+    meta:{exportado_desde:'AppTurnosData'}
+  };
+  downloadBlob(JSON.stringify(memoria,null,2),fechaArchivoMemoria(),'application/json');
+};
+restoreHistoricalMemory=function(ev){
+  let f=ev.target.files[0]; if(!f)return;
+  let r=new FileReader();
+  r.onload=()=>{
+    try{
+      let obj=JSON.parse(r.result);
+      data.changes={...(data.changes||{}),...(obj.changes||obj.data?.changes||{})};
+      data.people=[...new Set([...(data.people||[]),...(obj.people||obj.data?.people||[])])];
+      data.alarms={...(data.alarms||{}),...(obj.alarms||obj.data?.alarms||{})};
+      data.disabledAlarms={...(data.disabledAlarms||{}),...(obj.disabledAlarms||obj.data?.disabledAlarms||{})};
+      data.alarmSettings={...(data.alarmSettings||{}),...(obj.alarmSettings||obj.data?.alarmSettings||{})};
+      data.specialDays={...(data.specialDays||{}),...(obj.specialDays||obj.data?.specialDays||{})};
+      save(); render();
+      if(selected) selectDay(selected); else autoOpenTodayDetail();
+      if(window.importStatus) importStatus.innerHTML='<span class="ok">Calendario histórico repuesto correctamente.</span>';
+    }catch(e){
+      if(window.importStatus) importStatus.innerHTML='<span class="err">No se pudo reponer la memoria: '+e.message+'</span>';
+    }
+  };
+  r.readAsText(f); ev.target.value='';
+};
+importFile=function(ev,type){
+  let f=ev.target.files[0]; if(!f)return;
+  let r=new FileReader();
+  r.onload=()=>{
+    try{
+      let obj=JSON.parse(r.result);
+      if(type==='year'){
+        let c=normCalendar(obj);
+        if(!c.length) throw Error('No encuentro desarrollo anual válido');
+        c=c.map(d=>({...d,tipo_norm:tipoCanon(d.tipo_dia||d.tipo||d.type||'')}));
+        data.calendar=c;
+        data.meta.yearImported=new Date().toISOString();
+      }else{
+        let b=normBlocks(obj);
+        let days=extractDaysFromMarco(obj);
+        if(!b.length && !days.length) throw Error('No encuentro Marco válido');
+        data.blocks=b||[];
+        data.meta.marcoImported=new Date().toISOString();
+        if(days.length) mergeCalendarDays(days);
+      }
+      save(); render();
+      if(selected) selectDay(selected); else autoOpenTodayDetail();
+      if(window.importStatus) importStatus.innerHTML='<span class="ok">Importado correctamente.</span>';
+    }catch(e){
+      if(window.importStatus) importStatus.innerHTML='<span class="err">Error: '+e.message+'</span>';
+    }
+  };
+  r.readAsText(f); ev.target.value='';
+};
+alarmControl=function(e,i){
+ if(!selected)return'';
+ if(!(e.kind==='start'||e.kind==='train'))return'';
+ let settings=data.alarmSettings||{enabled:true,startOffset:60,trainOffset:30};
+ let id=alarmKey(selected,e,i),a=data.alarms[id]||{},disabled=data.disabledAlarms[id],val=a.offset||alarmDefaultOffset(e);
+ let options=[[15,'15 min antes'],[30,'30 min antes'],[45,'45 min antes'],[60,'1 h antes'],[90,'1 h 30 antes'],[120,'2 h antes']].map(o=>'<option value="'+o[0]+'" '+(Number(val)===o[0]?'selected':'')+'>'+o[1]+'</option>').join('');
+ let inactive=!settings.enabled||disabled;
+ return '<details class="alarmDrop cleanAlarm"><summary><span class="alarmBell '+(inactive?'off':'on')+'">🔔▾</span><span>'+(inactive?'❌':'✅')+'</span></summary><div class="alarmPanel"><div class="'+(inactive?'alarmOff':'alarmOn')+'">'+(inactive?'Alarma apagada':'Alarma activa')+'</div><div class="alarmBox"><select class="alarmSelect" onchange="setAlarm(\''+id+'\',\''+esc(e.time||'')+'\',this.value,\''+esc((e.title||'Evento')+' '+(e.desc||''))+'\')">'+options+'</select><button class="btn" onclick="toggleAlarm(\''+id+'\')">'+(disabled?'Restaurar':'Quitar')+'</button></div></div></details>';
+};
+timelineHtml=function(b){
+ let events=buildTimelineEvents(b);
+ if(!events.length)return'<div class="timeline"><h3>Desarrollo del turno</h3><p class="muted">Sin desarrollo detallado.</p></div>';
+ return '<div class="timeline"><h3>Desarrollo del turno</h3>'+events.map((e,i)=>{
+   let alarm=(e.kind==='start'||e.kind==='train')?alarmControl(e,i):'';
+   return '<div class="tl"><div>'+esc(e.time||'')+'</div><div class="tlIcon '+(e.kind||'mid')+'">'+esc(e.icon||'•')+'</div><div class="tlText"><b class="tlTitleLine"><span class="tlTitleText">'+esc(e.title||'')+'</span>'+alarm+'</b><small>'+esc(e.desc||'')+'</small></div></div>';
+ }).join('')+'</div>';
+};
+function autoOpenTodayDetail(){
+  let target=selected||fmt(new Date());
+  if(effectiveDay(target)) selectDay(target);
+}
+setTimeout(autoOpenTodayDetail,120);
 
 checkLogin();render();
 </script></body></html>
