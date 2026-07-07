@@ -131,6 +131,65 @@
   .badge.vac,.day .badge.vac,.badge.dsc,.badge.sss,.badge.dd{font-size:18px!important}
 }
 </style>
+
+<style>
+/* FIX tamaño calendario: recuperar casillas grandes y uniformes */
+.calendar .grid{
+  align-items:stretch!important;
+}
+.day{
+  min-height:96px!important;
+  height:96px!important;
+}
+.day.outsideMonth{
+  min-height:96px!important;
+  height:96px!important;
+}
+.day .badge,
+.day .badge.work,
+.day .badge.rest,
+.day .badge.vac,
+.day .badge.dd,
+.day .badge.dsc,
+.day .badge.sss{
+  box-sizing:border-box!important;
+}
+.badge.vac,
+.day .badge.vac,
+.badge.rest,
+.day .badge.rest,
+.badge.dd,
+.day .badge.dd,
+.badge.dsc,
+.day .badge.dsc,
+.badge.sss,
+.day .badge.sss{
+  position:absolute!important;
+  left:3px!important;
+  right:3px!important;
+  top:30px!important;
+  bottom:3px!important;
+  min-height:0!important;
+  height:auto!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  flex-direction:column!important;
+}
+.badge.work{
+  min-height:56px!important;
+}
+@media(max-width:560px){
+  .day,
+  .day.outsideMonth{
+    min-height:92px!important;
+    height:92px!important;
+  }
+  .badge.work{
+    min-height:54px!important;
+  }
+}
+</style>
 </head><body>
 <div id="login" class="login"><div class="loginbox"><div class="logo">renfe</div><h1>App Turnos Pro <span class="ver">v4.1</span></h1><p class="muted">Acceso privado para administrar datos.</p><input id="user" class="input" placeholder="Usuario"><input id="pass" class="input" placeholder="Contraseña" type="password"><label style="display:flex;gap:8px;align-items:center;margin:8px 0;font-weight:800"><input id="remember" type="checkbox" checked> Recordar sesión 24 horas</label><button class="btn primary" style="width:100%" onclick="doLogin()">Entrar</button><p id="loginMsg" class="err"></p></div></div>
 <header><div class="top"><div class="logo">renfe</div><div><div class="title">App Turnos Pro <span class="ver">v4.1</span></div><div class="sub">Calendario visual · cambios · histórico de marcos</div></div><button class="dataToggle" onclick="toggleAdmin()">Datos ▾</button></div><div id="adminPanel" class="adminPanel hidden"><b>Importación privada</b><p class="muted">Archivos guardados solo en este dispositivo.</p><button class="btn primary" onclick="pick('yearFile')">📅 Importar desarrollo anual</button><button class="btn primary" onclick="pick('marcoFile')">🚄 Importar marco de turnos JSON</button><button class="btn" onclick="pick('pdfFile')">📄 Importar PDF Marco</button><button class="btn" onclick="exportExcel()">📤 Exportar Excel</button><button class="btn" onclick="exportBackup()">💾 Copia seguridad JSON</button><button class="btn" onclick="pick('memoryFile')">↩️ Reponer calendario histórico</button><button class="btn" onclick="clearData()">Borrar datos locales</button><div id="importStatus" class="muted"></div></div><input id="yearFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'year')"><input id="marcoFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'marco')"><input id="pdfFile" type="file" accept="application/pdf,.pdf" class="hidden" onchange="importPdf(event)"><input id="memoryFile" type="file" accept=".json,application/json" class="hidden" onchange="restoreHistoricalMemory(event)"><input id="specialFile" type="file" accept=".json,application/json" class="hidden" onchange="importSpecialDays(event)"></header>
@@ -759,4 +818,21 @@ function autoOpenTodayDetailV41(){
 setTimeout(autoOpenTodayDetailV41,150);
 
 checkLogin();render();
-</script></body></html>
+</script>
+<script>
+/* FIX definitivo: tras cada render, mantener tamaño grande uniforme */
+(function(){
+  const oldRender = window.render;
+  if (typeof oldRender === 'function') {
+    window.render = function(){
+      oldRender();
+      const h = window.innerWidth <= 560 ? '92px' : '96px';
+      document.querySelectorAll('.day').forEach(el=>{
+        el.style.minHeight = h;
+        el.style.height = h;
+      });
+    };
+  }
+})();
+</script>
+</body></html>
