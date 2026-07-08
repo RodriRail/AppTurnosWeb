@@ -1,4 +1,4 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>App Turnos Pro v4.3</title><style>
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>App Turnos Pro v4.4</title><style>
 :root{--r:#8a0f82;--r2:#b65ac0;--bg:#fbf8fc;--line:#ead9ea;--txt:#1f1522;--mut:#75627a;--work:#edd0f4;--workb:#d79ae4;--rest:#d8f8e1;--restb:#62df91;--dd:#ffe0e7;--ddb:#ff9aad;--vac:#dff3ff;--vacb:#8bd4ff;--lz:#ffe0b2;--lzb:#fb923c}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;padding-bottom:74px}.hidden{display:none!important}header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:5;padding:8px 10px}.top{display:flex;gap:8px;align-items:center}.logo{font-weight:900;font-style:italic;color:var(--r);font-size:24px}.title{font-weight:900;font-size:17px}.ver{color:var(--r);font-size:12px}.sub{font-weight:700;color:var(--mut);font-size:11px}.btn{border:1px solid var(--line);background:#fff;border-radius:15px;padding:10px 12px;font-weight:900;color:var(--txt);white-space:nowrap}.primary{background:var(--r)!important;color:#fff!important}.wrap{padding:6px}.bar{display:grid;grid-template-columns:44px 1fr 44px 70px;align-items:center;gap:6px;margin:8px 0}.month{font-size:26px;font-weight:950;text-align:center}.navbtn{width:44px;height:44px;border:1px solid var(--line);border-radius:14px;background:#fff;font-size:24px;font-weight:900}.calendar{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}.week,.grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr))}.week div{padding:10px 2px;text-align:center;font-weight:950;color:#4d3d55;font-size:13px;border-bottom:1px solid var(--line)}.day{min-height:82px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:3px;position:relative;overflow:hidden}.day:nth-child(7n){border-right:0}.num{font-weight:950;font-size:18px}.today .num{background:#0b7cff;color:#fff;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px}.selected{outline:4px solid var(--r);outline-offset:-4px;background:#fff8ff}.today.selected{outline:4px dashed var(--r)}.shiftNo{display:inline-flex;align-items:center;justify-content:center;min-width:42px;height:28px;border-radius:999px;background:#fff;border:2px solid var(--r2);color:#35113d;font-size:18px;font-weight:950;margin:0 auto 4px}.badge{margin-top:2px;border-radius:14px;border:2px solid;padding:6px 2px;min-height:52px;text-align:center;font-weight:900;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2px}.work{background:var(--work);border-color:var(--workb);color:#5b1168}.rest{background:var(--rest);border-color:var(--restb);color:#087139}.restComp{background:repeating-linear-gradient(135deg,#d8f8e1 0 9px,#fff 9px 15px);border-color:#42c979;color:#087139}.dd{background:var(--dd);border-color:var(--ddb);color:#c20d34}.vac{background:var(--vac);border-color:var(--vacb);color:#00608f}.lz{background:var(--lz);border-color:var(--lzb);color:#7c2d12}.rest,.vac,.dd,.lz{position:absolute;left:3px;right:3px;top:30px;bottom:3px;min-height:0}.bigD{font-size:24px}.timeTop,.timeBot{font-size:13px;line-height:1;font-weight:950}.sep{font-size:14px;color:var(--r);font-weight:950}.changedDot{position:absolute;right:5px;top:5px;width:9px;height:9px;background:#facc15;border:2px solid #fff;border-radius:50%;box-shadow:0 0 0 1px #b45309}.dataToggle{margin-left:auto;border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 10px;font-weight:950;color:var(--r)}.adminPanel,.detail{background:#fff;border:1px solid var(--line);border-radius:20px;padding:14px;margin-top:10px}.detail h2{margin:4px 0 8px;font-size:26px}.pill{display:inline-block;border-radius:999px;padding:8px 12px;font-weight:950}.summaryCard{background:linear-gradient(135deg,var(--r),#6e267a);color:#fff;border-radius:20px;padding:16px;margin:12px 0}.summaryTop{display:flex;justify-content:space-between;gap:12px}.summaryTitle{font-size:30px;font-weight:950}.summaryDate{opacity:.92;font-weight:750}.servicePill{background:rgba(255,255,255,.16);padding:7px 10px;border-radius:999px;font-weight:900;display:flex;align-items:center;justify-content:center;text-align:center;min-width:86px}.summaryTimes{display:grid;grid-template-columns:1fr 44px 1fr;gap:8px;align-items:center;background:#fff;color:var(--txt);border-radius:18px;padding:12px;margin-top:14px;text-align:center}.summaryTimes b{display:block;color:var(--r);font-size:26px}.summaryTimes small{color:var(--mut);font-weight:800}.summaryArrow{font-size:26px;color:var(--r);font-weight:950}.miniGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}.miniBox{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center;color:var(--txt)}.miniBox b{display:block}.miniBox small{color:var(--mut);font-weight:800}.timeline{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;margin-top:12px}.timeline h3{margin:0 0 10px;color:var(--r)}.tl{display:grid;grid-template-columns:56px 30px 1fr;gap:10px;align-items:start;padding:9px 0;position:relative}.tl:not(:last-child)::after{content:"";position:absolute;left:70px;top:40px;bottom:-8px;width:2px;background:linear-gradient(var(--r2),#ead9ea)}.tlIcon{width:30px;height:30px;border:2px solid var(--r2);border-radius:50%;display:flex;align-items:center;justify-content:center;background:#fff;font-size:14px;z-index:1}.tlIcon.start{border-color:#4ade80}.tlIcon.train{border-color:#b65ac0}.tlIcon.mid{border-color:#93c5fd}.tlIcon.end{border-color:#fb7185}.tlIcon.arrival{border-color:#60a5fa}.tlIcon.restgap{border-color:#fbbf24}.tlIcon.deje{border-color:#fb7185}.tlIcon.pdf{border-color:#64748b}.pdfOverlay{position:fixed;inset:0;background:#fff;z-index:99;display:flex;flex-direction:column}.pdfTop{display:flex;align-items:center;gap:8px;padding:8px;border-bottom:1px solid var(--line);background:#fff}.pdfFrame{border:0;flex:1;width:100%}.tlText b{display:block}.tlText small{color:var(--mut)}.muted{color:var(--mut)}.row{border-left:4px solid var(--r);background:#faf6fb;padding:10px;border-radius:12px;margin-top:8px}.changePanel{background:#fff7df;border:1px solid #facc15;border-radius:16px;padding:12px;margin-top:12px}.changeGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.input,.select{width:100%;padding:12px;border:1px solid var(--line);border-radius:14px;font-size:15px;background:#fff}.login{position:fixed;inset:0;background:#fbf8fc;z-index:50;display:flex;align-items:center;justify-content:center;padding:20px}.loginbox{background:#fff;border:1px solid var(--line);border-radius:24px;padding:22px;max-width:380px;width:100%;box-shadow:0 12px 35px #0001}.ok{color:#087139;font-weight:900}.err{color:#c20d34;font-weight:900}.changesList{display:grid;gap:10px}.changeItem,.balanceBox{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px}.balanceGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:560px){.month{font-size:22px}.day{min-height:78px;padding:2px}.num{font-size:15px}.shiftNo{min-width:32px;height:22px;font-size:15px}.badge{min-height:42px;border-radius:11px}.timeTop,.timeBot{font-size:11px}.week div{font-size:11px}.bar{grid-template-columns:38px 1fr 38px 58px}.navbtn{width:38px;height:38px}.btn{padding:8px 10px;font-size:13px}.changeGrid{grid-template-columns:1fr}.summaryTitle{font-size:25px}.summaryTimes b{font-size:22px}.miniBox{padding:8px;font-size:12px}}
 
 /* v2.4 DD asignado + registro visual */
@@ -90,9 +90,121 @@
   }
 }
 </style>
+
+<style id="v44-cell-and-alarm-css">
+/* v4.4: casillas altas de verdad; no tocar letras, solo altura vertical */
+.calendar .grid{align-items:stretch!important}
+.day,
+.day.outsideMonth{
+  min-height:112px!important;
+  height:112px!important;
+  padding:3px!important;
+  overflow:hidden!important;
+}
+.day .num{line-height:1!important}
+.shiftNo{margin-bottom:4px!important}
+.badge.work{
+  min-height:68px!important;
+  height:68px!important;
+  padding:7px 2px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  flex-direction:column!important;
+}
+.timeTop,.timeBot{line-height:1.05!important}
+.sep{line-height:1.05!important}
+.badge.rest,
+.day .badge.rest,
+.badge.vac,
+.day .badge.vac,
+.badge.dd,
+.day .badge.dd,
+.badge.dsc,
+.day .badge.dsc,
+.badge.sss,
+.day .badge.sss{
+  position:absolute!important;
+  left:3px!important;
+  right:3px!important;
+  top:32px!important;
+  bottom:4px!important;
+  min-height:0!important;
+  height:auto!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  flex-direction:column!important;
+  box-sizing:border-box!important;
+}
+.badge.dsc,.badge.sss{
+  background:repeating-linear-gradient(135deg,#d8f8e1 0 9px,#b65ac0 9px 12px,#d8f8e1 12px 18px)!important;
+  border-color:#8a0f82!important;
+  color:#34113b!important;
+  font-size:20px!important;
+  font-weight:950!important;
+}
+.badge.dd{font-size:20px!important;font-weight:950!important}
+.badge.vac{font-size:20px!important;font-weight:950!important}
+
+/* Alarmas al lado del texto de presentación/tren */
+.tlText b.tlTitleLine{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  gap:7px!important;
+  width:100%!important;
+}
+.tlTitleText{display:inline-block}
+.tlTitleLine .alarmDrop.cleanAlarm{
+  display:inline-flex!important;
+  margin:0!important;
+  padding:0!important;
+  border:0!important;
+  background:transparent!important;
+  vertical-align:middle!important;
+}
+.tlTitleLine .alarmDrop.cleanAlarm summary{
+  display:inline-flex!important;
+  align-items:center!important;
+  gap:3px!important;
+  padding:0!important;
+  margin:0!important;
+  list-style:none!important;
+  cursor:pointer!important;
+  white-space:nowrap!important;
+}
+.tlTitleLine .alarmDrop.cleanAlarm summary::-webkit-details-marker{display:none}
+.alarmBell{font-size:16px!important;line-height:1!important}
+.alarmBell.on{color:#087139!important}
+.alarmBell.off{color:#c20d34!important}
+.alarmDrop.cleanAlarm .alarmPanel{
+  position:absolute!important;
+  right:0!important;
+  margin-top:6px!important;
+  border:1px solid var(--line)!important;
+  border-radius:12px!important;
+  background:#faf6fb!important;
+  padding:8px!important;
+  z-index:30!important;
+  min-width:170px!important;
+  box-shadow:0 6px 18px #0002!important;
+}
+@media(max-width:560px){
+  .day,.day.outsideMonth{
+    min-height:104px!important;
+    height:104px!important;
+  }
+  .badge.work{
+    min-height:66px!important;
+    height:66px!important;
+  }
+  .badge.dsc,.badge.sss,.badge.dd,.badge.vac{font-size:18px!important}
+}
+</style>
 </head><body>
-<div id="login" class="login"><div class="loginbox"><div class="logo">renfe</div><h1>App Turnos Pro <span class="ver">v4.3</span></h1><p class="muted">Acceso privado para administrar datos.</p><input id="user" class="input" placeholder="Usuario"><input id="pass" class="input" placeholder="Contraseña" type="password"><label style="display:flex;gap:8px;align-items:center;margin:8px 0;font-weight:800"><input id="remember" type="checkbox" checked> Recordar sesión 24 horas</label><button class="btn primary" style="width:100%" onclick="doLogin()">Entrar</button><p id="loginMsg" class="err"></p></div></div>
-<header><div class="top"><div class="logo">renfe</div><div><div class="title">App Turnos Pro <span class="ver">v4.3</span></div><div class="sub">Calendario visual · cambios · histórico de marcos</div></div><button class="dataToggle" onclick="toggleAdmin()">Datos ▾</button></div><div id="adminPanel" class="adminPanel hidden"><b>Importación privada</b><p class="muted">Archivos guardados solo en este dispositivo.</p><button class="btn primary" onclick="pick('yearFile')">📅 Importar gráfico anual</button><button class="btn primary" onclick="pick('marcoFile')">🚄 Importar Marco mensual JSON</button><button class="btn" onclick="pick('pdfFile')">📄 Importar PDF Marco</button><button class="btn" onclick="exportExcel()">📤 Exportar Excel</button><button class="btn" onclick="exportBackup()">💾 Copia seguridad JSON</button><button class="btn" onclick="clearData()">Borrar datos locales</button><div id="importStatus" class="muted"></div></div><input id="yearFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'year')"><input id="marcoFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'marco')"><input id="pdfFile" type="file" accept="application/pdf,.pdf" class="hidden" onchange="importPdf(event)"></header>
+<div id="login" class="login"><div class="loginbox"><div class="logo">renfe</div><h1>App Turnos Pro <span class="ver">v4.4</span></h1><p class="muted">Acceso privado para administrar datos.</p><input id="user" class="input" placeholder="Usuario"><input id="pass" class="input" placeholder="Contraseña" type="password"><label style="display:flex;gap:8px;align-items:center;margin:8px 0;font-weight:800"><input id="remember" type="checkbox" checked> Recordar sesión 24 horas</label><button class="btn primary" style="width:100%" onclick="doLogin()">Entrar</button><p id="loginMsg" class="err"></p></div></div>
+<header><div class="top"><div class="logo">renfe</div><div><div class="title">App Turnos Pro <span class="ver">v4.4</span></div><div class="sub">Calendario visual · cambios · histórico de marcos</div></div><button class="dataToggle" onclick="toggleAdmin()">Datos ▾</button></div><div id="adminPanel" class="adminPanel hidden"><b>Importación privada</b><p class="muted">Archivos guardados solo en este dispositivo.</p><button class="btn primary" onclick="pick('yearFile')">📅 Importar gráfico anual</button><button class="btn primary" onclick="pick('marcoFile')">🚄 Importar Marco mensual JSON</button><button class="btn" onclick="pick('pdfFile')">📄 Importar PDF Marco</button><button class="btn" onclick="exportExcel()">📤 Exportar Excel</button><button class="btn" onclick="exportBackup()">💾 Copia seguridad JSON</button><button class="btn" onclick="clearData()">Borrar datos locales</button><div id="importStatus" class="muted"></div></div><input id="yearFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'year')"><input id="marcoFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'marco')"><input id="pdfFile" type="file" accept="application/pdf,.pdf" class="hidden" onchange="importPdf(event)"></header>
 <div class="wrap"><section id="calendarView" class="view"><div class="bar"><button class="navbtn" onclick="move(-1)">‹</button><div class="month" id="monthTitle"></div><button class="navbtn" onclick="move(1)">›</button><button class="btn" onclick="today()">Hoy</button></div><div class="calendar"><div class="week"><div>LUN</div><div>MAR</div><div>MIÉ</div><div>JUE</div><div>VIE</div><div>SÁB</div><div>DOM</div></div><div id="grid" class="grid"></div></div><div id="detail" class="detail"><span class="pill" style="background:#f2e3f4;color:var(--r)">Selecciona un día</span><h2>Detalle del turno</h2><p class="muted">Pulsa una casilla para ver inicio, fin, desarrollo y cambios.</p></div></section><section id="changesView" class="view hidden"><div class="detail"><h2>Registro de cambios</h2><div id="balances" class="balanceGrid"></div><h3>Historial</h3><div id="changesList" class="changesList"></div></div></section><section id="settingsView" class="view hidden"><div class="detail"><h2>Ajustes</h2><p>Datos cargados: <b id="dataState"></b></p></div></section></div>
 <nav style="position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);z-index:10"><button class="btn" onclick="show('calendarView')">📅<br>Calendario</button><button class="btn" onclick="scrollToDetail()">📋<br>Detalle</button><button class="btn" onclick="showChanges()">🔁<br>Cambios<br>Registro</button><button class="btn" onclick="show('settingsView')">⚙️<br>Ajustes</button><button class="btn" onclick="lockApp()">🔒<br>Bloq.</button></nav>
 <script>
@@ -143,7 +255,7 @@ function openPdf(page){if(!data.pdf?.dataUrl)return;let o=document.createElement
 
 
 // ===== v2.8 overrides: alarmas, PDF multipágina, memoria estable y calendario continuo =====
-try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v4.3');document.title='App Turnos Pro v4.3'}catch(e){}
+try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v4.4');document.title='App Turnos Pro v4.4'}catch(e){}
 current=new Date();
 data.alarms=data.alarms||{};data.disabledAlarms=data.disabledAlarms||{};data.people=data.people||[];data.alarmSettings=data.alarmSettings||{enabled:true,startOffset:60,trainOffset:30};
 function doLogin(){if(user.value.trim().toLowerCase()===ADMIN_USER&&pass.value.trim()===ADMIN_PASS){localStorage.setItem(AUTH+'Unlocked','1');localStorage.setItem(AUTH+'SessionUntil',Date.now()+(remember.checked?86400000:3600000));localStorage.removeItem(AUTH+'Attempts');localStorage.removeItem(AUTH+'LockUntil');login.classList.add('hidden');admin=true;updateImportUI();return}loginMsg.textContent='Usuario o contraseña incorrectos.'}
@@ -334,6 +446,182 @@ setTimeout(()=>{
   let td=fmt(new Date());
   if(effectiveDay(td))selectDay(td);
 },180);
+
+
+// ===== v4.4: lectura correcta JSON por turno+día+tipo, altura real, alarmas en línea, modo apertura =====
+data.settings=data.settings||{};
+data.settings.openMode=data.settings.openMode||'calendario';
+
+function canonTipoV44(v){
+  let t=String(v||'').trim().toUpperCase();
+  if(!t)return '';
+  if(t.includes('DESCANSO COMPENSADO')||t==='DSC'||t==='DC'||t.includes('COMPENSADO'))return 'DSC';
+  if(t.includes('SALIDA SIN SERVICIO')||t==='SSS'||t==='SS'||t.includes('SIN SERVICIO'))return 'SSS';
+  if(t==='DESCANSO'||t==='D'||t==='REST')return 'DESCANSO';
+  if(t==='VACACIONES'||t==='VAC'||t==='VB')return 'VACACIONES';
+  if(t==='DD'||t==='DV'||t.includes('DETRA'))return 'DD';
+  if(t==='SERVICIO'||t==='TRABAJO'||t==='WORK')return 'SERVICIO';
+  return t;
+}
+function detectTipoV44(obj){
+  if(!obj)return '';
+  let direct=canonTipoV44(obj.tipo||obj.type||obj.tipo_dia||obj.estado||obj.codigo||obj.code||obj.clase||obj.etiqueta||'');
+  if(direct)return direct;
+  let txt=[
+    obj.bloque,obj.clave_turno,obj.turno,obj.clave,obj.shift,obj.detalle,obj.descripcion,obj.resumen,
+    obj.nota,obj.observaciones,obj.observacion,obj.texto,obj.label,obj.etiqueta
+  ].filter(Boolean).join(' ');
+  return canonTipoV44(txt);
+}
+function dayLetterV44(ds){
+  let n=new Date(ds+'T12:00:00').getDay();
+  return 'DLMXJVS'[n]; // domingo=0 => D; lunes=1 => L...
+}
+function daysMatchV44(days,letter){
+  let d=String(days||'').toUpperCase().replace(/\s+/g,'');
+  if(!d)return true;
+  if(d==='L-D'||d==='LD'||d==='TODOS'||d==='LMXJVSD'||d==='LDMXJVS')return true;
+  return d.includes(letter);
+}
+function blockTipoV44(b){return canonTipoV44(b?.tipo||b?.raw?.tipo||b?.type||b?.raw?.type||b?.bloque||b?.raw?.bloque||b?.etiqueta||b?.raw?.etiqueta||b?.detalle||b?.raw?.detalle||'')}
+
+// Normalizador de bloques: conserva bloque, tipo, etiqueta, visual y no exige horas.
+const _normBlocks_v44=normBlocks;
+normBlocks=function(obj){
+  let arr=obj.blocks||obj.validated_blocks||obj.turnos||obj.servicios||obj.services||obj.data||[];
+  if(!Array.isArray(arr))arr=[];
+  return arr.map(x=>{
+    let txt=[x.detalle,x.resumen,x.descripcion,x.tareas,x.servicio].filter(Boolean).join(' / ');
+    let tipo=detectTipoV44(x);
+    let special=(tipo==='DSC'||tipo==='SSS'||tipo==='DESCANSO'||tipo==='VACACIONES'||tipo==='DD');
+    let ini=special?'':(pickTime(x,['presentacion','hora_presentacion','inicio','start','desde','hora_inicio'])||firstTimeText(txt));
+    let fn=special?'':(pickTime(x,['finalizacion','hora_fin','fin','final','end','hasta','hora_final','final_hora'])||lastTime(txt));
+    return{
+      turno:String(x.turno||x.clave_turno||x.clave||x.id||''),
+      bloque:String(x.bloque||x.block||''),
+      dias:String(x.dias||x.dias_aplicacion||x.days||''),
+      tipo:tipo||x.tipo||x.type||x.servicio||'',
+      tipo_norm:tipo,
+      etiqueta:x.etiqueta||x.label||(tipo==='DSC'?'DSC':tipo==='SSS'?'SSS':''),
+      visual:x.visual||{},
+      inicio:ini,
+      fin:fn,
+      final:fn,
+      duracion:special?'':(x.duracion||x.jornada||''),
+      resumen:special?(x.detalle||tipo||''):(x.resumen||x.descripcion||x.tareas||x.servicio||x.detalle||''),
+      movimientos:special?[]:(x.movimientos||x.moves||[]),
+      pagina:x.pagina||x.page||x.pdf_page||'',
+      raw:x
+    }
+  }).filter(x=>x.turno)
+}
+
+// La clave: bloque correcto por turno + día. Si para ese día hay DSC/SSS, gana frente al servicio.
+blockFor=function(d){
+  if(!d)return null;
+  let turn=String(d.clave_turno||'').replace(/^DD\s*/,'').trim();
+  if(!turn||turn==='LZ'||turn==='D'||turn==='VB'||turn==='DD'||turn==='DSC'||turn==='SSS')return null;
+  let letter=dayLetterV44(d.fecha);
+  let candidates=(data.blocks||[]).filter(b=>String(b.turno)===turn && daysMatchV44(b.dias,letter));
+  if(!candidates.length)candidates=(data.blocks||[]).filter(b=>String(b.turno)===turn);
+  let special=candidates.find(b=>['DSC','SSS','DESCANSO','VACACIONES','DD'].includes(blockTipoV44(b)));
+  if(special)return special;
+  return candidates.find(b=>blockTipoV44(b)==='SERVICIO')||candidates[0]||null;
+}
+
+const _status_v44=status;
+status=function(d){
+  if(!d)return 'empty';
+  let b=null;
+  try{b=blockFor(d)}catch(e){}
+  let t=canonTipoV44(d.tipo_norm||d.tipo_dia||d.tipo||d.raw?.tipo||d.raw?.type||'')||blockTipoV44(b);
+  let turn=String(d.clave_turno||'').toUpperCase();
+  if(t==='DSC'||turn==='DSC'||turn==='DC')return 'dsc';
+  if(t==='SSS'||turn==='SSS'||turn==='SS')return 'sss';
+  if(t==='DESCANSO'||turn==='D')return 'rest';
+  if(t==='VACACIONES'||turn==='VB')return 'vac';
+  if(t==='DD'||turn==='DD'||turn==='DV'||turn.startsWith('DD '))return 'dd';
+  if(turn==='LZ')return 'lz';
+  if(t==='SERVICIO'||turn)return 'work';
+  return _status_v44(d);
+}
+
+const _typeBadge_v44=typeBadge;
+typeBadge=function(d,b){
+  let st=status(d),dot=d?.changed?'<i class="changedDot"></i>':'';
+  if(st==='dsc')return dot+'<div class="badge dsc">DSC</div>';
+  if(st==='sss')return dot+'<div class="badge sss">SSS</div>';
+  if(st==='dd')return dot+'<div class="badge dd">DD</div>';
+  return _typeBadge_v44(d,b);
+}
+
+const _selectDay_v44=selectDay;
+selectDay=function(ds){
+  let d=effectiveDay(ds),b=blockFor(d),st=status(d);
+  if(d&&(st==='dsc'||st==='sss')){
+    selected=ds;render();
+    let title=new Date(ds+'T12:00:00').toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+    let label=st==='dsc'?'Descanso compensado DSC':'Salida sin servicio SSS';
+    let html='<span class="pill" style="background:#d8f8e1;color:#34113b;border:1px solid #8a0f82">'+label+'</span><h2>'+title+'</h2><p class="muted">Tipo leído del bloque del marco JSON para este turno y día. No se muestra inicio, final ni desarrollo.</p>';
+    html+=changePanelHtml(ds,dayData(ds),blockFor(dayData(ds)),d,b);
+    detail.innerHTML=html;scrollToDetail();return;
+  }
+  _selectDay_v44(ds);
+}
+
+// Alarmas en línea solo en presentación/inicio y trenes.
+alarmControl=function(e,i){
+ if(!selected)return'';
+ if(!(e.kind==='start'||e.kind==='train'))return'';
+ let settings=data.alarmSettings||{enabled:true,startOffset:60,trainOffset:30};
+ let id=alarmKey(selected,e,i),a=data.alarms[id]||{},disabled=data.disabledAlarms[id],val=a.offset||alarmDefaultOffset(e);
+ let options=[[15,'15 min antes'],[30,'30 min antes'],[45,'45 min antes'],[60,'1 h antes'],[90,'1 h 30 antes'],[120,'2 h antes']].map(o=>'<option value="'+o[0]+'" '+(Number(val)===o[0]?'selected':'')+'>'+o[1]+'</option>').join('');
+ let inactive=!settings.enabled||disabled;
+ return '<details class="alarmDrop cleanAlarm"><summary><span class="alarmBell '+(inactive?'off':'on')+'">🔔▾</span><span>'+(inactive?'❌':'✅')+'</span></summary><div class="alarmPanel"><div class="'+(inactive?'alarmOff':'alarmOn')+'">'+(inactive?'Alarma apagada':'Alarma activa')+'</div><div class="alarmBox"><select class="alarmSelect" onchange="setAlarm(\''+id+'\',\''+esc(e.time||'')+'\',this.value,\''+esc((e.title||'Evento')+' '+(e.desc||''))+'\')">'+options+'</select><button class="btn" onclick="toggleAlarm(\''+id+'\')">'+(disabled?'Restaurar':'Quitar')+'</button></div></div></details>';
+}
+timelineHtml=function(b){
+ let events=buildTimelineEvents(b);
+ if(!events.length)return'<div class="timeline"><h3>Desarrollo del turno</h3><p class="muted">Sin desarrollo detallado.</p></div>';
+ return '<div class="timeline"><h3>Desarrollo del turno</h3>'+events.map((e,i)=>{
+   let alarm=(e.kind==='start'||e.kind==='train')?alarmControl(e,i):'';
+   return '<div class="tl"><div>'+esc(e.time||'')+'</div><div class="tlIcon '+(e.kind||'mid')+'">'+esc(e.icon||'•')+'</div><div class="tlText"><b class="tlTitleLine"><span class="tlTitleText">'+esc(e.title||'')+'</span>'+alarm+'</b><small>'+esc(e.desc||'')+'</small></div></div>';
+ }).join('')+'</div>';
+}
+
+// Modo de apertura en Ajustes
+function setOpenModeV44(){
+  let v=document.getElementById('openModeV44')?.value||'calendario';
+  data.settings=data.settings||{};data.settings.openMode=v;save();
+  alert('Modo guardado: '+(v==='trabajo'?'Trabajo: abre detalle':'Descanso: abre calendario'));
+}
+const _enhanceSettings_v44=typeof enhanceSettings==='function'?enhanceSettings:null;
+if(_enhanceSettings_v44){
+  enhanceSettings=function(force){
+    _enhanceSettings_v44(force);
+    let cont=document.querySelector('#settings .detail')||document.querySelector('#settingsView .detail');
+    if(cont&&!document.getElementById('openModeBlockV44')){
+      let mode=data.settings?.openMode||'calendario';
+      cont.insertAdjacentHTML('beforeend','<div id="openModeBlockV44" class="settingsBlock"><h3>Modo de apertura</h3><p class="muted">Elige qué quieres ver al abrir la app.</p><select id="openModeV44" class="select"><option value="calendario" '+(mode==='calendario'?'selected':'')+'>Modo descanso: abrir calendario</option><option value="trabajo" '+(mode==='trabajo'?'selected':'')+'>Modo trabajo: abrir detalle de hoy</option></select><button class="btn primary" onclick="setOpenModeV44()">Guardar modo</button></div>');
+    }
+  }
+}
+
+const _render_v44=render;
+render=function(){
+  _render_v44();
+  const h=window.innerWidth<=560?'104px':'112px';
+  document.querySelectorAll('.day').forEach(el=>{el.style.minHeight=h;el.style.height=h});
+}
+
+// Abrir según modo
+function openInitialViewV44(){
+  let mode=data.settings?.openMode||'calendario';
+  let td=fmt(new Date());
+  if(mode==='trabajo'&&effectiveDay(td)){selectDay(td);return}
+  show('calendar');
+  if(effectiveDay(td)){selected=td;render();}
+}
+setTimeout(openInitialViewV44,180);
 
 checkLogin();render();
 </script></body></html>
