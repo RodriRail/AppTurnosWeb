@@ -1,4 +1,4 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>App Turnos Pro v4.1</title><style>
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>App Turnos Pro v5.0</title><style>
 :root{--r:#8a0f82;--r2:#b65ac0;--bg:#fbf8fc;--line:#ead9ea;--txt:#1f1522;--mut:#75627a;--work:#edd0f4;--workb:#d79ae4;--rest:#d8f8e1;--restb:#62df91;--dd:#ffe0e7;--ddb:#ff9aad;--vac:#dff3ff;--vacb:#8bd4ff;--lz:#ffe0b2;--lzb:#fb923c}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;padding-bottom:74px}.hidden{display:none!important}header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:5;padding:8px 10px}.top{display:flex;gap:8px;align-items:center}.logo{font-weight:900;font-style:italic;color:var(--r);font-size:24px}.title{font-weight:900;font-size:17px}.ver{color:var(--r);font-size:12px}.sub{font-weight:700;color:var(--mut);font-size:11px}.btn{border:1px solid var(--line);background:#fff;border-radius:15px;padding:10px 12px;font-weight:900;color:var(--txt);white-space:nowrap}.primary{background:var(--r)!important;color:#fff!important}.wrap{padding:6px}.bar{display:grid;grid-template-columns:44px 1fr 44px 70px;align-items:center;gap:6px;margin:8px 0}.month{font-size:26px;font-weight:950;text-align:center}.navbtn{width:44px;height:44px;border:1px solid var(--line);border-radius:14px;background:#fff;font-size:24px;font-weight:900}.calendar{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}.week,.grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr))}.week div{padding:10px 2px;text-align:center;font-weight:950;color:#4d3d55;font-size:13px;border-bottom:1px solid var(--line)}.day{min-height:82px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:3px;position:relative;overflow:hidden}.day:nth-child(7n){border-right:0}.num{font-weight:950;font-size:18px}.today .num{background:#0b7cff;color:#fff;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px}.selected{outline:4px solid var(--r);outline-offset:-4px;background:#fff8ff}.today.selected{outline:4px dashed var(--r)}.shiftNo{display:inline-flex;align-items:center;justify-content:center;min-width:42px;height:28px;border-radius:999px;background:#fff;border:2px solid var(--r2);color:#35113d;font-size:18px;font-weight:950;margin:0 auto 4px}.badge{margin-top:2px;border-radius:14px;border:2px solid;padding:6px 2px;min-height:52px;text-align:center;font-weight:900;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2px}.work{background:var(--work);border-color:var(--workb);color:#5b1168}.rest{background:var(--rest);border-color:var(--restb);color:#087139}.restComp{background:repeating-linear-gradient(135deg,#d8f8e1 0 9px,#fff 9px 15px);border-color:#42c979;color:#087139}.dd{background:var(--dd);border-color:var(--ddb);color:#c20d34}.vac{background:var(--vac);border-color:var(--vacb);color:#00608f}.lz{background:var(--lz);border-color:var(--lzb);color:#7c2d12}.rest,.vac,.dd,.lz{position:absolute;left:3px;right:3px;top:30px;bottom:3px;min-height:0}.bigD{font-size:24px}.timeTop,.timeBot{font-size:13px;line-height:1;font-weight:950}.sep{font-size:14px;color:var(--r);font-weight:950}.changedDot{position:absolute;right:5px;top:5px;width:9px;height:9px;background:#facc15;border:2px solid #fff;border-radius:50%;box-shadow:0 0 0 1px #b45309}.dataToggle{margin-left:auto;border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 10px;font-weight:950;color:var(--r)}.adminPanel,.detail{background:#fff;border:1px solid var(--line);border-radius:20px;padding:14px;margin-top:10px}.detail h2{margin:4px 0 8px;font-size:26px}.pill{display:inline-block;border-radius:999px;padding:8px 12px;font-weight:950}.summaryCard{background:linear-gradient(135deg,var(--r),#6e267a);color:#fff;border-radius:20px;padding:16px;margin:12px 0}.summaryTop{display:flex;justify-content:space-between;gap:12px}.summaryTitle{font-size:30px;font-weight:950}.summaryDate{opacity:.92;font-weight:750}.servicePill{background:rgba(255,255,255,.16);padding:7px 10px;border-radius:999px;font-weight:900;display:flex;align-items:center;justify-content:center;text-align:center;min-width:86px}.summaryTimes{display:grid;grid-template-columns:1fr 44px 1fr;gap:8px;align-items:center;background:#fff;color:var(--txt);border-radius:18px;padding:12px;margin-top:14px;text-align:center}.summaryTimes b{display:block;color:var(--r);font-size:26px}.summaryTimes small{color:var(--mut);font-weight:800}.summaryArrow{font-size:26px;color:var(--r);font-weight:950}.miniGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}.miniBox{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center;color:var(--txt)}.miniBox b{display:block}.miniBox small{color:var(--mut);font-weight:800}.timeline{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;margin-top:12px}.timeline h3{margin:0 0 10px;color:var(--r)}.tl{display:grid;grid-template-columns:56px 30px 1fr;gap:10px;align-items:start;padding:9px 0;position:relative}.tl:not(:last-child)::after{content:"";position:absolute;left:70px;top:40px;bottom:-8px;width:2px;background:linear-gradient(var(--r2),#ead9ea)}.tlIcon{width:30px;height:30px;border:2px solid var(--r2);border-radius:50%;display:flex;align-items:center;justify-content:center;background:#fff;font-size:14px;z-index:1}.tlIcon.start{border-color:#4ade80}.tlIcon.train{border-color:#b65ac0}.tlIcon.mid{border-color:#93c5fd}.tlIcon.end{border-color:#fb7185}.tlIcon.arrival{border-color:#60a5fa}.tlIcon.restgap{border-color:#fbbf24}.tlIcon.deje{border-color:#fb7185}.tlIcon.pdf{border-color:#64748b}.pdfOverlay{position:fixed;inset:0;background:#fff;z-index:99;display:flex;flex-direction:column}.pdfTop{display:flex;align-items:center;gap:8px;padding:8px;border-bottom:1px solid var(--line);background:#fff}.pdfFrame{border:0;flex:1;width:100%}.tlText b{display:block}.tlText small{color:var(--mut)}.muted{color:var(--mut)}.row{border-left:4px solid var(--r);background:#faf6fb;padding:10px;border-radius:12px;margin-top:8px}.changePanel{background:#fff7df;border:1px solid #facc15;border-radius:16px;padding:12px;margin-top:12px}.changeGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.input,.select{width:100%;padding:12px;border:1px solid var(--line);border-radius:14px;font-size:15px;background:#fff}.login{position:fixed;inset:0;background:#fbf8fc;z-index:50;display:flex;align-items:center;justify-content:center;padding:20px}.loginbox{background:#fff;border:1px solid var(--line);border-radius:24px;padding:22px;max-width:380px;width:100%;box-shadow:0 12px 35px #0001}.ok{color:#087139;font-weight:900}.err{color:#c20d34;font-weight:900}.changesList{display:grid;gap:10px}.changeItem,.balanceBox{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px}.balanceGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:560px){.month{font-size:22px}.day{min-height:78px;padding:2px}.num{font-size:15px}.shiftNo{min-width:32px;height:22px;font-size:15px}.badge{min-height:42px;border-radius:11px}.timeTop,.timeBot{font-size:11px}.week div{font-size:11px}.bar{grid-template-columns:38px 1fr 38px 58px}.navbtn{width:38px;height:38px}.btn{padding:8px 10px;font-size:13px}.changeGrid{grid-template-columns:1fr}.summaryTitle{font-size:25px}.summaryTimes b{font-size:22px}.miniBox{padding:8px;font-size:12px}}
 
 /* v2.4 DD asignado + registro visual */
@@ -7,143 +7,20 @@
 .badge.ddwork:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(255,255,255,.42) 0 7px,rgba(255,255,255,0) 7px 14px)}
 .badge.ddwork>*{position:relative;z-index:1}.badge.ddwork .ddSmall{font-size:10px;font-weight:950;color:#be123c}.badge.ddwork .ddTurn{font-size:17px;font-weight:950;color:#411045}.lz{background:#fff3d7!important;border-color:var(--lzb)!important;color:#7c2d12!important}.lz .bigLZ{font-size:22px;font-weight:950}.regSection{margin-top:14px}.regTitle{color:var(--r);font-size:19px;font-weight:950;margin:12px 0 8px}.changeItem.license{border-left-color:#f97316;background:#fff7ed}.changeItem.ddreg{border-left-color:#dc2626;background:#fff1f2}.pdfOverlay{position:fixed;inset:0;background:#fff;z-index:99;display:flex;flex-direction:column}.pdfTop{display:flex;gap:8px;align-items:center;padding:8px;border-bottom:1px solid var(--line);background:#fff}.pdfFrame{border:0;flex:1;width:100%}
 
-/* v4.1 alarmas desplegables + corrección memoria/fechas + PDF multipágina + calendario continuo */
+/* v2.9 alarmas desplegables + corrección memoria/fechas + PDF multipágina + calendario continuo */
 .day.outsideMonth{background:#fcf7fd;color:#9b8aa1;opacity:.62}.day.outsideMonth .badge{filter:saturate(.65);opacity:.72}.day.outsideMonth .shiftNo{opacity:.75}.alarmBox{margin-top:8px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}.alarmSelect{border:1px solid var(--line);border-radius:12px;padding:7px 8px;background:#fff;font-weight:800;font-size:12px}.alarmOn{font-size:12px;color:#087139;font-weight:900}.alarmOff{font-size:12px;color:#c20d34;font-weight:900}.alarmDrop{margin-top:8px;border:1px solid var(--line);border-radius:14px;background:#fff;overflow:hidden}.alarmDrop summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 10px;font-weight:950}.alarmDrop summary::-webkit-details-marker{display:none}.alarmStatus{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:999px;color:#fff;font-weight:950}.alarmStatus.on{background:#16a34a}.alarmStatus.off{background:#dc2626}.alarmPanel{padding:10px;border-top:1px solid var(--line);background:#faf6fb}.alarmPanel .btn{font-size:12px;padding:7px 9px}.settingsBlock{background:#faf6fb;border:1px solid var(--line);border-radius:16px;padding:12px;margin:12px 0}.pdfCanvasWrap{overflow:auto;flex:1;background:#f8f3fa;padding:10px}.pdfPage{background:#fff;margin:0 auto 14px;border:1px solid var(--line);box-shadow:0 4px 18px #0002;border-radius:8px;overflow:hidden;max-width:100%}.pdfPage canvas{width:100%;height:auto;display:block}.pdfPageLabel{font-weight:950;color:var(--r);padding:8px 10px;border-bottom:1px solid var(--line);background:#fff}.pdfTools{margin-left:auto;display:flex;gap:6px;align-items:center}.manualRest{background:var(--rest)!important;border-color:var(--restb)!important;color:#087139!important}.changeItem.restreg{border-left-color:#22c55e;background:#f0fdf4}
 </style>
-<!-- v4.1: bloqueo 3 intentos, memoria estable/migrada, fechas sin desplazamiento UTC, alarmas desplegables por evento, PDF multipágina, calendario continuo y registros. -->
+<!-- v2.9: bloqueo 3 intentos, memoria estable/migrada, fechas sin desplazamiento UTC, alarmas desplegables por evento, PDF multipágina, calendario continuo y registros. -->
 
-<style>
-@keyframes todayPulseTurnos{
-  0%{box-shadow:inset 0 0 0 2px rgba(11,124,255,.25),0 0 0 0 rgba(11,124,255,.25)}
-  50%{box-shadow:inset 0 0 0 3px rgba(11,124,255,.55),0 0 0 4px rgba(11,124,255,.10)}
-  100%{box-shadow:inset 0 0 0 2px rgba(11,124,255,.25),0 0 0 0 rgba(11,124,255,.25)}
-}
-.day.today{animation:todayPulseTurnos 1.6s infinite;border-color:#0b7cff}
-.day.today.selected{animation:none;outline:4px solid var(--r);box-shadow:inset 0 0 0 2px rgba(11,124,255,.25)}
-.alarmDrop.cleanAlarm{margin-top:4px;border:0;background:transparent;overflow:visible}
-.alarmDrop.cleanAlarm summary{padding:2px 0;justify-content:flex-start;gap:6px}
-.alarmBell{font-size:18px;font-weight:900}
-.alarmBell.on{color:#087139}
-.alarmBell.off{color:#c20d34}
-.alarmDrop.cleanAlarm .alarmPanel{margin-top:4px;border:1px solid var(--line);border-radius:12px;background:#faf6fb;padding:8px}
-</style>
-
-<style>
-.badge.dsc,.badge.sss{
-  position:absolute;left:3px;right:3px;top:30px;bottom:3px;min-height:0;
-  background:repeating-linear-gradient(135deg,#d8f8e1 0 9px,#b65ac0 9px 12px,#d8f8e1 12px 18px);
-  border-color:#8a0f82;color:#34113b;font-weight:950;font-size:20px;
-}
-.badge.vac{font-size:18px;line-height:1;min-height:0}
-.day .badge.vac{position:absolute;left:3px;right:3px;top:30px;bottom:3px}
-</style>
-
-<style>
-/* v4.1: tipos integrados en marco.json, celdas uniformes y alarmas en línea */
-.badge.dsc,.badge.sss,.badge.dc,.badge.ss{
-  position:absolute;left:3px;right:3px;top:30px;bottom:3px;min-height:0;
-  background:repeating-linear-gradient(135deg,#d8f8e1 0 9px,#b65ac0 9px 12px,#d8f8e1 12px 18px);
-  border-color:#8a0f82;color:#34113b;font-weight:950;font-size:20px;
-}
-.day .badge.vac{position:absolute;left:3px;right:3px;top:30px;bottom:3px;min-height:0;font-size:18px;line-height:1}
-.tlTitleLine{display:flex;align-items:center;gap:8px;justify-content:space-between}
-.tlTitleLine .alarmDrop.cleanAlarm{display:inline-block;margin:0 0 0 6px}
-.tlTitleLine .alarmDrop.cleanAlarm summary{padding:0;display:inline-flex;gap:4px;align-items:center}
-.alarmDrop.cleanAlarm{border:0;background:transparent;overflow:visible}
-.alarmBell{font-size:17px;font-weight:900}
-.alarmBell.on{color:#087139}.alarmBell.off{color:#c20d34}
-.alarmDrop.cleanAlarm .alarmPanel{position:relative;margin-top:4px;border:1px solid var(--line);border-radius:12px;background:#faf6fb;padding:8px;z-index:4}
-</style>
-
-<style>
-.day{min-height:82px}
-.badge.vac,
-.day .badge.vac{
-  position:absolute!important;
-  left:3px!important;right:3px!important;top:30px!important;bottom:3px!important;
-  min-height:0!important;height:auto!important;
-  display:flex!important;align-items:center!important;justify-content:center!important;
-  font-size:20px!important;line-height:1!important;
-}
-.tlText{min-width:0}
-.tlText b.tlTitleLine{
-  display:flex!important;align-items:center!important;justify-content:flex-start!important;
-  gap:7px!important;width:100%!important;
-}
-.tlTitleText{display:inline-block;min-width:0}
-.tlTitleLine .alarmDrop.cleanAlarm{
-  display:inline-flex!important;align-items:center!important;margin:0!important;padding:0!important;
-  border:0!important;background:transparent!important;vertical-align:middle!important;
-}
-.tlTitleLine .alarmDrop.cleanAlarm summary{
-  display:inline-flex!important;align-items:center!important;gap:3px!important;
-  padding:0!important;margin:0!important;list-style:none!important;cursor:pointer!important;white-space:nowrap!important;
-}
-.tlTitleLine .alarmDrop.cleanAlarm summary::-webkit-details-marker{display:none}
-.alarmBell{font-size:16px!important;line-height:1!important}
-.alarmDrop.cleanAlarm .alarmPanel{
-  position:absolute!important;right:0!important;margin-top:6px!important;border:1px solid var(--line)!important;
-  border-radius:12px!important;background:#faf6fb!important;padding:8px!important;z-index:30!important;
-  min-width:170px!important;box-shadow:0 6px 18px #0002!important;
-}
-@media(max-width:560px){
-  .day{min-height:78px}
-  .badge.vac,.day .badge.vac{font-size:18px!important}
-}
-</style>
-
-<style>
-/* v4.1: filas uniformes, DD corto, lector DSC/SSS reforzado */
-.calendar .grid{align-items:stretch!important}
-.day{
-  min-height:82px!important;
-  height:82px!important;
-}
-.day .badge,
-.day .badge.vac,
-.day .badge.rest,
-.day .badge.dd,
-.day .badge.dsc,
-.day .badge.sss{
-  box-sizing:border-box!important;
-}
-.badge.vac,
-.day .badge.vac{
-  position:absolute!important;
-  left:3px!important;right:3px!important;top:30px!important;bottom:3px!important;
-  min-height:0!important;height:auto!important;
-  display:flex!important;align-items:center!important;justify-content:center!important;
-  font-size:20px!important;line-height:1!important;
-}
-.badge.dd{
-  font-size:20px!important;
-  font-weight:950!important;
-}
-.badge.dsc,.badge.sss{
-  position:absolute!important;left:3px!important;right:3px!important;top:30px!important;bottom:3px!important;
-  min-height:0!important;height:auto!important;
-  display:flex!important;align-items:center!important;justify-content:center!important;
-  background:repeating-linear-gradient(135deg,#d8f8e1 0 9px,#b65ac0 9px 12px,#d8f8e1 12px 18px)!important;
-  border-color:#8a0f82!important;color:#34113b!important;font-weight:950!important;font-size:20px!important;
-}
-@media(max-width:560px){
-  .day{min-height:78px!important;height:78px!important}
-  .badge.vac,.day .badge.vac,.badge.dsc,.badge.sss,.badge.dd{font-size:18px!important}
-}
-</style>
-
-<style>
-/* FIX tamaño calendario: recuperar casillas grandes y uniformes */
+<style id="v43-clean-calendar-css">
+/* v4.3 limpia: tamaño visual como v2.8 y todas las casillas uniformes */
 .calendar .grid{
   align-items:stretch!important;
 }
-.day{
-  min-height:96px!important;
-  height:96px!important;
-}
+.day,
 .day.outsideMonth{
-  min-height:96px!important;
-  height:96px!important;
+  min-height:94px!important;
+  height:94px!important;
 }
 .day .badge,
 .day .badge.work,
@@ -154,10 +31,13 @@
 .day .badge.sss{
   box-sizing:border-box!important;
 }
-.badge.vac,
-.day .badge.vac,
+.badge.work{
+  min-height:56px!important;
+}
 .badge.rest,
 .day .badge.rest,
+.badge.vac,
+.day .badge.vac,
 .badge.dd,
 .day .badge.dd,
 .badge.dsc,
@@ -169,35 +49,180 @@
   right:3px!important;
   top:30px!important;
   bottom:3px!important;
+  height:auto!important;
+  min-height:0!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  flex-direction:column!important;
+  border-radius:14px!important;
+}
+.badge.vac{
+  font-size:20px!important;
+  font-weight:950!important;
+}
+.badge.dsc,
+.badge.sss{
+  background:repeating-linear-gradient(135deg,#d8f8e1 0 9px,#b65ac0 9px 12px,#d8f8e1 12px 18px)!important;
+  border-color:#8a0f82!important;
+  color:#34113b!important;
+  font-size:20px!important;
+  font-weight:950!important;
+}
+.badge.dd{
+  font-size:20px!important;
+  font-weight:950!important;
+}
+@media(max-width:560px){
+  .day,
+  .day.outsideMonth{
+    min-height:90px!important;
+    height:90px!important;
+  }
+  .badge.work{
+    min-height:54px!important;
+  }
+  .badge.vac,
+  .badge.dsc,
+  .badge.sss,
+  .badge.dd{
+    font-size:18px!important;
+  }
+}
+</style>
+
+<style id="v44-cell-and-alarm-css">
+/* v4.4: casillas altas de verdad; no tocar letras, solo altura vertical */
+.calendar .grid{align-items:stretch!important}
+.day,
+.day.outsideMonth{
+  min-height:112px!important;
+  height:112px!important;
+  padding:3px!important;
+  overflow:hidden!important;
+}
+.day .num{line-height:1!important}
+.shiftNo{margin-bottom:4px!important}
+.badge.work{
+  min-height:68px!important;
+  height:68px!important;
+  padding:7px 2px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  flex-direction:column!important;
+}
+.timeTop,.timeBot{line-height:1.05!important}
+.sep{line-height:1.05!important}
+.badge.rest,
+.day .badge.rest,
+.badge.vac,
+.day .badge.vac,
+.badge.dd,
+.day .badge.dd,
+.badge.dsc,
+.day .badge.dsc,
+.badge.sss,
+.day .badge.sss{
+  position:absolute!important;
+  left:3px!important;
+  right:3px!important;
+  top:32px!important;
+  bottom:4px!important;
   min-height:0!important;
   height:auto!important;
   display:flex!important;
   align-items:center!important;
   justify-content:center!important;
   flex-direction:column!important;
+  box-sizing:border-box!important;
 }
-.badge.work{
-  min-height:56px!important;
+.badge.dsc,.badge.sss{
+  background:repeating-linear-gradient(135deg,#d8f8e1 0 9px,#b65ac0 9px 12px,#d8f8e1 12px 18px)!important;
+  border-color:#8a0f82!important;
+  color:#34113b!important;
+  font-size:20px!important;
+  font-weight:950!important;
+}
+.badge.dd{font-size:20px!important;font-weight:950!important}
+.badge.vac{font-size:20px!important;font-weight:950!important}
+
+/* Alarmas al lado del texto de presentación/tren */
+.tlText b.tlTitleLine{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  gap:7px!important;
+  width:100%!important;
+}
+.tlTitleText{display:inline-block}
+.tlTitleLine .alarmDrop.cleanAlarm{
+  display:inline-flex!important;
+  margin:0!important;
+  padding:0!important;
+  border:0!important;
+  background:transparent!important;
+  vertical-align:middle!important;
+}
+.tlTitleLine .alarmDrop.cleanAlarm summary{
+  display:inline-flex!important;
+  align-items:center!important;
+  gap:3px!important;
+  padding:0!important;
+  margin:0!important;
+  list-style:none!important;
+  cursor:pointer!important;
+  white-space:nowrap!important;
+}
+.tlTitleLine .alarmDrop.cleanAlarm summary::-webkit-details-marker{display:none}
+.alarmBell{font-size:16px!important;line-height:1!important}
+.alarmBell.on{color:#087139!important}
+.alarmBell.off{color:#c20d34!important}
+.alarmDrop.cleanAlarm .alarmPanel{
+  position:absolute!important;
+  right:0!important;
+  margin-top:6px!important;
+  border:1px solid var(--line)!important;
+  border-radius:12px!important;
+  background:#faf6fb!important;
+  padding:8px!important;
+  z-index:30!important;
+  min-width:170px!important;
+  box-shadow:0 6px 18px #0002!important;
 }
 @media(max-width:560px){
-  .day,
-  .day.outsideMonth{
-    min-height:92px!important;
-    height:92px!important;
+  .day,.day.outsideMonth{
+    min-height:104px!important;
+    height:104px!important;
   }
   .badge.work{
-    min-height:54px!important;
+    min-height:66px!important;
+    height:66px!important;
   }
+  .badge.dsc,.badge.sss,.badge.dd,.badge.vac{font-size:18px!important}
 }
 </style>
+
+<style id="v50-memory-css">
+.calendar .grid{align-items:stretch!important}
+.day,.day.outsideMonth{min-height:112px!important;height:112px!important;padding:3px!important;overflow:hidden!important}
+.badge.work{min-height:70px!important;height:70px!important;padding:7px 2px!important;display:flex!important;align-items:center!important;justify-content:center!important;flex-direction:column!important}
+.badge.rest,.day .badge.rest,.badge.vac,.day .badge.vac,.badge.dd,.day .badge.dd,.badge.dsc,.day .badge.dsc,.badge.sss,.day .badge.sss{position:absolute!important;left:3px!important;right:3px!important;top:32px!important;bottom:4px!important;min-height:0!important;height:auto!important;display:flex!important;align-items:center!important;justify-content:center!important;flex-direction:column!important;box-sizing:border-box!important}
+.badge.dsc,.badge.sss{background:repeating-linear-gradient(135deg,#d8f8e1 0 9px,#b65ac0 9px 12px,#d8f8e1 12px 18px)!important;border-color:#8a0f82!important;color:#34113b!important;font-size:20px!important;font-weight:950!important}
+.badge.dd{font-size:20px!important;font-weight:950!important}
+.memCard{border:1px solid var(--line);border-radius:16px;padding:12px;margin:10px 0;background:#fff}
+.memRow{display:flex;justify-content:space-between;gap:8px;align-items:center;border-top:1px solid #f0d9ef;padding:8px 0}
+.memRow:first-child{border-top:0}.memActions{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}.memSmall{font-size:12px;color:#806b83;font-weight:800}
+@media(max-width:560px){.day,.day.outsideMonth{min-height:106px!important;height:106px!important}.badge.work{min-height:68px!important;height:68px!important}}
+</style>
 </head><body>
-<div id="login" class="login"><div class="loginbox"><div class="logo">renfe</div><h1>App Turnos Pro <span class="ver">v4.1</span></h1><p class="muted">Acceso privado para administrar datos.</p><input id="user" class="input" placeholder="Usuario"><input id="pass" class="input" placeholder="Contraseña" type="password"><label style="display:flex;gap:8px;align-items:center;margin:8px 0;font-weight:800"><input id="remember" type="checkbox" checked> Recordar sesión 24 horas</label><button class="btn primary" style="width:100%" onclick="doLogin()">Entrar</button><p id="loginMsg" class="err"></p></div></div>
-<header><div class="top"><div class="logo">renfe</div><div><div class="title">App Turnos Pro <span class="ver">v4.1</span></div><div class="sub">Calendario visual · cambios · histórico de marcos</div></div><button class="dataToggle" onclick="toggleAdmin()">Datos ▾</button></div><div id="adminPanel" class="adminPanel hidden"><b>Importación privada</b><p class="muted">Archivos guardados solo en este dispositivo.</p><button class="btn primary" onclick="pick('yearFile')">📅 Importar desarrollo anual</button><button class="btn primary" onclick="pick('marcoFile')">🚄 Importar marco de turnos JSON</button><button class="btn" onclick="pick('pdfFile')">📄 Importar PDF Marco</button><button class="btn" onclick="exportExcel()">📤 Exportar Excel</button><button class="btn" onclick="exportBackup()">💾 Copia seguridad JSON</button><button class="btn" onclick="pick('memoryFile')">↩️ Reponer calendario histórico</button><button class="btn" onclick="clearData()">Borrar datos locales</button><div id="importStatus" class="muted"></div></div><input id="yearFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'year')"><input id="marcoFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'marco')"><input id="pdfFile" type="file" accept="application/pdf,.pdf" class="hidden" onchange="importPdf(event)"><input id="memoryFile" type="file" accept=".json,application/json" class="hidden" onchange="restoreHistoricalMemory(event)"><input id="specialFile" type="file" accept=".json,application/json" class="hidden" onchange="importSpecialDays(event)"></header>
+<div id="login" class="login"><div class="loginbox"><div class="logo">renfe</div><h1>App Turnos Pro <span class="ver">v5.0</span></h1><p class="muted">Acceso privado para administrar datos.</p><input id="user" class="input" placeholder="Usuario"><input id="pass" class="input" placeholder="Contraseña" type="password"><label style="display:flex;gap:8px;align-items:center;margin:8px 0;font-weight:800"><input id="remember" type="checkbox" checked> Recordar sesión 24 horas</label><button class="btn primary" style="width:100%" onclick="doLogin()">Entrar</button><p id="loginMsg" class="err"></p></div></div>
+<header><div class="top"><div class="logo">renfe</div><div><div class="title">App Turnos Pro <span class="ver">v5.0</span></div><div class="sub">Calendario visual · cambios · histórico de marcos</div></div><button class="dataToggle" onclick="toggleAdmin()">Datos ▾</button></div><div id="adminPanel" class="adminPanel hidden"><b>Importación privada</b><p class="muted">Archivos guardados solo en este dispositivo.</p><button class="btn primary" onclick="pick('yearFile')">📅 Importar gráfico anual</button><button class="btn primary" onclick="pick('marcoFile')">🚄 Importar Marco mensual JSON</button><button class="btn" onclick="pick('pdfFile')">📄 Importar PDF Marco</button><button class="btn" onclick="exportExcel()">📤 Exportar Excel</button><button class="btn" onclick="exportBackup()">💾 Copia seguridad JSON</button><button class="btn" onclick="pick('historyFile')">📥 Importar histórico de cambios</button><button class="btn" onclick="clearData()">Borrar datos locales</button><div id="importStatus" class="muted"></div></div><input id="yearFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'year')"><input id="marcoFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'marco')"><input id="pdfFile" type="file" accept="application/pdf,.pdf" class="hidden" onchange="importPdf(event)"><input id="historyFile" type="file" accept=".json,application/json" class="hidden" onchange="importHistoryBackup(event)"></header>
 <div class="wrap"><section id="calendarView" class="view"><div class="bar"><button class="navbtn" onclick="move(-1)">‹</button><div class="month" id="monthTitle"></div><button class="navbtn" onclick="move(1)">›</button><button class="btn" onclick="today()">Hoy</button></div><div class="calendar"><div class="week"><div>LUN</div><div>MAR</div><div>MIÉ</div><div>JUE</div><div>VIE</div><div>SÁB</div><div>DOM</div></div><div id="grid" class="grid"></div></div><div id="detail" class="detail"><span class="pill" style="background:#f2e3f4;color:var(--r)">Selecciona un día</span><h2>Detalle del turno</h2><p class="muted">Pulsa una casilla para ver inicio, fin, desarrollo y cambios.</p></div></section><section id="changesView" class="view hidden"><div class="detail"><h2>Registro de cambios</h2><div id="balances" class="balanceGrid"></div><h3>Historial</h3><div id="changesList" class="changesList"></div></div></section><section id="settingsView" class="view hidden"><div class="detail"><h2>Ajustes</h2><p>Datos cargados: <b id="dataState"></b></p></div></section></div>
 <nav style="position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);z-index:10"><button class="btn" onclick="show('calendarView')">📅<br>Calendario</button><button class="btn" onclick="scrollToDetail()">📋<br>Detalle</button><button class="btn" onclick="showChanges()">🔁<br>Cambios<br>Registro</button><button class="btn" onclick="show('settingsView')">⚙️<br>Ajustes</button><button class="btn" onclick="lockApp()">🔒<br>Bloq.</button></nav>
 <script>
-const ADMIN_USER='rodri',ADMIN_PASS='AppTurnos2026!',LOCK_MS=86400000,MAX_ATTEMPTS=3,AUTH='appTurnosV22',LS='AppTurnosData';
-function loadStableData(){const keys=['AppTurnosData','appTurnosData','appTurnosDataV22','appTurnosV15','appTurnosDataV21','appTurnosV19','appTurnosV28','appTurnosV29'];for(const k of keys){let raw=localStorage.getItem(k);if(raw){try{return JSON.parse(raw)}catch(e){}}}return {"calendar":[],"blocks":[],"meta":{},"changes":{},"people":[],"alarms":{},"disabledAlarms":{}}}
+const ADMIN_USER='rodri',ADMIN_PASS='AppTurnos2026!',LOCK_MS=86400000,MAX_ATTEMPTS=3,AUTH='appTurnosV22',LS='appTurnosData';
+function loadStableData(){const keys=['appTurnosData','appTurnosDataV22','appTurnosV15','appTurnosDataV21'];for(const k of keys){let raw=localStorage.getItem(k);if(raw){try{return JSON.parse(raw)}catch(e){}}}return {"calendar":[],"blocks":[],"meta":{},"changes":{},"people":[],"alarms":{},"disabledAlarms":{}}}
 let data=loadStableData();data.calendar=data.calendar||[];data.blocks=data.blocks||[];data.meta=data.meta||{};data.changes=data.changes||{};data.people=data.people||[];data.alarms=data.alarms||{};data.disabledAlarms=data.disabledAlarms||{};
 let current=new Date(),selected=null,admin=false;current=new Date(current.getFullYear(),current.getMonth(),1);
 const pad=n=>String(n).padStart(2,'0'),fmt=d=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate()),esc=s=>String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -243,7 +268,7 @@ function openPdf(page){if(!data.pdf?.dataUrl)return;let o=document.createElement
 
 
 // ===== v2.8 overrides: alarmas, PDF multipágina, memoria estable y calendario continuo =====
-try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v2.8');document.title='App Turnos Pro v4.1'}catch(e){}
+try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v5.0');document.title='App Turnos Pro v5.0'}catch(e){}
 current=new Date();
 data.alarms=data.alarms||{};data.disabledAlarms=data.disabledAlarms||{};data.people=data.people||[];data.alarmSettings=data.alarmSettings||{enabled:true,startOffset:60,trainOffset:30};
 function doLogin(){if(user.value.trim().toLowerCase()===ADMIN_USER&&pass.value.trim()===ADMIN_PASS){localStorage.setItem(AUTH+'Unlocked','1');localStorage.setItem(AUTH+'SessionUntil',Date.now()+(remember.checked?86400000:3600000));localStorage.removeItem(AUTH+'Attempts');localStorage.removeItem(AUTH+'LockUntil');login.classList.add('hidden');admin=true;updateImportUI();return}loginMsg.textContent='Usuario o contraseña incorrectos.'}
@@ -284,172 +309,33 @@ function openPdfFallback(){if(!data.pdf?.dataUrl)return;let w=window.open();if(w
 function showChanges(){show('changesView');let chs=Object.values(data.changes||{}).sort((a,b)=>a.fecha.localeCompare(b.fecha));let bal={};chs.forEach(c=>{if(!c.persona||c.balance==='neutral')return;bal[c.persona]=bal[c.persona]||0;bal[c.persona]+=(c.balance==='meDebe'?1:-1)*(Number(c.cantidad)||1)});let lz=chs.filter(c=>c.tipo==='LZ'), dd=chs.filter(c=>c.tipo==='DD'), rests=chs.filter(c=>c.tipo==='D');balances.innerHTML='<div class="regSection"><div class="regTitle">Balance de cambios</div>'+(Object.keys(bal).length?Object.entries(bal).map(([p,v])=>'<div class="balanceBox"><b>'+esc(p)+'</b><br>'+(v>0?'Me debe '+v:'Debo '+Math.abs(v))+' turno(s)</div>').join(''):'<p class="muted">Sin deudas registradas.</p>')+'</div><div class="regSection"><div class="regTitle">Licencias LZ</div>'+(lz.length?lz.map(c=>'<div class="changeItem license"><b>'+esc(c.fecha)+'</b> · LZ<br><span class="muted">'+esc(c.nota||'')+'</span></div>').join(''):'<p class="muted">Sin licencias registradas.</p>')+'</div><div class="regSection"><div class="regTitle">Descansos manuales D</div>'+(rests.length?rests.map(c=>'<div class="changeItem restreg"><b>'+esc(c.fecha)+'</b> · D<br>Original: '+esc(c.originalTurno||'—')+'<br><span class="muted">'+esc(c.nota||'')+'</span></div>').join(''):'<p class="muted">Sin descansos manuales.</p>')+'</div><div class="regSection"><div class="regTitle">Detraíbles pinchados DD</div>'+(dd.length?dd.map(c=>'<div class="changeItem ddreg"><b>'+esc(c.fecha)+'</b> · DD '+esc(c.turno||'—')+'<br>Original: '+esc(c.originalTurno||'—')+' ('+esc(c.originalInicio||'—')+' → '+esc(c.originalFin||'—')+')<br><span class="muted">'+esc(c.nota||'')+'</span></div>').join(''):'<p class="muted">Sin detraíbles pinchados registrados.</p>')+'</div>';changesList.innerHTML=chs.map(c=>'<div class="changeItem '+(c.tipo==='LZ'?'license':c.tipo==='DD'?'ddreg':c.tipo==='D'?'restreg':'')+'"><b>'+esc(c.fecha)+'</b><br>Original: '+esc(c.originalTurno||'—')+' ('+esc(c.originalInicio||'—')+' → '+esc(c.originalFin||'—')+')<br>Nuevo: '+esc(c.tipo==='DD'?('DD '+(c.turno||'')):(c.tipo||c.turno||'—'))+'<br>Con: '+esc(c.persona||'—')+' · '+esc(c.balance||'registro')+' '+esc(c.cantidad||1)+'<br><span class="muted">'+esc(c.nota||'')+'</span></div>').join('')||'<p class="muted">Aún no hay cambios.</p>'}
 
 
-// ===== v4.1 ajustes mínimos sobre base estable: alarmas limpias, hoy intermitente, memoria histórica =====
-function fechaArchivoMemoria(){
-  let d=new Date();
-  return pad(d.getDate())+'-'+pad(d.getMonth()+1)+'-'+d.getFullYear()+'_memoria_turnos.json';
-}
-function exportBackup(){
-  const memoria={
-    tipo:'AppTurnos_memoria_turnos',
-    version:'3.7',
-    generado:new Date().toISOString(),
-    formato_fecha:'dd-mm-aaaa',
-    changes:data.changes||{},
-    people:data.people||[],
-    alarms:data.alarms||{},
-    disabledAlarms:data.disabledAlarms||{},
-    alarmSettings:data.alarmSettings||{},
-    meta:{exportado_desde:'AppTurnosData'}
-  };
-  downloadBlob(JSON.stringify(memoria,null,2),fechaArchivoMemoria(),'application/json');
-}
-function restoreHistoricalMemory(ev){
-  let f=ev.target.files[0]; if(!f)return;
-  let r=new FileReader();
-  r.onload=()=>{
-    try{
-      let obj=JSON.parse(r.result);
-      // Acepta tanto el nuevo archivo de memoria como una copia antigua completa.
-      let changes=obj.changes || obj.data?.changes || {};
-      let people=obj.people || obj.data?.people || [];
-      let alarms=obj.alarms || obj.data?.alarms || {};
-      let disabled=obj.disabledAlarms || obj.data?.disabledAlarms || {};
-      let settings=obj.alarmSettings || obj.data?.alarmSettings || {};
-      data.changes={...(data.changes||{}),...changes};
-      data.people=[...new Set([...(data.people||[]),...(people||[])])];
-      data.alarms={...(data.alarms||{}),...alarms};
-      data.disabledAlarms={...(data.disabledAlarms||{}),...disabled};
-      data.alarmSettings={...(data.alarmSettings||{}),...settings};
-      save(); render();
-      if(window.importStatus) importStatus.innerHTML='<span class="ok">Calendario histórico repuesto: cambios, LZ/DD/D, personas y alarmas recuperadas.</span>';
-    }catch(e){
-      if(window.importStatus) importStatus.innerHTML='<span class="err">No se pudo reponer la memoria: '+e.message+'</span>';
-    }
-  };
-  r.readAsText(f); ev.target.value='';
-}
-function alarmControl(e,i){
- if(!selected)return'';
- // Solo inicio/presentación y salidas de tren. Nada en llegadas, AC, deje o final.
- if(!(e.kind==='start'||e.kind==='train'))return'';
- let settings=data.alarmSettings||{enabled:true,startOffset:60,trainOffset:30};
- let id=alarmKey(selected,e,i),a=data.alarms[id]||{},disabled=data.disabledAlarms[id],val=a.offset||alarmDefaultOffset(e);
- let options=[[15,'15 min antes'],[30,'30 min antes'],[45,'45 min antes'],[60,'1 h antes'],[90,'1 h 30 antes'],[120,'2 h antes']].map(o=>'<option value="'+o[0]+'" '+(Number(val)===o[0]?'selected':'')+'>'+o[1]+'</option>').join('');
- let inactive=!settings.enabled||disabled;
- let bellCls=inactive?'off':'on';
- return '<details class="alarmDrop cleanAlarm"><summary><span class="alarmBell '+bellCls+'">🔔▾</span><span>'+(inactive?'❌':'✅')+'</span></summary><div class="alarmPanel"><div class="'+(inactive?'alarmOff':'alarmOn')+'">'+(inactive?'Alarma apagada':'Alarma activa')+'</div><div class="alarmBox"><select class="alarmSelect" onchange="setAlarm(\''+id+'\',\''+esc(e.time||'')+'\',this.value,\''+esc((e.title||'Evento')+' '+(e.desc||''))+'\')">'+options+'</select><button class="btn" onclick="toggleAlarm(\''+id+'\')">'+(disabled?'Restaurar':'Quitar')+'</button></div></div></details>';
-}
-function timelineHtml(b){
- let events=buildTimelineEvents(b);
- if(!events.length)return'<div class="timeline"><h3>Desarrollo del turno</h3><p class="muted">Sin desarrollo detallado.</p></div>';
- return'<div class="timeline"><h3>Desarrollo del turno</h3>'+events.map((e,i)=>'<div class="tl"><div>'+esc(e.time||'')+'</div><div class="tlIcon '+(e.kind||'mid')+'">'+esc(e.icon||'•')+'</div><div class="tlText"><b>'+esc(e.title||'')+'</b><small>'+esc(e.desc||'')+'</small>'+((e.kind==='start'||e.kind==='train')?alarmControl(e,i):'')+'</div></div>').join('')+'</div>';
-}
-
-
-// ===== v4.1: importación DSC/SSS y vacaciones con celda uniforme =====
-data.specialDays=data.specialDays||{};
-
-function normalizeSpecialDays(obj){
-  let arr=Array.isArray(obj)?obj:(obj.specialDays||obj.dias||obj.days||obj.data||[]);
-  if(!Array.isArray(arr))arr=[];
-  return arr.map(x=>{
-    let fecha=String(x.fecha||x.date||x.dia||x.day||'').slice(0,10);
-    let tipo=String(x.tipo||x.type||x.codigo||x.code||x.clave||'').toUpperCase().trim();
-    if(tipo.includes('DESCANSO')||tipo.includes('COMPENSADO'))tipo='DSC';
-    if(tipo.includes('SALIDA')||tipo.includes('SIN SERVICIO'))tipo='SSS';
-    if(tipo!=='DSC'&&tipo!=='SSS')tipo='';
-    return fecha&&tipo?{fecha,tipo,nota:x.nota||x.note||x.descripcion||''}:null;
-  }).filter(Boolean);
-}
-function importSpecialDays(ev){
-  let f=ev.target.files[0];if(!f)return;let r=new FileReader();
-  r.onload=()=>{try{
-    let items=normalizeSpecialDays(JSON.parse(r.result));
-    if(!items.length)throw Error('No encuentro días DSC/SSS válidos');
-    data.specialDays=data.specialDays||{};
-    items.forEach(it=>data.specialDays[it.fecha]={tipo:it.tipo,nota:it.nota||'',imported:new Date().toISOString()});
-    save();render();
-    if(window.importStatus)importStatus.innerHTML='<span class="ok">DSC/SSS importados: '+items.length+' días.</span>';
-  }catch(e){if(window.importStatus)importStatus.innerHTML='<span class="err">Error DSC/SSS: '+e.message+'</span>'}};
-  r.readAsText(f);ev.target.value='';
-}
-const _effectiveDay_v38=effectiveDay;
-effectiveDay=function(ds){
-  let d=_effectiveDay_v38(ds),ch=data.changes&&data.changes[ds];
-  if(ch)return d;
-  let sp=data.specialDays&&data.specialDays[ds];
-  if(sp)return {...(d||{fecha:ds}),clave_turno:sp.tipo,tipo_dia:sp.tipo==='DSC'?'Descanso compensado':'Salida sin servicio',special:true,specialInfo:sp};
-  return d;
-};
-const _status_v38=status;
-status=function(d){
-  if(!d)return'empty';
-  let turn=String(d.clave_turno||'').toUpperCase();
-  if(turn==='DSC')return'dsc';
-  if(turn==='SSS')return'sss';
-  return _status_v38(d);
-};
-const _typeBadge_v38=typeBadge;
-typeBadge=function(d,b){
-  let st=status(d);
-  if(st==='dsc')return(d.changed?'<i class="changedDot"></i>':'')+'<div class="badge dsc">DSC</div>';
-  if(st==='sss')return(d.changed?'<i class="changedDot"></i>':'')+'<div class="badge sss">SSS</div>';
-  return _typeBadge_v38(d,b);
-};
-const _selectDay_v38=selectDay;
-selectDay=function(ds){
-  let d=effectiveDay(ds);
-  if(d&&(status(d)==='dsc'||status(d)==='sss')){
-    selected=ds;render();
-    let title=new Date(ds+'T12:00:00').toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
-    let label=status(d)==='dsc'?'Descanso compensado DSC':'Salida sin servicio SSS';
-    let html='<span class="pill" style="background:#d8f8e1;color:#34113b;border:1px solid #8a0f82">'+label+'</span><h2>'+title+'</h2><p class="muted">'+(d.specialInfo?.nota||'Día importado desde archivo DSC/SSS.')+'</p>';
-    html+=changePanelHtml(ds,dayData(ds),blockFor(dayData(ds)),d,blockFor(d));
-    detail.innerHTML=html;scrollToDetail();return;
-  }
-  _selectDay_v38(ds);
-};
-const _exportBackup_v38=exportBackup;
-exportBackup=function(){
-  const memoria={tipo:'AppTurnos_memoria_turnos',version:'3.8',generado:new Date().toISOString(),formato_fecha:'dd-mm-aaaa',changes:data.changes||{},people:data.people||[],alarms:data.alarms||{},disabledAlarms:data.disabledAlarms||{},alarmSettings:data.alarmSettings||{},specialDays:data.specialDays||{},meta:{exportado_desde:'AppTurnosData'}};
-  downloadBlob(JSON.stringify(memoria,null,2),fechaArchivoMemoria(),'application/json');
-};
-restoreHistoricalMemory=function(ev){
-  let f=ev.target.files[0];if(!f)return;let r=new FileReader();
-  r.onload=()=>{try{
-    let obj=JSON.parse(r.result);
-    data.changes={...(data.changes||{}),...(obj.changes||obj.data?.changes||{})};
-    data.people=[...new Set([...(data.people||[]),...(obj.people||obj.data?.people||[])])];
-    data.alarms={...(data.alarms||{}),...(obj.alarms||obj.data?.alarms||{})};
-    data.disabledAlarms={...(data.disabledAlarms||{}),...(obj.disabledAlarms||obj.data?.disabledAlarms||{})};
-    data.alarmSettings={...(data.alarmSettings||{}),...(obj.alarmSettings||obj.data?.alarmSettings||{})};
-    data.specialDays={...(data.specialDays||{}),...(obj.specialDays||obj.data?.specialDays||{})};
-    save();render();
-    if(window.importStatus)importStatus.innerHTML='<span class="ok">Calendario histórico repuesto correctamente.</span>';
-  }catch(e){if(window.importStatus)importStatus.innerHTML='<span class="err">No se pudo reponer la memoria: '+e.message+'</span>'}};
-  r.readAsText(f);ev.target.value='';
-};
-
-
-// ===== v4.1: marco único con tipos SERVICIO/DESCANSO/VACACIONES/DD/DSC/SSS =====
-function tipoCanon(v){
+// ===== v4.3 limpia: lector de tipos especiales y tamaño uniforme =====
+function canonTipoV43(v){
   let t=String(v||'').trim().toUpperCase();
   if(!t)return '';
-  if(t==='SERVICIO'||t==='TRABAJO'||t==='WORK')return 'SERVICIO';
+  if(t.includes('DESCANSO COMPENSADO')||t==='DSC'||t==='DC'||t.includes('COMPENSADO'))return 'DSC';
+  if(t.includes('SALIDA SIN SERVICIO')||t==='SSS'||t==='SS'||t.includes('SIN SERVICIO'))return 'SSS';
   if(t==='DESCANSO'||t==='D'||t==='REST')return 'DESCANSO';
   if(t==='VACACIONES'||t==='VAC'||t==='VB')return 'VACACIONES';
-  if(t==='DD'||t.includes('DETRA'))return 'DD';
-  if(t==='DSC'||t==='DC'||t.includes('COMPENSADO'))return 'DSC';
-  if(t==='SSS'||t==='SS'||t.includes('SIN SERVICIO')||t.includes('SALIDA'))return 'SSS';
+  if(t==='DD'||t==='DV'||t.includes('DETRA'))return 'DD';
+  if(t==='SERVICIO'||t==='TRABAJO'||t==='WORK')return 'SERVICIO';
   return t;
 }
-function dayFromAny(x){
+function detectTipoV43(obj){
+  if(!obj)return '';
+  let direct=canonTipoV43(obj.tipo||obj.type||obj.tipo_dia||obj.estado||obj.codigo||obj.code||obj.clase||'');
+  if(direct)return direct;
+  let txt=[
+    obj.clave_turno,obj.turno,obj.clave,obj.shift,obj.detalle,obj.descripcion,obj.resumen,
+    obj.nota,obj.observaciones,obj.observacion,obj.texto,obj.label,obj.etiqueta
+  ].filter(Boolean).join(' ');
+  return canonTipoV43(txt);
+}
+function normalizeDayV43(x){
   let fecha=String(x.fecha||x.date||x.dia||x.day||'').slice(0,10);
   if(!/^\d{4}-\d{2}-\d{2}$/.test(fecha))return null;
-  let tipo=tipoCanon(x.tipo||x.type||x.tipo_dia||x.estado||x.codigo||x.code||'');
+  let tipo=detectTipoV43(x);
   let turno=String(x.clave_turno||x.turno||x.clave||x.shift||'');
-  if(tipo==='SERVICIO'&&!turno)turno=String(x.id_turno||x.servicio||'');
   if(tipo==='DSC')turno='DSC';
   if(tipo==='SSS')turno='SSS';
   if(tipo==='DESCANSO'&&!turno)turno='D';
@@ -457,209 +343,246 @@ function dayFromAny(x){
   if(tipo==='DD'&&!turno)turno='DD';
   return {fecha,clave_turno:turno,tipo_dia:tipo||x.tipo_dia||'',tipo_norm:tipo,raw:x};
 }
-function extractDaysFromMarco(obj){
-  let pools=[];
-  ['calendar','calendario','days','dias','cuadro','anual','jornadas'].forEach(k=>{if(Array.isArray(obj?.[k]))pools.push(obj[k])});
-  if(Array.isArray(obj))pools.push(obj);
-  if(Array.isArray(obj?.data))pools.push(obj.data);
+function scanDaysV43(obj){
   let out=[];
-  pools.flat().forEach(x=>{let d=dayFromAny(x||{});if(d)out.push(d)});
-  let map={};out.forEach(d=>map[d.fecha]=d);
+  function walk(v){
+    if(!v)return;
+    if(Array.isArray(v)){v.forEach(walk);return}
+    if(typeof v==='object'){
+      let d=normalizeDayV43(v);
+      if(d)out.push(d);
+      Object.values(v).forEach(child=>{
+        if(child&&(Array.isArray(child)||typeof child==='object'))walk(child);
+      });
+    }
+  }
+  walk(obj);
+  let map={};out.forEach(d=>{if(d.fecha)map[d.fecha]={...(map[d.fecha]||{}),...d}});
   return Object.values(map).sort((a,b)=>a.fecha.localeCompare(b.fecha));
 }
-function mergeCalendarDays(newDays){
-  if(!newDays||!newDays.length)return;
+function mergeDaysV43(days){
   let map={};(data.calendar||[]).forEach(d=>{if(d.fecha)map[d.fecha]=d});
-  newDays.forEach(d=>{map[d.fecha]={...(map[d.fecha]||{}),...d}});
+  (days||[]).forEach(d=>{map[d.fecha]={...(map[d.fecha]||{}),...d}});
   data.calendar=Object.values(map).sort((a,b)=>a.fecha.localeCompare(b.fecha));
 }
 
-// Sobrescribe importador: el marco JSON puede traer turnos + días especiales en un único archivo.
-const _importFile_v39=importFile;
+const _importFile_v43=typeof importFile==='function'?importFile:null;
 importFile=function(ev,type){
-  let f=ev.target.files[0];if(!f)return;let r=new FileReader();
-  r.onload=()=>{try{
-    let obj=JSON.parse(r.result);
-    if(type==='year'){
-      let c=normCalendar(obj);
-      if(!c.length)throw Error('No encuentro desarrollo anual válido');
-      c=c.map(d=>({...d,tipo_norm:tipoCanon(d.tipo_dia||d.tipo||d.type||'')}));
-      data.calendar=c;data.meta.yearImported=new Date().toISOString();
-    }else{
-      let b=normBlocks(obj);
-      let days=extractDaysFromMarco(obj);
-      if(!b.length&&!days.length)throw Error('No encuentro Marco válido');
-      if(b.length){data.blocks=b;data.meta.marcoImported=new Date().toISOString()}
-      if(days.length)mergeCalendarDays(days);
-    }
-    save();importStatus.innerHTML='<span class="ok">Importado correctamente.</span>';render();autoOpenTodayDetail();
-  }catch(e){importStatus.innerHTML='<span class="err">Error: '+e.message+'</span>'}};
-  r.readAsText(f);ev.target.value='';
-};
-
-// Ya no hace falta segundo JSON. Si existe llamada antigua, la redirigimos a marco integrado.
-importSpecialDays=function(ev){
-  if(window.importStatus)importStatus.innerHTML='<span class="err">DSC/SSS ya no se importan aparte. Deben venir integrados en el marco JSON.</span>';
-  ev.target.value='';
-};
-
-function tipoOfDay(d){
-  let t=tipoCanon(d?.tipo_norm||d?.tipo_dia||d?.tipo||d?.raw?.tipo||d?.raw?.type||'');
-  let turn=String(d?.clave_turno||'').toUpperCase();
-  if(['DSC','DC'].includes(turn))return 'DSC';
-  if(['SSS','SS'].includes(turn))return 'SSS';
-  if(turn==='D')return 'DESCANSO';
-  if(turn==='VB')return 'VACACIONES';
-  if(turn==='DD'||turn.startsWith('DD '))return 'DD';
-  if(turn==='LZ')return 'LZ';
-  return t || (turn?'SERVICIO':'');
-}
-
-// Campo tipo manda sobre las horas y sobre la existencia de desarrollo.
-const _status_v39=status;
-status=function(d){
-  if(!d)return 'empty';
-  let t=tipoOfDay(d);
-  if(t==='DSC')return 'dsc';
-  if(t==='SSS')return 'sss';
-  if(t==='DESCANSO')return 'rest';
-  if(t==='VACACIONES')return 'vac';
-  if(t==='DD')return 'dd';
-  if(t==='LZ')return 'lz';
-  if(t==='SERVICIO')return 'work';
-  return _status_v39(d);
-};
-
-const _blockFor_v39=blockFor;
-blockFor=function(d){
-  if(!d)return null;
-  let st=status(d);
-  if(st!=='work')return null;
-  return _blockFor_v39(d);
-};
-
-const _typeBadge_v39=typeBadge;
-typeBadge=function(d,b){
-  let st=status(d);
-  if(st==='dsc')return (d?.changed?'<i class="changedDot"></i>':'')+'<div class="badge dsc">DC</div>';
-  if(st==='sss')return (d?.changed?'<i class="changedDot"></i>':'')+'<div class="badge sss">SS</div>';
-  return _typeBadge_v39(d,b);
-};
-
-const _selectDay_v39=selectDay;
-selectDay=function(ds){
-  let d=effectiveDay(ds),st=status(d);
-  if(d&&(st==='dsc'||st==='sss')){
-    selected=ds;render();
-    let title=new Date(ds+'T12:00:00').toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
-    let label=st==='dsc'?'Descanso compensado DC':'Salida sin servicio SS';
-    let html='<span class="pill" style="background:#d8f8e1;color:#34113b;border:1px solid #8a0f82">'+label+'</span><h2>'+title+'</h2><p class="muted">Tipo leído desde el campo <b>tipo</b> del marco JSON.</p>';
-    html+=changePanelHtml(ds,dayData(ds),blockFor(dayData(ds)),d,null);
-    detail.innerHTML=html;scrollToDetail();return;
-  }
-  _selectDay_v39(ds);
-};
-
-// Alarmas en la misma línea del título: presentación/inicio y salida de tren.
-const _alarmControl_v39=alarmControl;
-alarmControl=function(e,i){
- if(!selected)return'';
- if(!(e.kind==='start'||e.kind==='train'))return'';
- let settings=data.alarmSettings||{enabled:true,startOffset:60,trainOffset:30};
- let id=alarmKey(selected,e,i),a=data.alarms[id]||{},disabled=data.disabledAlarms[id],val=a.offset||alarmDefaultOffset(e);
- let options=[[15,'15 min antes'],[30,'30 min antes'],[45,'45 min antes'],[60,'1 h antes'],[90,'1 h 30 antes'],[120,'2 h antes']].map(o=>'<option value="'+o[0]+'" '+(Number(val)===o[0]?'selected':'')+'>'+o[1]+'</option>').join('');
- let inactive=!settings.enabled||disabled;
- return '<details class="alarmDrop cleanAlarm"><summary><span class="alarmBell '+(inactive?'off':'on')+'">🔔▾</span><span>'+(inactive?'❌':'✅')+'</span></summary><div class="alarmPanel"><div class="'+(inactive?'alarmOff':'alarmOn')+'">'+(inactive?'Alarma apagada':'Alarma activa')+'</div><div class="alarmBox"><select class="alarmSelect" onchange="setAlarm(\''+id+'\',\''+esc(e.time||'')+'\',this.value,\''+esc((e.title||'Evento')+' '+(e.desc||''))+'\')">'+options+'</select><button class="btn" onclick="toggleAlarm(\''+id+'\')">'+(disabled?'Restaurar':'Quitar')+'</button></div></div></details>';
-};
-const _timelineHtml_v39=timelineHtml;
-timelineHtml=function(b){
- let events=buildTimelineEvents(b);
- if(!events.length)return'<div class="timeline"><h3>Desarrollo del turno</h3><p class="muted">Sin desarrollo detallado.</p></div>';
- return '<div class="timeline"><h3>Desarrollo del turno</h3>'+events.map((e,i)=>{
-   let alarm=(e.kind==='start'||e.kind==='train')?alarmControl(e,i):'';
-   return '<div class="tl"><div>'+esc(e.time||'')+'</div><div class="tlIcon '+(e.kind||'mid')+'">'+esc(e.icon||'•')+'</div><div class="tlText"><b class="tlTitleLine"><span>'+esc(e.title||'')+'</span>'+alarm+'</b><small>'+esc(e.desc||'')+'</small></div></div>';
- }).join('')+'</div>';
-};
-
-// Al abrir, muestra el desarrollo de hoy si existe. Si hay día seleccionado previo, respeta ese.
-function autoOpenTodayDetail(){
-  let target=selected||fmt(new Date());
-  if(effectiveDay(target))selectDay(target);
-}
-setTimeout(autoOpenTodayDetail,80);
-
-
-// ===== v4.1: correcciones finales calendario, alarmas y reponer histórico =====
-function fechaArchivoMemoria(){
-  let d=new Date();
-  return pad(d.getDate())+'-'+pad(d.getMonth()+1)+'-'+d.getFullYear()+'_memoria_turnos.json';
-}
-exportBackup=function(){
-  const memoria={
-    tipo:'AppTurnos_memoria_turnos',
-    version:'4.0',
-    generado:new Date().toISOString(),
-    formato_fecha:'dd-mm-aaaa',
-    changes:data.changes||{},
-    people:data.people||[],
-    alarms:data.alarms||{},
-    disabledAlarms:data.disabledAlarms||{},
-    alarmSettings:data.alarmSettings||{},
-    specialDays:data.specialDays||{},
-    meta:{exportado_desde:'AppTurnosData'}
-  };
-  downloadBlob(JSON.stringify(memoria,null,2),fechaArchivoMemoria(),'application/json');
-};
-restoreHistoricalMemory=function(ev){
-  let f=ev.target.files[0]; if(!f)return;
-  let r=new FileReader();
-  r.onload=()=>{
-    try{
-      let obj=JSON.parse(r.result);
-      data.changes={...(data.changes||{}),...(obj.changes||obj.data?.changes||{})};
-      data.people=[...new Set([...(data.people||[]),...(obj.people||obj.data?.people||[])])];
-      data.alarms={...(data.alarms||{}),...(obj.alarms||obj.data?.alarms||{})};
-      data.disabledAlarms={...(data.disabledAlarms||{}),...(obj.disabledAlarms||obj.data?.disabledAlarms||{})};
-      data.alarmSettings={...(data.alarmSettings||{}),...(obj.alarmSettings||obj.data?.alarmSettings||{})};
-      data.specialDays={...(data.specialDays||{}),...(obj.specialDays||obj.data?.specialDays||{})};
-      save(); render();
-      if(selected) selectDay(selected); else autoOpenTodayDetail();
-      if(window.importStatus) importStatus.innerHTML='<span class="ok">Calendario histórico repuesto correctamente.</span>';
-    }catch(e){
-      if(window.importStatus) importStatus.innerHTML='<span class="err">No se pudo reponer la memoria: '+e.message+'</span>';
-    }
-  };
-  r.readAsText(f); ev.target.value='';
-};
-importFile=function(ev,type){
-  let f=ev.target.files[0]; if(!f)return;
+  let f=ev.target.files[0];if(!f)return;
   let r=new FileReader();
   r.onload=()=>{
     try{
       let obj=JSON.parse(r.result);
       if(type==='year'){
         let c=normCalendar(obj);
-        if(!c.length) throw Error('No encuentro desarrollo anual válido');
-        c=c.map(d=>({...d,tipo_norm:tipoCanon(d.tipo_dia||d.tipo||d.type||'')}));
-        data.calendar=c;
+        if(!c.length)throw Error('No encuentro desarrollo anual válido');
+        data.calendar=c.map(d=>({...d,tipo_norm:canonTipoV43(d.tipo_dia||d.tipo||d.type||'')}));
         data.meta.yearImported=new Date().toISOString();
       }else{
         let b=normBlocks(obj);
-        let days=extractDaysFromMarco(obj);
-        if(!b.length && !days.length) throw Error('No encuentro Marco válido');
-        data.blocks=b||[];
-        data.meta.marcoImported=new Date().toISOString();
-        if(days.length) mergeCalendarDays(days);
+        let days=scanDaysV43(obj).filter(d=>d.tipo_norm);
+        if(!b.length&&!days.length)throw Error('No encuentro Marco válido');
+        if(b.length){data.blocks=b;data.meta.marcoImported=new Date().toISOString()}
+        if(days.length)mergeDaysV43(days);
       }
-      save(); render();
-      if(selected) selectDay(selected); else autoOpenTodayDetail();
-      if(window.importStatus) importStatus.innerHTML='<span class="ok">Importado correctamente.</span>';
+      save();render();
+      if(selected)selectDay(selected);
+      else{
+        let td=fmt(new Date());
+        if(effectiveDay(td))selectDay(td);
+      }
+      if(window.importStatus)importStatus.innerHTML='<span class="ok">Importado correctamente.</span>';
     }catch(e){
-      if(window.importStatus) importStatus.innerHTML='<span class="err">Error: '+e.message+'</span>';
+      if(window.importStatus)importStatus.innerHTML='<span class="err">Error: '+e.message+'</span>';
     }
   };
-  r.readAsText(f); ev.target.value='';
+  r.readAsText(f);ev.target.value='';
 };
+
+const _status_v43=status;
+status=function(d){
+  if(!d)return 'empty';
+  let t=canonTipoV43(d.tipo_norm||d.tipo_dia||d.tipo||d.raw?.tipo||d.raw?.type||detectTipoV43(d.raw||{}));
+  let turn=String(d.clave_turno||'').toUpperCase();
+  if(t==='DSC'||turn==='DSC'||turn==='DC')return 'dsc';
+  if(t==='SSS'||turn==='SSS'||turn==='SS')return 'sss';
+  if(t==='DESCANSO'||turn==='D')return 'rest';
+  if(t==='VACACIONES'||turn==='VB')return 'vac';
+  if(t==='DD'||turn==='DD'||turn==='DV'||turn.startsWith('DD '))return 'dd';
+  if(turn==='LZ')return 'lz';
+  if(t==='SERVICIO')return 'work';
+  return _status_v43(d);
+};
+
+const _blockFor_v43=blockFor;
+blockFor=function(d){
+  if(!d)return null;
+  let st=status(d);
+  if(st!=='work')return null;
+  return _blockFor_v43(d);
+};
+
+const _typeBadge_v43=typeBadge;
+typeBadge=function(d,b){
+  let st=status(d),dot=d?.changed?'<i class="changedDot"></i>':'';
+  if(st==='dsc')return dot+'<div class="badge dsc">DSC</div>';
+  if(st==='sss')return dot+'<div class="badge sss">SSS</div>';
+  if(st==='dd')return dot+'<div class="badge dd">DD</div>';
+  return _typeBadge_v43(d,b);
+};
+
+const _selectDay_v43=selectDay;
+selectDay=function(ds){
+  let d=effectiveDay(ds),st=status(d);
+  if(d&&(st==='dsc'||st==='sss')){
+    selected=ds;render();
+    let title=new Date(ds+'T12:00:00').toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+    let label=st==='dsc'?'Descanso compensado DSC':'Salida sin servicio SSS';
+    let html='<span class="pill" style="background:#d8f8e1;color:#34113b;border:1px solid #8a0f82">'+label+'</span><h2>'+title+'</h2><p class="muted">Día especial. No se muestra inicio, final ni desarrollo.</p>';
+    html+=changePanelHtml(ds,dayData(ds),blockFor(dayData(ds)),d,null);
+    detail.innerHTML=html;scrollToDetail();return;
+  }
+  _selectDay_v43(ds);
+};
+
+const _render_v43=render;
+render=function(){
+  _render_v43();
+  const h=window.innerWidth<=560?'90px':'94px';
+  document.querySelectorAll('.day').forEach(el=>{
+    el.style.minHeight=h;
+    el.style.height=h;
+  });
+};
+
+setTimeout(()=>{
+  let td=fmt(new Date());
+  if(effectiveDay(td))selectDay(td);
+},180);
+
+
+// ===== v4.4: lectura correcta JSON por turno+día+tipo, altura real, alarmas en línea, modo apertura =====
+data.settings=data.settings||{};
+data.settings.openMode=data.settings.openMode||'calendario';
+
+function canonTipoV44(v){
+  let t=String(v||'').trim().toUpperCase();
+  if(!t)return '';
+  if(t.includes('DESCANSO COMPENSADO')||t==='DSC'||t==='DC'||t.includes('COMPENSADO'))return 'DSC';
+  if(t.includes('SALIDA SIN SERVICIO')||t==='SSS'||t==='SS'||t.includes('SIN SERVICIO'))return 'SSS';
+  if(t==='DESCANSO'||t==='D'||t==='REST')return 'DESCANSO';
+  if(t==='VACACIONES'||t==='VAC'||t==='VB')return 'VACACIONES';
+  if(t==='DD'||t==='DV'||t.includes('DETRA'))return 'DD';
+  if(t==='SERVICIO'||t==='TRABAJO'||t==='WORK')return 'SERVICIO';
+  return t;
+}
+function detectTipoV44(obj){
+  if(!obj)return '';
+  let direct=canonTipoV44(obj.tipo||obj.type||obj.tipo_dia||obj.estado||obj.codigo||obj.code||obj.clase||obj.etiqueta||'');
+  if(direct)return direct;
+  let txt=[
+    obj.bloque,obj.clave_turno,obj.turno,obj.clave,obj.shift,obj.detalle,obj.descripcion,obj.resumen,
+    obj.nota,obj.observaciones,obj.observacion,obj.texto,obj.label,obj.etiqueta
+  ].filter(Boolean).join(' ');
+  return canonTipoV44(txt);
+}
+function dayLetterV44(ds){
+  let n=new Date(ds+'T12:00:00').getDay();
+  return 'DLMXJVS'[n]; // domingo=0 => D; lunes=1 => L...
+}
+function daysMatchV44(days,letter){
+  let d=String(days||'').toUpperCase().replace(/\s+/g,'');
+  if(!d)return true;
+  if(d==='L-D'||d==='LD'||d==='TODOS'||d==='LMXJVSD'||d==='LDMXJVS')return true;
+  return d.includes(letter);
+}
+function blockTipoV44(b){return canonTipoV44(b?.tipo||b?.raw?.tipo||b?.type||b?.raw?.type||b?.bloque||b?.raw?.bloque||b?.etiqueta||b?.raw?.etiqueta||b?.detalle||b?.raw?.detalle||'')}
+
+// Normalizador de bloques: conserva bloque, tipo, etiqueta, visual y no exige horas.
+const _normBlocks_v44=normBlocks;
+normBlocks=function(obj){
+  let arr=obj.blocks||obj.validated_blocks||obj.turnos||obj.servicios||obj.services||obj.data||[];
+  if(!Array.isArray(arr))arr=[];
+  return arr.map(x=>{
+    let txt=[x.detalle,x.resumen,x.descripcion,x.tareas,x.servicio].filter(Boolean).join(' / ');
+    let tipo=detectTipoV44(x);
+    let special=(tipo==='DSC'||tipo==='SSS'||tipo==='DESCANSO'||tipo==='VACACIONES'||tipo==='DD');
+    let ini=special?'':(pickTime(x,['presentacion','hora_presentacion','inicio','start','desde','hora_inicio'])||firstTimeText(txt));
+    let fn=special?'':(pickTime(x,['finalizacion','hora_fin','fin','final','end','hasta','hora_final','final_hora'])||lastTime(txt));
+    return{
+      turno:String(x.turno||x.clave_turno||x.clave||x.id||''),
+      bloque:String(x.bloque||x.block||''),
+      dias:String(x.dias||x.dias_aplicacion||x.days||''),
+      tipo:tipo||x.tipo||x.type||x.servicio||'',
+      tipo_norm:tipo,
+      etiqueta:x.etiqueta||x.label||(tipo==='DSC'?'DSC':tipo==='SSS'?'SSS':''),
+      visual:x.visual||{},
+      inicio:ini,
+      fin:fn,
+      final:fn,
+      duracion:special?'':(x.duracion||x.jornada||''),
+      resumen:special?(x.detalle||tipo||''):(x.resumen||x.descripcion||x.tareas||x.servicio||x.detalle||''),
+      movimientos:special?[]:(x.movimientos||x.moves||[]),
+      pagina:x.pagina||x.page||x.pdf_page||'',
+      raw:x
+    }
+  }).filter(x=>x.turno)
+}
+
+// La clave: bloque correcto por turno + día. Si para ese día hay DSC/SSS, gana frente al servicio.
+blockFor=function(d){
+  if(!d)return null;
+  let turn=String(d.clave_turno||'').replace(/^DD\s*/,'').trim();
+  if(!turn||turn==='LZ'||turn==='D'||turn==='VB'||turn==='DD'||turn==='DSC'||turn==='SSS')return null;
+  let letter=dayLetterV44(d.fecha);
+  let candidates=(data.blocks||[]).filter(b=>String(b.turno)===turn && daysMatchV44(b.dias,letter));
+  if(!candidates.length)candidates=(data.blocks||[]).filter(b=>String(b.turno)===turn);
+  let special=candidates.find(b=>['DSC','SSS','DESCANSO','VACACIONES','DD'].includes(blockTipoV44(b)));
+  if(special)return special;
+  return candidates.find(b=>blockTipoV44(b)==='SERVICIO')||candidates[0]||null;
+}
+
+const _status_v44=status;
+status=function(d){
+  if(!d)return 'empty';
+  let b=null;
+  try{b=blockFor(d)}catch(e){}
+  let t=canonTipoV44(d.tipo_norm||d.tipo_dia||d.tipo||d.raw?.tipo||d.raw?.type||'')||blockTipoV44(b);
+  let turn=String(d.clave_turno||'').toUpperCase();
+  if(t==='DSC'||turn==='DSC'||turn==='DC')return 'dsc';
+  if(t==='SSS'||turn==='SSS'||turn==='SS')return 'sss';
+  if(t==='DESCANSO'||turn==='D')return 'rest';
+  if(t==='VACACIONES'||turn==='VB')return 'vac';
+  if(t==='DD'||turn==='DD'||turn==='DV'||turn.startsWith('DD '))return 'dd';
+  if(turn==='LZ')return 'lz';
+  if(t==='SERVICIO'||turn)return 'work';
+  return _status_v44(d);
+}
+
+const _typeBadge_v44=typeBadge;
+typeBadge=function(d,b){
+  let st=status(d),dot=d?.changed?'<i class="changedDot"></i>':'';
+  if(st==='dsc')return dot+'<div class="badge dsc">DSC</div>';
+  if(st==='sss')return dot+'<div class="badge sss">SSS</div>';
+  if(st==='dd')return dot+'<div class="badge dd">DD</div>';
+  return _typeBadge_v44(d,b);
+}
+
+const _selectDay_v44=selectDay;
+selectDay=function(ds){
+  let d=effectiveDay(ds),b=blockFor(d),st=status(d);
+  if(d&&(st==='dsc'||st==='sss')){
+    selected=ds;render();
+    let title=new Date(ds+'T12:00:00').toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+    let label=st==='dsc'?'Descanso compensado DSC':'Salida sin servicio SSS';
+    let html='<span class="pill" style="background:#d8f8e1;color:#34113b;border:1px solid #8a0f82">'+label+'</span><h2>'+title+'</h2><p class="muted">Tipo leído del bloque del marco JSON para este turno y día. No se muestra inicio, final ni desarrollo.</p>';
+    html+=changePanelHtml(ds,dayData(ds),blockFor(dayData(ds)),d,b);
+    detail.innerHTML=html;scrollToDetail();return;
+  }
+  _selectDay_v44(ds);
+}
+
+// Alarmas en línea solo en presentación/inicio y trenes.
 alarmControl=function(e,i){
  if(!selected)return'';
  if(!(e.kind==='start'||e.kind==='train'))return'';
@@ -668,7 +591,7 @@ alarmControl=function(e,i){
  let options=[[15,'15 min antes'],[30,'30 min antes'],[45,'45 min antes'],[60,'1 h antes'],[90,'1 h 30 antes'],[120,'2 h antes']].map(o=>'<option value="'+o[0]+'" '+(Number(val)===o[0]?'selected':'')+'>'+o[1]+'</option>').join('');
  let inactive=!settings.enabled||disabled;
  return '<details class="alarmDrop cleanAlarm"><summary><span class="alarmBell '+(inactive?'off':'on')+'">🔔▾</span><span>'+(inactive?'❌':'✅')+'</span></summary><div class="alarmPanel"><div class="'+(inactive?'alarmOff':'alarmOn')+'">'+(inactive?'Alarma apagada':'Alarma activa')+'</div><div class="alarmBox"><select class="alarmSelect" onchange="setAlarm(\''+id+'\',\''+esc(e.time||'')+'\',this.value,\''+esc((e.title||'Evento')+' '+(e.desc||''))+'\')">'+options+'</select><button class="btn" onclick="toggleAlarm(\''+id+'\')">'+(disabled?'Restaurar':'Quitar')+'</button></div></div></details>';
-};
+}
 timelineHtml=function(b){
  let events=buildTimelineEvents(b);
  if(!events.length)return'<div class="timeline"><h3>Desarrollo del turno</h3><p class="muted">Sin desarrollo detallado.</p></div>';
@@ -676,163 +599,77 @@ timelineHtml=function(b){
    let alarm=(e.kind==='start'||e.kind==='train')?alarmControl(e,i):'';
    return '<div class="tl"><div>'+esc(e.time||'')+'</div><div class="tlIcon '+(e.kind||'mid')+'">'+esc(e.icon||'•')+'</div><div class="tlText"><b class="tlTitleLine"><span class="tlTitleText">'+esc(e.title||'')+'</span>'+alarm+'</b><small>'+esc(e.desc||'')+'</small></div></div>';
  }).join('')+'</div>';
-};
-function autoOpenTodayDetail(){
-  let target=selected||fmt(new Date());
-  if(effectiveDay(target)) selectDay(target);
-}
-setTimeout(autoOpenTodayDetail,120);
-
-
-// ===== v4.1: DD corto, vacaciones uniformes, auto detalle hoy y DSC/SSS reforzado =====
-
-// Reconocimiento reforzado: mira tipo, texto, código, observaciones y turno.
-tipoCanon=function(v){
-  let t=String(v||'').trim().toUpperCase();
-  if(!t)return '';
-  if(t==='SERVICIO'||t==='TRABAJO'||t==='WORK')return 'SERVICIO';
-  if(t==='DESCANSO'||t==='D'||t==='REST')return 'DESCANSO';
-  if(t==='VACACIONES'||t==='VAC'||t==='VB')return 'VACACIONES';
-  if(t==='DD'||t==='DV'||t.includes('DETRA'))return 'DD';
-  if(t==='DSC'||t==='DC'||t.includes('DESCANSO COMPENSADO')||t.includes('COMPENSADO'))return 'DSC';
-  if(t==='SSS'||t==='SS'||t.includes('SALIDA SIN SERVICIO')||t.includes('SIN SERVICIO'))return 'SSS';
-  return t;
-};
-
-function detectTipoFromObject(x){
-  let direct=tipoCanon(x.tipo||x.type||x.tipo_dia||x.estado||x.codigo||x.code||x.clave_tipo||'');
-  if(direct)return direct;
-  let joined=[
-    x.clave_turno,x.turno,x.clave,x.shift,x.descripcion,x.resumen,x.detalle,x.nota,x.observaciones,x.observacion,x.texto
-  ].filter(Boolean).join(' ').toUpperCase();
-  if(joined.includes('DESCANSO COMPENSADO')||joined.includes('COMPENSADO')||/\bDSC\b|\bDC\b/.test(joined))return 'DSC';
-  if(joined.includes('SALIDA SIN SERVICIO')||joined.includes('SIN SERVICIO')||/\bSSS\b|\bSS\b/.test(joined))return 'SSS';
-  if(joined.includes('VACACIONES')||/\bVB\b/.test(joined))return 'VACACIONES';
-  if(joined.includes('DETRA')||/\bDD\b|\bDV\b/.test(joined))return 'DD';
-  if(joined.includes('DESCANSO')||/\bD\b/.test(joined))return 'DESCANSO';
-  return '';
 }
 
-dayFromAny=function(x){
-  let fecha=String(x.fecha||x.date||x.dia||x.day||'').slice(0,10);
-  if(!/^\d{4}-\d{2}-\d{2}$/.test(fecha))return null;
-  let tipo=detectTipoFromObject(x);
-  let turno=String(x.clave_turno||x.turno||x.clave||x.shift||'');
-  if(tipo==='SERVICIO'&&!turno)turno=String(x.id_turno||x.servicio||'');
-  if(tipo==='DSC')turno='DSC';
-  if(tipo==='SSS')turno='SSS';
-  if(tipo==='DESCANSO'&&!turno)turno='D';
-  if(tipo==='VACACIONES'&&!turno)turno='VB';
-  if(tipo==='DD'&&!turno)turno='DD';
-  return {fecha,clave_turno:turno,tipo_dia:tipo||x.tipo_dia||'',tipo_norm:tipo,raw:x};
-};
-
-function scanSpecialDaysDeep(obj){
-  let out=[];
-  function walk(v){
-    if(!v)return;
-    if(Array.isArray(v)){v.forEach(walk);return}
-    if(typeof v==='object'){
-      let d=dayFromAny(v);
-      if(d && ['DSC','SSS','DD','VACACIONES','DESCANSO'].includes(d.tipo_norm)) out.push(d);
-      Object.values(v).forEach(child=>{
-        if(child && (Array.isArray(child)||typeof child==='object')) walk(child);
-      });
+// Modo de apertura en Ajustes
+function setOpenModeV44(){
+  let v=document.getElementById('openModeV44')?.value||'calendario';
+  data.settings=data.settings||{};data.settings.openMode=v;save();
+  alert('Modo guardado: '+(v==='trabajo'?'Trabajo: abre detalle':'Descanso: abre calendario'));
+}
+const _enhanceSettings_v44=typeof enhanceSettings==='function'?enhanceSettings:null;
+if(_enhanceSettings_v44){
+  enhanceSettings=function(force){
+    _enhanceSettings_v44(force);
+    let cont=document.querySelector('#settings .detail')||document.querySelector('#settingsView .detail');
+    if(cont&&!document.getElementById('openModeBlockV44')){
+      let mode=data.settings?.openMode||'calendario';
+      cont.insertAdjacentHTML('beforeend','<div id="openModeBlockV44" class="settingsBlock"><h3>Modo de apertura</h3><p class="muted">Elige qué quieres ver al abrir la app.</p><select id="openModeV44" class="select"><option value="calendario" '+(mode==='calendario'?'selected':'')+'>Modo descanso: abrir calendario</option><option value="trabajo" '+(mode==='trabajo'?'selected':'')+'>Modo trabajo: abrir detalle de hoy</option></select><button class="btn primary" onclick="setOpenModeV44()">Guardar modo</button></div>');
     }
   }
-  walk(obj);
-  let map={}; out.forEach(d=>map[d.fecha]=d);
-  return Object.values(map).sort((a,b)=>a.fecha.localeCompare(b.fecha));
 }
 
-const _extractDaysFromMarco_v41 = extractDaysFromMarco;
-extractDaysFromMarco=function(obj){
-  let a=_extractDaysFromMarco_v41(obj)||[];
-  let b=scanSpecialDaysDeep(obj)||[];
-  let map={}; [...a,...b].forEach(d=>{if(d.fecha)map[d.fecha]=d});
-  return Object.values(map).sort((x,y)=>x.fecha.localeCompare(y.fecha));
-};
-
-const _status_v41=status;
-status=function(d){
-  if(!d)return 'empty';
-  let t=tipoCanon(d.tipo_norm||d.tipo_dia||d.tipo||d.raw?.tipo||d.raw?.type||detectTipoFromObject(d.raw||{}));
-  let turn=String(d.clave_turno||'').toUpperCase();
-  if(turn==='DSC'||turn==='DC'||t==='DSC')return 'dsc';
-  if(turn==='SSS'||turn==='SS'||t==='SSS')return 'sss';
-  if(t==='DESCANSO'||turn==='D')return 'rest';
-  if(t==='VACACIONES'||turn==='VB')return 'vac';
-  if(t==='DD'||t==='DV'||turn==='DD'||turn==='DV'||turn.startsWith('DD '))return 'dd';
-  if(turn==='LZ')return 'lz';
-  if(t==='SERVICIO')return 'work';
-  return _status_v41(d);
-};
-
-const _blockFor_v41=blockFor;
-blockFor=function(d){
-  if(!d)return null;
-  let st=status(d);
-  if(st!=='work')return null;
-  return _blockFor_v41(d);
-};
-
-const _typeBadge_v41=typeBadge;
-typeBadge=function(d,b){
-  let st=status(d);
-  let dot=d?.changed?'<i class="changedDot"></i>':'';
-  if(st==='dd')return dot+'<div class="badge dd">DD</div>';
-  if(st==='dsc')return dot+'<div class="badge dsc">DC</div>';
-  if(st==='sss')return dot+'<div class="badge sss">SS</div>';
-  return _typeBadge_v41(d,b);
-};
-
-const _selectDay_v41=selectDay;
-selectDay=function(ds){
-  let d=effectiveDay(ds),st=status(d);
-  if(d&&(st==='dsc'||st==='sss')){
-    selected=ds;render();
-    let title=new Date(ds+'T12:00:00').toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
-    let label=st==='dsc'?'Descanso compensado DC':'Salida sin servicio SS';
-    let html='<span class="pill" style="background:#d8f8e1;color:#34113b;border:1px solid #8a0f82">'+label+'</span><h2>'+title+'</h2><p class="muted">No hay desarrollo de servicio para este día.</p>';
-    html+=changePanelHtml(ds,dayData(ds),blockFor(dayData(ds)),d,null);
-    detail.innerHTML=html;scrollToDetail();return;
-  }
-  _selectDay_v41(ds);
-};
-
-// Forzar render estable y seleccionar hoy al abrir.
-const _render_v41=render;
+const _render_v44=render;
 render=function(){
-  _render_v41();
-  document.querySelectorAll('.day').forEach(el=>{
-    el.style.minHeight=window.innerWidth<=560?'78px':'82px';
-    el.style.height=window.innerWidth<=560?'78px':'82px';
-  });
-};
-
-function autoOpenTodayDetailV41(){
-  let todayDs=fmt(new Date());
-  if(effectiveDay(todayDs)){selected=todayDs; selectDay(todayDs); return}
-  if(selected&&effectiveDay(selected))selectDay(selected);
+  _render_v44();
+  const h=window.innerWidth<=560?'104px':'112px';
+  document.querySelectorAll('.day').forEach(el=>{el.style.minHeight=h;el.style.height=h});
 }
-setTimeout(autoOpenTodayDetailV41,150);
+
+// Abrir según modo
+function openInitialViewV44(){
+  let mode=data.settings?.openMode||'calendario';
+  let td=fmt(new Date());
+  if(mode==='trabajo'&&effectiveDay(td)){selectDay(td);return}
+  show('calendar');
+  if(effectiveDay(td)){selected=td;render();}
+}
+setTimeout(openInitialViewV44,180);
+
+
+// ===== v5.0 memoria estable, histórico y lector JSON =====
+const APP_VERSION='5.0', BACKUP_KEY='AppTurnosBackupsV50';
+data.settings=data.settings||{}; data.settings.openMode=data.settings.openMode||'calendario';
+function safeSetV50(k,v){try{localStorage.setItem(k,v);return true}catch(e){console.warn(e);return false}}
+function fechaArchivoMemoria(){let d=new Date();return pad(d.getDate())+'-'+pad(d.getMonth()+1)+'-'+d.getFullYear()+'_memoria_turnos.json'}
+function lightDataV50(){return{tipo:'AppTurnos_memoria_turnos',version:APP_VERSION,generado:new Date().toISOString(),formato_fecha:'dd-mm-aaaa',changes:data.changes||{},records:data.records||[],people:data.people||[],alarms:data.alarms||{},disabledAlarms:data.disabledAlarms||{},alarmSettings:data.alarmSettings||{},settings:data.settings||{},specialDays:data.specialDays||{},meta:{exportado_desde:'AppTurnosData'}}}
+function backupsV50(){try{return JSON.parse(localStorage.getItem(BACKUP_KEY)||'[]')}catch(e){return[]}}
+function saveBackupsV50(list){let o=[...list].sort((a,b)=>String(b.created).localeCompare(String(a.created)));let fav=o.filter(x=>x.favorite),rest=o.filter(x=>!x.favorite).slice(0,5);safeSetV50(BACKUP_KEY,JSON.stringify([...fav,...rest]))}
+function bytesV50(s){return new Blob([s||'']).size} function humanV50(n){return n>1048576?(n/1048576).toFixed(1)+' MB':n>1024?(n/1024).toFixed(1)+' KB':n+' B'}
+function fmtDateV50(iso){let d=new Date(iso);return isNaN(d)?(iso||''):pad(d.getDate())+'-'+pad(d.getMonth()+1)+'-'+d.getFullYear()+' '+pad(d.getHours())+':'+pad(d.getMinutes())}
+exportBackup=function(){const obj=lightDataV50(),txt=JSON.stringify(obj,null,2),name=fechaArchivoMemoria();let list=backupsV50();list.unshift({id:'b'+Date.now(),name,created:new Date().toISOString(),size:bytesV50(txt),favorite:false,data:obj});saveBackupsV50(list);downloadBlob(txt,name,'application/json');renderMemoryPanelV50()}
+function applyHistoryObjectV50(obj){data.changes={...(data.changes||{}),...(obj.changes||obj.data?.changes||{})};data.records=[...(obj.records||obj.data?.records||[]),...(data.records||[])];data.people=[...new Set([...(data.people||[]),...(obj.people||obj.data?.people||[])])];data.alarms={...(data.alarms||{}),...(obj.alarms||obj.data?.alarms||{})};data.disabledAlarms={...(data.disabledAlarms||{}),...(obj.disabledAlarms||obj.data?.disabledAlarms||{})};data.alarmSettings={...(data.alarmSettings||{}),...(obj.alarmSettings||obj.data?.alarmSettings||{})};data.settings={...(data.settings||{}),...(obj.settings||obj.data?.settings||{})};data.specialDays={...(data.specialDays||{}),...(obj.specialDays||obj.data?.specialDays||{})};save();render()}
+function importHistoryBackup(ev){let f=ev.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{applyHistoryObjectV50(JSON.parse(r.result));if(window.importStatus)importStatus.innerHTML='<span class="ok">Histórico importado correctamente.</span>';if(selected)selectDay(selected)}catch(e){if(window.importStatus)importStatus.innerHTML='<span class="err">Error histórico: '+e.message+'</span>'}};r.readAsText(f);ev.target.value=''}
+restoreHistoricalMemory=importHistoryBackup;
+function renderMemoryPanelV50(){let list=backupsV50(),total=list.reduce((a,b)=>a+(b.size||bytesV50(JSON.stringify(b.data||{}))),0),box=document.getElementById('memoryPanelV50');if(!box)return;box.innerHTML='<div class="memCard"><h3>Memoria</h3><p class="muted">Copias locales guardadas en este dispositivo.</p><p><b>Memoria utilizada:</b> '+humanV50(total)+' · '+list.length+' copias</p><div class="memActions"><button class="btn primary" onclick="exportBackup()">➕ Crear copia ahora</button><button class="btn" onclick="freeSpaceV50()">🧹 Liberar espacio</button><button class="btn danger" onclick="deleteAllBackupsV50()">🗑️ Eliminar todas</button></div></div>'+(list.length?'<div class="memCard">'+list.map(b=>'<div class="memRow"><div><b>'+esc(b.favorite?'⭐ '+b.name:b.name)+'</b><div class="memSmall">'+fmtDateV50(b.created)+' · '+humanV50(b.size||bytesV50(JSON.stringify(b.data||{})))+'</div></div><div class="memActions"><button class="btn" onclick="restoreBackupV50(\''+b.id+'\')">📂 Restaurar</button><button class="btn" onclick="exportOneBackupV50(\''+b.id+'\')">📤</button><button class="btn" onclick="renameBackupV50(\''+b.id+'\')">✏️</button><button class="btn" onclick="favBackupV50(\''+b.id+'\')">⭐</button><button class="btn danger" onclick="deleteBackupV50(\''+b.id+'\')">🗑️</button></div></div>').join('')+'</div>':'<div class="memCard muted">Todavía no hay copias locales.</div>')}
+function restoreBackupV50(id){let b=backupsV50().find(x=>x.id===id);if(!b)return;if(!confirm('¿Restaurar esta copia?'))return;applyHistoryObjectV50(b.data||{});renderMemoryPanelV50()}
+function exportOneBackupV50(id){let b=backupsV50().find(x=>x.id===id);if(b)downloadBlob(JSON.stringify(b.data||{},null,2),b.name||fechaArchivoMemoria(),'application/json')}
+function renameBackupV50(id){let l=backupsV50(),b=l.find(x=>x.id===id);if(!b)return;let n=prompt('Nuevo nombre',b.name);if(!n)return;b.name=n.endsWith('.json')?n:n+'.json';saveBackupsV50(l);renderMemoryPanelV50()}
+function favBackupV50(id){let l=backupsV50(),b=l.find(x=>x.id===id);if(!b)return;b.favorite=!b.favorite;saveBackupsV50(l);renderMemoryPanelV50()}
+function deleteBackupV50(id){let l=backupsV50();if(l.length<=1&&!confirm('Es la única copia. ¿Eliminarla?'))return;if(!confirm('Esta acción no se puede deshacer. ¿Eliminar copia?'))return;saveBackupsV50(l.filter(x=>x.id!==id));renderMemoryPanelV50()}
+function deleteAllBackupsV50(){let l=backupsV50();if(!l.length)return;if(!confirm('Eliminar todas las copias?'))return;if(l.length===1&&!confirm('Solo hay una copia. Confirma de nuevo.'))return;safeSetV50(BACKUP_KEY,'[]');renderMemoryPanelV50()}
+function freeSpaceV50(){let l=backupsV50();if(l.length<=1)return;if(!confirm('Dejar solo la más reciente y favoritas?'))return;let s=[...l].sort((a,b)=>String(b.created).localeCompare(String(a.created))),keep={[s[0].id]:true};s.filter(x=>x.favorite).forEach(x=>keep[x.id]=true);saveBackupsV50(s.filter(x=>keep[x.id]));renderMemoryPanelV50()}
+function injectMemorySettingsV50(){let root=document.querySelector('#settings')||document.querySelector('#settingsView')||document.body;if(document.getElementById('memoryPanelV50'))return;let div=document.createElement('div');div.id='memoryPanelV50';div.className='card';div.style.margin='16px';root.appendChild(div);renderMemoryPanelV50()}
+function setOpenModeV50(){let v=document.getElementById('openModeV50')?.value||'calendario';data.settings=data.settings||{};data.settings.openMode=v;save();alert('Modo guardado: '+(v==='trabajo'?'Trabajo':'Descanso'))}
+function injectOpenModeV50(){let root=document.querySelector('#settings')||document.querySelector('#settingsView')||document.body;if(document.getElementById('openModeBlockV50'))return;let mode=data.settings?.openMode||'calendario',div=document.createElement('div');div.id='openModeBlockV50';div.className='card';div.style.margin='16px';div.innerHTML='<h3>Modo de apertura</h3><select id="openModeV50" class="select"><option value="calendario" '+(mode==='calendario'?'selected':'')+'>Modo descanso: abrir calendario</option><option value="trabajo" '+(mode==='trabajo'?'selected':'')+'>Modo trabajo: abrir detalle de hoy</option></select><button class="btn primary" onclick="setOpenModeV50()">Guardar modo</button>';root.appendChild(div)}
+function canonTipoV50(v){let t=String(v||'').trim().toUpperCase();if(!t)return'';if(t.includes('DESCANSO COMPENSADO')||t==='DSC'||t==='DC'||t.includes('COMPENSADO'))return'DSC';if(t.includes('SALIDA SIN SERVICIO')||t==='SSS'||t==='SS'||t.includes('SIN SERVICIO'))return'SSS';if(t==='DESCANSO'||t==='D')return'DESCANSO';if(t==='VACACIONES'||t==='VB'||t==='VAC')return'VACACIONES';if(t==='DD'||t==='DV'||t.includes('DETRA'))return'DD';if(t==='SERVICIO'||t==='TRABAJO')return'SERVICIO';return t}
+function dayLetterV50(ds){return 'DLMXJVS'[new Date(ds+'T12:00:00').getDay()]}function daysMatchV50(days,l){let d=String(days||'').toUpperCase().replace(/\s+/g,'');return !d||d==='LMXJVSD'||d==='L-D'||d==='TODOS'||d.includes(l)}function tipoBlockV50(b){return canonTipoV50(b?.tipo_norm||b?.tipo||b?.raw?.tipo||b?.bloque||b?.raw?.bloque||b?.etiqueta||b?.raw?.etiqueta||b?.detalle||b?.raw?.detalle||'')}
+const _normBlocks_v50=normBlocks;normBlocks=function(obj){let arr=obj.blocks||obj.validated_blocks||obj.turnos||obj.servicios||obj.services||obj.data||[];if(!Array.isArray(arr))arr=[];return arr.map(x=>{let txt=[x.detalle,x.resumen,x.descripcion,x.tareas,x.servicio].filter(Boolean).join(' / '),tipo=canonTipoV50(x.tipo||x.type||x.tipo_dia||x.estado||x.bloque||x.etiqueta||txt),special=['DSC','SSS','DESCANSO','VACACIONES','DD'].includes(tipo),ini=special?'':(pickTime(x,['presentacion','hora_presentacion','inicio','start','desde','hora_inicio'])||firstTimeText(txt)),fn=special?'':(pickTime(x,['finalizacion','hora_fin','fin','final','end','hasta','hora_final','final_hora'])||lastTime(txt));return{turno:String(x.turno||x.clave_turno||x.clave||x.id||''),bloque:String(x.bloque||x.block||''),dias:String(x.dias||x.dias_aplicacion||x.days||''),tipo:tipo||x.tipo||'',tipo_norm:tipo,etiqueta:x.etiqueta||'',inicio:ini,fin:fn,final:fn,duracion:special?'':(x.duracion||x.jornada||''),resumen:special?(x.detalle||tipo):(x.resumen||x.descripcion||x.tareas||x.servicio||x.detalle||''),movimientos:special?[]:(x.movimientos||x.moves||[]),pagina:x.pagina||x.page||x.pdf_page||'',raw:x}}).filter(x=>x.turno)}
+blockFor=function(d){if(!d)return null;let turn=String(d.clave_turno||'').replace(/^DD\s*/,'').trim();if(!turn||['LZ','D','VB','DD','DSC','SSS'].includes(turn))return null;let l=dayLetterV50(d.fecha),c=(data.blocks||[]).filter(b=>String(b.turno)===turn&&daysMatchV50(b.dias,l));if(!c.length)c=(data.blocks||[]).filter(b=>String(b.turno)===turn);let sp=c.find(b=>['DSC','SSS','DESCANSO','VACACIONES','DD'].includes(tipoBlockV50(b)));return sp||c.find(b=>tipoBlockV50(b)==='SERVICIO')||c[0]||null}
+const _status_v50=status;status=function(d){if(!d)return'empty';let b=null;try{b=blockFor(d)}catch(e){}let t=canonTipoV50(d.tipo_norm||d.tipo_dia||d.tipo||d.raw?.tipo||'')||tipoBlockV50(b),turn=String(d.clave_turno||'').toUpperCase();if(t==='DSC'||turn==='DSC')return'dsc';if(t==='SSS'||turn==='SSS')return'sss';if(t==='DESCANSO'||turn==='D')return'rest';if(t==='VACACIONES'||turn==='VB')return'vac';if(t==='DD'||turn==='DD'||turn.startsWith('DD '))return'dd';if(turn==='LZ')return'lz';return _status_v50(d)}
+const _typeBadge_v50=typeBadge;typeBadge=function(d,b){let st=status(d),dot=d?.changed?'<i class="changedDot"></i>':'';if(st==='dsc')return dot+'<div class="badge dsc">DSC</div>';if(st==='sss')return dot+'<div class="badge sss">SSS</div>';if(st==='dd')return dot+'<div class="badge dd">DD</div>';return _typeBadge_v50(d,b)}
+const _render_v50=render;render=function(){_render_v50();const h=window.innerWidth<=560?'106px':'112px';document.querySelectorAll('.day').forEach(el=>{el.style.minHeight=h;el.style.height=h})}
+setTimeout(()=>{injectMemorySettingsV50();injectOpenModeV50();let td=fmt(new Date());if(data.settings?.openMode==='trabajo'&&effectiveDay(td))selectDay(td)},250);
 
 checkLogin();render();
-</script>
-<script>
-/* FIX definitivo: tras cada render, mantener tamaño grande uniforme */
-(function(){
-  const oldRender = window.render;
-  if (typeof oldRender === 'function') {
-    window.render = function(){
-      oldRender();
-      const h = window.innerWidth <= 560 ? '92px' : '96px';
-      document.querySelectorAll('.day').forEach(el=>{
-        el.style.minHeight = h;
-        el.style.height = h;
-      });
-    };
-  }
-})();
-</script>
-</body></html>
+</script></body></html>
