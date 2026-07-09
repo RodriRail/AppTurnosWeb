@@ -223,6 +223,20 @@
 @media(max-width:560px){.day,.day.outsideMonth{min-height:108px!important;height:108px!important}.badge.work{transform:translateY(-5px)!important;min-height:68px!important;height:68px!important}}
 .memActive{background:#fff7ff;border:2px solid var(--r)!important}.memTag{display:inline-block;border-radius:999px;padding:3px 8px;background:#f2e3f4;color:var(--r);font-weight:950;font-size:12px;margin-left:6px}
 </style>
+
+<style id="v531-ddworked-css">
+.badge.ddwork.ddworked{
+  background:repeating-linear-gradient(135deg,#ffe0e7 0 10px,#ffe0e7 10px 16px,#8a0f82 16px 20px)!important;
+  border-color:#8a0f82!important;
+  color:#35113d!important;
+  position:relative!important;
+  overflow:hidden!important;
+}
+.badge.ddwork.ddworked:before{display:none!important;content:none!important}
+.badge.ddwork.ddworked .ddSmall{font-size:10px!important;color:#be123c!important;font-weight:950!important}
+.badge.ddwork.ddworked .ddTurn{font-size:17px!important;color:#35113d!important;font-weight:950!important}
+.ddWorkedNo{border-color:#c20d34!important;color:#c20d34!important}
+</style>
 </head><body>
 <div id="login" class="login"><div class="loginbox"><div class="logo">renfe</div><h1>App Turnos Pro <span class="ver">v5.2</span></h1><p class="muted">Acceso privado para administrar datos.</p><input id="user" class="input" placeholder="Usuario"><input id="pass" class="input" placeholder="Contraseña" type="password"><label style="display:flex;gap:8px;align-items:center;margin:8px 0;font-weight:800"><input id="remember" type="checkbox" checked> Recordar sesión 24 horas</label><button class="btn primary" style="width:100%" onclick="doLogin()">Entrar</button><p id="loginMsg" class="err"></p></div></div>
 <header><div class="top"><div class="logo">renfe</div><div><div class="title">App Turnos Pro <span class="ver">v5.2</span></div><div class="sub">Calendario visual · cambios · marcos · IndexedDB</div></div><button class="dataToggle" onclick="toggleAdmin()">Datos ▾</button></div><div id="adminPanel" class="adminPanel hidden"><b>Importación privada</b><p class="muted">Archivos guardados solo en este dispositivo.</p><button class="btn primary" onclick="pick('yearFile')">📅 Importar gráfico anual</button><button class="btn primary" onclick="pick('marcoFile')">🚄 Importar Marco mensual JSON</button><button class="btn" onclick="pick('pdfFile')">📄 Importar PDF Marco</button><button class="btn" onclick="exportExcel()">📤 Exportar Excel</button><button class="btn" onclick="exportBackup()">💾 Copia seguridad JSON</button><button class="btn" onclick="pick('historyFile')">📥 Importar histórico de cambios</button><button class="btn" onclick="clearData()">Borrar datos locales</button><div id="importStatus" class="muted"></div></div><input id="yearFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'year')"><input id="marcoFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'marco')"><input id="pdfFile" type="file" accept="application/pdf,.pdf" class="hidden" onchange="importPdf(event)"><input id="historyFile" type="file" accept=".json,application/json" class="hidden" onchange="importHistoryBackup(event)"></header>
@@ -857,7 +871,131 @@ async function bootIndexedDBV52(){
     setStatusV52('IndexedDB no disponible. La app usará localStorage.',false);
   }
 }
-try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v5.2');document.title='App Turnos Pro v5.2'}catch(e){}
+
+// ===== v5.3: DD del cuadro anual siempre rojo y con siglas DD =====
+function isDDAnnualV53(d){
+  if(!d)return false;
+  const vals=[d.clave_turno,d.turno,d.clave,d.shift,d.tipo_dia,d.tipo,d.type,d.tipo_norm,d.raw&&d.raw.clave_turno,d.raw&&d.raw.turno,d.raw&&d.raw.tipo,d.raw&&d.raw.tipo_dia]
+    .filter(v=>v!==undefined&&v!==null)
+    .map(v=>String(v).trim().toUpperCase());
+  return vals.some(v=>v==='DD'||v==='DV'||v.includes('DETRA'));
+}
+const _normCalendar_before_v53=normCalendar;
+normCalendar=function(obj){
+  let arr=Array.isArray(obj)?obj:(obj.calendar||obj.days||obj.cuadro||obj.data||[]);
+  return arr.map(x=>{
+    let fecha=String(x.fecha||x.date||x.dia||x.day||'').slice(0,10);
+    let turno=String(x.clave_turno||x.turno||x.clave||x.shift||'').trim().toUpperCase();
+    let tipo=String(x.tipo_dia||x.tipo||x.type||'').trim();
+    let rawText=[turno,tipo,x.estado,x.codigo,x.label,x.etiqueta].filter(Boolean).join(' ').toUpperCase();
+    if(turno==='DD'||turno==='DV'||rawText.includes('DETRA')){turno='DD';tipo='DD';}
+    return {fecha,clave_turno:turno,tipo_dia:tipo,tipo_norm:tipo,raw:x};
+  }).filter(x=>/^\d{4}-\d{2}-\d{2}$/.test(x.fecha));
+}
+const _status_before_v53=status;
+status=function(d){
+  if(isDDAnnualV53(d))return 'dd';
+  return _status_before_v53(d);
+}
+const _blockFor_before_v53=blockFor;
+blockFor=function(d){
+  if(isDDAnnualV53(d))return null;
+  return _blockFor_before_v53(d);
+}
+const _typeBadge_before_v53=typeBadge;
+typeBadge=function(d,b){
+  let dot=d?.changed?'<i class="changedDot"></i>':'';
+  if(isDDAnnualV53(d))return dot+'<div class="badge dd">DD</div>';
+  return _typeBadge_before_v53(d,b);
+}
+const _selectDay_before_v53=selectDay;
+selectDay=function(ds){
+  let d=effectiveDay(ds);
+  if(isDDAnnualV53(d)){
+    selected=ds;render();
+    let title=new Date(ds+'T12:00:00').toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+    let html='<span class="pill" style="background:#ffe0e7;color:#c20d34;border:1px solid #ff9aad">Detraíble DD</span><h2>'+title+'</h2><p class="muted">Día detraíble leído del cuadro anual. Se muestra en rojo y sin desarrollo de turno.</p>';
+    html+=changePanelHtml(ds,dayData(ds),null,d,null);
+    detail.innerHTML=html;scrollToDetail();return;
+  }
+  _selectDay_before_v53(ds);
+}
+function listDetraiblesV53(monthIndex){
+  return (data.calendar||[]).filter(d=>{
+    if(!isDDAnnualV53(d))return false;
+    let dt=new Date(d.fecha+'T12:00:00');
+    return dt.getMonth()===monthIndex;
+  }).map(d=>Number(d.fecha.slice(8,10))).sort((a,b)=>a-b);
+}
+try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v5.3');document.title='App Turnos Pro v5.3'}catch(e){}
+
+try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v5.3');document.title='App Turnos Pro v5.3'}catch(e){}
+
+
+// ===== v5.3.1: DD trabajado = fondo rojo + rayas moradas + horas del turno asignado =====
+function isOriginalDDV531(ds){
+  return isDDAnnualV53(dayData(ds));
+}
+const _effectiveDay_before_v531=effectiveDay;
+effectiveDay=function(ds){
+  const base=dayData(ds), ch=data.changes&&data.changes[ds];
+  if(ch && isDDAnnualV53(base) && ch.turno && !ch.tipo){
+    return {...(base||{fecha:ds}),fecha:ds,clave_turno:'DD '+String(ch.turno),dd_turno:String(ch.turno),tipo_dia:'Detraíble trabajado',tipo_norm:'DD_TRABAJADO',changed:true,original:base,change:ch};
+  }
+  return _effectiveDay_before_v531(ds);
+}
+const _status_before_v531=status;
+status=function(d){
+  if(d && (d.tipo_norm==='DD_TRABAJADO'||String(d.tipo_dia||'').toLowerCase().includes('detraíble trabajado')||String(d.tipo_dia||'').toLowerCase().includes('detraible trabajado')))return 'ddwork';
+  return _status_before_v531(d);
+}
+const _blockFor_before_v531=blockFor;
+blockFor=function(d){
+  if(d && status(d)==='ddwork'){
+    let turn=String(d.dd_turno||d.clave_turno||'').replace(/^DD\s*/i,'').trim();
+    if(!turn)return null;
+    let l=typeof dayLetterV50==='function'?dayLetterV50(d.fecha):dayLetter(d.fecha);
+    let blocks=(data.blocks||[]).filter(b=>String(b.turno)===turn && (typeof daysMatchV50==='function'?daysMatchV50(b.dias,l):(!b.dias||String(b.dias).toUpperCase().includes(l))));
+    if(!blocks.length)blocks=(data.blocks||[]).filter(b=>String(b.turno)===turn);
+    return blocks.find(b=>String(b.tipo_norm||b.tipo||'').toUpperCase()==='SERVICIO')||blocks[0]||null;
+  }
+  return _blockFor_before_v531(d);
+}
+const _typeBadge_before_v531=typeBadge;
+typeBadge=function(d,b){
+  if(status(d)==='ddwork'){
+    let dot=d?.changed?'<i class="changedDot"></i>':'';
+    let turn=String(d.dd_turno||'').trim();
+    let ini=blockIni(b),fin=blockFin(b);
+    return dot+'<div class="shiftNo ddWorkedNo">DD</div><div class="badge ddwork ddworked"><div class="ddSmall">DD trabajado</div><div class="ddTurn">'+esc(turn||'—')+'</div><div class="timeTop">'+esc(ini||'--:--')+'</div><div class="sep">↓</div><div class="timeBot">'+esc(fin||'--:--')+'</div></div>';
+  }
+  return _typeBadge_before_v531(d,b);
+}
+const _selectDay_before_v531=selectDay;
+selectDay=function(ds){
+  let d=effectiveDay(ds),b=blockFor(d);
+  if(status(d)==='ddwork'){
+    selected=ds;render();
+    let title=new Date(ds+'T12:00:00').toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+    let ini=blockIni(b),fin=blockFin(b);
+    let html='<span class="pill" style="background:#ffe0e7;color:#c20d34;border:1px solid #ff9aad">DD trabajado</span><h2>'+title+'</h2><div class="summaryCard"><div class="summaryTop"><div><div class="summaryTitle">DD → Turno '+esc(d.dd_turno||'')+'</div><div class="summaryDate">Detraíble trabajado por cambio</div></div><div class="servicePill">Cambio</div></div><div class="summaryTimes"><div><small>Inicio</small><b>'+esc(ini||'—')+'</b></div><div class="summaryArrow">→</div><div><small>Final</small><b>'+esc(fin||'—')+'</b></div></div></div>';
+    if(b)html+=timelineHtml(b);
+    html+=changePanelHtml(ds,dayData(ds),null,d,b);
+    detail.innerHTML=html;scrollToDetail();return;
+  }
+  return _selectDay_before_v531(ds);
+}
+const _changePanelHtml_before_v531=changePanelHtml;
+changePanelHtml=function(ds,base,baseB,d,b){
+  let html=_changePanelHtml_before_v531(ds,base,baseB,d,b);
+  if(isDDAnnualV53(base)){
+    html=html.replace('placeholder="Nuevo turno, LZ, D o DD 123"','placeholder="Escribe turno asignado, ej. 124"');
+    html=html.replace('Comandos: <b>LZ</b> licencia · <b>D</b> descanso · <b>DD 123</b> detraíble pinchado · o escribe número de turno.','Este día era <b>DD</b>. Si escribes un turno, se marcará como <b>DD trabajado</b>: rojo con rayas moradas y horas del turno asignado.');
+    html=html.replace('Comandos: <b>LZ</b> licencia · <b>DD 123</b> detraíble pinchado con turno asignado · o escribe el número de turno.','Este día era <b>DD</b>. Si escribes un turno, se marcará como <b>DD trabajado</b>: rojo con rayas moradas y horas del turno asignado.');
+  }
+  return html;
+}
+
 setTimeout(bootIndexedDBV52,60);
 
 checkLogin();render();
