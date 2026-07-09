@@ -237,6 +237,36 @@
 .badge.ddwork.ddworked .ddTurn{font-size:17px!important;color:#35113d!important;font-weight:950!important}
 .ddWorkedNo{border-color:#c20d34!important;color:#c20d34!important}
 </style>
+
+
+<style id="v54-prioridad-visual-css">
+/* v5.4: prioridad visual única para evitar pisados entre versiones anteriores */
+.badge.dd{
+  background:#ffe0e7!important;
+  border-color:#ff9aad!important;
+  color:#c20d34!important;
+  font-size:20px!important;
+  font-weight:950!important;
+}
+.badge.ddworkFinal{
+  background:repeating-linear-gradient(135deg,#ffe0e7 0 10px,#edd0f4 10px 15px,#ffe0e7 15px 24px)!important;
+  border-color:#8a0f82!important;
+  color:#3b123f!important;
+  min-height:70px!important;
+  height:70px!important;
+  transform:translateY(-5px)!important;
+}
+.badge.ddworkFinal .ddSmall{font-size:10px!important;font-weight:950!important;color:#be123c!important;line-height:1!important}
+.badge.ddworkFinal .ddTurn{font-size:17px!important;font-weight:950!important;color:#411045!important;line-height:1.05!important}
+.badge.dsc,.badge.sss{
+  background:repeating-linear-gradient(135deg,#d8f8e1 0 9px,#b65ac0 9px 13px,#d8f8e1 13px 22px)!important;
+  border-color:#8a0f82!important;
+  color:#34113b!important;
+  font-size:20px!important;
+  font-weight:950!important;
+}
+.versionStampV54{font-size:11px;color:#75627a;font-weight:900;margin-top:1px}
+</style>
 </head><body>
 <div id="login" class="login"><div class="loginbox"><div class="logo">renfe</div><h1>App Turnos Pro <span class="ver">v5.2</span></h1><p class="muted">Acceso privado para administrar datos.</p><input id="user" class="input" placeholder="Usuario"><input id="pass" class="input" placeholder="Contraseña" type="password"><label style="display:flex;gap:8px;align-items:center;margin:8px 0;font-weight:800"><input id="remember" type="checkbox" checked> Recordar sesión 24 horas</label><button class="btn primary" style="width:100%" onclick="doLogin()">Entrar</button><p id="loginMsg" class="err"></p></div></div>
 <header><div class="top"><div class="logo">renfe</div><div><div class="title">App Turnos Pro <span class="ver">v5.2</span></div><div class="sub">Calendario visual · cambios · marcos · IndexedDB</div></div><button class="dataToggle" onclick="toggleAdmin()">Datos ▾</button></div><div id="adminPanel" class="adminPanel hidden"><b>Importación privada</b><p class="muted">Archivos guardados solo en este dispositivo.</p><button class="btn primary" onclick="pick('yearFile')">📅 Importar gráfico anual</button><button class="btn primary" onclick="pick('marcoFile')">🚄 Importar Marco mensual JSON</button><button class="btn" onclick="pick('pdfFile')">📄 Importar PDF Marco</button><button class="btn" onclick="exportExcel()">📤 Exportar Excel</button><button class="btn" onclick="exportBackup()">💾 Copia seguridad JSON</button><button class="btn" onclick="pick('historyFile')">📥 Importar histórico de cambios</button><button class="btn" onclick="clearData()">Borrar datos locales</button><div id="importStatus" class="muted"></div></div><input id="yearFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'year')"><input id="marcoFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'marco')"><input id="pdfFile" type="file" accept="application/pdf,.pdf" class="hidden" onchange="importPdf(event)"><input id="historyFile" type="file" accept=".json,application/json" class="hidden" onchange="importHistoryBackup(event)"></header>
@@ -927,9 +957,9 @@ function listDetraiblesV53(monthIndex){
     return dt.getMonth()===monthIndex;
   }).map(d=>Number(d.fecha.slice(8,10))).sort((a,b)=>a-b);
 }
-try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v5.3');document.title='App Turnos Pro v5.3'}catch(e){}
+try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v5.3');document.title='App Turnos Pro v5.4'}catch(e){}
 
-try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v5.3');document.title='App Turnos Pro v5.3'}catch(e){}
+try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v5.3');document.title='App Turnos Pro v5.4'}catch(e){}
 
 
 // ===== v5.3.1: DD trabajado = fondo rojo + rayas moradas + horas del turno asignado =====
@@ -995,6 +1025,152 @@ changePanelHtml=function(ds,base,baseB,d,b){
   }
   return html;
 }
+
+
+// ===== v5.4: una sola prioridad visual final para evitar que se pisen estados =====
+const APP_VERSION_V54='5.4';
+const APP_UPDATED_AT_V54='09/07/2026 05:40';
+function setVersionV54(){
+  try{
+    document.title='App Turnos Pro v'+APP_VERSION_V54;
+    document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+APP_VERSION_V54);
+    const sub=document.querySelector('.sub');
+    if(sub){
+      sub.textContent='Calendario visual · cambios · histórico de marcos';
+      if(!document.getElementById('versionStampV54')) sub.insertAdjacentHTML('afterend','<div id="versionStampV54" class="versionStampV54">Última actualización: '+APP_UPDATED_AT_V54+'</div>');
+      else document.getElementById('versionStampV54').textContent='Última actualización: '+APP_UPDATED_AT_V54;
+    }
+  }catch(e){}
+}
+function canonTipoV54(v){
+  let t=String(v||'').trim().toUpperCase();
+  if(!t)return'';
+  if(t.includes('DD TRABAJADO')||t.includes('DETRAÍBLE TRABAJADO')||t.includes('DETRAIBLE TRABAJADO'))return'DD_TRABAJADO';
+  if(t==='DD'||t==='DV'||t.includes('DETRA'))return'DD';
+  if(t.includes('DESCANSO COMPENSADO')||t==='DSC'||t==='DC'||t.includes('COMPENSADO'))return'DSC';
+  if(t.includes('SALIDA SIN SERVICIO')||t==='SSS'||t==='SS'||t.includes('SIN SERVICIO'))return'SSS';
+  if(t==='DESCANSO'||t==='D'||t==='REST')return'DESCANSO';
+  if(t==='VACACIONES'||t==='VAC'||t==='VB')return'VACACIONES';
+  if(t==='SERVICIO'||t==='TRABAJO'||t==='WORK')return'SERVICIO';
+  return t;
+}
+function dayLetterV54(ds){return 'DLMXJVS'[new Date(ds+'T12:00:00').getDay()]||''}
+function daysMatchV54(days,l){
+  let d=String(days||'').toUpperCase().replace(/\s+/g,'');
+  if(!d||d==='L-D'||d==='LD'||d==='TODOS'||d==='LMXJVSD'||d==='DLMXJVS')return true;
+  return d.includes(l);
+}
+function dayTipoV54(d){
+  if(!d)return'';
+  let vals=[d.tipo_norm,d.tipo_dia,d.tipo,d.type,d.estado,d.codigo,d.clave_turno,d.turno,d.clave,d.shift,d.raw&&d.raw.tipo_norm,d.raw&&d.raw.tipo_dia,d.raw&&d.raw.tipo,d.raw&&d.raw.type,d.raw&&d.raw.estado,d.raw&&d.raw.codigo,d.raw&&d.raw.clave_turno,d.raw&&d.raw.turno,d.raw&&d.raw.clave,d.raw&&d.raw.shift]
+    .filter(v=>v!==undefined&&v!==null).map(canonTipoV54);
+  return vals.find(v=>['DD_TRABAJADO','DD','DSC','SSS','DESCANSO','VACACIONES'].includes(v))||'';
+}
+function blockTipoV54(b){
+  if(!b)return'';
+  let vals=[b.tipo_norm,b.tipo,b.type,b.bloque,b.etiqueta,b.resumen,b.detalle,b.raw&&b.raw.tipo_norm,b.raw&&b.raw.tipo,b.raw&&b.raw.type,b.raw&&b.raw.bloque,b.raw&&b.raw.etiqueta,b.raw&&b.raw.detalle]
+    .filter(v=>v!==undefined&&v!==null).map(canonTipoV54);
+  return vals.find(v=>['DD','DSC','SSS','DESCANSO','VACACIONES','SERVICIO'].includes(v))||'';
+}
+function findBlockV54(turn,fecha,mode){
+  turn=String(turn||'').replace(/^DD\s*/i,'').trim();
+  if(!turn||['LZ','D','VB','DD','DSC','SSS'].includes(turn.toUpperCase()))return null;
+  let l=dayLetterV54(fecha), all=(data.blocks||[]).filter(b=>String(b.turno)===turn);
+  let c=all.filter(b=>daysMatchV54(b.dias,l));
+  if(!c.length)c=all;
+  if(mode==='service')return c.find(b=>blockTipoV54(b)==='SERVICIO')||c.find(b=>!['DD','DSC','SSS','DESCANSO','VACACIONES'].includes(blockTipoV54(b)))||c[0]||null;
+  let special=c.find(b=>['DD','DSC','SSS','DESCANSO','VACACIONES'].includes(blockTipoV54(b)));
+  return special||c.find(b=>blockTipoV54(b)==='SERVICIO')||c[0]||null;
+}
+function finalStatusV54(d){
+  if(!d)return'empty';
+  let t=dayTipoV54(d);
+  let b=findBlockV54(d.dd_turno||d.clave_turno,d.fecha);
+  let bt=blockTipoV54(b);
+  let turn=String(d.clave_turno||'').toUpperCase().trim();
+  if(t==='DD_TRABAJADO'||turn.startsWith('DD ')||d.dd_turno)return'ddwork';
+  if(t==='DD'||turn==='DD'||turn==='DV')return'dd';
+  if(t==='DSC'||bt==='DSC'||turn==='DSC'||turn==='DC')return'dsc';
+  if(t==='SSS'||bt==='SSS'||turn==='SSS'||turn==='SS')return'sss';
+  if(t==='DESCANSO'||bt==='DESCANSO'||turn==='D')return'rest';
+  if(t==='VACACIONES'||bt==='VACACIONES'||turn==='VB')return'vac';
+  if(turn==='LZ'||t==='LICENCIA')return'lz';
+  return'work';
+}
+const _effectiveDay_before_v54=effectiveDay;
+effectiveDay=function(ds){
+  const base=dayData(ds), ch=data.changes&&data.changes[ds];
+  const baseStatus=finalStatusV54(base);
+  if(ch && baseStatus==='dd' && ch.turno && !ch.tipo){
+    return {...(base||{fecha:ds}),fecha:ds,clave_turno:'DD '+String(ch.turno),dd_turno:String(ch.turno),tipo_dia:'DD trabajado',tipo_norm:'DD_TRABAJADO',changed:true,original:base,change:ch};
+  }
+  return _effectiveDay_before_v54(ds);
+};
+status=function(d){return finalStatusV54(d)};
+blockFor=function(d){
+  if(!d)return null;
+  const st=finalStatusV54(d);
+  if(st==='ddwork')return findBlockV54(d.dd_turno||String(d.clave_turno||'').replace(/^DD\s*/i,''),d.fecha,'service');
+  if(st==='work')return findBlockV54(d.clave_turno,d.fecha,'any');
+  if(st==='dsc'||st==='sss'||st==='rest'||st==='vac'||st==='dd')return findBlockV54(d.clave_turno,d.fecha,'any');
+  return null;
+};
+typeBadge=function(d,b){
+  let st=finalStatusV54(d), dot=d?.changed?'<i class="changedDot"></i>':'';
+  if(st==='dd')return dot+'<div class="badge dd">DD</div>';
+  if(st==='ddwork'){
+    let turn=String(d.dd_turno||String(d.clave_turno||'').replace(/^DD\s*/i,'')).trim();
+    let bb=b||blockFor(d), ini=blockIni(bb), fin=blockFin(bb);
+    return dot+'<div class="shiftNo">DD</div><div class="badge ddworkFinal"><div class="ddSmall">DD trabajado</div><div class="ddTurn">'+esc(turn||'—')+'</div><div class="timeTop">'+esc(ini||'--:--')+'</div><div class="sep">↓</div><div class="timeBot">'+esc(fin||'--:--')+'</div></div>';
+  }
+  if(st==='dsc')return dot+'<div class="badge dsc">DSC</div>';
+  if(st==='sss')return dot+'<div class="badge sss">SSS</div>';
+  if(st==='rest')return dot+'<div class="badge rest"><div class="bigD">D</div></div>';
+  if(st==='vac')return dot+'<div class="badge vac">VB</div>';
+  if(st==='lz')return dot+'<div class="badge lz"><div class="bigLZ">LZ</div></div>';
+  let ini=blockIni(b),fin=blockFin(b);
+  return dot+'<div class="shiftNo">'+esc(String(d?.clave_turno||''))+'</div><div class="badge work"><div class="timeTop">'+(ini||'--:--')+'</div><div class="sep">↓</div><div class="timeBot">'+(fin||'--:--')+'</div></div>';
+};
+selectDay=function(ds){
+  selected=ds;render();
+  let d=effectiveDay(ds), base=dayData(ds), b=blockFor(d), baseB=blockFor(base), st=finalStatusV54(d);
+  let title=new Date(ds+'T12:00:00').toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+  let html='';
+  if(st==='dd'){
+    html='<span class="pill" style="background:#ffe0e7;color:#c20d34;border:1px solid #ff9aad">Detraíble DD</span><h2>'+title+'</h2><p class="muted">Día detraíble leído del cuadro anual. Se pinta en rojo y no tiene desarrollo salvo que le asignes un turno.</p>';
+  }else if(st==='ddwork'){
+    let ini=blockIni(b),fin=blockFin(b);
+    html='<span class="pill" style="background:#ffe0e7;color:#c20d34;border:1px solid #ff9aad">DD trabajado</span><h2>'+title+'</h2><div class="summaryCard"><div class="summaryTop"><div><div class="summaryTitle">DD → Turno '+esc(d.dd_turno||'')+'</div><div class="summaryDate">Detraíble trabajado por cambio</div></div><div class="servicePill">Cambio</div></div><div class="summaryTimes"><div><small>Inicio</small><b>'+esc(ini||'—')+'</b></div><div class="summaryArrow">→</div><div><small>Final</small><b>'+esc(fin||'—')+'</b></div></div></div>';
+    if(b)html+=timelineHtml(b);
+  }else if(st==='dsc'||st==='sss'){
+    let label=st==='dsc'?'Descanso compensado DSC':'Salida sin servicio SSS';
+    html='<span class="pill" style="background:#d8f8e1;color:#34113b;border:1px solid #8a0f82">'+label+'</span><h2>'+title+'</h2><p class="muted">Día especial del marco. Se pinta en verde con rayas moradas y no muestra desarrollo.</p>';
+  }else if(st==='work'&&b){
+    let mini=miniSummary(b), ini=blockIni(b), fin=blockFin(b), dur=(b&&(b.duracion||b.raw?.duracion||''))||'', tipo=(b&&(b.tipo||b.raw?.tipo))||'';
+    html+='<div class="summaryCard"><div class="summaryTop"><div><div class="summaryTitle">Turno '+esc(d.clave_turno)+'</div><div class="summaryDate">'+title+'</div></div><div class="servicePill">'+esc(tipo||'Servicio')+'</div></div><div class="summaryTimes"><div><small>Inicio</small><b>'+esc(ini||'—')+'</b></div><div class="summaryArrow">→</div><div><small>Final</small><b>'+esc(fin||'—')+'</b></div></div><div class="miniGrid"><div class="miniBox"><small>Recorrido</small><b>'+esc(mini.route||'—')+'</b></div><div class="miniBox"><small>Trenes</small><b>'+esc(mini.trains||'—')+'</b></div><div class="miniBox"><small>Duración</small><b>'+esc(dur||mini.duration||'—')+'</b></div></div></div>';
+    if(data.pdf)html+='<button class="btn primary" onclick="openPdf('+Number(b.pagina||0)+')">📄 Ver PDF Marco original</button>';
+    html+=timelineHtml(b);
+  }else{
+    let label=st==='rest'?'Descanso':st==='vac'?'Vacaciones':st==='lz'?'Licencia':'Sin turno';
+    html='<span class="pill" style="background:#f2e3f4;color:var(--r)">'+label+'</span><h2>'+title+'</h2>';
+  }
+  html+=changePanelHtml(ds,base,baseB,d,b);
+  detail.innerHTML=html;
+  scrollToDetail();
+};
+const _changePanelHtml_before_v54=changePanelHtml;
+changePanelHtml=function(ds,base,baseB,d,b){
+  let html=_changePanelHtml_before_v54(ds,base,baseB,d,b);
+  if(finalStatusV54(base)==='dd'){
+    html=html.replace(/Comandos:[\s\S]*?<\/p>/,'Este día era <b>DD</b>. Si escribes un turno, se marcará como <b>DD trabajado</b>: rojo claro con rayas moradas y horas del turno asignado.</p>');
+    html=html.replace('placeholder="Nuevo turno, LZ, D o DD 123"','placeholder="Turno asignado, ej. 124"');
+    html=html.replace('placeholder="Nuevo turno, LZ o DD 123"','placeholder="Turno asignado, ej. 124"');
+  }
+  return html;
+};
+const _render_before_v54=render;
+render=function(){_render_before_v54();setVersionV54();};
+setVersionV54();
 
 setTimeout(bootIndexedDBV52,60);
 
