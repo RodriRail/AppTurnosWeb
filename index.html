@@ -1563,4 +1563,78 @@ clearData=async function(){
 setVersionV55();
 checkLogin();
 safeBootIndexedDBV55();
-</script></body></html>
+</script>
+<script id="v56-detail-fix">
+// ===== v5.6: detalle de día independiente y definitivo =====
+const APP_VERSION_V56='5.6';
+const APP_UPDATED_AT_V56='30/07/2026 04:20';
+function setVersionV56(){
+  document.title='App Turnos Pro v'+APP_VERSION_V56;
+  document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+APP_VERSION_V56);
+  const root=document.querySelector('#settingsView .detail');
+  if(root){
+    let box=document.getElementById('updateInfoV54');
+    if(!box){box=document.createElement('div');box.id='updateInfoV54';box.className='settingsBlock';root.insertBefore(box,root.firstChild)}
+    box.innerHTML='<h3>Versión de la aplicación</h3><p><b>App Turnos Pro v'+APP_VERSION_V56+'</b></p><p class="muted">Última actualización: '+APP_UPDATED_AT_V56+'</p>';
+  }
+}
+function safeTitleV56(ds){
+  try{return new Date(ds+'T12:00:00').toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}
+  catch(e){return ds}
+}
+function renderDayDetailV56(ds){
+  const detailEl=document.getElementById('detail');
+  if(!detailEl)return;
+  if(typeof show==='function')show('calendarView');
+  selected=ds;
+  try{render()}catch(e){console.warn('Render previo al detalle',e)}
+  const d=typeof effectiveDay==='function'?effectiveDay(ds):null;
+  const base=typeof dayData==='function'?dayData(ds):null;
+  let b=null,baseB=null;
+  try{b=typeof blockFor==='function'?blockFor(d):null}catch(e){console.warn(e)}
+  try{baseB=typeof blockFor==='function'?blockFor(base):null}catch(e){console.warn(e)}
+  let st='empty';
+  try{st=typeof finalStatusV54==='function'?finalStatusV54(d):(typeof status==='function'?status(d):'empty')}catch(e){}
+  const title=safeTitleV56(ds);
+  let html='';
+  if(st==='work' && b){
+    const ini=typeof blockIni==='function'?blockIni(b):'';
+    const fin=typeof blockFin==='function'?blockFin(b):'';
+    const dur=(b?.duracion||b?.raw?.duracion||'');
+    const tipo=(b?.tipo||b?.raw?.tipo||'Servicio');
+    let mini={route:'—',trains:'—',duration:dur};
+    try{if(typeof miniSummary==='function')mini=miniSummary(b)}catch(e){}
+    html='<div class="summaryCard"><div class="summaryTop"><div><div class="summaryTitle">Turno '+esc(d?.clave_turno||'')+'</div><div class="summaryDate">'+esc(title)+'</div></div><div class="servicePill">'+esc(tipo||'Servicio')+'</div></div><div class="summaryTimes"><div><small>Inicio</small><b>'+esc(ini||'—')+'</b></div><div class="summaryArrow">→</div><div><small>Final</small><b>'+esc(fin||'—')+'</b></div></div><div class="miniGrid"><div class="miniBox"><small>Recorrido</small><b>'+esc(mini.route||'—')+'</b></div><div class="miniBox"><small>Trenes</small><b>'+esc(mini.trains||'—')+'</b></div><div class="miniBox"><small>Duración</small><b>'+esc(dur||mini.duration||'—')+'</b></div></div></div>';
+    if(data?.pdf)html+='<button class="btn primary" onclick="openPdf('+Number(b?.pagina||0)+')">📄 Ver PDF Marco original</button>';
+    try{html+=timelineHtml(b)}catch(e){html+='<div class="timeline"><h3>Desarrollo del turno</h3><p class="muted">No se pudo representar el desarrollo.</p></div>'}
+  }else if(st==='ddwork'){
+    const ini=blockIni(b),fin=blockFin(b);
+    html='<span class="pill" style="background:#ffe0e7;color:#c20d34;border:1px solid #ff9aad">DD trabajado</span><h2>'+esc(title)+'</h2><div class="summaryCard"><div class="summaryTop"><div><div class="summaryTitle">DD → Turno '+esc(d?.dd_turno||'')+'</div><div class="summaryDate">Detraíble trabajado por cambio</div></div><div class="servicePill">Cambio</div></div><div class="summaryTimes"><div><small>Inicio</small><b>'+esc(ini||'—')+'</b></div><div class="summaryArrow">→</div><div><small>Final</small><b>'+esc(fin||'—')+'</b></div></div></div>';
+    if(b)try{html+=timelineHtml(b)}catch(e){}
+  }else{
+    const labels={dd:'Detraíble DD',dsc:'Descanso compensado DSC',sss:'Salida sin servicio SSS',rest:'Descanso',vac:'Vacaciones',lz:'Licencia',empty:'Sin turno'};
+    html='<span class="pill" style="background:#f2e3f4;color:var(--r)">'+esc(labels[st]||'Detalle del día')+'</span><h2>'+esc(title)+'</h2>';
+    if(d?.clave_turno)html+='<p><b>Clave original:</b> '+esc(d.clave_turno)+'</p>';
+  }
+  try{html+=changePanelHtml(ds,base,baseB,d,b)}catch(e){
+    console.error('Panel de cambios',e);
+    html+='<div class="changePanel"><b>Cambio del día</b><p class="err">No se pudo cargar el formulario de cambios.</p></div>';
+  }
+  detailEl.innerHTML=html;
+  detailEl.classList.remove('hidden');
+  requestAnimationFrame(()=>detailEl.scrollIntoView({behavior:'smooth',block:'start'}));
+}
+// Única función pública usada por las casillas.
+selectDay=function(ds){
+  if(typeof appBootReadyV55!=='undefined' && !appBootReadyV55){
+    pendingSelectedDayV55=ds;
+    safeBootIndexedDBV55().then(()=>renderDayDetailV56(ds));
+    return;
+  }
+  renderDayDetailV56(ds);
+};
+setVersionV56();
+setTimeout(setVersionV56,500);
+</script>
+
+</body></html>
