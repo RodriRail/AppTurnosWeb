@@ -1375,5 +1375,119 @@ render=function(){_render_before_v57();setVersionV57()};
 
 setTimeout(bootV57,120);
 
+
+// ===== v5.8: versión visible, historial mensual, PDFs gestionables y Ajustes sin duplicados =====
+const APP_VERSION_V58='5.8';
+const APP_UPDATED_AT_V58='30/07/2026';
+
+function setVersionV58(){
+  try{
+    document.title='App Turnos Pro v'+APP_VERSION_V58;
+    document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+APP_VERSION_V58);
+    const loginBox=document.querySelector('.loginbox');
+    const logo=loginBox?.querySelector('.logo');
+    if(logo){
+      let badge=document.getElementById('loginVersionBadgeV58');
+      if(!badge){
+        badge=document.createElement('span');badge.id='loginVersionBadgeV58';
+        badge.style='display:inline-block;margin-left:8px;padding:4px 9px;border-radius:999px;background:#f2e3f4;color:var(--r);font-size:13px;font-weight:950;vertical-align:middle';
+        logo.insertAdjacentElement('afterend',badge);
+      }
+      badge.textContent='v'+APP_VERSION_V58;
+    }
+    let loginStamp=document.getElementById('loginVersionV57');
+    if(loginStamp)loginStamp.textContent='Versión '+APP_VERSION_V58+' · Actualizada '+APP_UPDATED_AT_V58;
+  }catch(e){console.warn('setVersionV58',e)}
+}
+
+const MONTHS_V58=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+function monthKeyV58(fecha){return String(fecha||'').slice(0,7)}
+function monthLabelV58(key){
+  const [y,m]=String(key||'').split('-').map(Number);
+  return (MONTHS_V58[(m||1)-1]||key)+' '+(y||'');
+}
+function changeCardV58(c){
+  const nuevo=c.tipo==='DD'?('DD '+(c.turno||'')):(c.tipo||c.turno||'—');
+  return '<div class="changeItem '+(c.tipo==='LZ'?'license':c.tipo==='DD'?'ddreg':c.tipo==='D'?'restreg':'')+'">'+
+    '<b>'+esc(c.fecha||'')+'</b><br>Original: '+esc(c.originalTurno||'—')+' ('+esc(c.originalInicio||'—')+' → '+esc(c.originalFin||'—')+')'+
+    '<br>Nuevo: '+esc(nuevo)+'<br>Con: '+esc(c.persona||'—')+' · '+esc(c.balance||'registro')+' '+esc(c.cantidad||1)+
+    (c.nota?'<br><b>Nota:</b> <span class="muted">'+esc(c.nota)+'</span>':'')+
+    (c.created?'<br><span class="memSmall">Cambio guardado: '+esc(dateV51(c.created))+'</span>':'')+'</div>';
+}
+
+showChanges=function(){
+  show('changesView');
+  const chs=Object.values(data.changes||{}).sort((a,b)=>String(a.fecha).localeCompare(String(b.fecha)));
+  const bal={};
+  chs.forEach(c=>{if(!c.persona||c.balance==='neutral')return;bal[c.persona]=(bal[c.persona]||0)+(c.balance==='meDebe'?1:-1)*(Number(c.cantidad)||1)});
+  const lz=chs.filter(c=>c.tipo==='LZ'),dd=chs.filter(c=>c.tipo==='DD'),rests=chs.filter(c=>c.tipo==='D');
+  balances.innerHTML='<div class="regSection"><div class="regTitle">Balance de cambios</div>'+
+    (Object.keys(bal).length?Object.entries(bal).map(([p,v])=>'<div class="balanceBox"><b>'+esc(p)+'</b><br>'+(v>0?'Me debe '+v:'Debo '+Math.abs(v))+' turno(s)</div>').join(''):'<p class="muted">Sin deudas registradas.</p>')+'</div>'+
+    '<div class="regSection"><div class="regTitle">Licencias LZ</div>'+(lz.length?lz.map(c=>'<div class="changeItem license"><b>'+esc(c.fecha)+'</b> · LZ'+(c.nota?'<br><span class="muted">'+esc(c.nota)+'</span>':'')+'</div>').join(''):'<p class="muted">Sin licencias registradas.</p>')+'</div>'+
+    '<div class="regSection"><div class="regTitle">Descansos manuales D</div>'+(rests.length?rests.map(c=>'<div class="changeItem restreg"><b>'+esc(c.fecha)+'</b> · D<br>Original: '+esc(c.originalTurno||'—')+(c.nota?'<br><span class="muted">'+esc(c.nota)+'</span>':'')+'</div>').join(''):'<p class="muted">Sin descansos manuales.</p>')+'</div>'+
+    '<div class="regSection"><div class="regTitle">Detraíbles pinchados DD</div>'+(dd.length?dd.map(c=>'<div class="changeItem ddreg"><b>'+esc(c.fecha)+'</b> · DD '+esc(c.turno||'—')+'<br>Original: '+esc(c.originalTurno||'—')+' ('+esc(c.originalInicio||'—')+' → '+esc(c.originalFin||'—')+')'+(c.nota?'<br><span class="muted">'+esc(c.nota)+'</span>':'')+'</div>').join(''):'<p class="muted">Sin detraíbles pinchados registrados.</p>')+'</div>';
+
+  if(!chs.length){changesList.innerHTML='<p class="muted">Aún no hay cambios.</p>';return}
+  const groups={};chs.forEach(c=>(groups[monthKeyV58(c.fecha)]??=[]).push(c));
+  const currentKey=fmt(new Date()).slice(0,7);
+  changesList.innerHTML=Object.keys(groups).sort().reverse().map(k=>
+    '<details class="memCard" '+(k===currentKey?'open':'')+'><summary style="cursor:pointer;font-weight:950;color:var(--r);font-size:18px">'+monthLabelV58(k)+' <span class="memTag">'+groups[k].length+'</span></summary><div style="margin-top:10px">'+groups[k].sort((a,b)=>String(b.fecha).localeCompare(String(a.fecha))).map(changeCardV58).join('')+'</div></details>'
+  ).join('');
+};
+
+async function persistPdfV58(){
+  try{if(dbV57)await idbPutV57('pdf',data.pdf||null)}catch(e){console.warn('persistPdfV58',e)}
+}
+async function loadPdfV58(){
+  try{if(dbV57){const p=await idbGetV57('pdf');if(p)data.pdf=p}}catch(e){console.warn('loadPdfV58',e)}
+}
+importPdf=function(ev){
+  const f=ev.target.files[0];if(!f)return;
+  if(f.size>12*1024*1024){importStatus.innerHTML='<span class="err">PDF demasiado grande (máximo 12 MB).</span>';ev.target.value='';return}
+  const r=new FileReader();
+  r.onload=async()=>{data.pdf={name:f.name,dataUrl:r.result,imported:new Date().toISOString(),size:f.size};await persistPdfV58();if(window.importStatus)importStatus.innerHTML='<span class="ok">PDF del marco guardado.</span>';buildSettingsV58()};
+  r.readAsDataURL(f);ev.target.value='';
+};
+function exportPdfV58(){
+  if(!data.pdf?.dataUrl)return;
+  const a=document.createElement('a');a.href=data.pdf.dataUrl;a.download=data.pdf.name||'Marco_original.pdf';document.body.appendChild(a);a.click();a.remove();
+}
+async function deletePdfV58(){
+  if(!data.pdf||!confirm('¿Eliminar el PDF del marco guardado?'))return;
+  delete data.pdf;try{if(dbV57)await idbPutV57('pdf',null)}catch(e){}buildSettingsV58();
+}
+function pdfSummaryV58(){
+  if(!data.pdf)return '<p class="muted">No hay ningún PDF del marco guardado.</p>';
+  return '<div class="memRow"><div><b>'+esc(data.pdf.name||'Marco original')+'</b><div class="memSmall">Importado: '+esc(dateV51(data.pdf.imported||''))+(data.pdf.size?' · '+humanV51(data.pdf.size):'')+'</div></div><div class="memActions"><button class="btn" onclick="openPdf(0)">👁️ Ver</button><button class="btn" onclick="exportPdfV58()">📤</button><button class="btn danger" onclick="deletePdfV58()">🗑️</button></div></div>';
+}
+
+function buildSettingsV58(){
+  const detail=document.querySelector('#settingsView .detail');if(!detail)return;
+  ['memoryPanelV50','marcoPanelV51','openModeBlockV44','openModeBlockV50','openModeBlockV51','alarmSettingsBlock','openModeBlockV57','settingsRootV57','settingsRootV58'].forEach(id=>document.getElementById(id)?.remove());
+  detail.querySelectorAll(':scope > .settingsBlock, :scope > .card').forEach(el=>{if(el.id!=='settingsRootV58')el.remove()});
+  const root=document.createElement('div');root.id='settingsRootV58';
+  const mode=data.settings?.openMode||'calendario';
+  root.innerHTML='\
+  <div class="settingsBlock"><h3>App Turnos Pro</h3><p><b>Versión '+APP_VERSION_V58+'</b><br><span class="muted">Última actualización: '+APP_UPDATED_AT_V58+'</span></p></div>\
+  <div class="settingsBlock"><h3>Marcos históricos</h3><p class="muted">Cada marco comienza en su fecha y el anterior termina automáticamente el día previo.</p><button class="btn primary" onclick="pick(\'marcoFile\')">➕ Añadir marco JSON</button><div id="marcosListV57"></div></div>\
+  <div class="settingsBlock"><h3>Modo de apertura</h3><select id="openModeV57" class="select"><option value="calendario" '+(mode==='calendario'?'selected':'')+'>Modo descanso: abrir calendario</option><option value="trabajo" '+(mode==='trabajo'?'selected':'')+'>Modo trabajo: abrir desarrollo</option></select><button class="btn primary" onclick="setOpenModeV57()">Guardar modo</button></div>\
+  <div class="settingsBlock"><h3>PDF del marco original</h3><p class="muted">Importa, consulta, exporta o elimina el PDF guardado.</p><button class="btn primary" onclick="pick(\'pdfFile\')">📄 Importar o sustituir PDF</button><div id="pdfListV58">'+pdfSummaryV58()+'</div></div>\
+  <div class="settingsBlock"><h3>Estado de datos</h3><p class="muted">'+esc(memorySummaryV57())+' · PDF: '+(data.pdf?'sí':'no')+'</p></div>\
+  <div class="settingsBlock"><h3>Memoria</h3><p class="muted">Los cambios manuales, notas, nombres, registros, cuadro anual y marcos se mantienen entre versiones mientras no borres los datos del sitio.</p><p id="memorySummaryV57" class="muted">'+esc(memorySummaryV57())+'</p><div class="memActions"><button class="btn primary" onclick="exportBackup()">💾 Crear copia</button><button class="btn" onclick="pick(\'historyFile\')">📥 Importar histórico</button></div><div id="copiesV57"></div></div>\
+  <div id="alarmsV58" class="settingsBlock"><h3>Alarmas</h3><p class="muted">Configuración de avisos del inicio del turno y de los trenes.</p><button class="btn" onclick="enhanceSettings(true)">Gestionar alarmas</button></div>';
+  detail.appendChild(root);renderMarcosV57();
+  const cp=document.getElementById('copiesV57');if(cp&&typeof backupsV50==='function'){const l=backupsV50();cp.innerHTML=l.length?'<p class="memSmall">Copias guardadas: '+l.length+'</p>':'<p class="muted">No hay copias locales.</p>'}
+  setVersionV58();
+}
+
+// La construcción de Ajustes y la versión final quedan bajo un único controlador v5.8.
+buildSettingsV57=buildSettingsV58;
+const _show_before_v58=show;
+show=function(id){_show_before_v58(id);if(id==='settingsView')setTimeout(buildSettingsV58,30)};
+const _render_before_v58=render;
+render=function(){_render_before_v58();setVersionV58()};
+
+setTimeout(async()=>{setVersionV58();await loadPdfV58();setVersionV58();if(!document.getElementById('settingsView')?.classList.contains('hidden'))buildSettingsV58()},500);
+
 checkLogin();render();
 </script></body></html>
