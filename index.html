@@ -267,6 +267,10 @@
 }
 .versionStampV54{font-size:11px;color:#75627a;font-weight:900;margin-top:1px}
 </style>
+
+<style id="v54-ext-css">
+.monthChangesV54{border:1px solid var(--line);border-radius:16px;background:#fff;margin:10px 0;overflow:hidden}.monthChangesV54 summary{cursor:pointer;padding:12px 14px;font-weight:950;color:var(--r);display:flex;justify-content:space-between;align-items:center}.monthChangesBodyV54{padding:0 10px 10px;background:#faf6fb}.monthChangesBodyV54 .changeItem{margin-top:10px}.danger{color:#b91c1c!important;border-color:#fecaca!important}
+</style>
 </head><body>
 <div id="login" class="login"><div class="loginbox"><div class="logo">renfe</div><h1>App Turnos Pro <span class="ver">v5.2</span></h1><p class="muted">Acceso privado para administrar datos.</p><input id="user" class="input" placeholder="Usuario"><input id="pass" class="input" placeholder="Contraseña" type="password"><label style="display:flex;gap:8px;align-items:center;margin:8px 0;font-weight:800"><input id="remember" type="checkbox" checked> Recordar sesión 24 horas</label><button class="btn primary" style="width:100%" onclick="doLogin()">Entrar</button><p id="loginMsg" class="err"></p></div></div>
 <header><div class="top"><div class="logo">renfe</div><div><div class="title">App Turnos Pro <span class="ver">v5.2</span></div><div class="sub">Calendario visual · cambios · marcos · IndexedDB</div></div><button class="dataToggle" onclick="toggleAdmin()">Datos ▾</button></div><div id="adminPanel" class="adminPanel hidden"><b>Importación privada</b><p class="muted">Archivos guardados solo en este dispositivo.</p><button class="btn primary" onclick="pick('yearFile')">📅 Importar gráfico anual</button><button class="btn primary" onclick="pick('marcoFile')">🚄 Importar Marco mensual JSON</button><button class="btn" onclick="pick('pdfFile')">📄 Importar PDF Marco</button><button class="btn" onclick="exportExcel()">📤 Exportar Excel</button><button class="btn" onclick="exportBackup()">💾 Copia seguridad JSON</button><button class="btn" onclick="pick('historyFile')">📥 Importar histórico de cambios</button><button class="btn" onclick="clearData()">Borrar datos locales</button><div id="importStatus" class="muted"></div></div><input id="yearFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'year')"><input id="marcoFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'marco')"><input id="pdfFile" type="file" accept="application/pdf,.pdf" class="hidden" onchange="importPdf(event)"><input id="historyFile" type="file" accept=".json,application/json" class="hidden" onchange="importHistoryBackup(event)"></header>
@@ -1171,6 +1175,200 @@ changePanelHtml=function(ds,base,baseB,d,b){
 const _render_before_v54=render;
 render=function(){_render_before_v54();setVersionV54();};
 setVersionV54();
+
+
+// ===== v5.4 ampliada: marcos por vigencia, Excel real, actualización en Ajustes e historial mensual =====
+const APP_UPDATED_AT_V54_EXT='30/07/2026 02:30';
+
+function isoTodayV54Ext(){return fmt(new Date())}
+function marcoStartV54(m){return String(m.desde||m.startDate||m.inicio||'').slice(0,10)}
+function marcoEndV54(m){return String(m.hasta||m.endDate||m.fin||'').slice(0,10)}
+function marcoAppliesV54(m,ds){
+  const desde=marcoStartV54(m),hasta=marcoEndV54(m);
+  return (!desde||desde<=ds)&&(!hasta||hasta>=ds);
+}
+function sortedMarcosV54(){
+  return [...(marcosV51()||[])].sort((a,b)=>(marcoStartV54(a)||'0000-00-00').localeCompare(marcoStartV54(b)||'0000-00-00'));
+}
+function marcoForDateV54(ds){
+  const list=sortedMarcosV54().filter(m=>marcoAppliesV54(m,ds));
+  if(!list.length)return null;
+  return list.sort((a,b)=>(marcoStartV54(b)||'0000-00-00').localeCompare(marcoStartV54(a)||'0000-00-00'))[0];
+}
+function marcoNameForDateV54(ds){
+  const m=marcoForDateV54(ds);return m?(m.name||m.nombre||'Marco sin nombre'):'Marco base';
+}
+function blocksForDateV54(ds){
+  const m=marcoForDateV54(ds);
+  if(m){
+    if(Array.isArray(m.blocks)&&m.blocks.length)return m.blocks;
+    if(m.json){const b=normBlocks(m.json);if(b.length)return b;}
+  }
+  return data.blocks||[];
+}
+function findBlockV54(turn,fecha,mode){
+  turn=String(turn||'').replace(/^DD\s*/i,'').trim();
+  if(!turn||['LZ','D','VB','DD','DSC','SSS'].includes(turn.toUpperCase()))return null;
+  let l=dayLetterV54(fecha), all=blocksForDateV54(fecha).filter(b=>String(b.turno)===turn);
+  let c=all.filter(b=>daysMatchV54(b.dias,l));
+  if(!c.length)c=all;
+  if(mode==='service')return c.find(b=>blockTipoV54(b)==='SERVICIO')||c.find(b=>!['DD','DSC','SSS','DESCANSO','VACACIONES'].includes(blockTipoV54(b)))||c[0]||null;
+  let special=c.find(b=>['DD','DSC','SSS','DESCANSO','VACACIONES'].includes(blockTipoV54(b)));
+  return special||c.find(b=>blockTipoV54(b)==='SERVICIO')||c[0]||null;
+}
+
+function normalizeMarcoDatesV54(){
+  const list=marcosV51()||[];let changed=false;
+  list.forEach((m,i)=>{
+    if(!('desde' in m)){m.desde='';changed=true}
+    if(!('hasta' in m)){m.hasta='';changed=true}
+    if(!m.blocks&&m.json){m.blocks=normBlocks(m.json);changed=true}
+  });
+  if(changed)saveMarcosV51(list);
+}
+
+function validateMarcoRangeV54(desde,hasta,id){
+  if(!desde)return 'La fecha de inicio es obligatoria.';
+  if(hasta&&hasta<desde)return 'La fecha final no puede ser anterior a la inicial.';
+  const overlap=(marcosV51()||[]).find(m=>m.id!==id&&marcoAppliesV54(m,desde) || (hasta&&m.id!==id&&marcoAppliesV54(m,hasta)) || (m.id!==id&&marcoStartV54(m)&&marcoStartV54(m)>=desde&&(!hasta||marcoStartV54(m)<=hasta)));
+  return overlap?'Las fechas se solapan con «'+(overlap.name||'otro marco')+'». Modifica los límites para que cada fecha tenga un solo marco.':'';
+}
+
+importFile=function(ev,type){
+  let f=ev.target.files[0];if(!f)return;let r=new FileReader();
+  r.onload=()=>{try{
+    let obj=JSON.parse(r.result);
+    if(type==='year'){
+      let c=normCalendar(obj);if(!c.length)throw Error('No encuentro desarrollo anual válido');
+      data.calendar=c;data.meta.yearImported=new Date().toISOString();save();render();
+      if(window.importStatus)importStatus.innerHTML='<span class="ok">Anual cargado.</span>';return;
+    }
+    let b=normBlocks(obj);if(!b.length)throw Error('No encuentro Marco válido');
+    let nombre=prompt('Nombre del marco',String(f.name||'Marco mensual').replace(/\.json$/i,''));if(nombre===null)return;
+    let desde=prompt('Fecha de entrada en vigor (AAAA-MM-DD)','');if(desde===null)return;
+    desde=String(desde).trim();
+    let hasta=prompt('Fecha de finalización (AAAA-MM-DD). Déjala vacía si continúa vigente.','');if(hasta===null)return;
+    hasta=String(hasta).trim();
+    if(!/^\d{4}-\d{2}-\d{2}$/.test(desde))throw Error('La fecha de inicio debe tener formato AAAA-MM-DD');
+    if(hasta&&!/^\d{4}-\d{2}-\d{2}$/.test(hasta))throw Error('La fecha final debe tener formato AAAA-MM-DD');
+    let err=validateMarcoRangeV54(desde,hasta,'');if(err)throw Error(err);
+    let list=marcosV51()||[],txt=JSON.stringify(obj);
+    let duplicate=list.find(m=>JSON.stringify(m.json||{})===txt&&marcoStartV54(m)===desde&&marcoEndV54(m)===hasta);
+    if(duplicate)throw Error('Este mismo marco y periodo ya están guardados');
+    let id='m'+Date.now();
+    list.push({id,name:(nombre||f.name||('Marco_'+id)),created:new Date().toISOString(),size:sizeV51(r.result),desde,hasta,json:obj,blocks:b});
+    saveMarcosV51(list);
+    const currentMarco=marcoForDateV54(isoTodayV54Ext());
+    if(currentMarco){data.blocks=currentMarco.blocks||normBlocks(currentMarco.json);data.settings.activeMarcoId=currentMarco.id;}
+    data.meta.marcoImported=new Date().toISOString();save();render();renderMarcoPanelV51();if(selected)selectDay(selected);
+    if(window.importStatus)importStatus.innerHTML='<span class="ok">Marco guardado con vigencia '+desde+(hasta?' a '+hasta:' en adelante')+'.</span>';
+  }catch(e){if(window.importStatus)importStatus.innerHTML='<span class="err">Error: '+e.message+'</span>'}};
+  r.readAsText(f);ev.target.value='';
+};
+
+function renderMarcoPanelV51(){
+  let box=document.getElementById('marcoPanelV51');if(!box)return;
+  let list=sortedMarcosV54(),today=isoTodayV54Ext(),vigente=marcoForDateV54(today);
+  box.innerHTML='<div class="memCard"><h3>Marcos históricos por vigencia</h3><p class="muted">La aplicación elige automáticamente el marco según la fecha del calendario. Los marcos se guardan en IndexedDB.</p><div class="memActions"><button class="btn primary" onclick="pick(\'marcoFile\')">➕ Añadir nuevo marco</button></div></div>'+
+  (list.length?'<div class="memCard">'+list.map(m=>{
+    let isCurrent=vigente&&vigente.id===m.id;
+    return '<div class="memRow '+(isCurrent?'memActive':'')+'"><div><b>'+esc(m.name||'Marco')+'</b>'+(isCurrent?'<span class="memTag">VIGENTE</span>':'')+'<div class="memSmall">Inicio: '+esc(marcoStartV54(m)||'sin definir')+' · Fin: '+esc(marcoEndV54(m)||'sin fecha final')+' · '+humanV51(m.size||0)+'</div></div><div class="memActions"><button class="btn" onclick="editMarcoDatesV54(\''+m.id+'\')">📅 Fechas</button><button class="btn" onclick="exportMarcoV51(\''+m.id+'\')">📤</button><button class="btn" onclick="renameMarcoV51(\''+m.id+'\')">✏️</button><button class="btn danger" onclick="deleteMarcoV54(\''+m.id+'\')">🗑️</button></div></div>';
+  }).join('')+'</div>':'<div class="memCard muted">No hay marcos guardados.</div>');
+}
+function editMarcoDatesV54(id){
+  let list=marcosV51(),m=list.find(x=>x.id===id);if(!m)return;
+  let desde=prompt('Fecha de inicio (AAAA-MM-DD)',marcoStartV54(m));if(desde===null)return;
+  let hasta=prompt('Fecha de finalización (vacío = sin final)',marcoEndV54(m));if(hasta===null)return;
+  desde=String(desde).trim();hasta=String(hasta).trim();
+  if(!/^\d{4}-\d{2}-\d{2}$/.test(desde)){alert('Fecha inicial no válida');return}
+  if(hasta&&!/^\d{4}-\d{2}-\d{2}$/.test(hasta)){alert('Fecha final no válida');return}
+  let err=validateMarcoRangeV54(desde,hasta,id);if(err){alert(err);return}
+  m.desde=desde;m.hasta=hasta;saveMarcosV51(list);renderMarcoPanelV51();render();if(selected)selectDay(selected);
+}
+function deleteMarcoV54(id){
+  let list=marcosV51(),m=list.find(x=>x.id===id);if(!m)return;
+  if(!confirm('Eliminar «'+(m.name||'este marco')+'»? Los días de su periodo dejarán de tener ese desarrollo.'))return;
+  list=list.filter(x=>x.id!==id);saveMarcosV51(list);renderMarcoPanelV51();render();if(selected)selectDay(selected);
+}
+activateMarcoV51=function(id){let m=(marcosV51()||[]).find(x=>x.id===id);if(m)alert('Los marcos se aplican automáticamente por fecha. Puedes modificar su vigencia con el botón “Fechas”.')};
+
+function injectUpdateInfoV54(){
+  document.getElementById('versionStampV54')?.remove();
+  const root=document.querySelector('#settingsView .detail');if(!root)return;
+  let box=document.getElementById('updateInfoV54');
+  if(!box){box=document.createElement('div');box.id='updateInfoV54';box.className='settingsBlock';root.insertBefore(box,root.firstChild)}
+  box.innerHTML='<h3>Versión de la aplicación</h3><p><b>App Turnos Pro v'+APP_VERSION_V54+'</b></p><p class="muted">Última actualización: '+APP_UPDATED_AT_V54_EXT+'</p>';
+}
+function setVersionV54(){
+  document.title='App Turnos Pro v'+APP_VERSION_V54;
+  document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+APP_VERSION_V54);
+  document.getElementById('versionStampV54')?.remove();
+  injectUpdateInfoV54();
+}
+
+const _showChangesV54Ext=showChanges;
+function monthLabelV54(key){
+  const [y,m]=key.split('-').map(Number);return new Date(y,m-1,1).toLocaleDateString('es-ES',{month:'long',year:'numeric'}).replace(/^./,c=>c.toUpperCase());
+}
+function changeItemHtmlV54(c){
+  return '<div class="changeItem '+(c.tipo==='LZ'?'license':c.tipo==='DD'?'ddreg':c.tipo==='D'?'restreg':'')+'"><b>'+esc(c.fecha)+'</b><br>Original: '+esc(c.originalTurno||'—')+' ('+esc(c.originalInicio||'—')+' → '+esc(c.originalFin||'—')+')<br>Nuevo: '+esc(c.tipo==='DD'?('DD '+(c.turno||'')):(c.tipo||c.turno||'—'))+'<br>Con: '+esc(c.persona||'—')+' · '+esc(c.balance||'registro')+' '+esc(c.cantidad||1)+'<br><span class="muted">'+esc(c.nota||'')+'</span></div>';
+}
+showChanges=function(){
+  _showChangesV54Ext();
+  let chs=Object.values(data.changes||{}).sort((a,b)=>String(a.fecha).localeCompare(String(b.fecha)));
+  if(!chs.length){changesList.innerHTML='<p class="muted">Aún no hay cambios.</p>';return}
+  let groups={};chs.forEach(c=>{let k=String(c.fecha||'').slice(0,7)||'Sin fecha';(groups[k]=groups[k]||[]).push(c)});
+  let current=isoTodayV54Ext().slice(0,7);
+  changesList.innerHTML=Object.keys(groups).sort().reverse().map(k=>'<details class="monthChangesV54" '+(k===current?'open':'')+'><summary>'+esc(monthLabelV54(k))+' <span class="memTag">'+groups[k].length+'</span></summary><div class="monthChangesBodyV54">'+groups[k].map(changeItemHtmlV54).join('')+'</div></details>').join('');
+};
+
+function ensureXlsxV54(){
+  if(window.XLSX)return Promise.resolve(true);
+  return new Promise(resolve=>{let s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js';s.onload=()=>resolve(true);s.onerror=()=>resolve(false);document.head.appendChild(s)});
+}
+function minutesDurationV54(ini,fin){let a=timeToMin(ini),b=timeToMin(fin);if(a==null||b==null)return 0;if(b<a)b+=1440;return b-a}
+function durationTextV54(min){return Math.floor(min/60)+':'+pad(min%60)}
+function getPresentationPlaceV54(b){let r=b?.raw||{};return r.lugar_presentacion||r.inicio_lugar||r.origen||extractStations(getMovs(b)[0]||'')[0]||''}
+function getFinalPlaceV54(b){let r=b?.raw||{},movs=getMovs(b),sts=extractStations(movs[movs.length-1]||'');return r.lugar_finalizacion||r.final_lugar||r.destino||sts[sts.length-1]||''}
+function typeForExportV54(d,b){let st=finalStatusV54(d);return ({work:'Trabajo',rest:'Descanso',vac:'Vacaciones',lz:'Licencia',dd:'DD',ddwork:'DD trabajado',dsc:'DC',sss:'SSS',empty:'Sin dato'})[st]||blockTipoV54(b)||st}
+function injectExcelPanelV54(){
+  const root=document.querySelector('#settingsView .detail');if(!root||document.getElementById('excelPanelV54'))return;
+  let min=(data.calendar||[]).map(x=>x.fecha).sort()[0]||isoTodayV54Ext(),max=(data.calendar||[]).map(x=>x.fecha).sort().slice(-1)[0]||isoTodayV54Ext();
+  root.insertAdjacentHTML('beforeend','<div id="excelPanelV54" class="settingsBlock"><h3>Exportar a Excel</h3><p class="muted">Genera el calendario realmente realizado combinando el cuadro anual, los cambios y el marco vigente en cada fecha.</p><div class="changeGrid"><div><small class="muted">Fecha inicial</small><input id="excelFromV54" type="date" class="input" value="'+esc(min)+'"></div><div><small class="muted">Fecha final</small><input id="excelToV54" type="date" class="input" value="'+esc(max)+'"></div></div><button class="btn primary" onclick="generateExcelV54()">📊 Generar Excel</button><p id="excelStatusV54" class="muted"></p></div>');
+}
+async function generateExcelV54(){
+  let from=document.getElementById('excelFromV54')?.value,to=document.getElementById('excelToV54')?.value,statusBox=document.getElementById('excelStatusV54');
+  if(!from||!to||to<from){if(statusBox)statusBox.textContent='Selecciona un periodo válido.';return}
+  if(statusBox)statusBox.textContent='Preparando Excel…';
+  const ok=await ensureXlsxV54();if(!ok){if(statusBox)statusBox.textContent='No se pudo cargar el generador de Excel. Comprueba la conexión.';return}
+  let rows=[],summary={work:0,rest:0,vac:0,lic:0,sick:0,dd:0,dc:0,sss:0,changes:0,minutes:0,turns:{}};
+  (data.calendar||[]).filter(x=>x.fecha>=from&&x.fecha<=to).sort((a,b)=>a.fecha.localeCompare(b.fecha)).forEach(base=>{
+    let d=effectiveDay(base.fecha),b=blockFor(d),ch=data.changes?.[base.fecha]||{},st=finalStatusV54(d),ini=blockIni(b),fin=blockFin(b),mins=minutesDurationV54(ini,fin),tipo=typeForExportV54(d,b),finalTurn=d?.dd_turno||d?.clave_turno||'';
+    let weekday=new Date(base.fecha+'T12:00:00').toLocaleDateString('es-ES',{weekday:'long'});
+    rows.push({'Fecha':base.fecha,'Día de la semana':weekday,'Turno original':base.clave_turno||'','Turno realizado':finalTurn,'Tipo de día':tipo,'Modificado':ch&&Object.keys(ch).length?'Sí':'No','Cambio realizado':ch.tipo||ch.turno||'','Observación o motivo':ch.nota||'','Situación':tipo,'Hora presentación':ini,'Lugar presentación':stationName(getPresentationPlaceV54(b)),'Hora finalización':fin,'Lugar finalización':stationName(getFinalPlaceV54(b)),'Duración':b?.duracion||durationTextV54(mins),'Marco aplicado':marcoNameForDateV54(base.fecha)});
+    if(st==='work'||st==='ddwork'){summary.work++;summary.minutes+=mins;if(finalTurn)summary.turns[finalTurn]=(summary.turns[finalTurn]||0)+1}
+    else if(st==='rest')summary.rest++;else if(st==='vac')summary.vac++;else if(st==='lz')summary.lic++;else if(st==='dd')summary.dd++;else if(st==='dsc')summary.dc++;else if(st==='sss')summary.sss++;
+    if(ch&&Object.keys(ch).length)summary.changes++;
+    if(/BAJA/i.test(tipo))summary.sick++;
+  });
+  let topTurns=Object.entries(summary.turns).sort((a,b)=>b[1]-a[1]).slice(0,10).map(([t,n])=>t+' ('+n+')').join(', ');
+  let sumRows=[{'Concepto':'Periodo','Valor':from+' a '+to},{'Concepto':'Días trabajados','Valor':summary.work},{'Concepto':'Días de descanso','Valor':summary.rest},{'Concepto':'Vacaciones','Valor':summary.vac},{'Concepto':'Licencias y permisos','Valor':summary.lic},{'Concepto':'Bajas','Valor':summary.sick},{'Concepto':'DD','Valor':summary.dd},{'Concepto':'DC','Valor':summary.dc},{'Concepto':'SSS','Valor':summary.sss},{'Concepto':'Cambios realizados','Valor':summary.changes},{'Concepto':'Horas totales','Valor':durationTextV54(summary.minutes)},{'Concepto':'Turnos más realizados','Valor':topTurns||'—'}];
+  let hist=Object.values(data.changes||{}).filter(c=>c.fecha>=from&&c.fecha<=to).sort((a,b)=>String(a.fecha).localeCompare(String(b.fecha))).map(c=>({'Fecha afectada':c.fecha,'Valor original':c.originalTurno||'','Valor nuevo':c.tipo==='DD'?('DD '+(c.turno||'')):(c.tipo||c.turno||''),'Fecha del cambio':c.created||'','Observación':c.nota||''}));
+  let wb=XLSX.utils.book_new(),ws1=XLSX.utils.json_to_sheet(rows),ws2=XLSX.utils.json_to_sheet(sumRows),ws3=XLSX.utils.json_to_sheet(hist);
+  ws1['!cols']=[{wch:12},{wch:16},{wch:14},{wch:16},{wch:18},{wch:12},{wch:18},{wch:30},{wch:18},{wch:18},{wch:22},{wch:18},{wch:22},{wch:12},{wch:25}];
+  XLSX.utils.book_append_sheet(wb,ws1,'Calendario realizado');XLSX.utils.book_append_sheet(wb,ws2,'Resumen');XLSX.utils.book_append_sheet(wb,ws3,'Historial de cambios');
+  XLSX.writeFile(wb,'AppTurnos_'+from+'_'+to+'.xlsx');if(statusBox)statusBox.textContent='Excel generado correctamente. No se ha modificado ningún dato.';
+}
+exportExcel=function(){show('settingsView');injectExcelPanelV54();setTimeout(()=>document.getElementById('excelPanelV54')?.scrollIntoView({behavior:'smooth'}),50)};
+
+const _enhanceSettingsV54Ext=enhanceSettings;
+enhanceSettings=function(force){_enhanceSettingsV54Ext(force);injectUpdateInfoV54();injectExcelPanelV54();injectMarcoSettingsV51();renderMarcoPanelV51()};
+const _showV54Ext=show;
+show=function(id){_showV54Ext(id);if(id==='settingsView'){injectUpdateInfoV54();injectExcelPanelV54();injectMarcoSettingsV51();renderMarcoPanelV51()}};
+
+normalizeMarcoDatesV54();
+setTimeout(()=>{setVersionV54();injectUpdateInfoV54();injectExcelPanelV54();injectMarcoSettingsV51();renderMarcoPanelV51()},350);
+
 
 setTimeout(bootIndexedDBV52,60);
 
