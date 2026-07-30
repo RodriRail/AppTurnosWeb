@@ -1490,4 +1490,141 @@ render=function(){_render_before_v58();setVersionV58()};
 setTimeout(async()=>{setVersionV58();await loadPdfV58();setVersionV58();if(!document.getElementById('settingsView')?.classList.contains('hidden'))buildSettingsV58()},500);
 
 checkLogin();render();
-</script></body></html>
+</script>
+
+<style id="v59-incidencias-css">
+.changeDot{display:none!important}
+.dayMarkersV59{position:absolute;right:3px;top:3px;display:flex;gap:2px;align-items:center;z-index:8;font-size:12px;line-height:1}
+.dayMarkerV59{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;border-radius:999px;background:rgba(255,255,255,.92);box-shadow:0 0 0 1px #0002;font-size:12px}
+.dayMarkerV59.swap{font-size:10px;padding:0 2px;min-width:28px}
+.incidentPanelV59{margin-top:12px;background:#fff0f1;border:2px solid #ef4444;border-radius:18px;padding:14px}
+.incidentTitleV59{display:flex;align-items:center;gap:8px;color:#991b1b;font-size:20px;font-weight:950;margin-bottom:8px}
+.incidentChecksV59{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:10px 0}
+.incidentCheckV59{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #fecaca;border-radius:12px;padding:9px;font-weight:900}
+.incidentCheckV59 input{width:18px;height:18px}
+.incidentNoteV59{min-height:100px;resize:vertical}
+.incidentSavedV59{color:#087139;font-weight:900;margin-top:8px}
+.incidentMonthV59 summary{cursor:pointer;font-weight:950;color:#991b1b;font-size:17px}
+.incidentItemV59{border-left:4px solid #ef4444;background:#fff7f7}
+@media(max-width:560px){.dayMarkersV59{font-size:11px}.dayMarkerV59{min-width:17px;height:17px;font-size:11px}.dayMarkerV59.swap{min-width:26px;font-size:9px}.incidentChecksV59{grid-template-columns:1fr 1fr}}
+</style>
+<script id="v59-incidencias-js">
+// ===== v5.9: incidencias persistentes, iconos y cambio descanso/trabajo =====
+const APP_VERSION_V59='5.9';
+const APP_UPDATED_AT_V59='31/07/2026';
+data.incidents=data.incidents||{};
+
+function setVersionV59(){
+  try{
+    document.title='App Turnos Pro v'+APP_VERSION_V59;
+    document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+APP_VERSION_V59);
+    let badge=document.getElementById('loginVersionBadgeV58')||document.getElementById('loginVersionBadgeV59');
+    if(!badge){
+      const logo=document.querySelector('.loginbox .logo');
+      if(logo){badge=document.createElement('span');badge.id='loginVersionBadgeV59';badge.style='display:inline-block;margin-left:8px;padding:4px 9px;border-radius:999px;background:#f2e3f4;color:var(--r);font-size:13px;font-weight:950;vertical-align:middle';logo.insertAdjacentElement('afterend',badge)}
+    }
+    if(badge)badge.textContent='v'+APP_VERSION_V59;
+    const stamp=document.getElementById('loginVersionV57');
+    if(stamp)stamp.textContent='Versión '+APP_VERSION_V59+' · Actualizada '+APP_UPDATED_AT_V59;
+  }catch(e){console.warn('setVersionV59',e)}
+}
+
+function incidentForV59(ds){return (data.incidents||{})[ds]||null}
+function isRestLikeV59(st){return ['rest','dsc','sss','dd','vac','lz'].includes(st)}
+function transitionV59(ds,d){
+  const base=dayData(ds);if(!base||!d?.changed)return false;
+  let a='empty',b='empty';try{a=status(base);b=status(d)}catch(e){}
+  return (isRestLikeV59(a)&&b==='work')||(a==='work'&&isRestLikeV59(b));
+}
+function markersV59(ds,d){
+  const parts=[];
+  if(d?.changed)parts.push('<span class="dayMarkerV59" title="Cambio registrado">🔄</span>');
+  if(incidentForV59(ds))parts.push('<span class="dayMarkerV59" title="Incidencia registrada">⚠️</span>');
+  if(transitionV59(ds,d))parts.push('<span class="dayMarkerV59 swap" title="Cambio descanso/trabajo">🟩🟪</span>');
+  return parts.length?'<span class="dayMarkersV59">'+parts.join('')+'</span>':'';
+}
+
+const _typeBadge_v59=typeBadge;
+typeBadge=function(d,b){
+  let html=_typeBadge_v59(d,b).replace(/<i class="changedDot"><\/i>/g,'');
+  const ds=d?.fecha||'';
+  return markersV59(ds,d)+html;
+};
+
+function incidentPanelHtmlV59(ds){
+  const inc=incidentForV59(ds)||{};
+  const cats=inc.categories||{};
+  const check=(key,label)=>'<label class="incidentCheckV59"><input type="checkbox" id="inc_'+key+'" '+(cats[key]?'checked':'')+'> '+label+'</label>';
+  return '<div class="incidentPanelV59"><div class="incidentTitleV59"><span>⚠️</span><span>Incidencias</span></div><p class="muted">Marca una o varias categorías y añade una explicación.</p><div class="incidentChecksV59">'+
+    check('pai','PAI')+check('pirsc','PIRSC')+check('retrasos','Retrasos')+check('material','Material')+check('otros','Otros')+
+    '</div><textarea id="inc_note" class="input incidentNoteV59" placeholder="Describe la incidencia, retrasos, exceso de jornada, material, PIRSC, etc.">'+esc(inc.note||'')+'</textarea><div style="margin-top:8px"><button class="btn primary" onclick="saveIncidentV59(\''+ds+'\')">Guardar o actualizar incidencia</button> '+(inc.created?'<button class="btn" onclick="deleteIncidentV59(\''+ds+'\')">Eliminar incidencia</button>':'')+'</div><div id="incidentMsgV59" class="incidentSavedV59"></div></div>';
+}
+
+async function saveIncidentV59(ds){
+  const categories={pai:!!document.getElementById('inc_pai')?.checked,pirsc:!!document.getElementById('inc_pirsc')?.checked,retrasos:!!document.getElementById('inc_retrasos')?.checked,material:!!document.getElementById('inc_material')?.checked,otros:!!document.getElementById('inc_otros')?.checked};
+  const note=(document.getElementById('inc_note')?.value||'').trim();
+  if(!Object.values(categories).some(Boolean)&&!note){alert('Marca alguna categoría o escribe una nota.');return}
+  const prev=incidentForV59(ds)||{};
+  data.incidents[ds]={fecha:ds,categories,note,created:prev.created||new Date().toISOString(),updated:new Date().toISOString()};
+  save();
+  const msg=document.getElementById('incidentMsgV59');if(msg)msg.textContent='Incidencia guardada.';
+  render();
+}
+async function deleteIncidentV59(ds){
+  if(!confirm('¿Eliminar la incidencia de este día?'))return;
+  delete data.incidents[ds];save();selectDay(ds);
+}
+
+const _selectDay_v59=selectDay;
+selectDay=function(ds){
+  _selectDay_v59(ds);
+  const box=document.getElementById('detail');
+  if(box&&!document.getElementById('incidentPanelCurrentV59')){
+    const wrap=document.createElement('div');wrap.id='incidentPanelCurrentV59';wrap.innerHTML=incidentPanelHtmlV59(ds);box.appendChild(wrap);
+  }
+  setVersionV59();
+};
+
+function categoriesTextV59(inc){
+  const labels={pai:'PAI',pirsc:'PIRSC',retrasos:'Retrasos',material:'Material',otros:'Otros'};
+  return Object.entries(inc.categories||{}).filter(([,v])=>v).map(([k])=>labels[k]||k).join(', ')||'Sin categoría';
+}
+function incidentCardV59(inc){
+  return '<div class="changeItem incidentItemV59"><b>'+esc(inc.fecha||'')+'</b><br><b>'+esc(categoriesTextV59(inc))+'</b>'+(inc.note?'<br><span class="muted">'+esc(inc.note)+'</span>':'')+(inc.updated?'<br><span class="memSmall">Actualizada: '+esc(dateV51(inc.updated))+'</span>':'')+'</div>';
+}
+function incidentsSectionV59(){
+  const arr=Object.values(data.incidents||{}).sort((a,b)=>String(b.fecha).localeCompare(String(a.fecha)));
+  if(!arr.length)return '<div class="regSection"><div class="regTitle">⚠️ Incidencias</div><p class="muted">Sin incidencias registradas.</p></div>';
+  const groups={};arr.forEach(i=>(groups[monthKeyV58(i.fecha)]??=[]).push(i));
+  const current=fmt(new Date()).slice(0,7);
+  return '<div class="regSection"><div class="regTitle">⚠️ Incidencias</div>'+Object.keys(groups).sort().reverse().map(k=>'<details class="memCard incidentMonthV59" '+(k===current?'open':'')+'><summary>'+monthLabelV58(k)+' ('+groups[k].length+')</summary><div style="margin-top:10px">'+groups[k].map(incidentCardV59).join('')+'</div></details>').join('')+'</div>';
+}
+
+const _showChanges_v59=showChanges;
+showChanges=function(){
+  _showChanges_v59();
+  const host=document.getElementById('balances');
+  if(host){host.querySelector('#incidentsRegistryV59')?.remove();const div=document.createElement('div');div.id='incidentsRegistryV59';div.innerHTML=incidentsSectionV59();host.appendChild(div)}
+};
+
+const _lightDataV50_v59=typeof lightDataV50==='function'?lightDataV50:null;
+if(_lightDataV50_v59){lightDataV50=function(){const o=_lightDataV50_v59();o.version=APP_VERSION_V59;o.incidents=data.incidents||{};return o}}
+const _applyHistoryObjectV50_v59=typeof applyHistoryObjectV50==='function'?applyHistoryObjectV50:null;
+if(_applyHistoryObjectV50_v59){applyHistoryObjectV50=function(obj){_applyHistoryObjectV50_v59(obj);data.incidents={...(data.incidents||{}),...(obj.incidents||obj.data?.incidents||{})};save()}}
+
+// Exportación existente ampliada con incidencias, sin modificar datos.
+exportExcel=function(){
+  const rows=[['Fecha','Turno real','Tipo','Inicio','Fin','Duración','Turno original','Cambio con','Balance','Cantidad','Nota cambio','Incidencia','Categorías incidencia','Nota incidencia']];
+  (data.calendar||[]).forEach(x=>{const d=effectiveDay(x.fecha),b=blockFor(d),ch=data.changes?.[x.fecha]||{},inc=data.incidents?.[x.fecha]||null;rows.push([x.fecha,d?.clave_turno||'',d?.tipo_dia||'',blockIni(b),blockFin(b),b?.duracion||'',ch.originalTurno||'',ch.persona||'',ch.balance||'',ch.cantidad||'',ch.nota||'',inc?'Sí':'No',inc?categoriesTextV59(inc):'',inc?.note||''])});
+  const csv='\ufeff'+rows.map(r=>r.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(';')).join('\n');
+  downloadBlob(csv,'AppTurnos_registro_con_incidencias.csv','text/csv;charset=utf-8');
+};
+
+const _buildSettingsV58_v59=buildSettingsV58;
+buildSettingsV58=function(){_buildSettingsV58_v59();setVersionV59()};
+buildSettingsV57=buildSettingsV58;
+const _render_v59=render;
+render=function(){_render_v59();setVersionV59()};
+setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400);
+</script>
+</body></html>
