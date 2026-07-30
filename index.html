@@ -1370,7 +1370,197 @@ normalizeMarcoDatesV54();
 setTimeout(()=>{setVersionV54();injectUpdateInfoV54();injectExcelPanelV54();injectMarcoSettingsV51();renderMarcoPanelV51()},350);
 
 
-setTimeout(bootIndexedDBV52,60);
 
-checkLogin();render();
+// ===== v5.5: reparación segura de arranque, detalle e IndexedDB sin borrado =====
+const APP_VERSION_V55='5.5';
+const APP_UPDATED_AT_V55='30/07/2026 03:45';
+let appBootReadyV55=false;
+let appBootPromiseV55=null;
+let pendingSelectedDayV55=null;
+
+function setVersionV55(){
+  document.title='App Turnos Pro v'+APP_VERSION_V55;
+  document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+APP_VERSION_V55);
+  document.getElementById('versionStampV54')?.remove();
+  const root=document.querySelector('#settingsView .detail');
+  if(root){
+    let box=document.getElementById('updateInfoV54');
+    if(!box){box=document.createElement('div');box.id='updateInfoV54';box.className='settingsBlock';root.insertBefore(box,root.firstChild)}
+    box.innerHTML='<h3>Versión de la aplicación</h3><p><b>App Turnos Pro v'+APP_VERSION_V55+'</b></p><p class="muted">Última actualización: '+APP_UPDATED_AT_V55+'</p>';
+  }
+}
+
+// Compatibilidad con llamadas antiguas que usaban show('calendar').
+const _show_before_v55=show;
+show=function(id){
+  if(id==='calendar')id='calendarView';
+  const target=document.getElementById(id);
+  if(!target){console.warn('Vista no encontrada:',id);return}
+  _show_before_v55(id);
+  if(id==='settingsView'){setVersionV55();injectStorageHealthV55()}
+};
+
+function ensureDataShapeV55(){
+  data=data||{};
+  data.calendar=Array.isArray(data.calendar)?data.calendar:[];
+  data.blocks=Array.isArray(data.blocks)?data.blocks:[];
+  data.meta=data.meta||{};
+  data.changes=data.changes||{};
+  data.records=Array.isArray(data.records)?data.records:[];
+  data.people=Array.isArray(data.people)?data.people:[];
+  data.alarms=data.alarms||{};
+  data.disabledAlarms=data.disabledAlarms||{};
+  data.alarmSettings=data.alarmSettings||{enabled:true,startOffset:60,trainOffset:30};
+  data.settings=data.settings||{openMode:'calendario'};
+  data.specialDays=data.specialDays||{};
+  normalizeStoredDates();
+}
+
+function legacySnapshotV55(){
+  const keys=['appTurnosData','appTurnosDataV22','appTurnosV15','appTurnosDataV21',MARCOS_KEY,BACKUP_KEY];
+  const local={};
+  keys.forEach(k=>{const v=localStorage.getItem(k);if(v!==null)local[k]=v});
+  return {created:new Date().toISOString(),version:APP_VERSION_V55,localStorage:local};
+}
+
+async function createMigrationSnapshotV55(existing){
+  try{
+    const previous=await idbGetV52('migrationSnapshotV55');
+    if(previous)return previous;
+    const snap=legacySnapshotV55();
+    snap.indexedDB={
+      data:existing.data||null,
+      marcos:existing.marcos||null,
+      backups:existing.backups||null
+    };
+    await idbSetV52('migrationSnapshotV55',snap);
+    return snap;
+  }catch(e){console.warn('No se pudo crear snapshot automático',e);return null}
+}
+
+// Guardado principal: IndexedDB. No elimina datos antiguos de localStorage.
+save=function(){
+  ensureDataShapeV55();
+  idbCacheV52.data=data;
+  idbSetV52('data',data).then(()=>{
+    idbReadyV52=true;
+    data.meta.lastSaved=new Date().toISOString();
+    updateImportUI();
+    injectStorageHealthV55();
+  }).catch(e=>{
+    console.warn('Fallo IndexedDB; intento de respaldo local',e);
+    try{localStorage.setItem(LS,JSON.stringify(data))}catch(err){console.warn('También falló respaldo local',err)}
+    updateImportUI();
+  });
+};
+
+// Marcos y copias siempre en IndexedDB, conservando las claves antiguas como respaldo.
+saveMarcosV51=function(list){
+  idbCacheV52.marcos=Array.isArray(list)?list:[];
+  idbSetV52('marcos',idbCacheV52.marcos).then(()=>injectStorageHealthV55()).catch(console.warn);
+  return true;
+};
+saveBackupsV50=function(list){
+  let o=[...(list||[])].sort((a,b)=>String(b.created).localeCompare(String(a.created)));
+  let fav=o.filter(x=>x.favorite),rest=o.filter(x=>!x.favorite).slice(0,8);
+  idbCacheV52.backups=[...fav,...rest];
+  idbSetV52('backups',idbCacheV52.backups).then(()=>injectStorageHealthV55()).catch(console.warn);
+};
+
+async function safeBootIndexedDBV55(){
+  if(appBootPromiseV55)return appBootPromiseV55;
+  appBootPromiseV55=(async()=>{
+    const loading=document.getElementById('detail');
+    if(loading)loading.innerHTML='<span class="pill" style="background:#f2e3f4;color:var(--r)">Cargando datos…</span><h2>Preparando la aplicación</h2><p class="muted">Recuperando calendario, marcos, PDF e historial desde IndexedDB.</p>';
+    try{
+      const [dbData,dbMarcos,dbBackups]=await Promise.all([
+        idbGetV52('data'),idbGetV52('marcos'),idbGetV52('backups')
+      ]);
+      await createMigrationSnapshotV55({data:dbData,marcos:dbMarcos,backups:dbBackups});
+      const lsData=localJsonV52('appTurnosData',null)||localJsonV52('appTurnosDataV22',null)||localJsonV52('appTurnosV15',null)||localJsonV52('appTurnosDataV21',null);
+      const lsMarcos=localJsonV52(MARCOS_KEY,null),lsBackups=localJsonV52(BACKUP_KEY,null);
+      if(dbData)data={...data,...dbData};
+      else if(lsData){data={...data,...lsData};await idbSetV52('data',data)}
+      idbCacheV52.data=data;
+      idbCacheV52.marcos=Array.isArray(dbMarcos)?dbMarcos:(Array.isArray(lsMarcos)?lsMarcos:[]);
+      idbCacheV52.backups=Array.isArray(dbBackups)?dbBackups:(Array.isArray(lsBackups)?lsBackups:[]);
+      if(!dbMarcos&&lsMarcos)await idbSetV52('marcos',idbCacheV52.marcos);
+      if(!dbBackups&&lsBackups)await idbSetV52('backups',idbCacheV52.backups);
+      ensureDataShapeV55();
+      idbReadyV52=true;appBootReadyV55=true;
+      setVersionV55();
+      show('calendarView');
+      render();
+      injectMarcoSettingsV51();injectOpenModeV51();injectMemorySettingsV50();
+      renderMarcoPanelV51();renderMemoryPanelV50();injectExcelPanelV54();injectStorageHealthV55();updateImportUI();
+      const td=fmt(new Date());
+      if((data.settings?.openMode||'calendario')==='trabajo'&&effectiveDay(td)){
+        selectDay(td);
+        setTimeout(()=>document.querySelector('.timeline')?.scrollIntoView({behavior:'smooth',block:'start'}),200);
+      }else{
+        selected=effectiveDay(td)?td:null;render();window.scrollTo(0,0);
+        if(loading&&!selected)loading.innerHTML='<span class="pill" style="background:#f2e3f4;color:var(--r)">Selecciona un día</span><h2>Detalle del turno</h2><p class="muted">Pulsa una casilla para ver inicio, fin, desarrollo y cambios.</p>';
+      }
+      if(pendingSelectedDayV55){const ds=pendingSelectedDayV55;pendingSelectedDayV55=null;selectDay(ds)}
+      setStatusV52('IndexedDB listo. Calendario, PDF, marcos e historial recuperados.',true);
+      return true;
+    }catch(e){
+      console.error('Arranque IndexedDB fallido',e);
+      ensureDataShapeV55();appBootReadyV55=true;
+      setVersionV55();show('calendarView');render();injectStorageHealthV55();updateImportUI();
+      setStatusV52('No se pudo abrir IndexedDB. Se muestran los datos de respaldo disponibles.',false);
+      return false;
+    }
+  })();
+  return appBootPromiseV55;
+}
+
+// El detalle solo se ejecuta cuando los datos ya están cargados.
+const _selectDay_before_v55=selectDay;
+selectDay=function(ds){
+  if(!appBootReadyV55){pendingSelectedDayV55=ds;safeBootIndexedDBV55();return}
+  try{
+    _selectDay_before_v55(ds);
+    if(!document.getElementById('detail')?.innerHTML.trim())throw new Error('Detalle vacío');
+  }catch(e){
+    console.error('Error al abrir detalle',e);
+    selected=ds;render();
+    const d=effectiveDay(ds),b=blockFor(d),title=new Date(ds+'T12:00:00').toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+    detail.innerHTML='<span class="pill" style="background:#fff1f2;color:#c20d34">Detalle recuperado</span><h2>'+esc(title)+'</h2><p><b>Turno:</b> '+esc(d?.clave_turno||'—')+'</p><p><b>Inicio:</b> '+esc(blockIni(b)||'—')+' · <b>Final:</b> '+esc(blockFin(b)||'—')+'</p>'+timelineHtml(b||{})+changePanelHtml(ds,dayData(ds),blockFor(dayData(ds)),d,b);
+    scrollToDetail();
+  }
+};
+
+function storageCountsV55(){
+  return {
+    calendar:(data.calendar||[]).length,
+    changes:Object.keys(data.changes||{}).length,
+    marcos:(idbCacheV52.marcos||[]).length,
+    backups:(idbCacheV52.backups||[]).length,
+    pdf:data.pdf?.dataUrl?'Sí':'No'
+  };
+}
+function injectStorageHealthV55(){
+  const root=document.querySelector('#settingsView .detail');if(!root)return;
+  let box=document.getElementById('storageHealthV55');
+  if(!box){box=document.createElement('div');box.id='storageHealthV55';box.className='settingsBlock';root.insertBefore(box,root.children[1]||null)}
+  const c=storageCountsV55(),last=data.meta?.lastSaved||data.meta?.marcoImported||data.meta?.yearImported||'';
+  box.innerHTML='<h3>Estado de los datos</h3><p><b>IndexedDB:</b> '+(idbReadyV52?'Activo':'Preparando')+'</p><p class="muted">Calendario: '+c.calendar+' días · Cambios: '+c.changes+' · Marcos: '+c.marcos+' · Copias: '+c.backups+' · PDF: '+c.pdf+'</p><p class="muted">Último guardado: '+(last?new Date(last).toLocaleString('es-ES'):'Sin registro')+'</p><p class="ok">La actualización del código no borra estos datos. Existe una copia automática previa a la migración.</p>';
+}
+
+// Borrado protegido con doble confirmación y copia previa.
+clearData=async function(){
+  if(!confirm('Esta opción borra calendario, cambios, marcos, PDF y copias de este dispositivo. ¿Continuar?'))return;
+  if(!confirm('Última confirmación: esta acción no se puede deshacer salvo que tengas una copia exportada. ¿Borrar todo?'))return;
+  try{await idbSetV52('manualDeleteBackupV55',{created:new Date().toISOString(),data,marcos:idbCacheV52.marcos,backups:idbCacheV52.backups})}catch(e){}
+  data={calendar:[],blocks:[],meta:{},changes:{},records:[],people:[],alarms:{},disabledAlarms:{},settings:{openMode:'calendario'}};
+  idbCacheV52={data,marcos:[],backups:[]};
+  await Promise.allSettled([idbSetV52('data',data),idbSetV52('marcos',[]),idbSetV52('backups',[])]);
+  render();renderMarcoPanelV51();renderMemoryPanelV50();injectStorageHealthV55();updateImportUI();
+};
+
+// Evita que inicializaciones antiguas vuelvan a pintar antes de tiempo.
+setVersionV55();
+checkLogin();
+safeBootIndexedDBV55();
 </script></body></html>
