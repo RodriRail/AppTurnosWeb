@@ -2026,4 +2026,194 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 })();
 </script>
 
+
+<!-- ===== v6.4: indicador bicolor descanso→trabajo y orden ⚠️ antes de 🔄 ===== -->
+<style id="v64-indicators-css">
+.dayIndicatorsV64{position:absolute;right:4px;top:4px;display:flex;flex-direction:column;align-items:center;gap:2px;z-index:8;pointer-events:none}
+.dayIndicatorsV64 .topRowV64{display:flex;align-items:center;gap:3px;line-height:1}
+.dayIndicatorsV64 .incidentV64,.dayIndicatorsV64 .changeV64{font-size:11px;line-height:1}
+.dayIndicatorsV64 .bicolorV64{width:14px;height:6px;border-radius:999px;background:linear-gradient(90deg,#62df91 0 50%,#8a0f82 50% 100%);border:1px solid rgba(31,21,34,.25);box-shadow:0 0 0 1px rgba(255,255,255,.7)}
+</style>
+<script>
+(function(){
+  const V64='6.4';
+  try{
+    document.title='App Turnos Pro v'+V64;
+    document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+V64);
+  }catch(e){}
+
+  function originalStatusV64(ds){
+    const o=(typeof dayData==='function')?dayData(ds):null;
+    if(!o)return 'empty';
+    const t=String(o.tipo_norm||o.tipo_dia||o.tipo||'').toUpperCase();
+    const tr=String(o.clave_turno||'').toUpperCase();
+    if(t.includes('DESCANSO')||tr==='D'||t==='DSC'||t==='SSS')return 'rest';
+    if(t.includes('VAC')||tr==='VB')return 'vac';
+    if(t.includes('DD')||tr==='DD'||tr.startsWith('DD '))return 'dd';
+    return 'work';
+  }
+
+  function isRestToWorkV64(ds){
+    const ch=data?.changes?.[ds];
+    if(!ch)return false;
+    const hasAssignedTurn=!!String(ch.turno||'').trim();
+    const finalIsRest=ch.tipo==='D'||String(ch.turno||'').toUpperCase()==='D';
+    return originalStatusV64(ds)==='rest' && hasAssignedTurn && !finalIsRest;
+  }
+
+  function hasIncidentV64(ds){
+    return !!(data?.incidents?.[ds]||data?.incidencias?.[ds]);
+  }
+
+  function paintIndicatorsV64(){
+    document.querySelectorAll('#grid .day').forEach(day=>{
+      const onclick=day.getAttribute('onclick')||'';
+      const m=onclick.match(/selectDay\('([^']+)'\)/);
+      if(!m)return;
+      const ds=m[1], ch=!!data?.changes?.[ds], inc=hasIncidentV64(ds), bi=isRestToWorkV64(ds);
+      day.querySelectorAll('.dayIndicatorsV64,.changeDotV59,.incidentMarkV59,.restWorkMarkV59,.transitionMarkV60').forEach(x=>x.remove());
+      if(!ch&&!inc&&!bi)return;
+      const box=document.createElement('div');box.className='dayIndicatorsV64';
+      const top=document.createElement('div');top.className='topRowV64';
+      if(inc){const a=document.createElement('span');a.className='incidentV64';a.textContent='⚠️';top.appendChild(a)}
+      if(ch){const c=document.createElement('span');c.className='changeV64';c.textContent='🔄';top.appendChild(c)}
+      if(top.childNodes.length)box.appendChild(top);
+      if(bi){const b=document.createElement('span');b.className='bicolorV64';box.appendChild(b)}
+      day.appendChild(box);
+    });
+  }
+
+  const oldRender=window.render;
+  if(typeof oldRender==='function')window.render=function(){const r=oldRender.apply(this,arguments);setTimeout(paintIndicatorsV64,0);return r};
+  document.addEventListener('DOMContentLoaded',()=>setTimeout(paintIndicatorsV64,250));
+  setTimeout(paintIndicatorsV64,500);
+})();
+</script>
+
+
+<!-- ===== v6.5: prioridad DD trabajado + bicolor fiable descanso↔trabajo ===== -->
+<style id="v65-final-css">
+.dayIndicatorsV65{position:absolute;right:4px;top:4px;display:flex;flex-direction:column;align-items:flex-end;gap:2px;z-index:20;pointer-events:none}
+.dayIndicatorsV65 .topRowV65{display:flex;align-items:center;justify-content:flex-end;gap:3px;line-height:1}
+.dayIndicatorsV65 .incidentV65,.dayIndicatorsV65 .changeV65{font-size:11px;line-height:11px}
+.dayIndicatorsV65 .bicolorV65{display:block;width:14px;height:6px;border-radius:999px;background:linear-gradient(90deg,#62df91 0 50%,#8a0f82 50% 100%);border:1px solid rgba(31,21,34,.25);box-shadow:0 0 0 1px rgba(255,255,255,.8);margin-right:0}
+.badge.ddworkV65{position:relative!important;overflow:hidden!important;background:repeating-linear-gradient(135deg,#ffe0e7 0 9px,#8a0f82 9px 12px,#ffe0e7 12px 18px)!important;border-color:#c026d3!important;color:#35113d!important;min-height:70px!important;height:70px!important;padding:5px 2px!important;display:flex!important;align-items:center!important;justify-content:center!important;flex-direction:column!important}
+.badge.ddworkV65 .ddSmall{font-size:10px!important;font-weight:950!important;color:#be123c!important;line-height:1!important}
+.badge.ddworkV65 .ddTurn{font-size:17px!important;font-weight:950!important;color:#35113d!important;line-height:1.05!important}
+.badge.ddworkV65 .timeTop,.badge.ddworkV65 .timeBot,.badge.ddworkV65 .sep{position:relative;z-index:2}
+</style>
+<script id="v65-final-js">
+(function(){
+  const APP_VERSION_V65='6.5', APP_UPDATED_V65='01/08/2026';
+  function setVersionV65(){
+    document.title='App Turnos Pro v'+APP_VERSION_V65;
+    document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+APP_VERSION_V65);
+    const h=document.querySelector('.loginbox h1');if(h)h.innerHTML='App Turnos Pro <span class="ver">v'+APP_VERSION_V65+'</span>';
+    const stamp=document.getElementById('loginVersionV57');if(stamp)stamp.textContent='Versión '+APP_VERSION_V65+' · Actualizada '+APP_UPDATED_V65;
+    const badge=document.getElementById('loginVersionBadgeV58')||document.getElementById('loginVersionBadgeV59');if(badge)badge.textContent='v'+APP_VERSION_V65;
+  }
+  function baseDayV65(ds){return typeof dayData==='function'?dayData(ds):null}
+  function changeV65(ds){return data&&data.changes?data.changes[ds]:null}
+  function baseCodeV65(ds){
+    const b=baseDayV65(ds),ch=changeV65(ds);
+    return String((b&&b.clave_turno)||(ch&&ch.originalTurno)||'').trim().toUpperCase();
+  }
+  function baseTypeV65(ds){
+    const b=baseDayV65(ds);
+    return String(b&&(b.tipo_norm||b.tipo_dia||b.tipo||b.raw?.tipo)||'').trim().toUpperCase();
+  }
+  function originalKindV65(ds){
+    const code=baseCodeV65(ds),type=baseTypeV65(ds);
+    if(code==='DD'||code==='DV'||code.startsWith('DD ')||type==='DD'||type.includes('DETRA'))return 'dd';
+    if(['D','DSC','SSS','VB','LZ'].includes(code)||type.includes('DESCANSO')||type.includes('COMPENSADO')||type.includes('SIN SERVICIO')||type.includes('VAC')||type.includes('LICENCIA'))return 'rest';
+    return code||type?'work':'empty';
+  }
+  function assignedTurnV65(ds){
+    const ch=changeV65(ds);if(!ch)return '';
+    const t=String(ch.turno||'').trim();
+    if(!t||['D','LZ','DD'].includes(String(ch.tipo||'').toUpperCase())||['D','LZ','DD'].includes(t.toUpperCase()))return '';
+    return t;
+  }
+  function isDDWorkedV65(ds){return originalKindV65(ds)==='dd'&&!!assignedTurnV65(ds)}
+  function isRestWorkedV65(ds){return originalKindV65(ds)==='rest'&&!!assignedTurnV65(ds)}
+  function isWorkToRestV65(ds){
+    const ch=changeV65(ds);if(!ch||originalKindV65(ds)!=='work')return false;
+    const t=String(ch.tipo||ch.turno||'').toUpperCase();return t==='D'||t==='LZ';
+  }
+  function assignedBlockV65(ds,turn){
+    let blocks=[];try{blocks=typeof blocksForDate==='function'?blocksForDate(ds):(data.blocks||[])}catch(e){blocks=data.blocks||[]}
+    let letter='';try{letter=typeof dayLetterV50==='function'?dayLetterV50(ds):(typeof dayLetterV44==='function'?dayLetterV44(ds):(typeof dayLetter==='function'?dayLetter(ds):''))}catch(e){}
+    const same=(blocks||[]).filter(b=>String(b.turno)===String(turn));
+    return same.find(b=>!b.dias||String(b.dias).toUpperCase().includes(letter))||same[0]||null;
+  }
+
+  const prevEffectiveV65=window.effectiveDay;
+  window.effectiveDay=function(ds){
+    if(isDDWorkedV65(ds)){
+      const base=baseDayV65(ds),turn=assignedTurnV65(ds),ch=changeV65(ds);
+      return {...(base||{fecha:ds}),fecha:ds,clave_turno:'DD '+turn,dd_turno:turn,tipo_dia:'DD trabajado',tipo_norm:'DD_TRABAJADO',changed:true,original:base,change:ch};
+    }
+    return prevEffectiveV65?prevEffectiveV65(ds):baseDayV65(ds);
+  };
+  const prevStatusV65=window.status;
+  window.status=function(d){
+    const ds=d&&d.fecha||'';
+    if(ds&&isDDWorkedV65(ds))return 'ddwork';
+    if(ds&&isRestWorkedV65(ds))return 'work';
+    return prevStatusV65?prevStatusV65(d):'empty';
+  };
+  const prevBlockForV65=window.blockFor;
+  window.blockFor=function(d){
+    const ds=d&&d.fecha||'';
+    if(ds&&(isDDWorkedV65(ds)||isRestWorkedV65(ds)))return assignedBlockV65(ds,assignedTurnV65(ds));
+    return prevBlockForV65?prevBlockForV65(d):null;
+  };
+  const prevTypeBadgeV65=window.typeBadge;
+  window.typeBadge=function(d,b){
+    const ds=d&&d.fecha||'';
+    if(ds&&isDDWorkedV65(ds)){
+      const turn=assignedTurnV65(ds),ab=assignedBlockV65(ds,turn),ini=ab&&typeof blockIni==='function'?blockIni(ab):'',fin=ab&&typeof blockFin==='function'?blockFin(ab):'';
+      return '<div class="shiftNo">DD</div><div class="badge ddworkV65"><div class="ddSmall">DD trabajado</div><div class="ddTurn">'+esc(turn||'—')+'</div><div class="timeTop">'+esc(ini||'--:--')+'</div><div class="sep">↓</div><div class="timeBot">'+esc(fin||'--:--')+'</div></div>';
+    }
+    return prevTypeBadgeV65?prevTypeBadgeV65(d,b):'';
+  };
+
+  const prevSelectDayV65=window.selectDay;
+  window.selectDay=function(ds){
+    if(!isDDWorkedV65(ds))return prevSelectDayV65(ds);
+    selected=ds;if(typeof render==='function')render();
+    const turn=assignedTurnV65(ds),d=window.effectiveDay(ds),b=assignedBlockV65(ds,turn),title=new Date(ds+'T12:00:00').toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long',year:'numeric'}),ini=b&&typeof blockIni==='function'?blockIni(b):'',fin=b&&typeof blockFin==='function'?blockFin(b):'',dur=(b&&(b.duracion||b.raw?.duracion))||'';
+    let html='<span class="pill" style="background:#ffe0e7;color:#c20d34;border:1px solid #ff9aad">DD trabajado</span><h2>'+esc(title)+'</h2><div class="summaryCard"><div class="summaryTop"><div><div class="summaryTitle">DD → Turno '+esc(turn)+'</div><div class="summaryDate">Detraíble trabajado por asignación</div></div><div class="servicePill">Cambio</div></div><div class="summaryTimes"><div><small>Inicio</small><b>'+esc(ini||'—')+'</b></div><div class="summaryArrow">→</div><div><small>Final</small><b>'+esc(fin||'—')+'</b></div></div>';
+    if(typeof miniSummary==='function'){const m=miniSummary(b||{});html+='<div class="miniGrid"><div class="miniBox"><small>Recorrido</small><b>'+esc(m.route||'—')+'</b></div><div class="miniBox"><small>Trenes</small><b>'+esc(m.trains||'—')+'</b></div><div class="miniBox"><small>Duración</small><b>'+esc(dur||m.duration||'—')+'</b></div></div>'}
+    html+='</div>';
+    if(data.pdf)html+='<button class="btn primary" onclick="openPdf('+(Number(b&&b.pagina||0))+')">📄 Ver PDF Marco original</button>';
+    html+=(typeof timelineHtml==='function'?timelineHtml(b||{}):'');
+    html+=(typeof changePanelHtml==='function'?changePanelHtml(ds,baseDayV65(ds),null,d,b):'');
+    html+=(typeof incidentPanelHtmlV59==='function'?incidentPanelHtmlV59(ds):'');
+    const target=document.getElementById('detail');if(target)target.innerHTML=html;
+    if(typeof scrollToDetail==='function')scrollToDetail();
+  };
+
+  function hasIncidentV65(ds){return !!(data?.incidents?.[ds]||data?.incidencias?.[ds])}
+  function paintIndicatorsV65(){
+    document.querySelectorAll('#grid .day').forEach(day=>{
+      const m=(day.getAttribute('onclick')||'').match(/selectDay\('([^']+)'\)/);if(!m)return;
+      const ds=m[1],ch=!!changeV65(ds),inc=hasIncidentV65(ds),bi=isRestWorkedV65(ds)||isWorkToRestV65(ds);
+      day.querySelectorAll('.dayIndicatorsV64,.dayIndicatorsV65,.dayIndicatorsV61,.changeDotV59,.incidentMarkV59,.restWorkMarkV59,.transitionMarkV60,.changedDot').forEach(x=>x.remove());
+      if(!ch&&!inc&&!bi)return;
+      const box=document.createElement('div');box.className='dayIndicatorsV65';
+      const top=document.createElement('div');top.className='topRowV65';
+      if(inc){const i=document.createElement('span');i.className='incidentV65';i.textContent='⚠️';top.appendChild(i)}
+      if(ch){const c=document.createElement('span');c.className='changeV65';c.textContent='🔄';top.appendChild(c)}
+      if(top.childNodes.length)box.appendChild(top);
+      if(bi){const b=document.createElement('span');b.className='bicolorV65';box.appendChild(b)}
+      day.appendChild(box);
+    });
+  }
+  const prevRenderV65=window.render;
+  window.render=function(){const r=prevRenderV65?prevRenderV65.apply(this,arguments):undefined;setVersionV65();setTimeout(paintIndicatorsV65,0);return r};
+  setTimeout(()=>{setVersionV65();if(typeof render==='function')render();setTimeout(paintIndicatorsV65,100)},700);
+})();
+</script>
+
 </body></html>
