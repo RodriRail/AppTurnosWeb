@@ -1731,4 +1731,117 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 })();
 </script>
 
+
+<style id="v61-final-css">
+/* v6.1: indicadores compactos en columna y ajustes ordenados */
+.dayIndicatorsV61{position:absolute;right:3px;top:4px;display:flex;flex-direction:column;align-items:center;gap:1px;z-index:20;pointer-events:none}
+.dayIndicatorsV61 .indChangeV61,.dayIndicatorsV61 .indIncidentV61{width:13px;height:13px;display:flex;align-items:center;justify-content:center;font-size:11px;line-height:1}
+.dayIndicatorsV61 .indTransitionV61{width:13px;height:6px;border-radius:999px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;border:1px solid rgba(0,0,0,.16)}
+.dayIndicatorsV61 .indTransitionV61 i:first-child{background:#62df91}.dayIndicatorsV61 .indTransitionV61 i:last-child{background:#b65ac0}
+</style>
+<script id="v61-final-js">
+(function(){
+  const APP_VERSION_V61='6.1';
+  const APP_UPDATED_V61='31/07/2026';
+
+  function setVersionV61(){
+    document.title='App Turnos Pro v'+APP_VERSION_V61;
+    document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+APP_VERSION_V61);
+    const h=document.querySelector('.loginbox h1');
+    if(h)h.innerHTML='App Turnos Pro <span class="ver">v'+APP_VERSION_V61+'</span>';
+    const stamp=document.getElementById('loginVersionV57');
+    if(stamp)stamp.textContent='Versión '+APP_VERSION_V61+' · Actualizada '+APP_UPDATED_V61;
+    const badge=document.getElementById('loginVersionBadgeV58')||document.getElementById('loginVersionBadgeV59');
+    if(badge)badge.textContent='v'+APP_VERSION_V61;
+  }
+
+  function isRestLikeV61(st){return ['rest','dsc','sss','dd','vac','lz'].includes(st)}
+  function transitionV61(ds){
+    const base=typeof dayData==='function'?dayData(ds):null;
+    const eff=typeof effectiveDay==='function'?effectiveDay(ds):base;
+    if(!base||!eff||!(data.changes&&data.changes[ds]))return false;
+    let bs='',es='';try{bs=status(base);es=status(eff)}catch(e){}
+    return (isRestLikeV61(bs)&&es==='work')||(bs==='work'&&isRestLikeV61(es));
+  }
+  function indicatorsV61(ds){
+    const changed=!!(data.changes&&data.changes[ds]);
+    const incident=!!(data.incidents&&data.incidents[ds]);
+    let h='';
+    if(changed)h+='<span class="indChangeV61" title="Cambio">🔄</span>';
+    if(changed&&transitionV61(ds))h+='<span class="indTransitionV61" title="Cambio descanso/trabajo"><i></i><i></i></span>';
+    if(incident)h+='<span class="indIncidentV61" title="Incidencia">⚠️</span>';
+    return h?'<div class="dayIndicatorsV61">'+h+'</div>':'';
+  }
+
+  // Elimina definitivamente los antiguos emojis grandes y fuerza descanso trabajado -> casilla normal de trabajo.
+  const prevTypeBadgeV61=window.typeBadge;
+  window.typeBadge=function(d,b){
+    const ds=d&&d.fecha||'';
+    const base=ds&&typeof dayData==='function'?dayData(ds):null;
+    let bs='',es='';try{bs=base?status(base):'';es=d?status(d):''}catch(e){}
+    if(ds&&data.changes&&data.changes[ds]&&isRestLikeV61(bs)&&es==='work'){
+      const ini=typeof blockIni==='function'?blockIni(b):'';
+      const fin=typeof blockFin==='function'?blockFin(b):'';
+      return '<div class="shiftNo">'+esc(String(d.clave_turno||''))+'</div><div class="badge work"><div class="timeTop">'+esc(ini||'--:--')+'</div><div class="sep">↓</div><div class="timeBot">'+esc(fin||'--:--')+'</div></div>';
+    }
+    let html=typeof prevTypeBadgeV61==='function'?prevTypeBadgeV61(d,b):'';
+    html=String(html)
+      .replace(/<span class="dayMarkersV59">[\s\S]*?<\/span>/g,'')
+      .replace(/<span class="dayMarkerV59[^>]*>[\s\S]*?<\/span>/g,'')
+      .replace(/🟩🟪|🟪🟩/g,'')
+      .replace(/<i class="changedDot"><\/i>/g,'');
+    return html;
+  };
+
+  const prevRenderV61=window.render;
+  window.render=function(){
+    prevRenderV61();
+    document.querySelectorAll('#grid .day').forEach(el=>{
+      const oc=el.getAttribute('onclick')||'';
+      const m=oc.match(/selectDay\('([^']+)'\)/);if(!m)return;
+      el.querySelectorAll('.dayIndicators,.dayIndicatorsV61,.dayMarkersV59,.v59Indicator,.v59Indicators,.changedDot').forEach(x=>x.remove());
+      const h=indicatorsV61(m[1]);if(h)el.insertAdjacentHTML('beforeend',h);
+    });
+    setVersionV61();
+  };
+
+  // Caja de incidencias con ambos botones siempre visibles.
+  window.incidentPanelHtmlV59=function(ds){
+    const inc=(data.incidents||{})[ds]||{},cats=inc.categories||{};
+    const check=(key,label)=>'<label class="incidentCheckV59"><input type="checkbox" id="inc_'+key+'" '+(cats[key]?'checked':'')+'> '+label+'</label>';
+    return '<div class="incidentPanelV59"><div class="incidentTitleV59"><span>⚠️</span><span>Incidencias</span></div><p class="muted">Marca una o varias categorías y añade una explicación.</p><div class="incidentChecksV59">'+
+      check('pai','PAI')+check('pirsc','PIRSC')+check('retrasos','Retrasos')+check('material','Material')+check('otros','Otros')+
+      '</div><textarea id="inc_note" class="input incidentNoteV59" placeholder="Describe la incidencia, retrasos, exceso de jornada, material, PIRSC, etc.">'+esc(inc.note||'')+'</textarea><div style="margin-top:8px"><button class="btn primary" onclick="saveIncidentV59(\''+ds+'\')">Guardar incidencia</button> <button class="btn" onclick="deleteIncidentV59(\''+ds+'\')">Borrar incidencia</button></div><div id="incidentMsgV59" class="incidentSavedV59"></div></div>';
+  };
+  const prevDeleteIncidentV61=window.deleteIncidentV59;
+  window.deleteIncidentV59=function(ds){
+    if(!(data.incidents&&data.incidents[ds])){alert('No hay ninguna incidencia guardada en este día.');return}
+    return prevDeleteIncidentV61(ds);
+  };
+
+  function directChildByHeading(root,re){
+    return [...root.children].find(x=>{const h=x.querySelector&&x.querySelector('h2,h3');return h&&re.test((h.textContent||'').trim())});
+  }
+  function reorderSettingsV61(){
+    const root=document.querySelector('#settingsView .detail');if(!root)return;
+    root.querySelectorAll('h3').forEach(h=>{if(/marcos históricos/i.test(h.textContent||''))h.textContent='Histórico de Marcos'});
+    const memory=directChildByHeading(root,/^Memoria$/i)||[...root.children].find(x=>/^\s*Memoria\b/i.test(x.textContent||''));
+    let annual=document.getElementById('annualPdfPanelV60');
+    const mode=directChildByHeading(root,/^Modo de apertura$/i)||[...root.children].find(x=>/Modo de apertura/i.test(x.textContent||''));
+    const alarm=directChildByHeading(root,/^Alarmas$/i)||[...root.children].find(x=>/^\s*Alarmas/i.test(x.textContent||''));
+    if(memory&&annual)memory.insertAdjacentElement('afterend',annual);
+    if(annual&&mode)annual.insertAdjacentElement('afterend',mode);
+    else if(memory&&mode)memory.insertAdjacentElement('afterend',mode);
+    if(mode&&alarm)mode.insertAdjacentElement('afterend',alarm);
+  }
+
+  const prevShowV61=window.show;
+  window.show=function(id){prevShowV61(id);if(id==='settingsView')setTimeout(reorderSettingsV61,10)};
+  const prevEnhanceV61=window.enhanceSettings;
+  if(typeof prevEnhanceV61==='function')window.enhanceSettings=function(force){prevEnhanceV61(force);setTimeout(reorderSettingsV61,10)};
+
+  setTimeout(()=>{setVersionV61();reorderSettingsV61();if(typeof render==='function')render()},500);
+})();
+</script>
+
 </body></html>
