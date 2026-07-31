@@ -1932,4 +1932,98 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 })();
 </script>
 
+
+<style id="v63-final-css">
+/* v6.3: indicador bicolor justo debajo de cambio */
+.dayIndicatorsV61{display:flex!important;flex-direction:column!important;align-items:center!important;gap:1px!important;right:2px!important;top:2px!important}
+.dayIndicatorsV61 .indChangeV61{order:1;font-size:11px!important;line-height:11px!important}
+.dayIndicatorsV61 .indTransitionV61{order:2;width:14px!important;height:6px!important;display:flex!important;border-radius:999px!important;overflow:hidden!important;border:1px solid #fff!important;box-shadow:0 0 0 1px #8a0f82!important}
+.dayIndicatorsV61 .indTransitionV61 i{display:block!important;width:50%!important;height:100%!important}
+.dayIndicatorsV61 .indIncidentV61{order:3;font-size:11px!important;line-height:11px!important}
+</style>
+<script id="v63-final-js">
+(function(){
+ const APP_VERSION_V63='6.3', APP_UPDATED_V63='31/07/2026';
+ function setVersionV63(){
+   document.title='App Turnos Pro v'+APP_VERSION_V63;
+   document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+APP_VERSION_V63);
+   const h=document.querySelector('.loginbox h1');if(h)h.innerHTML='App Turnos Pro <span class="ver">v'+APP_VERSION_V63+'</span>';
+   const stamp=document.getElementById('loginVersionV57');if(stamp)stamp.textContent='Versión '+APP_VERSION_V63+' · Actualizada '+APP_UPDATED_V63;
+   const badge=document.getElementById('loginVersionBadgeV58')||document.getElementById('loginVersionBadgeV59');if(badge)badge.textContent='v'+APP_VERSION_V63;
+ }
+ function originalRestV63(ds){
+   const b=typeof dayData==='function'?dayData(ds):null;if(!b)return false;
+   const turn=String(b.clave_turno||'').toUpperCase(),type=String(b.tipo_dia||b.tipo_norm||'').toUpperCase();
+   return ['D','DSC','SSS','DD','VB'].includes(turn)||type.includes('DESCANSO')||type.includes('VAC')||type.includes('COMPENSADO')||type.includes('SIN SERVICIO')||type.includes('DETRA');
+ }
+ function isManualWorkV63(ds){
+   const ch=data.changes&&data.changes[ds];
+   return !!(ch&&ch.turno&&ch.tipo!=='D'&&ch.tipo!=='LZ'&&ch.tipo!=='DD'&&originalRestV63(ds));
+ }
+ function assignedBlockV63(ds,turn){
+   let blocks=[];try{blocks=typeof blocksForDate==='function'?blocksForDate(ds):(data.blocks||[])}catch(e){blocks=data.blocks||[]}
+   let letter='';try{letter=typeof dayLetterV50==='function'?dayLetterV50(ds):(typeof dayLetterV44==='function'?dayLetterV44(ds):dayLetter(ds))}catch(e){}
+   const same=(blocks||[]).filter(b=>String(b.turno)===String(turn));
+   return same.find(b=>!b.dias||String(b.dias).toUpperCase().includes(letter))||same[0]||null;
+ }
+ const prevStatusV63=window.status;
+ window.status=function(d){
+   const ds=d&&d.fecha||'';
+   if(ds&&isManualWorkV63(ds))return 'work';
+   return prevStatusV63?prevStatusV63(d):'empty';
+ };
+ const prevBlockForV63=window.blockFor;
+ window.blockFor=function(d){
+   const ds=d&&d.fecha||'';
+   if(ds&&isManualWorkV63(ds))return assignedBlockV63(ds,data.changes[ds].turno);
+   return prevBlockForV63?prevBlockForV63(d):null;
+ };
+ const prevEffectiveV63=window.effectiveDay;
+ window.effectiveDay=function(ds){
+   const d=prevEffectiveV63?prevEffectiveV63(ds):(typeof dayData==='function'?dayData(ds):null);
+   if(isManualWorkV63(ds))return {...(d||{fecha:ds}),fecha:ds,clave_turno:String(data.changes[ds].turno),tipo_dia:'Trabajo',tipo_norm:'SERVICIO',changed:true,original:typeof dayData==='function'?dayData(ds):null,change:data.changes[ds]};
+   return d;
+ };
+ // Fuerza que selectDay reconstruya el detalle con el turno manual y su marco.
+ const prevSelectDayV63=window.selectDay;
+ window.selectDay=function(ds){
+   if(!isManualWorkV63(ds))return prevSelectDayV63(ds);
+   selected=ds;
+   if(typeof render==='function')render();
+   const d=window.effectiveDay(ds),b=window.blockFor(d),title=new Date(ds+'T12:00:00').toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+   const ini=b&&typeof blockIni==='function'?blockIni(b):'',fin=b&&typeof blockFin==='function'?blockFin(b):'',dur=(b&&(b.duracion||b.raw?.duracion))||'',tipo=(b&&(b.tipo||b.raw?.tipo))||'Servicio';
+   let html='<div class="summaryCard"><div class="summaryTop"><div><div class="summaryTitle">Turno '+esc(d.clave_turno)+'</div><div class="summaryDate">'+esc(title)+'</div></div><div class="servicePill">'+esc(tipo)+'</div></div><div class="summaryTimes"><div><small>Inicio</small><b>'+esc(ini||'—')+'</b></div><div class="summaryArrow">→</div><div><small>Final</small><b>'+esc(fin||'—')+'</b></div></div>';
+   if(typeof miniSummary==='function'){const m=miniSummary(b||{});html+='<div class="miniGrid"><div class="miniBox"><small>Recorrido</small><b>'+esc(m.route||'—')+'</b></div><div class="miniBox"><small>Trenes</small><b>'+esc(m.trains||'—')+'</b></div><div class="miniBox"><small>Duración</small><b>'+esc(dur||m.duration||'—')+'</b></div></div>'}
+   html+='</div>';
+   if(data.pdf)html+='<button class="btn primary" onclick="openPdf('+(Number(b&&b.pagina||0))+')">📄 Ver PDF Marco original</button>';
+   html+=(typeof timelineHtml==='function'?timelineHtml(b||{}):'');
+   html+=(typeof changePanelHtml==='function'?changePanelHtml(ds,typeof dayData==='function'?dayData(ds):null,null,d,b):'');
+   html+=(typeof incidentPanelHtmlV59==='function'?incidentPanelHtmlV59(ds):'');
+   const target=document.getElementById('detail');if(target)target.innerHTML=html;
+   if(typeof scrollToDetail==='function')scrollToDetail();
+ };
+ function findBoxV63(root,re){return [...root.children].find(x=>{const h=x.querySelector&&x.querySelector('h2,h3');return h&&re.test((h.textContent||'').trim())})||[...root.children].find(x=>re.test((x.textContent||'').trim()))}
+ function reorderSettingsV63(){
+   const root=document.querySelector('#settingsView .detail');if(!root)return;
+   root.querySelectorAll('h3').forEach(h=>{if(/marcos históricos|histórico de marcos/i.test(h.textContent||''))h.textContent='Histórico de Marcos'});
+   const app=[...root.children].find(x=>x.tagName==='H2'||/App Turnos Pro|Versión/i.test(x.textContent||''));
+   const marcos=findBoxV63(root,/Histórico de Marcos|Marcos históricos/i);
+   const pdf=findBoxV63(root,/PDF marco original/i);
+   const memory=findBoxV63(root,/^Memoria$/i);
+   const annual=document.getElementById('annualPdfPanelV60')||findBoxV63(root,/^Cuadro anual$/i);
+   const state=findBoxV63(root,/^Estado de datos$/i);
+   const mode=findBoxV63(root,/^Modo de apertura$/i);
+   const alarm=findBoxV63(root,/^Alarmas$/i);
+   [app,marcos,pdf,memory,annual,state,mode,alarm].filter(Boolean).forEach(x=>root.appendChild(x));
+ }
+ const prevRenderV63=window.render;
+ window.render=function(){if(prevRenderV63)prevRenderV63();setVersionV63()};
+ const prevShowV63=window.show;
+ window.show=function(id){if(prevShowV63)prevShowV63(id);if(id==='settingsView')setTimeout(reorderSettingsV63,30)};
+ const prevEnhanceV63=window.enhanceSettings;
+ if(typeof prevEnhanceV63==='function')window.enhanceSettings=function(force){prevEnhanceV63(force);setTimeout(reorderSettingsV63,30)};
+ setTimeout(()=>{setVersionV63();reorderSettingsV63();if(typeof render==='function')render()},700);
+})();
+</script>
+
 </body></html>
