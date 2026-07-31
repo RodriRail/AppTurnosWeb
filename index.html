@@ -1509,8 +1509,8 @@ checkLogin();render();
 @media(max-width:560px){.dayMarkersV59{font-size:11px}.dayMarkerV59{min-width:17px;height:17px;font-size:11px}.dayMarkerV59.swap{min-width:26px;font-size:9px}.incidentChecksV59{grid-template-columns:1fr 1fr}}
 </style>
 <script id="v59-incidencias-js">
-// ===== v5.9: incidencias persistentes, iconos y cambio descanso/trabajo =====
-const APP_VERSION_V59='5.9';
+// ===== v6.0: incidencias persistentes, iconos y cambio descanso/trabajo =====
+const APP_VERSION_V59='6.0';
 const APP_UPDATED_AT_V59='31/07/2026';
 data.incidents=data.incidents||{};
 
@@ -1627,4 +1627,108 @@ const _render_v59=render;
 render=function(){_render_v59();setVersionV59()};
 setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400);
 </script>
+
+<style id="v60-final-css">
+/* v6.0 indicadores compactos y ajustes ordenados */
+.dayIndicators{position:absolute;right:4px;top:4px;display:flex;align-items:center;gap:3px;z-index:8;pointer-events:none}
+.indChange,.indIncident{font-size:11px;line-height:1;display:inline-flex;align-items:center;justify-content:center;width:13px;height:13px}
+.indTransition{width:14px;height:7px;border-radius:999px;overflow:hidden;display:inline-grid;grid-template-columns:1fr 1fr;border:1px solid rgba(0,0,0,.12)}
+.indTransition i:first-child{background:#62df91}.indTransition i:last-child{background:#b65ac0}
+.marcoNameWrap{min-width:0;max-width:100%}.marcoNameWrap b{display:block;white-space:normal;overflow-wrap:anywhere;word-break:break-word;line-height:1.25}
+.marcoNameWrap .memSmall{white-space:normal;overflow-wrap:anywhere}
+.settingsBlock.orderBox{margin-top:12px}
+</style>
+<script id="v60-final-js">
+(function(){
+  const APP_VERSION_V60='6.0';
+  const APP_UPDATED_V60='31/07/2026';
+  function setVersionV60(){
+    document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+APP_VERSION_V60);
+    document.title='App Turnos Pro v'+APP_VERSION_V60;
+    const lb=document.querySelector('.loginbox h1'); if(lb) lb.innerHTML='App Turnos Pro <span class="ver">v'+APP_VERSION_V60+'</span>';
+  }
+  setVersionV60();
+
+  function transitionTypeV60(ds){
+    const base=typeof dayData==='function'?dayData(ds):null;
+    const eff=typeof effectiveDay==='function'?effectiveDay(ds):base;
+    if(!base||!eff||!base.changed&&!eff.changed)return false;
+    const bs=typeof status==='function'?status(base):'';
+    const es=typeof status==='function'?status(eff):'';
+    return (bs==='rest'&&es==='work')||(bs==='work'&&es==='rest');
+  }
+  function indicatorHtmlV60(ds){
+    const ch=(window.data&&data.changes&&data.changes[ds])||null;
+    const inc=(window.data&&data.incidents&&data.incidents[ds])||null;
+    let h='';
+    if(ch)h+='<span class="indChange" title="Cambio">↻</span>';
+    if(inc)h+='<span class="indIncident" title="Incidencia">⚠</span>';
+    if(transitionTypeV60(ds))h+='<span class="indTransition" title="Cambio descanso/trabajo"><i></i><i></i></span>';
+    return h?'<div class="dayIndicators">'+h+'</div>':'';
+  }
+  const oldRenderV60=window.render;
+  if(typeof oldRenderV60==='function'){
+    window.render=function(){
+      oldRenderV60();
+      document.querySelectorAll('#grid .day').forEach(el=>{
+        const onclick=el.getAttribute('onclick')||'';
+        const m=onclick.match(/selectDay\('([^']+)'\)/);
+        if(!m)return;
+        el.querySelectorAll('.dayIndicators,.changedDot,.v59Indicator,.v59Indicators').forEach(x=>x.remove());
+        el.insertAdjacentHTML('beforeend',indicatorHtmlV60(m[1]));
+      });
+    }
+  }
+
+  function ensureAnnualPdfData(){if(window.data){data.annualPdf=data.annualPdf||null}}
+  async function persistV60(){
+    try{ if(typeof save==='function') save(); }catch(e){}
+    try{ if(typeof persistDataV57==='function') await persistDataV57(); }catch(e){}
+    try{ if(typeof idbPut==='function') await idbPut('data','main',data); }catch(e){}
+  }
+  window.importAnnualPdfV60=function(ev){
+    const f=ev.target.files&&ev.target.files[0]; if(!f)return;
+    const r=new FileReader(); r.onload=async()=>{ensureAnnualPdfData();data.annualPdf={name:f.name,dataUrl:r.result,imported:new Date().toISOString()};await persistV60();renderAnnualPdfPanelV60()};
+    r.readAsDataURL(f); ev.target.value='';
+  };
+  window.viewAnnualPdfV60=function(){if(!data.annualPdf?.dataUrl)return;let w=window.open();if(w)w.document.write('<iframe src="'+data.annualPdf.dataUrl+'" style="border:0;width:100%;height:100vh"></iframe>')};
+  window.exportAnnualPdfV60=function(){if(!data.annualPdf?.dataUrl)return;let a=document.createElement('a');a.href=data.annualPdf.dataUrl;a.download=data.annualPdf.name||'Cuadro_anual.pdf';document.body.appendChild(a);a.click();a.remove()};
+  window.deleteAnnualPdfV60=async function(){if(!data.annualPdf)return;if(!confirm('¿Eliminar el PDF del cuadro anual?'))return;data.annualPdf=null;await persistV60();renderAnnualPdfPanelV60()};
+  window.renderAnnualPdfPanelV60=function(){
+    const box=document.getElementById('annualPdfPanelV60');if(!box)return;ensureAnnualPdfData();
+    const p=data.annualPdf;
+    box.innerHTML='<div class="settingsBlock orderBox"><h3>Cuadro anual</h3><p class="muted">Gestiona el PDF original del cuadro anual.</p>'+
+      (p?'<p><b>'+esc(p.name||'Cuadro anual.pdf')+'</b><br><span class="muted">Importado: '+new Date(p.imported).toLocaleString('es-ES')+'</span></p><button class="btn" onclick="viewAnnualPdfV60()">👁️ Ver</button> <button class="btn" onclick="exportAnnualPdfV60()">📤 Exportar</button> <button class="btn danger" onclick="deleteAnnualPdfV60()">🗑️ Eliminar</button>':'<p class="muted">No hay PDF del cuadro anual guardado.</p>')+
+      '<input id="annualPdfInputV60" type="file" accept="application/pdf,.pdf" class="hidden" onchange="importAnnualPdfV60(event)"><button class="btn primary" onclick="document.getElementById(\'annualPdfInputV60\').click()">📄 '+(p?'Sustituir PDF':'Importar PDF')+'</button></div>';
+  };
+
+  function reorderSettingsV60(){
+    const root=document.querySelector('#settingsView .detail'); if(!root)return;
+    // Rename heading(s)
+    root.querySelectorAll('h3').forEach(h=>{if((h.textContent||'').trim().toLowerCase()==='marcos históricos')h.textContent='Histórico de Marcos'});
+    // Prevent marco names overflowing
+    root.querySelectorAll('#marcoPanelV51 .memRow>div:first-child, #marcoPanelV57 .memRow>div:first-child, [id*="marcoPanel"] .memRow>div:first-child').forEach(x=>x.classList.add('marcoNameWrap'));
+    // Insert annual PDF panel immediately after original PDF panel
+    let annual=document.getElementById('annualPdfPanelV60');
+    if(!annual){annual=document.createElement('div');annual.id='annualPdfPanelV60';}
+    const pdfPanel=[...root.children].find(x=>/PDF marco original/i.test(x.textContent||''));
+    if(pdfPanel)pdfPanel.insertAdjacentElement('afterend',annual); else root.appendChild(annual);
+    renderAnnualPdfPanelV60();
+    // Move opening mode above alarms
+    const mode=[...root.children].find(x=>/Modo de apertura/i.test(x.textContent||''));
+    const alarm=[...root.children].find(x=>/^\s*Alarmas/i.test(x.textContent||'')||/Ajustes de alarmas/i.test(x.textContent||''));
+    if(mode&&alarm)root.insertBefore(mode,alarm);
+    // Keep only one memory explanatory block and move it to bottom, before alarms if possible
+    const mems=[...root.children].filter(x=>/^\s*Memoria\b/i.test(x.textContent||'')&&/se mantienen entre versiones/i.test(x.textContent||''));
+    mems.slice(1).forEach(x=>x.remove());
+    if(mems[0]){const al=[...root.children].find(x=>/^\s*Alarmas/i.test(x.textContent||'')||/Ajustes de alarmas/i.test(x.textContent||'')); if(al)root.insertBefore(mems[0],al); else root.appendChild(mems[0]);}
+  }
+  const oldEnhanceV60=window.enhanceSettings;
+  if(typeof oldEnhanceV60==='function')window.enhanceSettings=function(force){oldEnhanceV60(force);setTimeout(reorderSettingsV60,0)};
+  const oldShowV60=window.show;
+  if(typeof oldShowV60==='function')window.show=function(id){oldShowV60(id);if(id==='settingsView')setTimeout(reorderSettingsV60,0)};
+  setTimeout(()=>{reorderSettingsV60(); if(typeof render==='function')render();},500);
+})();
+</script>
+
 </body></html>
