@@ -690,7 +690,7 @@ setTimeout(openInitialViewV44,180);
 
 
 // ===== v5.0 memoria estable, histórico y lector JSON =====
-const APP_VERSION='5.0', BACKUP_KEY='AppTurnosBackupsV50';
+const APP_VERSION='6.6', BACKUP_KEY='AppTurnosBackupsV50';
 data.settings=data.settings||{}; data.settings.openMode=data.settings.openMode||'calendario';
 function safeSetV50(k,v){try{localStorage.setItem(k,v);return true}catch(e){console.warn(e);return false}}
 function fechaArchivoMemoria(){let d=new Date();return pad(d.getDate())+'-'+pad(d.getMonth()+1)+'-'+d.getFullYear()+'_memoria_turnos.json'}
@@ -1028,8 +1028,8 @@ changePanelHtml=function(ds,base,baseB,d,b){
 
 
 // ===== v5.4: una sola prioridad visual final para evitar que se pisen estados =====
-const APP_VERSION_V54='5.4';
-const APP_UPDATED_AT_V54='09/07/2026 05:40';
+const APP_VERSION_V54='6.6';
+const APP_UPDATED_AT_V54='02/08/2026';
 function setVersionV54(){
   try{
     document.title='App Turnos Pro v'+APP_VERSION_V54;
@@ -1176,8 +1176,8 @@ setTimeout(bootIndexedDBV52,60);
 
 
 // ===== v5.7: base 5.4 limpia + persistencia segura + marcos por vigencia =====
-const APP_VERSION_V57='5.7';
-const APP_UPDATED_AT_V57='30/07/2026';
+const APP_VERSION_V57='6.6';
+const APP_UPDATED_AT_V57='02/08/2026';
 const DB_NAME_V57='AppTurnosDBV57';
 const DB_VERSION_V57=1;
 const DB_STORE_V57='app';
@@ -1377,8 +1377,8 @@ setTimeout(bootV57,120);
 
 
 // ===== v5.8: versión visible, historial mensual, PDFs gestionables y Ajustes sin duplicados =====
-const APP_VERSION_V58='5.8';
-const APP_UPDATED_AT_V58='30/07/2026';
+const APP_VERSION_V58='6.6';
+const APP_UPDATED_AT_V58='02/08/2026';
 
 function setVersionV58(){
   try{
@@ -1509,9 +1509,9 @@ checkLogin();render();
 @media(max-width:560px){.dayMarkersV59{font-size:11px}.dayMarkerV59{min-width:17px;height:17px;font-size:11px}.dayMarkerV59.swap{min-width:26px;font-size:9px}.incidentChecksV59{grid-template-columns:1fr 1fr}}
 </style>
 <script id="v59-incidencias-js">
-// ===== v5.9: incidencias persistentes, iconos y cambio descanso/trabajo =====
-const APP_VERSION_V59='5.9';
-const APP_UPDATED_AT_V59='31/07/2026';
+// ===== v6.0: incidencias persistentes, iconos y cambio descanso/trabajo =====
+const APP_VERSION_V59='6.6';
+const APP_UPDATED_AT_V59='02/08/2026';
 data.incidents=data.incidents||{};
 
 function setVersionV59(){
@@ -1627,4 +1627,734 @@ const _render_v59=render;
 render=function(){_render_v59();setVersionV59()};
 setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400);
 </script>
+
+<style id="v60-final-css">
+/* v6.0 indicadores compactos y ajustes ordenados */
+.dayIndicators{position:absolute;right:4px;top:4px;display:flex;align-items:center;gap:3px;z-index:8;pointer-events:none}
+.indChange,.indIncident{font-size:11px;line-height:1;display:inline-flex;align-items:center;justify-content:center;width:13px;height:13px}
+.indTransition{width:14px;height:7px;border-radius:999px;overflow:hidden;display:inline-grid;grid-template-columns:1fr 1fr;border:1px solid rgba(0,0,0,.12)}
+.indTransition i:first-child{background:#62df91}.indTransition i:last-child{background:#b65ac0}
+.marcoNameWrap{min-width:0;max-width:100%}.marcoNameWrap b{display:block;white-space:normal;overflow-wrap:anywhere;word-break:break-word;line-height:1.25}
+.marcoNameWrap .memSmall{white-space:normal;overflow-wrap:anywhere}
+.settingsBlock.orderBox{margin-top:12px}
+</style>
+<script id="v60-final-js">
+(function(){
+  const APP_VERSION_V60='6.6';
+  const APP_UPDATED_V60='02/08/2026';
+  function setVersionV60(){
+    document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+APP_VERSION_V60);
+    document.title='App Turnos Pro v'+APP_VERSION_V60;
+    const lb=document.querySelector('.loginbox h1'); if(lb) lb.innerHTML='App Turnos Pro <span class="ver">v'+APP_VERSION_V60+'</span>';
+  }
+  setVersionV60();
+
+  function transitionTypeV60(ds){
+    const base=typeof dayData==='function'?dayData(ds):null;
+    const eff=typeof effectiveDay==='function'?effectiveDay(ds):base;
+    if(!base||!eff||!base.changed&&!eff.changed)return false;
+    const bs=typeof status==='function'?status(base):'';
+    const es=typeof status==='function'?status(eff):'';
+    return (bs==='rest'&&es==='work')||(bs==='work'&&es==='rest');
+  }
+  function indicatorHtmlV60(ds){
+    const ch=(window.data&&data.changes&&data.changes[ds])||null;
+    const inc=(window.data&&data.incidents&&data.incidents[ds])||null;
+    let h='';
+    if(ch)h+='<span class="indChange" title="Cambio">↻</span>';
+    if(inc)h+='<span class="indIncident" title="Incidencia">⚠</span>';
+    if(transitionTypeV60(ds))h+='<span class="indTransition" title="Cambio descanso/trabajo"><i></i><i></i></span>';
+    return h?'<div class="dayIndicators">'+h+'</div>':'';
+  }
+  const oldRenderV60=window.render;
+  if(typeof oldRenderV60==='function'){
+    window.render=function(){
+      oldRenderV60();
+      document.querySelectorAll('#grid .day').forEach(el=>{
+        const onclick=el.getAttribute('onclick')||'';
+        const m=onclick.match(/selectDay\('([^']+)'\)/);
+        if(!m)return;
+        el.querySelectorAll('.dayIndicators,.changedDot,.v59Indicator,.v59Indicators').forEach(x=>x.remove());
+        el.insertAdjacentHTML('beforeend',indicatorHtmlV60(m[1]));
+      });
+    }
+  }
+
+  function ensureAnnualPdfData(){if(window.data){data.annualPdf=data.annualPdf||null}}
+  async function persistV60(){
+    try{ if(typeof save==='function') save(); }catch(e){}
+    try{ if(typeof persistDataV57==='function') await persistDataV57(); }catch(e){}
+    try{ if(typeof idbPut==='function') await idbPut('data','main',data); }catch(e){}
+  }
+  window.importAnnualPdfV60=function(ev){
+    const f=ev.target.files&&ev.target.files[0]; if(!f)return;
+    const r=new FileReader(); r.onload=async()=>{ensureAnnualPdfData();data.annualPdf={name:f.name,dataUrl:r.result,imported:new Date().toISOString()};await persistV60();renderAnnualPdfPanelV60()};
+    r.readAsDataURL(f); ev.target.value='';
+  };
+  window.viewAnnualPdfV60=function(){if(!data.annualPdf?.dataUrl)return;let w=window.open();if(w)w.document.write('<iframe src="'+data.annualPdf.dataUrl+'" style="border:0;width:100%;height:100vh"></iframe>')};
+  window.exportAnnualPdfV60=function(){if(!data.annualPdf?.dataUrl)return;let a=document.createElement('a');a.href=data.annualPdf.dataUrl;a.download=data.annualPdf.name||'Cuadro_anual.pdf';document.body.appendChild(a);a.click();a.remove()};
+  window.deleteAnnualPdfV60=async function(){if(!data.annualPdf)return;if(!confirm('¿Eliminar el PDF del cuadro anual?'))return;data.annualPdf=null;await persistV60();renderAnnualPdfPanelV60()};
+  window.renderAnnualPdfPanelV60=function(){
+    const box=document.getElementById('annualPdfPanelV60');if(!box)return;ensureAnnualPdfData();
+    const p=data.annualPdf;
+    box.innerHTML='<div class="settingsBlock orderBox"><h3>Cuadro anual</h3><p class="muted">Gestiona el PDF original del cuadro anual.</p>'+
+      (p?'<p><b>'+esc(p.name||'Cuadro anual.pdf')+'</b><br><span class="muted">Importado: '+new Date(p.imported).toLocaleString('es-ES')+'</span></p><button class="btn" onclick="viewAnnualPdfV60()">👁️ Ver</button> <button class="btn" onclick="exportAnnualPdfV60()">📤 Exportar</button> <button class="btn danger" onclick="deleteAnnualPdfV60()">🗑️ Eliminar</button>':'<p class="muted">No hay PDF del cuadro anual guardado.</p>')+
+      '<input id="annualPdfInputV60" type="file" accept="application/pdf,.pdf" class="hidden" onchange="importAnnualPdfV60(event)"><button class="btn primary" onclick="document.getElementById(\'annualPdfInputV60\').click()">📄 '+(p?'Sustituir PDF':'Importar PDF')+'</button></div>';
+  };
+
+  function reorderSettingsV60(){
+    const root=document.querySelector('#settingsView .detail'); if(!root)return;
+    // Rename heading(s)
+    root.querySelectorAll('h3').forEach(h=>{if((h.textContent||'').trim().toLowerCase()==='marcos históricos')h.textContent='Histórico de Marcos'});
+    // Prevent marco names overflowing
+    root.querySelectorAll('#marcoPanelV51 .memRow>div:first-child, #marcoPanelV57 .memRow>div:first-child, [id*="marcoPanel"] .memRow>div:first-child').forEach(x=>x.classList.add('marcoNameWrap'));
+    // Insert annual PDF panel immediately after original PDF panel
+    let annual=document.getElementById('annualPdfPanelV60');
+    if(!annual){annual=document.createElement('div');annual.id='annualPdfPanelV60';}
+    const pdfPanel=[...root.children].find(x=>/PDF marco original/i.test(x.textContent||''));
+    if(pdfPanel)pdfPanel.insertAdjacentElement('afterend',annual); else root.appendChild(annual);
+    renderAnnualPdfPanelV60();
+    // Move opening mode above alarms
+    const mode=[...root.children].find(x=>/Modo de apertura/i.test(x.textContent||''));
+    const alarm=[...root.children].find(x=>/^\s*Alarmas/i.test(x.textContent||'')||/Ajustes de alarmas/i.test(x.textContent||''));
+    if(mode&&alarm)root.insertBefore(mode,alarm);
+    // Keep only one memory explanatory block and move it to bottom, before alarms if possible
+    const mems=[...root.children].filter(x=>/^\s*Memoria\b/i.test(x.textContent||'')&&/se mantienen entre versiones/i.test(x.textContent||''));
+    mems.slice(1).forEach(x=>x.remove());
+    if(mems[0]){const al=[...root.children].find(x=>/^\s*Alarmas/i.test(x.textContent||'')||/Ajustes de alarmas/i.test(x.textContent||'')); if(al)root.insertBefore(mems[0],al); else root.appendChild(mems[0]);}
+  }
+  const oldEnhanceV60=window.enhanceSettings;
+  if(typeof oldEnhanceV60==='function')window.enhanceSettings=function(force){oldEnhanceV60(force);setTimeout(reorderSettingsV60,0)};
+  const oldShowV60=window.show;
+  if(typeof oldShowV60==='function')window.show=function(id){oldShowV60(id);if(id==='settingsView')setTimeout(reorderSettingsV60,0)};
+  setTimeout(()=>{reorderSettingsV60(); if(typeof render==='function')render();},500);
+})();
+</script>
+
+
+<style id="v61-final-css">
+/* v6.1: indicadores compactos en columna y ajustes ordenados */
+.dayIndicatorsV61{position:absolute;right:3px;top:4px;display:flex;flex-direction:column;align-items:center;gap:1px;z-index:20;pointer-events:none}
+.dayIndicatorsV61 .indChangeV61,.dayIndicatorsV61 .indIncidentV61{width:13px;height:13px;display:flex;align-items:center;justify-content:center;font-size:11px;line-height:1}
+.dayIndicatorsV61 .indTransitionV61{width:13px;height:6px;border-radius:999px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;border:1px solid rgba(0,0,0,.16)}
+.dayIndicatorsV61 .indTransitionV61 i:first-child{background:#62df91}.dayIndicatorsV61 .indTransitionV61 i:last-child{background:#b65ac0}
+</style>
+<script id="v61-final-js">
+(function(){
+  const APP_VERSION_V61='6.6';
+  const APP_UPDATED_V61='02/08/2026';
+
+  function setVersionV61(){
+    document.title='App Turnos Pro v'+APP_VERSION_V61;
+    document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+APP_VERSION_V61);
+    const h=document.querySelector('.loginbox h1');
+    if(h)h.innerHTML='App Turnos Pro <span class="ver">v'+APP_VERSION_V61+'</span>';
+    const stamp=document.getElementById('loginVersionV57');
+    if(stamp)stamp.textContent='Versión '+APP_VERSION_V61+' · Actualizada '+APP_UPDATED_V61;
+    const badge=document.getElementById('loginVersionBadgeV58')||document.getElementById('loginVersionBadgeV59');
+    if(badge)badge.textContent='v'+APP_VERSION_V61;
+  }
+
+  function isRestLikeV61(st){return ['rest','dsc','sss','dd','vac','lz'].includes(st)}
+  function transitionV61(ds){
+    const base=typeof dayData==='function'?dayData(ds):null;
+    const eff=typeof effectiveDay==='function'?effectiveDay(ds):base;
+    if(!base||!eff||!(data.changes&&data.changes[ds]))return false;
+    let bs='',es='';try{bs=status(base);es=status(eff)}catch(e){}
+    return (isRestLikeV61(bs)&&es==='work')||(bs==='work'&&isRestLikeV61(es));
+  }
+  function indicatorsV61(ds){
+    const changed=!!(data.changes&&data.changes[ds]);
+    const incident=!!(data.incidents&&data.incidents[ds]);
+    let h='';
+    if(changed)h+='<span class="indChangeV61" title="Cambio">🔄</span>';
+    if(changed&&transitionV61(ds))h+='<span class="indTransitionV61" title="Cambio descanso/trabajo"><i></i><i></i></span>';
+    if(incident)h+='<span class="indIncidentV61" title="Incidencia">⚠️</span>';
+    return h?'<div class="dayIndicatorsV61">'+h+'</div>':'';
+  }
+
+  // Elimina definitivamente los antiguos emojis grandes y fuerza descanso trabajado -> casilla normal de trabajo.
+  const prevTypeBadgeV61=window.typeBadge;
+  window.typeBadge=function(d,b){
+    const ds=d&&d.fecha||'';
+    const base=ds&&typeof dayData==='function'?dayData(ds):null;
+    let bs='',es='';try{bs=base?status(base):'';es=d?status(d):''}catch(e){}
+    if(ds&&data.changes&&data.changes[ds]&&isRestLikeV61(bs)&&es==='work'){
+      const ini=typeof blockIni==='function'?blockIni(b):'';
+      const fin=typeof blockFin==='function'?blockFin(b):'';
+      return '<div class="shiftNo">'+esc(String(d.clave_turno||''))+'</div><div class="badge work"><div class="timeTop">'+esc(ini||'--:--')+'</div><div class="sep">↓</div><div class="timeBot">'+esc(fin||'--:--')+'</div></div>';
+    }
+    let html=typeof prevTypeBadgeV61==='function'?prevTypeBadgeV61(d,b):'';
+    html=String(html)
+      .replace(/<span class="dayMarkersV59">[\s\S]*?<\/span>/g,'')
+      .replace(/<span class="dayMarkerV59[^>]*>[\s\S]*?<\/span>/g,'')
+      .replace(/🟩🟪|🟪🟩/g,'')
+      .replace(/<i class="changedDot"><\/i>/g,'');
+    return html;
+  };
+
+  const prevRenderV61=window.render;
+  window.render=function(){
+    prevRenderV61();
+    document.querySelectorAll('#grid .day').forEach(el=>{
+      const oc=el.getAttribute('onclick')||'';
+      const m=oc.match(/selectDay\('([^']+)'\)/);if(!m)return;
+      el.querySelectorAll('.dayIndicators,.dayIndicatorsV61,.dayMarkersV59,.v59Indicator,.v59Indicators,.changedDot').forEach(x=>x.remove());
+      const h=indicatorsV61(m[1]);if(h)el.insertAdjacentHTML('beforeend',h);
+    });
+    setVersionV61();
+  };
+
+  // Caja de incidencias con ambos botones siempre visibles.
+  window.incidentPanelHtmlV59=function(ds){
+    const inc=(data.incidents||{})[ds]||{},cats=inc.categories||{};
+    const check=(key,label)=>'<label class="incidentCheckV59"><input type="checkbox" id="inc_'+key+'" '+(cats[key]?'checked':'')+'> '+label+'</label>';
+    return '<div class="incidentPanelV59"><div class="incidentTitleV59"><span>⚠️</span><span>Incidencias</span></div><p class="muted">Marca una o varias categorías y añade una explicación.</p><div class="incidentChecksV59">'+
+      check('pai','PAI')+check('pirsc','PIRSC')+check('retrasos','Retrasos')+check('material','Material')+check('otros','Otros')+
+      '</div><textarea id="inc_note" class="input incidentNoteV59" placeholder="Describe la incidencia, retrasos, exceso de jornada, material, PIRSC, etc.">'+esc(inc.note||'')+'</textarea><div style="margin-top:8px"><button class="btn primary" onclick="saveIncidentV59(\''+ds+'\')">Guardar incidencia</button> <button class="btn" onclick="deleteIncidentV59(\''+ds+'\')">Borrar incidencia</button></div><div id="incidentMsgV59" class="incidentSavedV59"></div></div>';
+  };
+  const prevDeleteIncidentV61=window.deleteIncidentV59;
+  window.deleteIncidentV59=function(ds){
+    if(!(data.incidents&&data.incidents[ds])){alert('No hay ninguna incidencia guardada en este día.');return}
+    return prevDeleteIncidentV61(ds);
+  };
+
+  function directChildByHeading(root,re){
+    return [...root.children].find(x=>{const h=x.querySelector&&x.querySelector('h2,h3');return h&&re.test((h.textContent||'').trim())});
+  }
+  function reorderSettingsV61(){
+    const root=document.querySelector('#settingsView .detail');if(!root)return;
+    root.querySelectorAll('h3').forEach(h=>{if(/marcos históricos/i.test(h.textContent||''))h.textContent='Histórico de Marcos'});
+    const memory=directChildByHeading(root,/^Memoria$/i)||[...root.children].find(x=>/^\s*Memoria\b/i.test(x.textContent||''));
+    let annual=document.getElementById('annualPdfPanelV60');
+    const mode=directChildByHeading(root,/^Modo de apertura$/i)||[...root.children].find(x=>/Modo de apertura/i.test(x.textContent||''));
+    const alarm=directChildByHeading(root,/^Alarmas$/i)||[...root.children].find(x=>/^\s*Alarmas/i.test(x.textContent||''));
+    if(memory&&annual)memory.insertAdjacentElement('afterend',annual);
+    if(annual&&mode)annual.insertAdjacentElement('afterend',mode);
+    else if(memory&&mode)memory.insertAdjacentElement('afterend',mode);
+    if(mode&&alarm)mode.insertAdjacentElement('afterend',alarm);
+  }
+
+  const prevShowV61=window.show;
+  window.show=function(id){prevShowV61(id);if(id==='settingsView')setTimeout(reorderSettingsV61,10)};
+  const prevEnhanceV61=window.enhanceSettings;
+  if(typeof prevEnhanceV61==='function')window.enhanceSettings=function(force){prevEnhanceV61(force);setTimeout(reorderSettingsV61,10)};
+
+  setTimeout(()=>{setVersionV61();reorderSettingsV61();if(typeof render==='function')render()},500);
+})();
+</script>
+
+
+<style id="v62-final-css">
+/* v6.2: orden definitivo de Ajustes y descanso -> trabajo */
+#settingsView .detail > .settingsBlock,
+#settingsView .detail > .card,
+#settingsView .detail > [id*="Panel"]{max-width:100%;overflow:hidden}
+#settingsView .memRow{align-items:flex-start!important;min-width:0}
+#settingsView .memRow>div:first-child{min-width:0!important;max-width:100%!important;flex:1 1 auto!important}
+#settingsView .memRow b,
+#settingsView [id*="marco"] b,
+#settingsView [id*="Marco"] b{display:block!important;white-space:normal!important;overflow-wrap:anywhere!important;word-break:break-word!important;max-width:100%!important;line-height:1.25!important}
+</style>
+<script id="v62-final-js">
+(function(){
+ const APP_VERSION_V62='6.6', APP_UPDATED_V62='02/08/2026';
+ function setVersionV62(){
+   document.title='App Turnos Pro v'+APP_VERSION_V62;
+   document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+APP_VERSION_V62);
+   const h=document.querySelector('.loginbox h1');if(h)h.innerHTML='App Turnos Pro <span class="ver">v'+APP_VERSION_V62+'</span>';
+   const stamp=document.getElementById('loginVersionV57');if(stamp)stamp.textContent='Versión '+APP_VERSION_V62+' · Actualizada '+APP_UPDATED_V62;
+   const badge=document.getElementById('loginVersionBadgeV58')||document.getElementById('loginVersionBadgeV59');if(badge)badge.textContent='v'+APP_VERSION_V62;
+ }
+ function originalRestV62(ds){
+   const base=typeof dayData==='function'?dayData(ds):null;if(!base)return false;
+   const turn=String(base.clave_turno||'').toUpperCase();
+   const type=String(base.tipo_dia||base.tipo_norm||'').toUpperCase();
+   return turn==='D'||turn==='DSC'||turn==='SSS'||turn==='DD'||turn==='VB'||type.includes('DESCANSO')||type.includes('VAC')||type.includes('COMPENSADO')||type.includes('SIN SERVICIO')||type.includes('DETRA');
+ }
+ function manualWorkV62(ds){
+   const ch=data.changes&&data.changes[ds];
+   if(!ch||!ch.turno||ch.tipo==='D'||ch.tipo==='LZ'||ch.tipo==='DD')return false;
+   return originalRestV62(ds);
+ }
+ function assignedBlockV62(ds,turn){
+   let blocks=[];
+   try{blocks=typeof blocksForDate==='function'?blocksForDate(ds):(data.blocks||[])}catch(e){blocks=data.blocks||[]}
+   const letter=typeof dayLetterV50==='function'?dayLetterV50(ds):(typeof dayLetterV44==='function'?dayLetterV44(ds):(typeof dayLetter==='function'?dayLetter(ds):''));
+   const same=(blocks||[]).filter(b=>String(b.turno)===String(turn));
+   return same.find(b=>!b.dias||String(b.dias).toUpperCase().includes(letter))||same[0]||null;
+ }
+ const prevTypeBadgeV62=window.typeBadge;
+ window.typeBadge=function(d,b){
+   const ds=d&&d.fecha||'';
+   if(ds&&manualWorkV62(ds)){
+     const turn=String(data.changes[ds].turno||d.clave_turno||'');
+     const ab=assignedBlockV62(ds,turn);
+     const ini=ab&&typeof blockIni==='function'?blockIni(ab):'';
+     const fin=ab&&typeof blockFin==='function'?blockFin(ab):'';
+     return '<div class="shiftNo">'+esc(turn)+'</div><div class="badge work"><div class="timeTop">'+esc(ini||'--:--')+'</div><div class="sep">↓</div><div class="timeBot">'+esc(fin||'--:--')+'</div></div>';
+   }
+   return prevTypeBadgeV62?prevTypeBadgeV62(d,b):'';
+ };
+ // El detalle también debe usar el bloque del turno manual aunque el original sea descanso.
+ const prevBlockForV62=window.blockFor;
+ window.blockFor=function(d){
+   const ds=d&&d.fecha||'';
+   if(ds&&manualWorkV62(ds))return assignedBlockV62(ds,data.changes[ds].turno);
+   return prevBlockForV62?prevBlockForV62(d):null;
+ };
+ function headingBox(root,re){
+   return [...root.children].find(x=>{const h=x.querySelector&&x.querySelector('h2,h3');return h&&re.test((h.textContent||'').trim())});
+ }
+ function findBox(root,re){return headingBox(root,re)||[...root.children].find(x=>re.test((x.textContent||'').trim()))}
+ function reorderSettingsV62(){
+   const root=document.querySelector('#settingsView .detail');if(!root)return;
+   root.querySelectorAll('h3').forEach(h=>{if(/marcos históricos|histórico de marcos/i.test(h.textContent||''))h.textContent='Histórico de Marcos'});
+   root.querySelectorAll('.memRow>div:first-child,[id*="marco"] .memRow>div:first-child,[id*="Marco"] .memRow>div:first-child').forEach(x=>x.classList.add('marcoNameWrap'));
+   const app=[...root.children].find(x=>x.tagName==='H2'||/App Turnos Pro|Versión/i.test(x.textContent||''));
+   const marcos=findBox(root,/Histórico de Marcos|Marcos históricos/i);
+   const pdf=findBox(root,/PDF marco original/i);
+   const memory=findBox(root,/^Memoria$/i);
+   const annual=document.getElementById('annualPdfPanelV60')||findBox(root,/^Cuadro anual$/i);
+   const state=findBox(root,/^Estado de datos$/i);
+   const mode=findBox(root,/^Modo de apertura$/i);
+   const alarm=findBox(root,/^Alarmas$/i);
+   const ordered=[app,marcos,pdf,memory,annual,state,mode,alarm].filter(Boolean);
+   ordered.forEach(x=>root.appendChild(x));
+ }
+ const prevRenderV62=window.render;
+ window.render=function(){prevRenderV62();setVersionV62()};
+ const prevShowV62=window.show;
+ window.show=function(id){prevShowV62(id);if(id==='settingsView')setTimeout(reorderSettingsV62,20)};
+ const prevEnhanceV62=window.enhanceSettings;
+ if(typeof prevEnhanceV62==='function')window.enhanceSettings=function(force){prevEnhanceV62(force);setTimeout(reorderSettingsV62,20)};
+ setTimeout(()=>{setVersionV62();reorderSettingsV62();if(typeof render==='function')render()},600);
+})();
+</script>
+
+
+<style id="v63-final-css">
+/* v6.3: indicador bicolor justo debajo de cambio */
+.dayIndicatorsV61{display:flex!important;flex-direction:column!important;align-items:center!important;gap:1px!important;right:2px!important;top:2px!important}
+.dayIndicatorsV61 .indChangeV61{order:1;font-size:11px!important;line-height:11px!important}
+.dayIndicatorsV61 .indTransitionV61{order:2;width:14px!important;height:6px!important;display:flex!important;border-radius:999px!important;overflow:hidden!important;border:1px solid #fff!important;box-shadow:0 0 0 1px #8a0f82!important}
+.dayIndicatorsV61 .indTransitionV61 i{display:block!important;width:50%!important;height:100%!important}
+.dayIndicatorsV61 .indIncidentV61{order:3;font-size:11px!important;line-height:11px!important}
+</style>
+<script id="v63-final-js">
+(function(){
+ const APP_VERSION_V63='6.6', APP_UPDATED_V63='02/08/2026';
+ function setVersionV63(){
+   document.title='App Turnos Pro v'+APP_VERSION_V63;
+   document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+APP_VERSION_V63);
+   const h=document.querySelector('.loginbox h1');if(h)h.innerHTML='App Turnos Pro <span class="ver">v'+APP_VERSION_V63+'</span>';
+   const stamp=document.getElementById('loginVersionV57');if(stamp)stamp.textContent='Versión '+APP_VERSION_V63+' · Actualizada '+APP_UPDATED_V63;
+   const badge=document.getElementById('loginVersionBadgeV58')||document.getElementById('loginVersionBadgeV59');if(badge)badge.textContent='v'+APP_VERSION_V63;
+ }
+ function originalRestV63(ds){
+   const b=typeof dayData==='function'?dayData(ds):null;if(!b)return false;
+   const turn=String(b.clave_turno||'').toUpperCase(),type=String(b.tipo_dia||b.tipo_norm||'').toUpperCase();
+   return ['D','DSC','SSS','DD','VB'].includes(turn)||type.includes('DESCANSO')||type.includes('VAC')||type.includes('COMPENSADO')||type.includes('SIN SERVICIO')||type.includes('DETRA');
+ }
+ function isManualWorkV63(ds){
+   const ch=data.changes&&data.changes[ds];
+   return !!(ch&&ch.turno&&ch.tipo!=='D'&&ch.tipo!=='LZ'&&ch.tipo!=='DD'&&originalRestV63(ds));
+ }
+ function assignedBlockV63(ds,turn){
+   let blocks=[];try{blocks=typeof blocksForDate==='function'?blocksForDate(ds):(data.blocks||[])}catch(e){blocks=data.blocks||[]}
+   let letter='';try{letter=typeof dayLetterV50==='function'?dayLetterV50(ds):(typeof dayLetterV44==='function'?dayLetterV44(ds):dayLetter(ds))}catch(e){}
+   const same=(blocks||[]).filter(b=>String(b.turno)===String(turn));
+   return same.find(b=>!b.dias||String(b.dias).toUpperCase().includes(letter))||same[0]||null;
+ }
+ const prevStatusV63=window.status;
+ window.status=function(d){
+   const ds=d&&d.fecha||'';
+   if(ds&&isManualWorkV63(ds))return 'work';
+   return prevStatusV63?prevStatusV63(d):'empty';
+ };
+ const prevBlockForV63=window.blockFor;
+ window.blockFor=function(d){
+   const ds=d&&d.fecha||'';
+   if(ds&&isManualWorkV63(ds))return assignedBlockV63(ds,data.changes[ds].turno);
+   return prevBlockForV63?prevBlockForV63(d):null;
+ };
+ const prevEffectiveV63=window.effectiveDay;
+ window.effectiveDay=function(ds){
+   const d=prevEffectiveV63?prevEffectiveV63(ds):(typeof dayData==='function'?dayData(ds):null);
+   if(isManualWorkV63(ds))return {...(d||{fecha:ds}),fecha:ds,clave_turno:String(data.changes[ds].turno),tipo_dia:'Trabajo',tipo_norm:'SERVICIO',changed:true,original:typeof dayData==='function'?dayData(ds):null,change:data.changes[ds]};
+   return d;
+ };
+ // Fuerza que selectDay reconstruya el detalle con el turno manual y su marco.
+ const prevSelectDayV63=window.selectDay;
+ window.selectDay=function(ds){
+   if(!isManualWorkV63(ds))return prevSelectDayV63(ds);
+   selected=ds;
+   if(typeof render==='function')render();
+   const d=window.effectiveDay(ds),b=window.blockFor(d),title=new Date(ds+'T12:00:00').toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+   const ini=b&&typeof blockIni==='function'?blockIni(b):'',fin=b&&typeof blockFin==='function'?blockFin(b):'',dur=(b&&(b.duracion||b.raw?.duracion))||'',tipo=(b&&(b.tipo||b.raw?.tipo))||'Servicio';
+   let html='<div class="summaryCard"><div class="summaryTop"><div><div class="summaryTitle">Turno '+esc(d.clave_turno)+'</div><div class="summaryDate">'+esc(title)+'</div></div><div class="servicePill">'+esc(tipo)+'</div></div><div class="summaryTimes"><div><small>Inicio</small><b>'+esc(ini||'—')+'</b></div><div class="summaryArrow">→</div><div><small>Final</small><b>'+esc(fin||'—')+'</b></div></div>';
+   if(typeof miniSummary==='function'){const m=miniSummary(b||{});html+='<div class="miniGrid"><div class="miniBox"><small>Recorrido</small><b>'+esc(m.route||'—')+'</b></div><div class="miniBox"><small>Trenes</small><b>'+esc(m.trains||'—')+'</b></div><div class="miniBox"><small>Duración</small><b>'+esc(dur||m.duration||'—')+'</b></div></div>'}
+   html+='</div>';
+   if(data.pdf)html+='<button class="btn primary" onclick="openPdf('+(Number(b&&b.pagina||0))+')">📄 Ver PDF Marco original</button>';
+   html+=(typeof timelineHtml==='function'?timelineHtml(b||{}):'');
+   html+=(typeof changePanelHtml==='function'?changePanelHtml(ds,typeof dayData==='function'?dayData(ds):null,null,d,b):'');
+   html+=(typeof incidentPanelHtmlV59==='function'?incidentPanelHtmlV59(ds):'');
+   const target=document.getElementById('detail');if(target)target.innerHTML=html;
+   if(typeof scrollToDetail==='function')scrollToDetail();
+ };
+ function findBoxV63(root,re){return [...root.children].find(x=>{const h=x.querySelector&&x.querySelector('h2,h3');return h&&re.test((h.textContent||'').trim())})||[...root.children].find(x=>re.test((x.textContent||'').trim()))}
+ function reorderSettingsV63(){
+   const root=document.querySelector('#settingsView .detail');if(!root)return;
+   root.querySelectorAll('h3').forEach(h=>{if(/marcos históricos|histórico de marcos/i.test(h.textContent||''))h.textContent='Histórico de Marcos'});
+   const app=[...root.children].find(x=>x.tagName==='H2'||/App Turnos Pro|Versión/i.test(x.textContent||''));
+   const marcos=findBoxV63(root,/Histórico de Marcos|Marcos históricos/i);
+   const pdf=findBoxV63(root,/PDF marco original/i);
+   const memory=findBoxV63(root,/^Memoria$/i);
+   const annual=document.getElementById('annualPdfPanelV60')||findBoxV63(root,/^Cuadro anual$/i);
+   const state=findBoxV63(root,/^Estado de datos$/i);
+   const mode=findBoxV63(root,/^Modo de apertura$/i);
+   const alarm=findBoxV63(root,/^Alarmas$/i);
+   [app,marcos,pdf,memory,annual,state,mode,alarm].filter(Boolean).forEach(x=>root.appendChild(x));
+ }
+ const prevRenderV63=window.render;
+ window.render=function(){if(prevRenderV63)prevRenderV63();setVersionV63()};
+ const prevShowV63=window.show;
+ window.show=function(id){if(prevShowV63)prevShowV63(id);if(id==='settingsView')setTimeout(reorderSettingsV63,30)};
+ const prevEnhanceV63=window.enhanceSettings;
+ if(typeof prevEnhanceV63==='function')window.enhanceSettings=function(force){prevEnhanceV63(force);setTimeout(reorderSettingsV63,30)};
+ setTimeout(()=>{setVersionV63();reorderSettingsV63();if(typeof render==='function')render()},700);
+})();
+</script>
+
+
+<!-- ===== v6.4: indicador bicolor descanso→trabajo y orden ⚠️ antes de 🔄 ===== -->
+<style id="v64-indicators-css">
+.dayIndicatorsV64{position:absolute;right:4px;top:4px;display:flex;flex-direction:column;align-items:center;gap:2px;z-index:8;pointer-events:none}
+.dayIndicatorsV64 .topRowV64{display:flex;align-items:center;gap:3px;line-height:1}
+.dayIndicatorsV64 .incidentV64,.dayIndicatorsV64 .changeV64{font-size:11px;line-height:1}
+.dayIndicatorsV64 .bicolorV64{width:14px;height:6px;border-radius:999px;background:linear-gradient(90deg,#62df91 0 50%,#8a0f82 50% 100%);border:1px solid rgba(31,21,34,.25);box-shadow:0 0 0 1px rgba(255,255,255,.7)}
+</style>
+<script>
+(function(){
+  const V64='6.4';
+  try{
+    document.title='App Turnos Pro v'+V64;
+    document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+V64);
+  }catch(e){}
+
+  function originalStatusV64(ds){
+    const o=(typeof dayData==='function')?dayData(ds):null;
+    if(!o)return 'empty';
+    const t=String(o.tipo_norm||o.tipo_dia||o.tipo||'').toUpperCase();
+    const tr=String(o.clave_turno||'').toUpperCase();
+    if(t.includes('DESCANSO')||tr==='D'||t==='DSC'||t==='SSS')return 'rest';
+    if(t.includes('VAC')||tr==='VB')return 'vac';
+    if(t.includes('DD')||tr==='DD'||tr.startsWith('DD '))return 'dd';
+    return 'work';
+  }
+
+  function isRestToWorkV64(ds){
+    const ch=data?.changes?.[ds];
+    if(!ch)return false;
+    const hasAssignedTurn=!!String(ch.turno||'').trim();
+    const finalIsRest=ch.tipo==='D'||String(ch.turno||'').toUpperCase()==='D';
+    return originalStatusV64(ds)==='rest' && hasAssignedTurn && !finalIsRest;
+  }
+
+  function hasIncidentV64(ds){
+    return !!(data?.incidents?.[ds]||data?.incidencias?.[ds]);
+  }
+
+  function paintIndicatorsV64(){
+    document.querySelectorAll('#grid .day').forEach(day=>{
+      const onclick=day.getAttribute('onclick')||'';
+      const m=onclick.match(/selectDay\('([^']+)'\)/);
+      if(!m)return;
+      const ds=m[1], ch=!!data?.changes?.[ds], inc=hasIncidentV64(ds), bi=isRestToWorkV64(ds);
+      day.querySelectorAll('.dayIndicatorsV64,.changeDotV59,.incidentMarkV59,.restWorkMarkV59,.transitionMarkV60').forEach(x=>x.remove());
+      if(!ch&&!inc&&!bi)return;
+      const box=document.createElement('div');box.className='dayIndicatorsV64';
+      const top=document.createElement('div');top.className='topRowV64';
+      if(inc){const a=document.createElement('span');a.className='incidentV64';a.textContent='⚠️';top.appendChild(a)}
+      if(ch){const c=document.createElement('span');c.className='changeV64';c.textContent='🔄';top.appendChild(c)}
+      if(top.childNodes.length)box.appendChild(top);
+      if(bi){const b=document.createElement('span');b.className='bicolorV64';box.appendChild(b)}
+      day.appendChild(box);
+    });
+  }
+
+  const oldRender=window.render;
+  if(typeof oldRender==='function')window.render=function(){const r=oldRender.apply(this,arguments);setTimeout(paintIndicatorsV64,0);return r};
+  document.addEventListener('DOMContentLoaded',()=>setTimeout(paintIndicatorsV64,250));
+  setTimeout(paintIndicatorsV64,500);
+})();
+</script>
+
+
+<!-- ===== v6.5: prioridad DD trabajado + bicolor fiable descanso↔trabajo ===== -->
+<style id="v65-final-css">
+.dayIndicatorsV65{position:absolute;right:4px;top:4px;display:flex;flex-direction:column;align-items:flex-end;gap:2px;z-index:20;pointer-events:none}
+.dayIndicatorsV65 .topRowV65{display:flex;align-items:center;justify-content:flex-end;gap:3px;line-height:1}
+.dayIndicatorsV65 .incidentV65,.dayIndicatorsV65 .changeV65{font-size:11px;line-height:11px}
+.dayIndicatorsV65 .bicolorV65{display:block;width:14px;height:6px;border-radius:999px;background:linear-gradient(90deg,#62df91 0 50%,#8a0f82 50% 100%);border:1px solid rgba(31,21,34,.25);box-shadow:0 0 0 1px rgba(255,255,255,.8);margin-right:0}
+.badge.ddworkV65{position:relative!important;overflow:hidden!important;background:repeating-linear-gradient(135deg,#ffe0e7 0 9px,#8a0f82 9px 12px,#ffe0e7 12px 18px)!important;border-color:#c026d3!important;color:#35113d!important;min-height:70px!important;height:70px!important;padding:5px 2px!important;display:flex!important;align-items:center!important;justify-content:center!important;flex-direction:column!important}
+.badge.ddworkV65 .ddSmall{font-size:10px!important;font-weight:950!important;color:#be123c!important;line-height:1!important}
+.badge.ddworkV65 .ddTurn{font-size:17px!important;font-weight:950!important;color:#35113d!important;line-height:1.05!important}
+.badge.ddworkV65 .timeTop,.badge.ddworkV65 .timeBot,.badge.ddworkV65 .sep{position:relative;z-index:2}
+</style>
+<script id="v65-final-js">
+(function(){
+  const APP_VERSION_V65='6.6', APP_UPDATED_V65='02/08/2026';
+  function setVersionV65(){
+    document.title='App Turnos Pro v'+APP_VERSION_V65;
+    document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+APP_VERSION_V65);
+    const h=document.querySelector('.loginbox h1');if(h)h.innerHTML='App Turnos Pro <span class="ver">v'+APP_VERSION_V65+'</span>';
+    const stamp=document.getElementById('loginVersionV57');if(stamp)stamp.textContent='Versión '+APP_VERSION_V65+' · Actualizada '+APP_UPDATED_V65;
+    const badge=document.getElementById('loginVersionBadgeV58')||document.getElementById('loginVersionBadgeV59');if(badge)badge.textContent='v'+APP_VERSION_V65;
+  }
+  function baseDayV65(ds){return typeof dayData==='function'?dayData(ds):null}
+  function changeV65(ds){return data&&data.changes?data.changes[ds]:null}
+  function baseCodeV65(ds){
+    const b=baseDayV65(ds),ch=changeV65(ds);
+    return String((b&&b.clave_turno)||(ch&&ch.originalTurno)||'').trim().toUpperCase();
+  }
+  function baseTypeV65(ds){
+    const b=baseDayV65(ds);
+    return String(b&&(b.tipo_norm||b.tipo_dia||b.tipo||b.raw?.tipo)||'').trim().toUpperCase();
+  }
+  function originalKindV65(ds){
+    const code=baseCodeV65(ds),type=baseTypeV65(ds);
+    if(code==='DD'||code==='DV'||code.startsWith('DD ')||type==='DD'||type.includes('DETRA'))return 'dd';
+    if(['D','DSC','SSS','VB','LZ'].includes(code)||type.includes('DESCANSO')||type.includes('COMPENSADO')||type.includes('SIN SERVICIO')||type.includes('VAC')||type.includes('LICENCIA'))return 'rest';
+    return code||type?'work':'empty';
+  }
+  function assignedTurnV65(ds){
+    const ch=changeV65(ds);if(!ch)return '';
+    const t=String(ch.turno||'').trim();
+    if(!t||['D','LZ','DD'].includes(String(ch.tipo||'').toUpperCase())||['D','LZ','DD'].includes(t.toUpperCase()))return '';
+    return t;
+  }
+  function isDDWorkedV65(ds){return originalKindV65(ds)==='dd'&&!!assignedTurnV65(ds)}
+  function isRestWorkedV65(ds){return originalKindV65(ds)==='rest'&&!!assignedTurnV65(ds)}
+  function isWorkToRestV65(ds){
+    const ch=changeV65(ds);if(!ch||originalKindV65(ds)!=='work')return false;
+    const t=String(ch.tipo||ch.turno||'').toUpperCase();return t==='D'||t==='LZ';
+  }
+  function assignedBlockV65(ds,turn){
+    let blocks=[];try{blocks=typeof blocksForDate==='function'?blocksForDate(ds):(data.blocks||[])}catch(e){blocks=data.blocks||[]}
+    let letter='';try{letter=typeof dayLetterV50==='function'?dayLetterV50(ds):(typeof dayLetterV44==='function'?dayLetterV44(ds):(typeof dayLetter==='function'?dayLetter(ds):''))}catch(e){}
+    const same=(blocks||[]).filter(b=>String(b.turno)===String(turn));
+    return same.find(b=>!b.dias||String(b.dias).toUpperCase().includes(letter))||same[0]||null;
+  }
+
+  const prevEffectiveV65=window.effectiveDay;
+  window.effectiveDay=function(ds){
+    if(isDDWorkedV65(ds)){
+      const base=baseDayV65(ds),turn=assignedTurnV65(ds),ch=changeV65(ds);
+      return {...(base||{fecha:ds}),fecha:ds,clave_turno:'DD '+turn,dd_turno:turn,tipo_dia:'DD trabajado',tipo_norm:'DD_TRABAJADO',changed:true,original:base,change:ch};
+    }
+    return prevEffectiveV65?prevEffectiveV65(ds):baseDayV65(ds);
+  };
+  const prevStatusV65=window.status;
+  window.status=function(d){
+    const ds=d&&d.fecha||'';
+    if(ds&&isDDWorkedV65(ds))return 'ddwork';
+    if(ds&&isRestWorkedV65(ds))return 'work';
+    return prevStatusV65?prevStatusV65(d):'empty';
+  };
+  const prevBlockForV65=window.blockFor;
+  window.blockFor=function(d){
+    const ds=d&&d.fecha||'';
+    if(ds&&(isDDWorkedV65(ds)||isRestWorkedV65(ds)))return assignedBlockV65(ds,assignedTurnV65(ds));
+    return prevBlockForV65?prevBlockForV65(d):null;
+  };
+  const prevTypeBadgeV65=window.typeBadge;
+  window.typeBadge=function(d,b){
+    const ds=d&&d.fecha||'';
+    if(ds&&isDDWorkedV65(ds)){
+      const turn=assignedTurnV65(ds),ab=assignedBlockV65(ds,turn),ini=ab&&typeof blockIni==='function'?blockIni(ab):'',fin=ab&&typeof blockFin==='function'?blockFin(ab):'';
+      return '<div class="shiftNo">DD</div><div class="badge ddworkV65"><div class="ddSmall">DD trabajado</div><div class="ddTurn">'+esc(turn||'—')+'</div><div class="timeTop">'+esc(ini||'--:--')+'</div><div class="sep">↓</div><div class="timeBot">'+esc(fin||'--:--')+'</div></div>';
+    }
+    return prevTypeBadgeV65?prevTypeBadgeV65(d,b):'';
+  };
+
+  const prevSelectDayV65=window.selectDay;
+  window.selectDay=function(ds){
+    if(!isDDWorkedV65(ds))return prevSelectDayV65(ds);
+    selected=ds;if(typeof render==='function')render();
+    const turn=assignedTurnV65(ds),d=window.effectiveDay(ds),b=assignedBlockV65(ds,turn),title=new Date(ds+'T12:00:00').toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long',year:'numeric'}),ini=b&&typeof blockIni==='function'?blockIni(b):'',fin=b&&typeof blockFin==='function'?blockFin(b):'',dur=(b&&(b.duracion||b.raw?.duracion))||'';
+    let html='<span class="pill" style="background:#ffe0e7;color:#c20d34;border:1px solid #ff9aad">DD trabajado</span><h2>'+esc(title)+'</h2><div class="summaryCard"><div class="summaryTop"><div><div class="summaryTitle">DD → Turno '+esc(turn)+'</div><div class="summaryDate">Detraíble trabajado por asignación</div></div><div class="servicePill">Cambio</div></div><div class="summaryTimes"><div><small>Inicio</small><b>'+esc(ini||'—')+'</b></div><div class="summaryArrow">→</div><div><small>Final</small><b>'+esc(fin||'—')+'</b></div></div>';
+    if(typeof miniSummary==='function'){const m=miniSummary(b||{});html+='<div class="miniGrid"><div class="miniBox"><small>Recorrido</small><b>'+esc(m.route||'—')+'</b></div><div class="miniBox"><small>Trenes</small><b>'+esc(m.trains||'—')+'</b></div><div class="miniBox"><small>Duración</small><b>'+esc(dur||m.duration||'—')+'</b></div></div>'}
+    html+='</div>';
+    if(data.pdf)html+='<button class="btn primary" onclick="openPdf('+(Number(b&&b.pagina||0))+')">📄 Ver PDF Marco original</button>';
+    html+=(typeof timelineHtml==='function'?timelineHtml(b||{}):'');
+    html+=(typeof changePanelHtml==='function'?changePanelHtml(ds,baseDayV65(ds),null,d,b):'');
+    html+=(typeof incidentPanelHtmlV59==='function'?incidentPanelHtmlV59(ds):'');
+    const target=document.getElementById('detail');if(target)target.innerHTML=html;
+    if(typeof scrollToDetail==='function')scrollToDetail();
+  };
+
+  function hasIncidentV65(ds){return !!(data?.incidents?.[ds]||data?.incidencias?.[ds])}
+  function paintIndicatorsV65(){
+    document.querySelectorAll('#grid .day').forEach(day=>{
+      const m=(day.getAttribute('onclick')||'').match(/selectDay\('([^']+)'\)/);if(!m)return;
+      const ds=m[1],ch=!!changeV65(ds),inc=hasIncidentV65(ds),bi=isRestWorkedV65(ds)||isWorkToRestV65(ds);
+      day.querySelectorAll('.dayIndicatorsV64,.dayIndicatorsV65,.dayIndicatorsV61,.changeDotV59,.incidentMarkV59,.restWorkMarkV59,.transitionMarkV60,.changedDot').forEach(x=>x.remove());
+      if(!ch&&!inc&&!bi)return;
+      const box=document.createElement('div');box.className='dayIndicatorsV65';
+      const top=document.createElement('div');top.className='topRowV65';
+      if(inc){const i=document.createElement('span');i.className='incidentV65';i.textContent='⚠️';top.appendChild(i)}
+      if(ch){const c=document.createElement('span');c.className='changeV65';c.textContent='🔄';top.appendChild(c)}
+      if(top.childNodes.length)box.appendChild(top);
+      if(bi){const b=document.createElement('span');b.className='bicolorV65';box.appendChild(b)}
+      day.appendChild(box);
+    });
+  }
+  const prevRenderV65=window.render;
+  window.render=function(){const r=prevRenderV65?prevRenderV65.apply(this,arguments):undefined;setVersionV65();setTimeout(paintIndicatorsV65,0);return r};
+  setTimeout(()=>{setVersionV65();if(typeof render==='function')render();setTimeout(paintIndicatorsV65,100)},700);
+})();
+</script>
+
+
+<style id="v66-observaciones-css">
+/* v6.6: observaciones/materiales y secciones desplegables */
+.dayDetailGroupV66{margin-top:12px;border:1px solid var(--line);border-radius:18px;background:#fff;overflow:hidden}
+.dayDetailGroupV66>summary{cursor:pointer;list-style:none;padding:12px 14px;font-weight:950;font-size:18px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.dayDetailGroupV66>summary::-webkit-details-marker{display:none}
+.dayDetailGroupV66 .groupBodyV66{padding:0 12px 12px}
+.groupHeadV66{display:inline-flex;align-items:center;gap:7px}.groupAlertV66{font-size:16px}
+.obsPanelV66{background:#eef7ff;border:2px solid #60a5fa;border-radius:16px;padding:14px}
+.obsTitleV66{display:flex;align-items:center;gap:8px;color:#075985;font-size:20px;font-weight:950;margin-bottom:8px}
+.obsPanelV66 textarea{min-height:92px;resize:vertical;overflow:hidden}
+.obsPanelV66 .input{border-color:#bfdbfe}
+.registryGroupV66{border:1px solid var(--line);border-radius:18px;background:#fff;margin:12px 0;overflow:hidden}
+.registryGroupV66>summary{cursor:pointer;list-style:none;padding:13px 14px;font-size:19px;font-weight:950;color:var(--r);display:flex;justify-content:space-between;align-items:center;gap:8px}
+.registryGroupV66>summary::-webkit-details-marker{display:none}
+.registryGroupV66 .registryBodyV66{padding:0 12px 12px}
+.obsItemV66{border-left:4px solid #3b82f6;background:#f0f8ff;width:100%;white-space:normal;overflow-wrap:anywhere}
+#registryV66 .incidentItemV59{width:100%;max-width:none;white-space:normal;overflow-wrap:anywhere;min-height:auto}
+#registryV66 .incidentItemV59 .muted{white-space:pre-wrap;overflow-wrap:anywhere;display:block}
+#registryV66 .memCard{width:100%;max-width:none}
+@media(max-width:560px){.dayDetailGroupV66>summary{font-size:16px;padding:10px 11px}.obsPanelV66{padding:11px}.registryGroupV66>summary{font-size:17px}}
+</style>
+<script id="v66-observaciones-js">
+(function(){
+  const APP_VERSION_V66='6.6', APP_UPDATED_V66='02/08/2026';
+  data.observations=data.observations||{};
+  function setVersionV66(){
+    document.title='App Turnos Pro v'+APP_VERSION_V66;
+    document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+APP_VERSION_V66);
+    const h=document.querySelector('.loginbox h1');if(h)h.innerHTML='App Turnos Pro <span class="ver">v'+APP_VERSION_V66+'</span>';
+    const badge=document.getElementById('loginVersionBadgeV58')||document.getElementById('loginVersionBadgeV59');if(badge)badge.textContent='v'+APP_VERSION_V66;
+    const stamp=document.getElementById('loginVersionV57');if(stamp)stamp.textContent='Versión '+APP_VERSION_V66+' · Actualizada '+APP_UPDATED_V66;
+  }
+  function obsForV66(ds){return (data.observations||{})[ds]||null}
+  function hasChangeContentV66(ds){const c=data.changes?.[ds];return !!(c&&(c.turno||c.tipo||c.persona||c.nota))}
+  function hasIncidentContentV66(ds){const i=data.incidents?.[ds];return !!(i&&(i.note||Object.values(i.categories||{}).some(Boolean)))}
+  function hasObsContentV66(ds){const o=obsForV66(ds);return !!(o&&(o.materials||o.note))}
+  function alertV66(on){return on?'<span class="groupAlertV66" title="Hay información guardada">‼️</span>':''}
+  window.observationPanelHtmlV66=function(ds){
+    const o=obsForV66(ds)||{};
+    return '<div class="obsPanelV66"><div class="obsTitleV66"><span>🔎</span><span>Observaciones y materiales</span></div><p class="muted">Anota materiales con los que has circulado y cualquier información que no sea una incidencia.</p><input id="obs_materials_v66" class="input" placeholder="Materiales / trenes (por ejemplo: S-106, 4091, 4093)" value="'+esc(o.materials||'')+'"><textarea id="obs_note_v66" class="input" placeholder="Otras observaciones del día...">'+esc(o.note||'')+'</textarea><div style="margin-top:8px"><button class="btn primary" onclick="saveObservationV66(\''+ds+'\')">Guardar observación</button> <button class="btn" onclick="deleteObservationV66(\''+ds+'\')">Borrar observación</button></div><div id="obs_msg_v66" class="ok" style="margin-top:7px"></div></div>';
+  };
+  window.saveObservationV66=function(ds){
+    const materials=(document.getElementById('obs_materials_v66')?.value||'').trim(),note=(document.getElementById('obs_note_v66')?.value||'').trim();
+    if(!materials&&!note){alert('Escribe algún material u observación.');return}
+    const prev=obsForV66(ds)||{};data.observations[ds]={fecha:ds,materials,note,created:prev.created||new Date().toISOString(),updated:new Date().toISOString()};save();
+    const msg=document.getElementById('obs_msg_v66');if(msg)msg.textContent='Observación guardada.';if(typeof render==='function')render();setTimeout(()=>enhanceDayV66(ds),0);
+  };
+  window.deleteObservationV66=function(ds){
+    if(!data.observations?.[ds])return;if(!confirm('¿Borrar las observaciones y materiales de este día?'))return;delete data.observations[ds];save();selectDay(ds);
+  };
+  function autoGrowV66(el){if(!el)return;el.style.height='auto';el.style.height=Math.max(92,el.scrollHeight)+'px'}
+  function wrapPanelV66(panel,title,icon,hasData,open){
+    if(!panel||panel.closest('.dayDetailGroupV66'))return;
+    const d=document.createElement('details');d.className='dayDetailGroupV66';if(open)d.open=true;
+    d.innerHTML='<summary><span class="groupHeadV66"><span>'+icon+'</span><span>'+title+'</span></span>'+alertV66(hasData)+'</summary><div class="groupBodyV66"></div>';
+    panel.parentNode.insertBefore(d,panel);d.querySelector('.groupBodyV66').appendChild(panel);
+  }
+  function enhanceDayV66(ds){
+    const box=document.getElementById('detail');if(!box)return;
+    // Añadir observaciones si aún no están.
+    if(!box.querySelector('.obsPanelV66')){const holder=document.createElement('div');holder.innerHTML=observationPanelHtmlV66(ds);box.appendChild(holder.firstElementChild)}
+    const ch=box.querySelector('.changePanel');wrapPanelV66(ch,'Cambios','🔄',hasChangeContentV66(ds),true);
+    const obs=box.querySelector('.obsPanelV66');wrapPanelV66(obs,'Observaciones y materiales','🔎',hasObsContentV66(ds),hasObsContentV66(ds));
+    const inc=box.querySelector('.incidentPanelV59');wrapPanelV66(inc,'Incidencias','⚠️',hasIncidentContentV66(ds),hasIncidentContentV66(ds));
+    const ot=document.getElementById('obs_note_v66');if(ot){autoGrowV66(ot);ot.addEventListener('input',()=>autoGrowV66(ot),{passive:true})}
+    const it=document.getElementById('inc_note');if(it){autoGrowV66(it);it.addEventListener('input',()=>autoGrowV66(it),{passive:true})}
+  }
+  const prevSelectV66=window.selectDay;
+  window.selectDay=function(ds){const r=prevSelectV66?prevSelectV66(ds):undefined;setTimeout(()=>enhanceDayV66(ds),0);setVersionV66();return r};
+
+  const MONTHS=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+  function monthKey(ds){return String(ds||'').slice(0,7)}
+  function monthLabel(k){const [y,m]=k.split('-').map(Number);return (MONTHS[(m||1)-1]||k)+' '+y}
+  function obsCard(o){return '<div class="changeItem obsItemV66"><b>'+esc(o.fecha||'')+'</b>'+(o.materials?'<br><b>Materiales / trenes:</b> '+esc(o.materials):'')+(o.note?'<br><span class="muted" style="white-space:pre-wrap">'+esc(o.note)+'</span>':'')+'</div>'}
+  function observationsRegistryV66(){
+    const arr=Object.values(data.observations||{}).sort((a,b)=>String(b.fecha).localeCompare(String(a.fecha)));if(!arr.length)return '<p class="muted">Sin observaciones registradas.</p>';
+    const g={};arr.forEach(o=>(g[monthKey(o.fecha)]??=[]).push(o));const cur=fmt(new Date()).slice(0,7);
+    return Object.keys(g).sort().reverse().map(k=>'<details class="memCard" '+(k===cur?'open':'')+'><summary style="cursor:pointer;font-weight:950;color:#075985">'+monthLabel(k)+' ('+g[k].length+')</summary><div style="margin-top:10px">'+g[k].map(obsCard).join('')+'</div></details>').join('');
+  }
+  function buildRegistryV66(){
+    const detail=document.querySelector('#changesView .detail');if(!detail)return;
+    detail.querySelector('#registryV66')?.remove();
+    const originalBalances=document.getElementById('balances'),originalList=document.getElementById('changesList');
+    const incHtml=typeof incidentsSectionV59==='function'?incidentsSectionV59():'<p class="muted">Sin incidencias registradas.</p>';
+    const div=document.createElement('div');div.id='registryV66';
+    div.innerHTML='<details class="registryGroupV66" open><summary><span>🔄 Cambios '+(Object.keys(data.changes||{}).length?'‼️':'')+'</span><span>⌄</span></summary><div class="registryBodyV66"><div id="changesSummaryCloneV66"></div><div id="changesListCloneV66"></div></div></details>'+ 
+      '<details class="registryGroupV66"><summary><span>🔎 Observaciones '+(Object.keys(data.observations||{}).length?'‼️':'')+'</span><span>⌄</span></summary><div class="registryBodyV66">'+observationsRegistryV66()+'</div></details>'+ 
+      '<details class="registryGroupV66"><summary><span>⚠️ Incidencias '+(Object.keys(data.incidents||{}).length?'‼️':'')+'</span><span>⌄</span></summary><div class="registryBodyV66">'+incHtml+'</div></details>';
+    detail.appendChild(div);
+    const bc=div.querySelector('#changesSummaryCloneV66'),lc=div.querySelector('#changesListCloneV66');
+    if(bc&&originalBalances){const clone=originalBalances.cloneNode(true);clone.querySelector('#incidentsRegistryV59')?.remove();bc.innerHTML=clone.innerHTML}
+    if(lc&&originalList)lc.innerHTML=originalList.innerHTML;
+    if(originalBalances)originalBalances.style.display='none';if(originalList)originalList.style.display='none';const h=originalList?.previousElementSibling;if(h&&h.tagName==='H3')h.style.display='none';
+  }
+  const prevShowChangesV66=window.showChanges;
+  window.showChanges=function(){const r=prevShowChangesV66?prevShowChangesV66():undefined;setTimeout(buildRegistryV66,0);setVersionV66();return r};
+
+  const prevLightV66=typeof lightDataV50==='function'?lightDataV50:null;
+  if(prevLightV66)window.lightDataV50=function(){const o=prevLightV66();o.version=APP_VERSION_V66;o.observations=data.observations||{};return o};
+  const prevApplyV66=typeof applyHistoryObjectV50==='function'?applyHistoryObjectV50:null;
+  if(prevApplyV66)window.applyHistoryObjectV50=function(obj){prevApplyV66(obj);data.observations={...(data.observations||{}),...(obj.observations||obj.data?.observations||{})};save()};
+
+  // Exportación ampliada sin modificar los datos guardados.
+  window.exportExcel=function(){
+    const rows=[['Fecha','Turno real','Tipo','Inicio','Fin','Duración','Turno original','Cambio con','Balance','Cantidad','Nota cambio','Incidencia','Categorías incidencia','Nota incidencia','Materiales / trenes','Observaciones']];
+    (data.calendar||[]).forEach(x=>{const d=effectiveDay(x.fecha),b=blockFor(d),ch=data.changes?.[x.fecha]||{},inc=data.incidents?.[x.fecha]||null,o=data.observations?.[x.fecha]||null;rows.push([x.fecha,d?.clave_turno||'',d?.tipo_dia||'',blockIni(b),blockFin(b),b?.duracion||'',ch.originalTurno||'',ch.persona||'',ch.balance||'',ch.cantidad||'',ch.nota||'',inc?'Sí':'No',inc&&typeof categoriesTextV59==='function'?categoriesTextV59(inc):'',inc?.note||'',o?.materials||'',o?.note||''])});
+    const csv='\ufeff'+rows.map(r=>r.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(';')).join('\n');downloadBlob(csv,'AppTurnos_registro_v66.csv','text/csv;charset=utf-8');
+  };
+  const prevRenderV66=window.render;
+  window.render=function(){const r=prevRenderV66?prevRenderV66.apply(this,arguments):undefined;setVersionV66();return r};
+  setTimeout(()=>{setVersionV66();data.observations=data.observations||{};if(typeof render==='function')render()},600);
+})();
+</script>
+
+<style id="v66-final-lock-css">
+#loginVersionFinalV66{display:inline-flex;margin-left:8px;padding:3px 8px;border-radius:999px;background:#f2e3f4;color:var(--r);font-size:12px;font-weight:950;vertical-align:middle}
+</style>
+<script id="v66-final-lock-js">
+(function(){
+ const V='6.6', D='02/08/2026';
+ function lockV66(){
+   if(document.title!=='App Turnos Pro v'+V)document.title='App Turnos Pro v'+V;
+   document.querySelectorAll('.ver').forEach(e=>{if(e.textContent!=='v'+V)e.textContent='v'+V});
+   const h=document.querySelector('.loginbox h1');
+   if(h){
+     const desired='App Turnos Pro <span class="ver">v'+V+'</span>';
+     if(h.innerHTML!==desired)h.innerHTML=desired;
+   }
+   const stamp=document.getElementById('loginVersionV57');
+   const txt='Versión '+V+' · Actualizada '+D;
+   if(stamp&&stamp.textContent!==txt)stamp.textContent=txt;
+   ['loginVersionBadgeV58','loginVersionBadgeV59'].forEach(id=>{const e=document.getElementById(id);if(e&&e.textContent!=='v'+V)e.textContent='v'+V});
+ }
+ lockV66();
+ [100,400,900,1800].forEach(ms=>setTimeout(lockV66,ms));
+ document.addEventListener('visibilitychange',()=>{if(!document.hidden)lockV66()});
+ window.addEventListener('pageshow',lockV66);
+})();
+</script>
+
 </body></html>
