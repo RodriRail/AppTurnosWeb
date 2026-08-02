@@ -2614,8 +2614,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
   applyVersionV69();
   window.addEventListener('pageshow',applyVersionV69);
   document.addEventListener('visibilitychange',()=>{if(!document.hidden)applyVersionV69()});
-  const observer=new MutationObserver(()=>applyVersionV69());
-  observer.observe(document.documentElement,{subtree:true,childList:true,characterData:true});
+  // Evita observar y reescribir continuamente el DOM: en iPhone podía bloquear los campos del login.
   setTimeout(applyVersionV69,100);
   setTimeout(applyVersionV69,500);
 })();
@@ -2700,6 +2699,29 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
     if (!document.hidden) setVersionFinal();
   });
   window.addEventListener('pageshow', setVersionFinal);
+})();
+</script>
+
+<style id="v69-login-touch-fix">
+#login{pointer-events:auto!important;touch-action:manipulation!important}
+#login .loginbox{position:relative!important;z-index:2!important;pointer-events:auto!important}
+#login input,#login button,#login label{pointer-events:auto!important;touch-action:manipulation!important;-webkit-user-select:text!important;user-select:text!important}
+#login input{position:relative!important;z-index:3!important;opacity:1!important}
+</style>
+<script id="v69-login-focus-fix">
+(function(){
+  function prepareLogin(){
+    var u=document.getElementById('user'),p=document.getElementById('pass');
+    [u,p].forEach(function(el){
+      if(!el)return;
+      el.removeAttribute('disabled');
+      el.removeAttribute('readonly');
+      el.style.pointerEvents='auto';
+      el.style.touchAction='manipulation';
+    });
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',prepareLogin);else prepareLogin();
+  window.addEventListener('pageshow',prepareLogin);
 })();
 </script>
 </body></html>
