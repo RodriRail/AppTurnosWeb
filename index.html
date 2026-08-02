@@ -2455,7 +2455,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
   const prevRender=window.render;
   window.render=function(){const r=prevRender?prevRender.apply(this,arguments):undefined;setVersionV67();return r};
   window.addEventListener('pageshow',setVersionV67);document.addEventListener('visibilitychange',()=>{if(!document.hidden)setVersionV67()});
-  setInterval(setVersionV67,1000);
+  /* temporizador v6.7 desactivado en v6.9 */
   setTimeout(()=>{setVersionV67();if(selected)normalizeDayGroupsV67(selected)},700);
 })();
 </script>
@@ -2591,7 +2591,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
   window.render=function(){const r=prevRender?prevRender.apply(this,arguments):undefined;setVersionV68();return r};
   window.addEventListener('pageshow',setVersionV68);
   document.addEventListener('visibilitychange',()=>{if(!document.hidden)setVersionV68()});
-  setInterval(setVersionV68,1200);
+  /* temporizador v6.8 desactivado en v6.9 */
   setTimeout(setVersionV68,200);
 })();
 </script>
@@ -2621,4 +2621,85 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 })();
 </script>
 
+
+<script id="v69-acceso-final-corregido">
+(function(){
+  const VERSION_FINAL = '6.9';
+  const UPDATED_FINAL = '02/08/2026';
+
+  function setVersionFinal(){
+    document.title = 'App Turnos Pro v' + VERSION_FINAL;
+    document.querySelectorAll('.ver').forEach(function(el){
+      el.textContent = 'v' + VERSION_FINAL;
+    });
+    const badge = document.getElementById('loginVersionFinalV69');
+    if (badge) badge.textContent = 'v' + VERSION_FINAL;
+  }
+
+  function getEl(id){ return document.getElementById(id); }
+
+  window.doLogin = function(){
+    const userEl = getEl('user');
+    const passEl = getEl('pass');
+    const rememberEl = getEl('remember');
+    const loginEl = getEl('login');
+    const msgEl = getEl('loginMsg');
+
+    if (!userEl || !passEl || !loginEl) {
+      if (msgEl) msgEl.textContent = 'No se pudo iniciar el acceso. Recarga la página.';
+      return;
+    }
+
+    const enteredUser = String(userEl.value || '').trim().toLowerCase();
+    const enteredPass = String(passEl.value || '').trim();
+    const validUser = String(ADMIN_USER || '').toLowerCase();
+    const validPass = String(ADMIN_PASS || '');
+
+    if (enteredUser === validUser && enteredPass === validPass) {
+      try {
+        localStorage.setItem(AUTH + 'Unlocked', '1');
+        localStorage.setItem(
+          AUTH + 'SessionUntil',
+          String(Date.now() + ((rememberEl && rememberEl.checked) ? 86400000 : 3600000))
+        );
+        localStorage.removeItem(AUTH + 'Attempts');
+        localStorage.removeItem(AUTH + 'LockUntil');
+      } catch (e) {
+        console.warn('No se pudo guardar la sesión:', e);
+      }
+      loginEl.classList.add('hidden');
+      admin = true;
+      if (msgEl) msgEl.textContent = '';
+      try { updateImportUI(); } catch (e) { console.warn(e); }
+      try { show('calendarView'); } catch (e) { console.warn(e); }
+      try { render(); } catch (e) { console.error(e); }
+      setVersionFinal();
+      return;
+    }
+
+    if (msgEl) msgEl.textContent = 'Usuario o contraseña incorrectos.';
+  };
+
+  // Permite entrar pulsando Intro desde usuario o contraseña.
+  ['user','pass'].forEach(function(id){
+    const el=getEl(id);
+    if (el) el.addEventListener('keydown', function(ev){
+      if (ev.key === 'Enter') {
+        ev.preventDefault();
+        window.doLogin();
+      }
+    });
+  });
+
+  window.addEventListener('error', function(ev){
+    console.error('Error de la aplicación:', ev.error || ev.message);
+  });
+
+  setVersionFinal();
+  document.addEventListener('visibilitychange', function(){
+    if (!document.hidden) setVersionFinal();
+  });
+  window.addEventListener('pageshow', setVersionFinal);
+})();
+</script>
 </body></html>
