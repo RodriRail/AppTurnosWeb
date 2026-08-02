@@ -2357,4 +2357,106 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 })();
 </script>
 
+
+
+<style id="v67-cajas-registro-css">
+/* v6.7: cajas diarias recogidas y registro ordenado */
+#registryV67{margin-top:12px}
+.registrySectionTitleV67{color:var(--r);font-size:19px;font-weight:950;margin:16px 0 8px}
+.registryMonthV67{border:1px solid var(--line);border-radius:16px;background:#fff;margin:9px 0;overflow:hidden}
+.registryMonthV67>summary{cursor:pointer;list-style:none;padding:11px 12px;font-weight:950}
+.registryMonthV67>summary::-webkit-details-marker{display:none}
+.registryMonthBodyV67{padding:0 10px 10px}
+#registryV67 .incidentItemV59,#registryV67 .changeItem{width:100%;max-width:none;white-space:normal;overflow-wrap:anywhere}
+#registryV67 .muted{white-space:pre-wrap;overflow-wrap:anywhere}
+</style>
+<script id="v67-cajas-registro-js">
+(function(){
+  const V='6.7', UPDATED='02/08/2026';
+  const MONTHS=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+  function setVersionV67(){
+    document.title='App Turnos Pro v'+V;
+    document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+V);
+    const h=document.querySelector('.loginbox h1');
+    if(h)h.innerHTML='App Turnos Pro <span class="ver">v'+V+'</span>';
+    document.querySelectorAll('#loginVersionBadgeV58,#loginVersionBadgeV59,#loginVersionFinalV66').forEach(e=>e.textContent='v'+V);
+    const stamp=document.getElementById('loginVersionV57');if(stamp)stamp.textContent='Versión '+V+' · Actualizada '+UPDATED;
+  }
+  function hasChange(ds){const c=data.changes?.[ds];return !!(c&&(c.turno||c.tipo||c.persona||c.nota))}
+  function hasObs(ds){const o=data.observations?.[ds];return !!(o&&(o.materials||o.note))}
+  function hasInc(ds){const i=data.incidents?.[ds];return !!(i&&(i.note||Object.values(i.categories||{}).some(Boolean)))}
+  function setAlert(summary,on){
+    if(!summary)return;
+    summary.querySelectorAll('.groupAlertV66').forEach(x=>x.remove());
+    if(on){const s=document.createElement('span');s.className='groupAlertV66';s.textContent='‼️';s.title='Hay información guardada';summary.appendChild(s)}
+  }
+  function normalizeDayGroupsV67(ds){
+    const detail=document.getElementById('detail');if(!detail)return;
+    const groups=[...detail.querySelectorAll('.dayDetailGroupV66')];
+    const find=(word)=>groups.find(g=>(g.querySelector('summary')?.textContent||'').toLowerCase().includes(word));
+    const ch=find('cambios'),obs=find('observaciones'),inc=find('incidencias');
+    [[ch,hasChange(ds)],[obs,hasObs(ds)],[inc,hasInc(ds)]].forEach(([g,on])=>{if(g){g.open=false;setAlert(g.querySelector(':scope > summary'),on)}});
+    // Orden definitivo: Cambios, Observaciones, Incidencias.
+    [ch,obs,inc].forEach(g=>{if(g)detail.appendChild(g)});
+  }
+  const prevSelect=window.selectDay;
+  window.selectDay=function(ds){
+    const r=prevSelect?prevSelect(ds):undefined;
+    setTimeout(()=>normalizeDayGroupsV67(ds),40);
+    setTimeout(()=>normalizeDayGroupsV67(ds),180);
+    setVersionV67();return r;
+  };
+  function monthKey(ds){return String(ds||'').slice(0,7)}
+  function monthLabel(k){const [y,m]=String(k).split('-').map(Number);return (MONTHS[(m||1)-1]||k)+' '+y}
+  function changeCard(c){
+    return '<div class="changeItem '+(c.tipo==='LZ'?'license':c.tipo==='DD'?'ddreg':c.tipo==='D'?'restreg':'')+'"><b>'+esc(c.fecha||'')+'</b><br>Original: '+esc(c.originalTurno||'—')+' ('+esc(c.originalInicio||'—')+' → '+esc(c.originalFin||'—')+')<br>Nuevo: '+esc(c.tipo==='DD'?('DD '+(c.turno||'')):(c.tipo||c.turno||'—'))+'<br>Con: '+esc(c.persona||'—')+' · '+esc(c.balance||'registro')+' '+esc(c.cantidad||1)+(c.nota?'<br><span class="muted">'+esc(c.nota)+'</span>':'')+'</div>';
+  }
+  function changesMonthsV67(){
+    const arr=Object.values(data.changes||{}).sort((a,b)=>String(b.fecha).localeCompare(String(a.fecha)));
+    if(!arr.length)return '<p class="muted">Aún no hay cambios.</p>';
+    const g={};arr.forEach(c=>(g[monthKey(c.fecha)]??=[]).push(c));const cur=fmt(new Date()).slice(0,7);
+    return Object.keys(g).sort().reverse().map(k=>'<details class="registryMonthV67" '+(k===cur?'open':'')+'><summary>'+monthLabel(k)+' ('+g[k].length+')</summary><div class="registryMonthBodyV67">'+g[k].map(changeCard).join('')+'</div></details>').join('');
+  }
+  function observationsMonthsV67(){
+    const arr=Object.values(data.observations||{}).sort((a,b)=>String(b.fecha).localeCompare(String(a.fecha)));
+    if(!arr.length)return '<p class="muted">Sin observaciones registradas.</p>';
+    const g={};arr.forEach(o=>(g[monthKey(o.fecha)]??=[]).push(o));const cur=fmt(new Date()).slice(0,7);
+    const card=o=>'<div class="changeItem obsItemV66"><b>'+esc(o.fecha||'')+'</b>'+(o.materials?'<br><b>Materiales / trenes:</b> '+esc(o.materials):'')+(o.note?'<br><span class="muted">'+esc(o.note)+'</span>':'')+'</div>';
+    return Object.keys(g).sort().reverse().map(k=>'<details class="registryMonthV67" '+(k===cur?'open':'')+'><summary>'+monthLabel(k)+' ('+g[k].length+')</summary><div class="registryMonthBodyV67">'+g[k].map(card).join('')+'</div></details>').join('');
+  }
+  function incidentCats(i){
+    if(typeof categoriesTextV59==='function')return categoriesTextV59(i);
+    return Object.entries(i?.categories||{}).filter(([,v])=>v).map(([k])=>k).join(', ');
+  }
+  function incidentsMonthsV67(){
+    const arr=Object.values(data.incidents||{}).sort((a,b)=>String(b.fecha).localeCompare(String(a.fecha)));
+    if(!arr.length)return '<p class="muted">Sin incidencias registradas.</p>';
+    const g={};arr.forEach(i=>(g[monthKey(i.fecha)]??=[]).push(i));const cur=fmt(new Date()).slice(0,7);
+    const card=i=>'<div class="changeItem incidentItemV59"><b>'+esc(i.fecha||'')+'</b>'+(incidentCats(i)?'<br><b>Categorías:</b> '+esc(incidentCats(i)):'')+(i.note?'<br><span class="muted">'+esc(i.note)+'</span>':'')+'</div>';
+    return Object.keys(g).sort().reverse().map(k=>'<details class="registryMonthV67" '+(k===cur?'open':'')+'><summary>'+monthLabel(k)+' ('+g[k].length+')</summary><div class="registryMonthBodyV67">'+g[k].map(card).join('')+'</div></details>').join('');
+  }
+  function buildRegistryV67(){
+    const detail=document.querySelector('#changesView .detail');if(!detail)return;
+    detail.querySelector('#registryV66')?.remove();detail.querySelector('#registryV67')?.remove();
+    const balances=document.getElementById('balances'),list=document.getElementById('changesList');
+    const div=document.createElement('div');div.id='registryV67';
+    let balanceHtml='';
+    if(balances){const clone=balances.cloneNode(true);clone.querySelector('#incidentsRegistryV59')?.remove();balanceHtml=clone.innerHTML}
+    div.innerHTML='<div class="registryBalanceV67">'+balanceHtml+'</div>'+
+      '<div class="registrySectionTitleV67">Cambios</div>'+changesMonthsV67()+
+      '<details class="registryGroupV66"><summary><span>🔎 Observaciones</span><span>⌄</span></summary><div class="registryBodyV66">'+observationsMonthsV67()+'</div></details>'+
+      '<details class="registryGroupV66"><summary><span>⚠️ Incidencias</span><span>⌄</span></summary><div class="registryBodyV66">'+incidentsMonthsV67()+'</div></details>';
+    detail.appendChild(div);
+    if(balances)balances.style.display='none';if(list)list.style.display='none';
+    const h=list?.previousElementSibling;if(h&&h.tagName==='H3')h.style.display='none';
+  }
+  const prevShow=window.showChanges;
+  window.showChanges=function(){const r=prevShow?prevShow():undefined;setTimeout(buildRegistryV67,40);setTimeout(buildRegistryV67,180);setVersionV67();return r};
+  const prevRender=window.render;
+  window.render=function(){const r=prevRender?prevRender.apply(this,arguments):undefined;setVersionV67();return r};
+  window.addEventListener('pageshow',setVersionV67);document.addEventListener('visibilitychange',()=>{if(!document.hidden)setVersionV67()});
+  setInterval(setVersionV67,1000);
+  setTimeout(()=>{setVersionV67();if(selected)normalizeDayGroupsV67(selected)},700);
+})();
+</script>
 </body></html>
