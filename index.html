@@ -2459,4 +2459,141 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
   setTimeout(()=>{setVersionV67();if(selected)normalizeDayGroupsV67(selected)},700);
 })();
 </script>
+
+
+<style id="v68-flechas-css">
+/* v6.8: flechas visibles en todos los desplegables */
+.dayDetailGroupV66>summary,
+.registryGroupV66>summary,
+.registryMonthV67>summary,
+.registryChangesV68>summary{
+  position:relative;
+  padding-right:38px!important;
+}
+.dayDetailGroupV66>summary::after,
+.registryGroupV66>summary::after,
+.registryMonthV67>summary::after,
+.registryChangesV68>summary::after{
+  content:"▼";
+  position:absolute;
+  right:13px;
+  top:50%;
+  transform:translateY(-50%) rotate(-90deg);
+  transform-origin:center;
+  font-size:13px;
+  line-height:1;
+  color:var(--r);
+  transition:transform .18s ease;
+}
+.dayDetailGroupV66[open]>summary::after,
+.registryGroupV66[open]>summary::after,
+.registryMonthV67[open]>summary::after,
+.registryChangesV68[open]>summary::after{
+  transform:translateY(-50%) rotate(0deg);
+}
+/* Evita duplicar las flechas antiguas de texto */
+.registryGroupV66>summary>span:last-child:not(:first-child){
+  display:none!important;
+}
+.registryChangesV68{
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:#fff;
+  margin:12px 0;
+  overflow:hidden;
+}
+.registryChangesV68>summary{
+  cursor:pointer;
+  list-style:none;
+  padding:13px 14px;
+  font-size:19px;
+  font-weight:950;
+  color:var(--r);
+}
+.registryChangesV68>summary::-webkit-details-marker{display:none}
+.registryChangesBodyV68{padding:0 12px 12px}
+@media(max-width:560px){
+  .dayDetailGroupV66>summary::after,
+  .registryGroupV66>summary::after,
+  .registryMonthV67>summary::after,
+  .registryChangesV68>summary::after{right:10px;font-size:12px}
+}
+</style>
+<script id="v68-flechas-js">
+(function(){
+  const V='6.8', UPDATED='02/08/2026';
+  const MONTHS=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+  function setVersionV68(){
+    document.title='App Turnos Pro v'+V;
+    document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+V);
+    const h=document.querySelector('.loginbox h1');
+    if(h)h.innerHTML='App Turnos Pro <span class="ver">v'+V+'</span>';
+    document.querySelectorAll('#loginVersionBadgeV58,#loginVersionBadgeV59,#loginVersionFinalV66').forEach(e=>e.textContent='v'+V);
+    const stamp=document.getElementById('loginVersionV57');
+    if(stamp)stamp.textContent='Versión '+V+' · Actualizada '+UPDATED;
+  }
+  function monthKey(ds){return String(ds||'').slice(0,7)}
+  function monthLabel(k){const [y,m]=String(k).split('-').map(Number);return (MONTHS[(m||1)-1]||k)+' '+y}
+  function changeCard(c){
+    return '<div class="changeItem '+(c.tipo==='LZ'?'license':c.tipo==='DD'?'ddreg':c.tipo==='D'?'restreg':'')+'"><b>'+esc(c.fecha||'')+'</b><br>Original: '+esc(c.originalTurno||'—')+' ('+esc(c.originalInicio||'—')+' → '+esc(c.originalFin||'—')+')<br>Nuevo: '+esc(c.tipo==='DD'?('DD '+(c.turno||'')):(c.tipo||c.turno||'—'))+'<br>Con: '+esc(c.persona||'—')+' · '+esc(c.balance||'registro')+' '+esc(c.cantidad||1)+(c.nota?'<br><span class="muted">'+esc(c.nota)+'</span>':'')+'</div>';
+  }
+  function groupedMonths(arr,card){
+    if(!arr.length)return '<p class="muted">Sin registros.</p>';
+    const g={};arr.forEach(x=>(g[monthKey(x.fecha)]??=[]).push(x));
+    const cur=fmt(new Date()).slice(0,7);
+    return Object.keys(g).sort().reverse().map(k=>'<details class="registryMonthV67" '+(k===cur?'open':'')+'><summary>'+monthLabel(k)+' ('+g[k].length+')</summary><div class="registryMonthBodyV67">'+g[k].map(card).join('')+'</div></details>').join('');
+  }
+  function changesMonths(){
+    const arr=Object.values(data.changes||{}).sort((a,b)=>String(b.fecha).localeCompare(String(a.fecha)));
+    return arr.length?groupedMonths(arr,changeCard):'<p class="muted">Aún no hay cambios.</p>';
+  }
+  function observationsMonths(){
+    const arr=Object.values(data.observations||{}).sort((a,b)=>String(b.fecha).localeCompare(String(a.fecha)));
+    const card=o=>'<div class="changeItem obsItemV66"><b>'+esc(o.fecha||'')+'</b>'+(o.materials?'<br><b>Materiales / trenes:</b> '+esc(o.materials):'')+(o.note?'<br><span class="muted">'+esc(o.note)+'</span>':'')+'</div>';
+    return arr.length?groupedMonths(arr,card):'<p class="muted">Sin observaciones registradas.</p>';
+  }
+  function incidentCats(i){
+    if(typeof categoriesTextV59==='function')return categoriesTextV59(i);
+    return Object.entries(i?.categories||{}).filter(([,v])=>v).map(([k])=>k).join(', ');
+  }
+  function incidentsMonths(){
+    const arr=Object.values(data.incidents||{}).sort((a,b)=>String(b.fecha).localeCompare(String(a.fecha)));
+    const card=i=>'<div class="changeItem incidentItemV59"><b>'+esc(i.fecha||'')+'</b>'+(incidentCats(i)?'<br><b>Categorías:</b> '+esc(incidentCats(i)):'')+(i.note?'<br><span class="muted">'+esc(i.note)+'</span>':'')+'</div>';
+    return arr.length?groupedMonths(arr,card):'<p class="muted">Sin incidencias registradas.</p>';
+  }
+  function buildRegistryV68(){
+    const detail=document.querySelector('#changesView .detail');if(!detail)return;
+    detail.querySelector('#registryV66')?.remove();
+    detail.querySelector('#registryV67')?.remove();
+    detail.querySelector('#registryV68')?.remove();
+    const balances=document.getElementById('balances'),list=document.getElementById('changesList');
+    let balanceHtml='';
+    if(balances){const clone=balances.cloneNode(true);clone.querySelector('#incidentsRegistryV59')?.remove();balanceHtml=clone.innerHTML}
+    const div=document.createElement('div');div.id='registryV68';
+    div.innerHTML='<div class="registryBalanceV67">'+balanceHtml+'</div>'+ 
+      '<details class="registryChangesV68"><summary>🔄 Cambios</summary><div class="registryChangesBodyV68">'+changesMonths()+'</div></details>'+ 
+      '<details class="registryGroupV66"><summary><span>🔎 Observaciones</span></summary><div class="registryBodyV66">'+observationsMonths()+'</div></details>'+ 
+      '<details class="registryGroupV66"><summary><span>⚠️ Incidencias</span></summary><div class="registryBodyV66">'+incidentsMonths()+'</div></details>';
+    detail.appendChild(div);
+    if(balances)balances.style.display='none';
+    if(list)list.style.display='none';
+    const oldTitle=list?.previousElementSibling;if(oldTitle&&oldTitle.tagName==='H3')oldTitle.style.display='none';
+  }
+  const prevShow=window.showChanges;
+  window.showChanges=function(){
+    const r=prevShow?prevShow():undefined;
+    setTimeout(buildRegistryV68,60);
+    setTimeout(buildRegistryV68,220);
+    setVersionV68();
+    return r;
+  };
+  const prevRender=window.render;
+  window.render=function(){const r=prevRender?prevRender.apply(this,arguments):undefined;setVersionV68();return r};
+  window.addEventListener('pageshow',setVersionV68);
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden)setVersionV68()});
+  setInterval(setVersionV68,1200);
+  setTimeout(setVersionV68,200);
+})();
+</script>
+
 </body></html>
