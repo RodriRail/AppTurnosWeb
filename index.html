@@ -1,4 +1,4 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>App Turnos Pro v7.0</title><style>
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>App Turnos Pro v7.3</title><style>
 :root{--r:#8a0f82;--r2:#b65ac0;--bg:#fbf8fc;--line:#ead9ea;--txt:#1f1522;--mut:#75627a;--work:#edd0f4;--workb:#d79ae4;--rest:#d8f8e1;--restb:#62df91;--dd:#ffe0e7;--ddb:#ff9aad;--vac:#dff3ff;--vacb:#8bd4ff;--lz:#ffe0b2;--lzb:#fb923c}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;padding-bottom:74px}.hidden{display:none!important}header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:5;padding:8px 10px}.top{display:flex;gap:8px;align-items:center}.logo{font-weight:900;font-style:italic;color:var(--r);font-size:24px}.title{font-weight:900;font-size:17px}.ver{color:var(--r);font-size:12px}.sub{font-weight:700;color:var(--mut);font-size:11px}.btn{border:1px solid var(--line);background:#fff;border-radius:15px;padding:10px 12px;font-weight:900;color:var(--txt);white-space:nowrap}.primary{background:var(--r)!important;color:#fff!important}.wrap{padding:6px}.bar{display:grid;grid-template-columns:44px 1fr 44px 70px;align-items:center;gap:6px;margin:8px 0}.month{font-size:26px;font-weight:950;text-align:center}.navbtn{width:44px;height:44px;border:1px solid var(--line);border-radius:14px;background:#fff;font-size:24px;font-weight:900}.calendar{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}.week,.grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr))}.week div{padding:10px 2px;text-align:center;font-weight:950;color:#4d3d55;font-size:13px;border-bottom:1px solid var(--line)}.day{min-height:82px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:3px;position:relative;overflow:hidden}.day:nth-child(7n){border-right:0}.num{font-weight:950;font-size:18px}.today .num{background:#0b7cff;color:#fff;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px}.selected{outline:4px solid var(--r);outline-offset:-4px;background:#fff8ff}.today.selected{outline:4px dashed var(--r)}.shiftNo{display:inline-flex;align-items:center;justify-content:center;min-width:42px;height:28px;border-radius:999px;background:#fff;border:2px solid var(--r2);color:#35113d;font-size:18px;font-weight:950;margin:0 auto 4px}.badge{margin-top:2px;border-radius:14px;border:2px solid;padding:6px 2px;min-height:52px;text-align:center;font-weight:900;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2px}.work{background:var(--work);border-color:var(--workb);color:#5b1168}.rest{background:var(--rest);border-color:var(--restb);color:#087139}.restComp{background:repeating-linear-gradient(135deg,#d8f8e1 0 9px,#fff 9px 15px);border-color:#42c979;color:#087139}.dd{background:var(--dd);border-color:var(--ddb);color:#c20d34}.vac{background:var(--vac);border-color:var(--vacb);color:#00608f}.lz{background:var(--lz);border-color:var(--lzb);color:#7c2d12}.rest,.vac,.dd,.lz{position:absolute;left:3px;right:3px;top:30px;bottom:3px;min-height:0}.bigD{font-size:24px}.timeTop,.timeBot{font-size:13px;line-height:1;font-weight:950}.sep{font-size:14px;color:var(--r);font-weight:950}.changedDot{position:absolute;right:5px;top:5px;width:9px;height:9px;background:#facc15;border:2px solid #fff;border-radius:50%;box-shadow:0 0 0 1px #b45309}.dataToggle{margin-left:auto;border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 10px;font-weight:950;color:var(--r)}.adminPanel,.detail{background:#fff;border:1px solid var(--line);border-radius:20px;padding:14px;margin-top:10px}.detail h2{margin:4px 0 8px;font-size:26px}.pill{display:inline-block;border-radius:999px;padding:8px 12px;font-weight:950}.summaryCard{background:linear-gradient(135deg,var(--r),#6e267a);color:#fff;border-radius:20px;padding:16px;margin:12px 0}.summaryTop{display:flex;justify-content:space-between;gap:12px}.summaryTitle{font-size:30px;font-weight:950}.summaryDate{opacity:.92;font-weight:750}.servicePill{background:rgba(255,255,255,.16);padding:7px 10px;border-radius:999px;font-weight:900;display:flex;align-items:center;justify-content:center;text-align:center;min-width:86px}.summaryTimes{display:grid;grid-template-columns:1fr 44px 1fr;gap:8px;align-items:center;background:#fff;color:var(--txt);border-radius:18px;padding:12px;margin-top:14px;text-align:center}.summaryTimes b{display:block;color:var(--r);font-size:26px}.summaryTimes small{color:var(--mut);font-weight:800}.summaryArrow{font-size:26px;color:var(--r);font-weight:950}.miniGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}.miniBox{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center;color:var(--txt)}.miniBox b{display:block}.miniBox small{color:var(--mut);font-weight:800}.timeline{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;margin-top:12px}.timeline h3{margin:0 0 10px;color:var(--r)}.tl{display:grid;grid-template-columns:56px 30px 1fr;gap:10px;align-items:start;padding:9px 0;position:relative}.tl:not(:last-child)::after{content:"";position:absolute;left:70px;top:40px;bottom:-8px;width:2px;background:linear-gradient(var(--r2),#ead9ea)}.tlIcon{width:30px;height:30px;border:2px solid var(--r2);border-radius:50%;display:flex;align-items:center;justify-content:center;background:#fff;font-size:14px;z-index:1}.tlIcon.start{border-color:#4ade80}.tlIcon.train{border-color:#b65ac0}.tlIcon.mid{border-color:#93c5fd}.tlIcon.end{border-color:#fb7185}.tlIcon.arrival{border-color:#60a5fa}.tlIcon.restgap{border-color:#fbbf24}.tlIcon.deje{border-color:#fb7185}.tlIcon.pdf{border-color:#64748b}.pdfOverlay{position:fixed;inset:0;background:#fff;z-index:99;display:flex;flex-direction:column}.pdfTop{display:flex;align-items:center;gap:8px;padding:8px;border-bottom:1px solid var(--line);background:#fff}.pdfFrame{border:0;flex:1;width:100%}.tlText b{display:block}.tlText small{color:var(--mut)}.muted{color:var(--mut)}.row{border-left:4px solid var(--r);background:#faf6fb;padding:10px;border-radius:12px;margin-top:8px}.changePanel{background:#fff7df;border:1px solid #facc15;border-radius:16px;padding:12px;margin-top:12px}.changeGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.input,.select{width:100%;padding:12px;border:1px solid var(--line);border-radius:14px;font-size:15px;background:#fff}.login{position:fixed;inset:0;background:#fbf8fc;z-index:50;display:flex;align-items:center;justify-content:center;padding:20px}.loginbox{background:#fff;border:1px solid var(--line);border-radius:24px;padding:22px;max-width:380px;width:100%;box-shadow:0 12px 35px #0001}.ok{color:#087139;font-weight:900}.err{color:#c20d34;font-weight:900}.changesList{display:grid;gap:10px}.changeItem,.balanceBox{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px}.balanceGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:560px){.month{font-size:22px}.day{min-height:78px;padding:2px}.num{font-size:15px}.shiftNo{min-width:32px;height:22px;font-size:15px}.badge{min-height:42px;border-radius:11px}.timeTop,.timeBot{font-size:11px}.week div{font-size:11px}.bar{grid-template-columns:38px 1fr 38px 58px}.navbtn{width:38px;height:38px}.btn{padding:8px 10px;font-size:13px}.changeGrid{grid-template-columns:1fr}.summaryTitle{font-size:25px}.summaryTimes b{font-size:22px}.miniBox{padding:8px;font-size:12px}}
 
 /* v2.4 DD asignado + registro visual */
@@ -3028,6 +3028,55 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
   }
   const prev=window.showChanges;window.showChanges=function(){const r=prev?prev.apply(this,arguments):undefined;setTimeout(build,100);setTimeout(build,450);return r};
   setTimeout(version,20);setTimeout(version,600);window.addEventListener('pageshow',version);
+})();
+</script>
+
+
+<style id="v73-registro-idb-css">
+#registryLoadV73{margin:10px 0;padding:10px 12px;border:1px solid var(--line);border-radius:14px;background:#faf6fb;font-weight:850;color:var(--mut)}
+</style>
+<script id="v73-registro-idb-js">
+(function(){
+  const VERSION='7.3', UPDATED='05/08/2026';
+  function setVersionV73(){
+    document.title='App Turnos Pro v'+VERSION;
+    document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+VERSION);
+    document.querySelectorAll('#loginVersionBadgeV58,#loginVersionBadgeV59,#loginVersionFinalV66,#loginVersionFinalV69').forEach(e=>e.textContent='v'+VERSION);
+    const s=document.getElementById('loginVersionV57');if(s)s.textContent='Versión '+VERSION+' · Actualizada '+UPDATED;
+    const h=document.querySelector('.loginbox h1');if(h)h.innerHTML='App Turnos Pro <span class="ver">v'+VERSION+'</span>';
+  }
+  function openDbV73(){return new Promise((resolve,reject)=>{try{const req=indexedDB.open('AppTurnosIndexedDB',1);req.onerror=()=>reject(req.error||new Error('IndexedDB'));req.onupgradeneeded=e=>{const db=e.target.result;if(!db.objectStoreNames.contains('kv'))db.createObjectStore('kv')};req.onsuccess=()=>resolve(req.result)}catch(e){reject(e)}})}
+  function getV73(db,key){return new Promise((resolve,reject)=>{try{const tx=db.transaction('kv','readonly');const r=tx.objectStore('kv').get(key);r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)}catch(e){reject(e)}})}
+  const asObj=v=>v&&typeof v==='object'?v:{};
+  function mergeDataV73(base,stored){
+    base=asObj(base);stored=asObj(stored);
+    const out={...base,...stored};
+    out.changes={...asObj(base.changes),...asObj(stored.changes)};
+    out.observations={...asObj(base.observations||base.observaciones),...asObj(stored.observations||stored.observaciones)};
+    out.incidents={...asObj(base.incidents||base.incidencias),...asObj(stored.incidents||stored.incidencias)};
+    const a=Array.isArray(base.records)?base.records:[],b=Array.isArray(stored.records)?stored.records:[];
+    out.records=[...a,...b];
+    return out;
+  }
+  async function hydrateV73(){
+    try{const db=await openDbV73();const stored=await getV73(db,'data');if(stored)window.data=mergeDataV73(window.data,stored);db.close()}catch(e){console.warn('V7.3 IndexedDB',e)}
+    window.data=window.data||{};data.changes=data.changes||{};data.records=data.records||[];data.observations=data.observations||{};data.incidents=data.incidents||{};
+  }
+  function statusText(){const c=Object.keys(data?.changes||{}).length+(Array.isArray(data?.records)?data.records.length:0),o=Object.keys(data?.observations||{}).length,i=Object.keys(data?.incidents||{}).length;return 'Datos recuperados: '+c+' cambios · '+o+' observaciones · '+i+' incidencias'}
+  const previousShowChanges=window.showChanges;
+  window.showChanges=async function(){
+    // Mostrar la vista sin construir todavía los paneles vacíos.
+    try{if(typeof show==='function')show('changesView')}catch(e){}
+    const detail=document.querySelector('#changesView .detail');
+    if(detail){detail.querySelectorAll('#registryV66,#registryV67,#registryV68,#registryV71,#registryV72').forEach(x=>x.remove());let m=document.getElementById('registryLoadV73');if(!m){m=document.createElement('div');m.id='registryLoadV73';detail.appendChild(m)}m.textContent='Cargando cambios guardados…'}
+    await hydrateV73();
+    const result=previousShowChanges?previousShowChanges.apply(this,arguments):undefined;
+    setTimeout(()=>{const m=document.getElementById('registryLoadV73');if(m)m.textContent=statusText()},520);
+    setTimeout(()=>document.getElementById('registryLoadV73')?.remove(),2800);
+    setVersionV73();
+    return result;
+  };
+  setVersionV73();setTimeout(setVersionV73,500);window.addEventListener('pageshow',setVersionV73);document.addEventListener('visibilitychange',()=>{if(!document.hidden)setVersionV73()});
 })();
 </script>
 
