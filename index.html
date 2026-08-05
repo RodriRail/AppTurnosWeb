@@ -1,4 +1,4 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>App Turnos Pro v7.7</title><style>
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>App Turnos Pro v7.8</title><style>
 :root{--r:#8a0f82;--r2:#b65ac0;--bg:#fbf8fc;--line:#ead9ea;--txt:#1f1522;--mut:#75627a;--work:#edd0f4;--workb:#d79ae4;--rest:#d8f8e1;--restb:#62df91;--dd:#ffe0e7;--ddb:#ff9aad;--vac:#dff3ff;--vacb:#8bd4ff;--lz:#ffe0b2;--lzb:#fb923c}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;padding-bottom:74px}.hidden{display:none!important}header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:5;padding:8px 10px}.top{display:flex;gap:8px;align-items:center}.logo{font-weight:900;font-style:italic;color:var(--r);font-size:24px}.title{font-weight:900;font-size:17px}.ver{color:var(--r);font-size:12px}.sub{font-weight:700;color:var(--mut);font-size:11px}.btn{border:1px solid var(--line);background:#fff;border-radius:15px;padding:10px 12px;font-weight:900;color:var(--txt);white-space:nowrap}.primary{background:var(--r)!important;color:#fff!important}.wrap{padding:6px}.bar{display:grid;grid-template-columns:44px 1fr 44px 70px;align-items:center;gap:6px;margin:8px 0}.month{font-size:26px;font-weight:950;text-align:center}.navbtn{width:44px;height:44px;border:1px solid var(--line);border-radius:14px;background:#fff;font-size:24px;font-weight:900}.calendar{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}.week,.grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr))}.week div{padding:10px 2px;text-align:center;font-weight:950;color:#4d3d55;font-size:13px;border-bottom:1px solid var(--line)}.day{min-height:82px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:3px;position:relative;overflow:hidden}.day:nth-child(7n){border-right:0}.num{font-weight:950;font-size:18px}.today .num{background:#0b7cff;color:#fff;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px}.selected{outline:4px solid var(--r);outline-offset:-4px;background:#fff8ff}.today.selected{outline:4px dashed var(--r)}.shiftNo{display:inline-flex;align-items:center;justify-content:center;min-width:42px;height:28px;border-radius:999px;background:#fff;border:2px solid var(--r2);color:#35113d;font-size:18px;font-weight:950;margin:0 auto 4px}.badge{margin-top:2px;border-radius:14px;border:2px solid;padding:6px 2px;min-height:52px;text-align:center;font-weight:900;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2px}.work{background:var(--work);border-color:var(--workb);color:#5b1168}.rest{background:var(--rest);border-color:var(--restb);color:#087139}.restComp{background:repeating-linear-gradient(135deg,#d8f8e1 0 9px,#fff 9px 15px);border-color:#42c979;color:#087139}.dd{background:var(--dd);border-color:var(--ddb);color:#c20d34}.vac{background:var(--vac);border-color:var(--vacb);color:#00608f}.lz{background:var(--lz);border-color:var(--lzb);color:#7c2d12}.rest,.vac,.dd,.lz{position:absolute;left:3px;right:3px;top:30px;bottom:3px;min-height:0}.bigD{font-size:24px}.timeTop,.timeBot{font-size:13px;line-height:1;font-weight:950}.sep{font-size:14px;color:var(--r);font-weight:950}.changedDot{position:absolute;right:5px;top:5px;width:9px;height:9px;background:#facc15;border:2px solid #fff;border-radius:50%;box-shadow:0 0 0 1px #b45309}.dataToggle{margin-left:auto;border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 10px;font-weight:950;color:var(--r)}.adminPanel,.detail{background:#fff;border:1px solid var(--line);border-radius:20px;padding:14px;margin-top:10px}.detail h2{margin:4px 0 8px;font-size:26px}.pill{display:inline-block;border-radius:999px;padding:8px 12px;font-weight:950}.summaryCard{background:linear-gradient(135deg,var(--r),#6e267a);color:#fff;border-radius:20px;padding:16px;margin:12px 0}.summaryTop{display:flex;justify-content:space-between;gap:12px}.summaryTitle{font-size:30px;font-weight:950}.summaryDate{opacity:.92;font-weight:750}.servicePill{background:rgba(255,255,255,.16);padding:7px 10px;border-radius:999px;font-weight:900;display:flex;align-items:center;justify-content:center;text-align:center;min-width:86px}.summaryTimes{display:grid;grid-template-columns:1fr 44px 1fr;gap:8px;align-items:center;background:#fff;color:var(--txt);border-radius:18px;padding:12px;margin-top:14px;text-align:center}.summaryTimes b{display:block;color:var(--r);font-size:26px}.summaryTimes small{color:var(--mut);font-weight:800}.summaryArrow{font-size:26px;color:var(--r);font-weight:950}.miniGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}.miniBox{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center;color:var(--txt)}.miniBox b{display:block}.miniBox small{color:var(--mut);font-weight:800}.timeline{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;margin-top:12px}.timeline h3{margin:0 0 10px;color:var(--r)}.tl{display:grid;grid-template-columns:56px 30px 1fr;gap:10px;align-items:start;padding:9px 0;position:relative}.tl:not(:last-child)::after{content:"";position:absolute;left:70px;top:40px;bottom:-8px;width:2px;background:linear-gradient(var(--r2),#ead9ea)}.tlIcon{width:30px;height:30px;border:2px solid var(--r2);border-radius:50%;display:flex;align-items:center;justify-content:center;background:#fff;font-size:14px;z-index:1}.tlIcon.start{border-color:#4ade80}.tlIcon.train{border-color:#b65ac0}.tlIcon.mid{border-color:#93c5fd}.tlIcon.end{border-color:#fb7185}.tlIcon.arrival{border-color:#60a5fa}.tlIcon.restgap{border-color:#fbbf24}.tlIcon.deje{border-color:#fb7185}.tlIcon.pdf{border-color:#64748b}.pdfOverlay{position:fixed;inset:0;background:#fff;z-index:99;display:flex;flex-direction:column}.pdfTop{display:flex;align-items:center;gap:8px;padding:8px;border-bottom:1px solid var(--line);background:#fff}.pdfFrame{border:0;flex:1;width:100%}.tlText b{display:block}.tlText small{color:var(--mut)}.muted{color:var(--mut)}.row{border-left:4px solid var(--r);background:#faf6fb;padding:10px;border-radius:12px;margin-top:8px}.changePanel{background:#fff7df;border:1px solid #facc15;border-radius:16px;padding:12px;margin-top:12px}.changeGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.input,.select{width:100%;padding:12px;border:1px solid var(--line);border-radius:14px;font-size:15px;background:#fff}.login{position:fixed;inset:0;background:#fbf8fc;z-index:50;display:flex;align-items:center;justify-content:center;padding:20px}.loginbox{background:#fff;border:1px solid var(--line);border-radius:24px;padding:22px;max-width:380px;width:100%;box-shadow:0 12px 35px #0001}.ok{color:#087139;font-weight:900}.err{color:#c20d34;font-weight:900}.changesList{display:grid;gap:10px}.changeItem,.balanceBox{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px}.balanceGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:560px){.month{font-size:22px}.day{min-height:78px;padding:2px}.num{font-size:15px}.shiftNo{min-width:32px;height:22px;font-size:15px}.badge{min-height:42px;border-radius:11px}.timeTop,.timeBot{font-size:11px}.week div{font-size:11px}.bar{grid-template-columns:38px 1fr 38px 58px}.navbtn{width:38px;height:38px}.btn{padding:8px 10px;font-size:13px}.changeGrid{grid-template-columns:1fr}.summaryTitle{font-size:25px}.summaryTimes b{font-size:22px}.miniBox{padding:8px;font-size:12px}}
 
 /* v2.4 DD asignado + registro visual */
@@ -268,8 +268,8 @@
 .versionStampV54{font-size:11px;color:#75627a;font-weight:900;margin-top:1px}
 </style>
 </head><body>
-<div id="login" class="login"><div class="loginbox"><div class="logo">renfe</div><h1>App Turnos Pro <span class="ver">v7.7</span></h1><p class="muted">Acceso privado para administrar datos.</p><input id="user" class="input" placeholder="Usuario"><input id="pass" class="input" placeholder="Contraseña" type="password"><label style="display:flex;gap:8px;align-items:center;margin:8px 0;font-weight:800"><input id="remember" type="checkbox" checked> Recordar sesión 24 horas</label><button class="btn primary" style="width:100%" onclick="doLogin()">Entrar</button><p id="loginMsg" class="err"></p></div></div>
-<header><div class="top"><div class="logo">renfe</div><div><div class="title">App Turnos Pro <span class="ver">v7.7</span></div><div class="sub">Calendario visual · cambios · marcos · IndexedDB</div></div><button class="dataToggle" onclick="toggleAdmin()">Datos ▾</button></div><div id="adminPanel" class="adminPanel hidden"><b>Importación privada</b><p class="muted">Archivos guardados solo en este dispositivo.</p><button class="btn primary" onclick="pick('yearFile')">📅 Importar gráfico anual</button><button class="btn primary" onclick="pick('marcoFile')">🚄 Importar Marco mensual JSON</button><button class="btn" onclick="pick('pdfFile')">📄 Importar PDF Marco</button><button class="btn" onclick="exportExcel()">📤 Exportar Excel</button><button class="btn" onclick="exportBackup()">💾 Copia seguridad JSON</button><button class="btn" onclick="pick('historyFile')">📥 Importar histórico de cambios</button><button class="btn" onclick="clearData()">Borrar datos locales</button><div id="importStatus" class="muted"></div></div><input id="yearFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'year')"><input id="marcoFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'marco')"><input id="pdfFile" type="file" accept="application/pdf,.pdf" class="hidden" onchange="importPdf(event)"><input id="historyFile" type="file" accept=".json,application/json" class="hidden" onchange="importHistoryBackup(event)"></header>
+<div id="login" class="login"><div class="loginbox"><div class="logo">renfe</div><h1>App Turnos Pro <span class="ver">v7.8</span></h1><p class="muted">Acceso privado para administrar datos.</p><input id="user" class="input" placeholder="Usuario"><input id="pass" class="input" placeholder="Contraseña" type="password"><label style="display:flex;gap:8px;align-items:center;margin:8px 0;font-weight:800"><input id="remember" type="checkbox" checked> Recordar sesión 24 horas</label><button class="btn primary" style="width:100%" onclick="doLogin()">Entrar</button><p id="loginMsg" class="err"></p></div></div>
+<header><div class="top"><div class="logo">renfe</div><div><div class="title">App Turnos Pro <span class="ver">v7.8</span></div><div class="sub">Calendario visual · cambios · marcos · IndexedDB</div></div><button class="dataToggle" onclick="toggleAdmin()">Datos ▾</button></div><div id="adminPanel" class="adminPanel hidden"><b>Importación privada</b><p class="muted">Archivos guardados solo en este dispositivo.</p><button class="btn primary" onclick="pick('yearFile')">📅 Importar gráfico anual</button><button class="btn primary" onclick="pick('marcoFile')">🚄 Importar Marco mensual JSON</button><button class="btn" onclick="pick('pdfFile')">📄 Importar PDF Marco</button><button class="btn" onclick="exportExcel()">📤 Exportar Excel</button><button class="btn" onclick="exportBackup()">💾 Copia seguridad JSON</button><button class="btn" onclick="pick('historyFile')">📥 Importar histórico de cambios</button><button class="btn" onclick="clearData()">Borrar datos locales</button><div id="importStatus" class="muted"></div></div><input id="yearFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'year')"><input id="marcoFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'marco')"><input id="pdfFile" type="file" accept="application/pdf,.pdf" class="hidden" onchange="importPdf(event)"><input id="historyFile" type="file" accept=".json,application/json" class="hidden" onchange="importHistoryBackup(event)"></header>
 <div class="wrap"><section id="calendarView" class="view"><div class="bar"><button class="navbtn" onclick="move(-1)">‹</button><div class="month" id="monthTitle"></div><button class="navbtn" onclick="move(1)">›</button><button class="btn" onclick="today()">Hoy</button></div><div class="calendar"><div class="week"><div>LUN</div><div>MAR</div><div>MIÉ</div><div>JUE</div><div>VIE</div><div>SÁB</div><div>DOM</div></div><div id="grid" class="grid"></div></div><div id="detail" class="detail"><span class="pill" style="background:#f2e3f4;color:var(--r)">Selecciona un día</span><h2>Detalle del turno</h2><p class="muted">Pulsa una casilla para ver inicio, fin, desarrollo y cambios.</p></div></section><section id="changesView" class="view hidden"><div class="detail"><h2>Registro de cambios</h2><div id="balances" class="balanceGrid"></div><h3>Historial</h3><div id="changesList" class="changesList"></div></div></section><section id="settingsView" class="view hidden"><div class="detail"><h2>Ajustes</h2><p>Datos cargados: <b id="dataState"></b></p></div></section></div>
 <nav style="position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);z-index:10"><button class="btn" onclick="show('calendarView')">📅<br>Calendario</button><button class="btn" onclick="scrollToDetail()">📋<br>Detalle</button><button class="btn" onclick="showChanges()">🔁<br>Cambios<br>Registro</button><button class="btn" onclick="show('settingsView')">⚙️<br>Ajustes</button><button class="btn" onclick="lockApp()">🔒<br>Bloq.</button></nav>
 <script>
@@ -320,7 +320,7 @@ function openPdf(page){if(!data.pdf?.dataUrl)return;let o=document.createElement
 
 
 // ===== v2.8 overrides: alarmas, PDF multipágina, memoria estable y calendario continuo =====
-try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v7.7');document.title='App Turnos Pro v7.7'}catch(e){}
+try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v7.8');document.title='App Turnos Pro v7.8'}catch(e){}
 current=new Date();
 data.alarms=data.alarms||{};data.disabledAlarms=data.disabledAlarms||{};data.people=data.people||[];data.alarmSettings=data.alarmSettings||{enabled:true,startOffset:60,trainOffset:30};
 function doLogin(){if(user.value.trim().toLowerCase()===ADMIN_USER&&pass.value.trim()===ADMIN_PASS){localStorage.setItem(AUTH+'Unlocked','1');localStorage.setItem(AUTH+'SessionUntil',Date.now()+(remember.checked?86400000:3600000));localStorage.removeItem(AUTH+'Attempts');localStorage.removeItem(AUTH+'LockUntil');login.classList.add('hidden');admin=true;updateImportUI();return}loginMsg.textContent='Usuario o contraseña incorrectos.'}
@@ -690,7 +690,7 @@ setTimeout(openInitialViewV44,180);
 
 
 // ===== v5.0 memoria estable, histórico y lector JSON =====
-const APP_VERSION='7.7', BACKUP_KEY='AppTurnosBackupsV50';
+const APP_VERSION='7.8', BACKUP_KEY='AppTurnosBackupsV50';
 data.settings=data.settings||{}; data.settings.openMode=data.settings.openMode||'calendario';
 function safeSetV50(k,v){try{localStorage.setItem(k,v);return true}catch(e){console.warn(e);return false}}
 function fechaArchivoMemoria(){let d=new Date();return pad(d.getDate())+'-'+pad(d.getMonth()+1)+'-'+d.getFullYear()+'_memoria_turnos.json'}
@@ -761,7 +761,7 @@ function importHistoryBackup(ev){let f=ev.target.files[0];if(!f)return;let r=new
 restoreHistoricalMemory=importHistoryBackup;
 
 const _exportBackup_v51=exportBackup;
-exportBackup=function(){if(typeof lightDataV50==='function'){let obj=lightDataV50();obj.version='7.7';obj.records=data.records||[];obj.changes=data.changes||{};obj.activeMarcoId=data.settings?.activeMarcoId||'';let txt=JSON.stringify(obj,null,2),name=fechaArchivoMemoria();if(typeof backupsV50==='function'){let list=backupsV50();list.unshift({id:'b'+Date.now(),name,created:new Date().toISOString(),size:new Blob([txt]).size,favorite:false,data:obj});saveBackupsV50(list);renderMemoryPanelV50()}downloadBlob(txt,name,'application/json')}else _exportBackup_v51()}
+exportBackup=function(){if(typeof lightDataV50==='function'){let obj=lightDataV50();obj.version='7.8';obj.records=data.records||[];obj.changes=data.changes||{};obj.activeMarcoId=data.settings?.activeMarcoId||'';let txt=JSON.stringify(obj,null,2),name=fechaArchivoMemoria();if(typeof backupsV50==='function'){let list=backupsV50();list.unshift({id:'b'+Date.now(),name,created:new Date().toISOString(),size:new Blob([txt]).size,favorite:false,data:obj});saveBackupsV50(list);renderMemoryPanelV50()}downloadBlob(txt,name,'application/json')}else _exportBackup_v51()}
 
 function injectMarcoSettingsV51(){let root=document.querySelector('#settings')||document.querySelector('#settingsView')||document.body;if(document.getElementById('marcoPanelV51'))return;let div=document.createElement('div');div.id='marcoPanelV51';div.className='card';div.style.margin='16px';root.appendChild(div);renderMarcoPanelV51()}
 function setOpenModeV51(){let v=document.getElementById('openModeV51')?.value||'calendario';data.settings.openMode=v;save();alert('Modo guardado')}
@@ -957,9 +957,9 @@ function listDetraiblesV53(monthIndex){
     return dt.getMonth()===monthIndex;
   }).map(d=>Number(d.fecha.slice(8,10))).sort((a,b)=>a-b);
 }
-try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v7.7');document.title='App Turnos Pro v7.7'}catch(e){}
+try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v7.8');document.title='App Turnos Pro v7.8'}catch(e){}
 
-try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v7.7');document.title='App Turnos Pro v7.7'}catch(e){}
+try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v7.8');document.title='App Turnos Pro v7.8'}catch(e){}
 
 
 // ===== v5.3.1: DD trabajado = fondo rojo + rayas moradas + horas del turno asignado =====
@@ -1028,8 +1028,8 @@ changePanelHtml=function(ds,base,baseB,d,b){
 
 
 // ===== v5.4: una sola prioridad visual final para evitar que se pisen estados =====
-const APP_VERSION_V54='7.7';
-const APP_UPDATED_AT_V54='05/08/2026';
+const APP_VERSION_V54='7.8';
+const APP_UPDATED_AT_V54='02/08/2026';
 function setVersionV54(){
   try{
     document.title='App Turnos Pro v'+APP_VERSION_V54;
@@ -1176,8 +1176,8 @@ setTimeout(bootIndexedDBV52,60);
 
 
 // ===== v5.7: base 5.4 limpia + persistencia segura + marcos por vigencia =====
-const APP_VERSION_V57='7.7';
-const APP_UPDATED_AT_V57='05/08/2026';
+const APP_VERSION_V57='7.8';
+const APP_UPDATED_AT_V57='02/08/2026';
 const DB_NAME_V57='AppTurnosDBV57';
 const DB_VERSION_V57=1;
 const DB_STORE_V57='app';
@@ -1377,8 +1377,8 @@ setTimeout(bootV57,120);
 
 
 // ===== v5.8: versión visible, historial mensual, PDFs gestionables y Ajustes sin duplicados =====
-const APP_VERSION_V58='7.7';
-const APP_UPDATED_AT_V58='05/08/2026';
+const APP_VERSION_V58='7.8';
+const APP_UPDATED_AT_V58='02/08/2026';
 
 function setVersionV58(){
   try{
@@ -1510,8 +1510,8 @@ checkLogin();render();
 </style>
 <script id="v59-incidencias-js">
 // ===== v6.0: incidencias persistentes, iconos y cambio descanso/trabajo =====
-const APP_VERSION_V59='7.7';
-const APP_UPDATED_AT_V59='05/08/2026';
+const APP_VERSION_V59='7.8';
+const APP_UPDATED_AT_V59='02/08/2026';
 data.incidents=data.incidents||{};
 
 function setVersionV59(){
@@ -1640,8 +1640,8 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v60-final-js">
 (function(){
-  const APP_VERSION_V60='7.7';
-  const APP_UPDATED_V60='05/08/2026';
+  const APP_VERSION_V60='7.8';
+  const APP_UPDATED_V60='02/08/2026';
   function setVersionV60(){
     document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+APP_VERSION_V60);
     document.title='App Turnos Pro v'+APP_VERSION_V60;
@@ -1741,8 +1741,8 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v61-final-js">
 (function(){
-  const APP_VERSION_V61='7.7';
-  const APP_UPDATED_V61='05/08/2026';
+  const APP_VERSION_V61='7.8';
+  const APP_UPDATED_V61='02/08/2026';
 
   function setVersionV61(){
     document.title='App Turnos Pro v'+APP_VERSION_V61;
@@ -1858,7 +1858,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v62-final-js">
 (function(){
- const APP_VERSION_V62='7.7', APP_UPDATED_V62='05/08/2026';
+ const APP_VERSION_V62='7.8', APP_UPDATED_V62='02/08/2026';
  function setVersionV62(){
    document.title='App Turnos Pro v'+APP_VERSION_V62;
    document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+APP_VERSION_V62);
@@ -1943,7 +1943,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v63-final-js">
 (function(){
- const APP_VERSION_V63='7.7', APP_UPDATED_V63='05/08/2026';
+ const APP_VERSION_V63='7.8', APP_UPDATED_V63='02/08/2026';
  function setVersionV63(){
    document.title='App Turnos Pro v'+APP_VERSION_V63;
    document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+APP_VERSION_V63);
@@ -2036,7 +2036,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script>
 (function(){
-  const V64='7.7';
+  const V64='7.8';
   try{
     document.title='App Turnos Pro v'+V64;
     document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+V64);
@@ -2104,7 +2104,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v65-final-js">
 (function(){
-  const APP_VERSION_V65='7.7', APP_UPDATED_V65='05/08/2026';
+  const APP_VERSION_V65='7.8', APP_UPDATED_V65='02/08/2026';
   function setVersionV65(){
     document.title='App Turnos Pro v'+APP_VERSION_V65;
     document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+APP_VERSION_V65);
@@ -2240,7 +2240,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v66-observaciones-js">
 (function(){
-  const APP_VERSION_V66='7.7', APP_UPDATED_V66='05/08/2026';
+  const APP_VERSION_V66='7.8', APP_UPDATED_V66='02/08/2026';
   data.observations=data.observations||{};
   function setVersionV66(){
     document.title='App Turnos Pro v'+APP_VERSION_V66;
@@ -2336,7 +2336,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v66-final-lock-js">
 (function(){
- const V='7.7', D='05/08/2026';
+ const V='7.8', D='02/08/2026';
  function lockV66(){
    if(document.title!=='App Turnos Pro v'+V)document.title='App Turnos Pro v'+V;
    document.querySelectorAll('.ver').forEach(e=>{if(e.textContent!=='v'+V)e.textContent='v'+V});
@@ -2372,7 +2372,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v67-cajas-registro-js">
 (function(){
-  const V='7.7', UPDATED='05/08/2026';
+  const V='7.8', UPDATED='02/08/2026';
   const MONTHS=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
   function setVersionV67(){
     document.title='App Turnos Pro v'+V;
@@ -2455,7 +2455,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
   const prevRender=window.render;
   window.render=function(){const r=prevRender?prevRender.apply(this,arguments):undefined;setVersionV67();return r};
   window.addEventListener('pageshow',setVersionV67);document.addEventListener('visibilitychange',()=>{if(!document.hidden)setVersionV67()});
-  /* temporizador v6.7 desactivado en v7.7 */
+  /* temporizador v6.7 desactivado en v7.8 */
   setTimeout(()=>{setVersionV67();if(selected)normalizeDayGroupsV67(selected)},700);
 })();
 </script>
@@ -2521,7 +2521,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v68-flechas-js">
 (function(){
-  const V='7.7', UPDATED='05/08/2026';
+  const V='7.8', UPDATED='02/08/2026';
   const MONTHS=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
   function setVersionV68(){
     document.title='App Turnos Pro v'+V;
@@ -2591,7 +2591,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
   window.render=function(){const r=prevRender?prevRender.apply(this,arguments):undefined;setVersionV68();return r};
   window.addEventListener('pageshow',setVersionV68);
   document.addEventListener('visibilitychange',()=>{if(!document.hidden)setVersionV68()});
-  /* temporizador v6.8 desactivado en v7.7 */
+  /* temporizador v6.8 desactivado en v7.8 */
   setTimeout(setVersionV68,200);
 })();
 </script>
@@ -2601,7 +2601,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v69-version-unificada-js">
 (function(){
-  const VERSION='7.7', UPDATED='05/08/2026';
+  const VERSION='7.8', UPDATED='02/08/2026';
   function applyVersionV69(){
     document.title='App Turnos Pro v'+VERSION;
     document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+VERSION);
@@ -2623,8 +2623,8 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 
 <script id="v69-acceso-final-corregido">
 (function(){
-  const VERSION_FINAL = '7.7';
-  const UPDATED_FINAL = '05/08/2026';
+  const VERSION_FINAL = '7.8';
+  const UPDATED_FINAL = '02/08/2026';
 
   function setVersionFinal(){
     document.title = 'App Turnos Pro v' + VERSION_FINAL;
@@ -2744,9 +2744,9 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
     fresh.dataset.rebuiltV69='1';
     fresh.innerHTML=''
       +'<div class="loginbox">'
-      +'<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><div class="logo">renfe</div><span style="display:inline-flex;padding:4px 10px;border-radius:999px;background:#f2e3f4;color:#8a0f82;font-weight:950">v7.7</span></div>'
-      +'<h1 style="margin-bottom:8px">App Turnos Pro <span class="ver">v7.7</span></h1>'
-      +'<p class="muted" style="font-weight:800">Versión 7.7 · Actualizada 05/08/2026</p>'
+      +'<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><div class="logo">renfe</div><span style="display:inline-flex;padding:4px 10px;border-radius:999px;background:#f2e3f4;color:#8a0f82;font-weight:950">v7.8</span></div>'
+      +'<h1 style="margin-bottom:8px">App Turnos Pro <span class="ver">v7.8</span></h1>'
+      +'<p class="muted" style="font-weight:800">Versión 7.8 · Actualizada 02/08/2026</p>'
       +'<p class="muted">Acceso privado para administrar datos.</p>'
       +'<input id="user" name="username" type="text" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" placeholder="Usuario">'
       +'<input id="pass" name="password" type="password" autocomplete="current-password" placeholder="Contraseña">'
@@ -2781,116 +2781,110 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </script>
 
 
-<style id="v77-registry-clean-css">
-#changesView .detail{padding:16px!important}
-.v77Title{text-align:center;margin:2px 0 4px;font-size:28px;line-height:1.15;font-weight:950;letter-spacing:-.5px;color:var(--txt)}
-.v77Subtitle{text-align:center;margin:0 0 16px;color:var(--mut);font-size:13px;font-weight:750}
-.v77Tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:12px 0 16px}
-.v77Tab{min-height:82px;border:1px solid var(--line);border-radius:18px;background:#fff;padding:11px 9px;text-align:left;color:var(--txt);box-shadow:0 2px 8px #0000000a;cursor:pointer;overflow:hidden}
-.v77Tab.active{border:2px solid var(--r);background:#fff7ff;box-shadow:0 5px 16px #8a0f8218}
-.v77TabTitle{display:block;font-size:14px;font-weight:950;line-height:1.15;overflow-wrap:anywhere}
-.v77TabStat{display:block;margin-top:7px;color:var(--r);font-size:19px;font-weight:950;line-height:1}
-.v77TabWord{font-size:11px;color:var(--mut);font-weight:850;margin-left:3px}
-.v77Dual{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:7px}
-.v77Dual div{background:#faf6fb;border-radius:10px;padding:6px;text-align:center}
-.v77Dual b{display:block;color:var(--r);font-size:18px}.v77Dual small{font-size:10px;color:var(--mut);font-weight:850}
-.v77Panel{border:1px solid var(--line);border-radius:20px;background:#fff;padding:13px;min-height:140px}
-.v77PanelHead{font-size:20px;font-weight:950;color:var(--r);margin:0 0 10px}
-.v77TwoCols{display:grid;grid-template-columns:1fr 1fr;gap:10px}.v77Col{min-width:0}.v77ColTitle{text-align:center;font-weight:950;margin:3px 0 9px}
-.v77Person,.v77Month{border:1px solid var(--line);border-radius:14px;background:#faf6fb;margin:8px 0;overflow:hidden}
-.v77Person summary,.v77Month summary{list-style:none;cursor:pointer;padding:11px;display:flex;justify-content:space-between;gap:8px;font-weight:950;align-items:center}
-.v77Person summary::-webkit-details-marker,.v77Month summary::-webkit-details-marker{display:none}
-.v77PersonBody,.v77MonthBody{padding:0 10px 10px}.v77Record{border-left:4px solid var(--r);background:#fff;border-radius:11px;padding:9px;margin-top:8px;overflow-wrap:anywhere}
-.v77Record.license{border-left-color:#f97316}.v77Record.ddreg{border-left-color:#dc2626}.v77Record.obs{border-left-color:#3b82f6}.v77Record.inc{border-left-color:#ef4444}
-.v77Empty{color:var(--mut);text-align:center;padding:24px 8px;font-weight:750}
-@media(max-width:390px){.v77Tabs{gap:7px}.v77Tab{padding:9px 7px}.v77TabTitle{font-size:12px}.v77TwoCols{gap:6px}.v77Panel{padding:10px}}
+<style id="v78-registro-boceto2-css">
+#changesView .detail{padding:16px!important;overflow:hidden}
+#changesView .v78Title{text-align:center;margin:2px 0 4px;font-size:27px;line-height:1.12;font-weight:950;letter-spacing:-.45px;color:var(--txt)}
+#changesView .v78Subtitle{text-align:center;margin:0 0 16px;color:var(--mut);font-size:13px;font-weight:750}
+#registryV78{display:block;width:100%}
+.v78Cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:4px 0 16px}
+.v78Tab{min-width:0;border:1px solid var(--line);background:#fff;border-radius:18px;padding:13px 10px;min-height:86px;text-align:left;color:var(--txt);box-shadow:0 2px 8px #0000000b;cursor:pointer}
+.v78Tab.active{border:2px solid var(--r);background:#fff8ff;padding:12px 9px}
+.v78TabTitle{display:block;font-size:14px;font-weight:950;line-height:1.18;overflow-wrap:anywhere}
+.v78TabMetric{display:block;margin-top:8px;color:var(--r);font-size:22px;font-weight:950;line-height:1}
+.v78TabMetric small{font-size:11px;color:var(--mut);font-weight:850;margin-left:3px}
+.v78Panel{border:1px solid var(--line);border-radius:18px;background:#fff;padding:13px;min-height:120px}
+.v78PanelTitle{margin:0 0 12px;color:var(--r);font-size:19px;font-weight:950}
+.v78TwoCols{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.v78Column{min-width:0;background:#faf6fb;border:1px solid var(--line);border-radius:15px;padding:10px}
+.v78Column h4{margin:0 0 9px;font-size:16px;color:var(--r)}
+.v78Person{border:1px solid var(--line);border-radius:13px;background:#fff;margin:7px 0;overflow:hidden}
+.v78Person summary,.v78Month summary{cursor:pointer;list-style:none;padding:10px;font-weight:950;display:flex;justify-content:space-between;gap:8px;align-items:center}
+.v78Person summary::-webkit-details-marker,.v78Month summary::-webkit-details-marker{display:none}
+.v78Items{padding:0 9px 9px}
+.v78Item{background:#fff;border:1px solid var(--line);border-left:4px solid var(--r);border-radius:13px;padding:10px;margin:7px 0;overflow-wrap:anywhere}
+.v78Item.license{border-left-color:#f97316;background:#fffaf5}.v78Item.ddreg{border-left-color:#dc2626;background:#fff7f8}.v78Item.obs{border-left-color:#3b82f6;background:#f7fbff}.v78Item.inc{border-left-color:#ef4444;background:#fff8f8}
+.v78Item b{display:block;margin-bottom:3px}.v78Item .muted{white-space:pre-wrap}
+.v78Month{border:1px solid var(--line);border-radius:15px;margin:8px 0;background:#fff;overflow:hidden}
+.v78Month summary{background:#faf6fb;color:var(--txt)}
+.v78Empty{color:var(--mut);font-weight:750;padding:12px 4px}
+@media(max-width:560px){.v78Cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.v78Tab{min-height:82px;padding:11px 8px}.v78Tab.active{padding:10px 7px}.v78TabTitle{font-size:13px}.v78TwoCols{grid-template-columns:1fr}.v78Panel{padding:10px}#changesView .v78Title{font-size:25px}}
 </style>
-<script id="v77-registry-clean-script">
+<script id="v78-registro-boceto2-js">
 (function(){
-  'use strict';
-  const V77_VERSION='7.7';
-  const V77_UPDATED='05/08/2026';
-  let v77Active='balance';
-
-  function v77esc(v){return typeof esc==='function'?esc(v):String(v??'').replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c]||c))}
-  function v77Changes(){return Object.values((window.data&&data.changes)||{}).filter(Boolean).sort((a,b)=>String(b.fecha||'').localeCompare(String(a.fecha||'')))}
-  function v77Obs(){return Object.values((window.data&&data.observations)||{}).filter(Boolean).sort((a,b)=>String(b.fecha||'').localeCompare(String(a.fecha||'')))}
-  function v77Inc(){return Object.values((window.data&&data.incidents)||{}).filter(Boolean).sort((a,b)=>String(b.fecha||'').localeCompare(String(a.fecha||'')))}
-  function v77MonthKey(fecha){const m=String(fecha||'').match(/^(\d{4})-(\d{2})/);return m?m[1]+'-'+m[2]:'Sin fecha'}
-  function v77MonthName(key){if(key==='Sin fecha')return key;const [y,m]=key.split('-').map(Number);return new Date(y,m-1,1).toLocaleDateString('es-ES',{month:'long',year:'numeric'}).replace(/^./,c=>c.toUpperCase())}
-  function v77Group(arr){const g={};arr.forEach(x=>{const k=v77MonthKey(x.fecha);(g[k]||(g[k]=[])).push(x)});return g}
-  function v77CurrentKey(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')}
-  function v77Categories(i){const c=i&&i.categories||{};return Object.keys(c).filter(k=>c[k]).join(', ')||i?.category||''}
-  function v77NewValue(c){return c.tipo==='DD'?'DD '+(c.turno||''):(c.tipo||c.turno||'—')}
-
-  function v77BalanceData(){
-    const out={debo:{},meDebe:{}};
-    v77Changes().forEach(c=>{
-      if(!c.persona||!['debo','meDebe'].includes(c.balance))return;
-      const bucket=out[c.balance], name=String(c.persona).trim(), qty=Number(c.cantidad)||1;
-      if(!bucket[name])bucket[name]={total:0,items:[]};
-      bucket[name].total+=qty;bucket[name].items.push(c);
-    });
-    return out;
+  const V78='7.8', UPDATED78='05/08/2026';
+  function e78(v){return typeof esc==='function'?esc(v):String(v??'').replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c]||c))}
+  function fecha78(c,k){return String(c?.fecha||k||'').slice(0,10)}
+  function dateObj78(ds){const m=String(ds||'').match(/^(\d{4})-(\d{2})-(\d{2})$/);return m?new Date(+m[1],+m[2]-1,+m[3],12):null}
+  function labelDate78(ds){const d=dateObj78(ds);return d?d.toLocaleDateString('es-ES',{weekday:'short',day:'numeric',month:'short',year:'numeric'}):e78(ds||'Sin fecha')}
+  function monthKey78(ds){return /^\d{4}-\d{2}/.test(ds||'')?ds.slice(0,7):'sin-fecha'}
+  function monthName78(k){if(k==='sin-fecha')return'Sin fecha';const [y,m]=k.split('-').map(Number);return new Date(y,m-1,1).toLocaleDateString('es-ES',{month:'long',year:'numeric'}).replace(/^./,x=>x.toUpperCase())}
+  function changes78(){return Object.entries((window.data&&data.changes)||{}).map(([k,c])=>({...c,fecha:fecha78(c,k)})).filter(c=>c.fecha).sort((a,b)=>b.fecha.localeCompare(a.fecha))}
+  function obs78(){return Object.entries((window.data&&data.observations)||{}).map(([k,o])=>({...o,fecha:fecha78(o,k)})).filter(o=>o.fecha).sort((a,b)=>b.fecha.localeCompare(a.fecha))}
+  function inc78(){return Object.entries((window.data&&data.incidents)||{}).map(([k,i])=>({...i,fecha:fecha78(i,k)})).filter(i=>i.fecha).sort((a,b)=>b.fecha.localeCompare(a.fecha))}
+  function isLZ78(c){return String(c.tipo||c.turno||'').toUpperCase()==='LZ'}
+  function isDD78(c){return String(c.tipo||'').toUpperCase()==='DD'}
+  function qty78(c){return Math.max(1,Number(c.cantidad||1)||1)}
+  function changeItem78(c,cls=''){
+    const nuevo=c.tipo==='DD'?('DD '+(c.turno||'')):(c.tipo||c.turno||'—');
+    return '<div class="v78Item '+cls+'"><b>'+e78(labelDate78(c.fecha))+'</b>'+
+      '<div>Original: '+e78(c.originalTurno||'—')+(c.originalInicio||c.originalFin?' ('+e78(c.originalInicio||'—')+' → '+e78(c.originalFin||'—')+')':'')+'</div>'+
+      '<div>Nuevo: <b style="display:inline">'+e78(nuevo)+'</b></div>'+
+      (c.persona?'<div>Compañero: '+e78(c.persona)+'</div>':'')+
+      (c.balance&&c.balance!=='neutral'?'<div>Cantidad: '+qty78(c)+' turno(s)</div>':'')+
+      (c.nota?'<div class="muted">'+e78(c.nota)+'</div>':'')+'</div>'
   }
-  function v77Total(obj){return Object.values(obj).reduce((n,x)=>n+x.total,0)}
-  function v77PersonList(obj,mode){
-    const entries=Object.entries(obj).sort((a,b)=>a[0].localeCompare(b[0]));
-    if(!entries.length)return '<div class="v77Empty">Sin turnos registrados.</div>';
-    return entries.map(([name,p])=>'<details class="v77Person"><summary><span>'+v77esc(name)+'</span><span>'+p.total+' turno'+(p.total===1?'':'s')+' ▾</span></summary><div class="v77PersonBody">'+p.items.map(c=>'<div class="v77Record"><b>'+v77esc(c.fecha||'—')+'</b><br>Original: '+v77esc(c.originalTurno||'—')+' · Nuevo: '+v77esc(v77NewValue(c))+'<br>Cantidad: '+v77esc(c.cantidad||1)+(c.nota?'<br><span class="muted">'+v77esc(c.nota)+'</span>':'')+'</div>').join('')+'</div></details>').join('');
+  function grouped78(arr,itemFn){
+    if(!arr.length)return'<div class="v78Empty">No hay datos guardados.</div>';
+    const g={};arr.forEach(x=>(g[monthKey78(x.fecha)]??=[]).push(x));
+    const now=new Date(),cur=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0');
+    return Object.keys(g).sort().reverse().map((k,idx)=>'<details class="v78Month" '+((k===cur||(!g[cur]&&idx===0))?'open':'')+'><summary><span>'+e78(monthName78(k))+'</span><span>'+g[k].length+' ▾</span></summary><div class="v78Items">'+g[k].map(itemFn).join('')+'</div></details>').join('')
   }
-  function v77Monthly(arr,kind){
-    if(!arr.length)return '<div class="v77Empty">Sin datos registrados.</div>';
-    const groups=v77Group(arr), keys=Object.keys(groups).sort().reverse(), current=v77CurrentKey();
-    return keys.map((k,idx)=>{
-      const open=(k===current)||(!keys.includes(current)&&idx===0);
-      const body=groups[k].map(x=>{
-        if(kind==='change')return '<div class="v77Record"><b>'+v77esc(x.fecha||'—')+'</b><br>Original: '+v77esc(x.originalTurno||'—')+' · Nuevo: '+v77esc(v77NewValue(x))+'<br>Con: '+v77esc(x.persona||'—')+(x.nota?'<br><span class="muted">'+v77esc(x.nota)+'</span>':'')+'</div>';
-        if(kind==='obs')return '<div class="v77Record obs"><b>'+v77esc(x.fecha||'—')+'</b>'+(x.materials?'<br>Materiales/trenes: '+v77esc(x.materials):'')+(x.note?'<br><span class="muted">'+v77esc(x.note)+'</span>':'')+'</div>';
-        return '<div class="v77Record inc"><b>'+v77esc(x.fecha||'—')+'</b>'+(v77Categories(x)?'<br>'+v77esc(v77Categories(x)):'')+(x.note?'<br><span class="muted">'+v77esc(x.note)+'</span>':'')+'</div>';
-      }).join('');
-      return '<details class="v77Month" '+(open?'open':'')+'><summary><span>'+v77MonthName(k)+'</span><span>'+groups[k].length+' ▾</span></summary><div class="v77MonthBody">'+body+'</div></details>';
-    }).join('');
+  function categories78(i){const c=i.categories||{};const a=[];Object.keys(c).forEach(k=>{if(c[k])a.push(k)});return a.join(' · ')}
+  function personGroups78(chs,kind){
+    const list=chs.filter(c=>c.persona&&c.balance===kind),g={};list.forEach(c=>(g[c.persona]??=[]).push(c));
+    if(!list.length)return'<div class="v78Empty">Sin turnos registrados.</div>';
+    return Object.keys(g).sort((a,b)=>a.localeCompare(b,'es')).map(p=>{const total=g[p].reduce((s,c)=>s+qty78(c),0);return'<details class="v78Person"><summary><span>'+e78(p)+'</span><span>'+total+' turno(s) ▾</span></summary><div class="v78Items">'+g[p].map(c=>changeItem78(c)).join('')+'</div></details>'}).join('')
   }
-  function v77Panel(type){
-    const ch=v77Changes(), lz=ch.filter(c=>String(c.tipo||c.turno||'').toUpperCase()==='LZ'), dd=ch.filter(c=>String(c.tipo||'').toUpperCase()==='DD'), changes=ch.filter(c=>!['LZ','DD'].includes(String(c.tipo||'').toUpperCase()));
-    if(type==='balance'){
-      const b=v77BalanceData();return '<div class="v77PanelHead">Debo / Me deben</div><div class="v77TwoCols"><div class="v77Col"><div class="v77ColTitle">Debo</div>'+v77PersonList(b.debo,'debo')+'</div><div class="v77Col"><div class="v77ColTitle">Me deben</div>'+v77PersonList(b.meDebe,'meDebe')+'</div></div>';
-    }
-    if(type==='lz')return '<div class="v77PanelHead">Licencias LZ</div>'+(lz.length?lz.map(c=>'<div class="v77Record license"><b>'+v77esc(c.fecha||'—')+'</b> · LZ'+(c.nota?'<br><span class="muted">'+v77esc(c.nota)+'</span>':'')+'</div>').join(''):'<div class="v77Empty">Sin licencias registradas.</div>');
-    if(type==='dd')return '<div class="v77PanelHead">Detraíbles DD</div>'+(dd.length?dd.map(c=>'<div class="v77Record ddreg"><b>'+v77esc(c.fecha||'—')+'</b> · DD '+v77esc(c.turno||'—')+'<br>Original: '+v77esc(c.originalTurno||'—')+(c.nota?'<br><span class="muted">'+v77esc(c.nota)+'</span>':'')+'</div>').join(''):'<div class="v77Empty">Sin detraíbles pinchados.</div>');
-    if(type==='changes')return '<div class="v77PanelHead">🔄 Cambios</div>'+v77Monthly(changes,'change');
-    if(type==='obs')return '<div class="v77PanelHead">🔎 Observaciones</div>'+v77Monthly(v77Obs(),'obs');
-    return '<div class="v77PanelHead">⚠️ Incidencias</div>'+v77Monthly(v77Inc(),'inc');
+  function panel78(id,chs,obs,incs){
+    if(id==='balance')return'<h3 class="v78PanelTitle">Debo / Me deben</h3><div class="v78TwoCols"><div class="v78Column"><h4>Debo</h4>'+personGroups78(chs,'debo')+'</div><div class="v78Column"><h4>Me deben</h4>'+personGroups78(chs,'meDebe')+'</div></div>';
+    if(id==='lz'){const a=chs.filter(isLZ78);return'<h3 class="v78PanelTitle">Licencias LZ</h3>'+ (a.length?a.map(c=>changeItem78(c,'license')).join(''):'<div class="v78Empty">Sin licencias registradas.</div>')}
+    if(id==='dd'){const a=chs.filter(isDD78);return'<h3 class="v78PanelTitle">Detraíbles pinchados DD</h3>'+ (a.length?a.map(c=>changeItem78(c,'ddreg')).join(''):'<div class="v78Empty">Sin detraíbles pinchados.</div>')}
+    if(id==='changes'){const a=chs.filter(c=>!isLZ78(c)&&!isDD78(c));return'<h3 class="v78PanelTitle">🔄 Cambios</h3>'+grouped78(a,c=>changeItem78(c))}
+    if(id==='obs')return'<h3 class="v78PanelTitle">🔎 Observaciones</h3>'+grouped78(obs,o=>'<div class="v78Item obs"><b>'+e78(labelDate78(o.fecha))+'</b>'+(o.materials?'<div>Materiales: '+e78(o.materials)+'</div>':'')+(o.note?'<div class="muted">'+e78(o.note)+'</div>':'')+'</div>')
+    return'<h3 class="v78PanelTitle">⚠️ Incidencias</h3>'+grouped78(incs,i=>'<div class="v78Item inc"><b>'+e78(labelDate78(i.fecha))+'</b>'+(categories78(i)?'<div>'+e78(categories78(i))+'</div>':'')+(i.note?'<div class="muted">'+e78(i.note)+'</div>':'')+'</div>')
   }
-  function v77Tabs(){
-    const ch=v77Changes(), lz=ch.filter(c=>String(c.tipo||c.turno||'').toUpperCase()==='LZ'), dd=ch.filter(c=>String(c.tipo||'').toUpperCase()==='DD'), b=v77BalanceData();
-    const tabs=[
-      ['balance','Debo / Me deben','<span class="v77Dual"><div><b>'+v77Total(b.debo)+'</b><small>Debo</small></div><div><b>'+v77Total(b.meDebe)+'</b><small>Me deben</small></div></span>'],
-      ['lz','Licencias LZ','<span class="v77TabStat">'+lz.length+'<span class="v77TabWord">usadas</span></span>'],
-      ['dd','Detraíbles DD','<span class="v77TabStat">'+dd.length+'<span class="v77TabWord">pinchados</span></span>'],
-      ['changes','🔄 Cambios',''],['obs','🔎 Observaciones',''],['inc','⚠️ Incidencias','']
-    ];
-    return tabs.map(t=>'<button class="v77Tab '+(v77Active===t[0]?'active':'')+'" data-v77tab="'+t[0]+'"><span class="v77TabTitle">'+t[1]+'</span>'+t[2]+'</button>').join('');
+  function applyVersion78(){
+    document.title='App Turnos Pro v'+V78;
+    document.querySelectorAll('.ver').forEach(el=>el.textContent='v'+V78);
+    document.querySelectorAll('.loginbox').forEach(box=>{box.querySelectorAll('span').forEach(s=>{if(/^v\d/.test((s.textContent||'').trim()))s.textContent='v'+V78});const p=[...box.querySelectorAll('p')].find(x=>/Versión\s+\d/i.test(x.textContent||''));if(p)p.textContent='Versión '+V78+' · Actualizada '+UPDATED78});
+    const settings=document.querySelector('#settingsView .detail');if(settings){settings.querySelectorAll('p,b,span').forEach(x=>{if(/Versión\s+\d+(?:\.\d+)?/.test(x.textContent||''))x.innerHTML=(x.innerHTML||'').replace(/Versión\s+\d+(?:\.\d+)?/g,'Versión '+V78)});}
   }
-  function v77Render(){
-    const view=document.getElementById('changesView');if(!view)return;
-    if(typeof show==='function')show('changesView');else view.classList.remove('hidden');
-    view.innerHTML='<div class="detail"><h2 class="v77Title">Cambios y registros</h2><p class="v77Subtitle">Consulta balances, licencias, detraíbles y anotaciones</p><div class="v77Tabs">'+v77Tabs()+'</div><div id="v77Panel" class="v77Panel">'+v77Panel(v77Active)+'</div></div>';
-    view.querySelectorAll('[data-v77tab]').forEach(btn=>btn.addEventListener('click',()=>{v77Active=btn.dataset.v77tab;v77Render()}));
+  function build78(active='balance'){
+    const detail=document.querySelector('#changesView .detail');if(!detail)return;
+    const chs=changes78(),obs=obs78(),incs=inc78();
+    const lz=chs.filter(isLZ78).length,dd=chs.filter(isDD78).length;
+    const debo=chs.filter(c=>c.balance==='debo').reduce((s,c)=>s+qty78(c),0),me=chs.filter(c=>c.balance==='meDebe').reduce((s,c)=>s+qty78(c),0);
+    detail.innerHTML='<h2 class="v78Title">Cambios y registros</h2><p class="v78Subtitle">Consulta balances, licencias, detraíbles y anotaciones</p><div id="registryV78"><div class="v78Cards">'+
+      '<button class="v78Tab '+(active==='balance'?'active':'')+'" data-v78="balance"><span class="v78TabTitle">Debo / Me deben</span><span class="v78TabMetric">'+debo+' / '+me+' <small>turnos</small></span></button>'+ 
+      '<button class="v78Tab '+(active==='lz'?'active':'')+'" data-v78="lz"><span class="v78TabTitle">Licencias LZ</span><span class="v78TabMetric">'+lz+' <small>usadas</small></span></button>'+ 
+      '<button class="v78Tab '+(active==='dd'?'active':'')+'" data-v78="dd"><span class="v78TabTitle">Detraíbles DD</span><span class="v78TabMetric">'+dd+' <small>pinchados</small></span></button>'+ 
+      '<button class="v78Tab '+(active==='changes'?'active':'')+'" data-v78="changes"><span class="v78TabTitle">🔄 Cambios</span></button>'+ 
+      '<button class="v78Tab '+(active==='obs'?'active':'')+'" data-v78="obs"><span class="v78TabTitle">🔎 Observaciones</span></button>'+ 
+      '<button class="v78Tab '+(active==='inc'?'active':'')+'" data-v78="inc"><span class="v78TabTitle">⚠️ Incidencias</span></button>'+ 
+      '</div><div class="v78Panel" id="v78Panel">'+panel78(active,chs,obs,incs)+'</div></div>';
+    detail.querySelectorAll('[data-v78]').forEach(b=>b.addEventListener('click',()=>build78(b.dataset.v78)));
   }
-  window.showChanges=v77Render;
-  window.selectRegistryTabV77=function(type){v77Active=type;v77Render()};
-  function v77Version(){
-    document.title='App Turnos Pro v'+V77_VERSION;
-    document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+V77_VERSION);
-    document.querySelectorAll('[id*="loginVersionBadge"]').forEach(e=>e.textContent='v'+V77_VERSION);
-    document.querySelectorAll('[id*="loginVersionV57"]').forEach(e=>e.textContent='Versión '+V77_VERSION+' · Actualizada '+V77_UPDATED);
-  }
-  document.addEventListener('DOMContentLoaded',v77Version);
-  window.addEventListener('pageshow',v77Version);
-  document.addEventListener('visibilitychange',()=>{if(!document.hidden)v77Version()});
-  setTimeout(v77Version,0);
+  window.showChanges=function(){
+    if(typeof show==='function')show('changesView');else{document.querySelectorAll('.view').forEach(v=>v.classList.add('hidden'));document.getElementById('changesView')?.classList.remove('hidden')}
+    build78('balance');applyVersion78();
+  };
+  const oldShow=window.show;
+  if(typeof oldShow==='function')window.show=function(id){const r=oldShow.apply(this,arguments);if(id==='settingsView')setTimeout(applyVersion78,0);return r};
+  function boot78(){applyVersion78();}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot78);else boot78();
+  window.addEventListener('pageshow',boot78);
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden)boot78()});
+  setTimeout(boot78,300);
 })();
 </script>
 
