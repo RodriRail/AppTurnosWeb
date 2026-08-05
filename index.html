@@ -2826,9 +2826,6 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
       document.querySelectorAll('#loginVersionBadgeV58,#loginVersionBadgeV59').forEach(e=>e.textContent='v'+V80_VERSION);
       const stamp=document.getElementById('loginVersionV57');
       if(stamp)stamp.textContent='Versión '+V80_VERSION+' · Actualizada '+V80_DATE;
-      document.querySelectorAll('.loginbox').forEach(box=>{
-        box.innerHTML=box.innerHTML.replace(/Versión\s+\d+(?:\.\d+)?\s*·\s*Actualizada\s*\d{2}\/\d{2}\/\d{4}/g,'Versión '+V80_VERSION+' · Actualizada '+V80_DATE);
-      });
     }catch(e){console.warn('Versión v8.1',e)}
   }
   function arrChanges(){return Object.values((data&&data.changes)||{}).filter(Boolean).map(c=>({...c,fecha:String(c.fecha||'').slice(0,10)})).filter(c=>c.fecha).sort((a,b)=>String(b.fecha).localeCompare(String(a.fecha)))}
@@ -2893,6 +2890,43 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
   };
   setVersionV80();
   window.addEventListener('pageshow',setVersionV80);
+})();
+</script>
+
+<script id="v81-login-fix">
+(function(){
+  window.doLogin=function(){
+    const userEl=document.getElementById('user');
+    const passEl=document.getElementById('pass');
+    const rememberEl=document.getElementById('remember');
+    const msgEl=document.getElementById('loginMsg');
+    if(!userEl||!passEl){
+      if(msgEl)msgEl.textContent='No se han podido cargar los campos de acceso.';
+      return;
+    }
+    const u=(userEl.value||'').trim().toLowerCase();
+    const p=(passEl.value||'').trim();
+    if(u===ADMIN_USER&&p===ADMIN_PASS){
+      localStorage.setItem(AUTH+'Unlocked','1');
+      localStorage.setItem(AUTH+'SessionUntil',Date.now()+((rememberEl&&rememberEl.checked)?86400000:3600000));
+      localStorage.removeItem(AUTH+'Attempts');
+      localStorage.removeItem(AUTH+'LockUntil');
+      document.getElementById('login')?.classList.add('hidden');
+      admin=true;
+      if(typeof updateImportUI==='function')updateImportUI();
+      return;
+    }
+    if(msgEl)msgEl.textContent='Usuario o contraseña incorrectos.';
+  };
+  const formBox=document.querySelector('.loginbox');
+  if(formBox){
+    formBox.addEventListener('keydown',function(ev){
+      if(ev.key==='Enter'){
+        ev.preventDefault();
+        window.doLogin();
+      }
+    });
+  }
 })();
 </script>
 
