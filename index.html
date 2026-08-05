@@ -2781,110 +2781,105 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </script>
 
 
-<style id="v78-registro-boceto2-css">
-#changesView .detail{padding:16px!important;overflow:hidden}
-#changesView .v78Title{text-align:center;margin:2px 0 4px;font-size:27px;line-height:1.12;font-weight:950;letter-spacing:-.45px;color:var(--txt)}
-#changesView .v78Subtitle{text-align:center;margin:0 0 16px;color:var(--mut);font-size:13px;font-weight:750}
-#registryV78{display:block;width:100%}
-.v78Cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:4px 0 16px}
-.v78Tab{min-width:0;border:1px solid var(--line);background:#fff;border-radius:18px;padding:13px 10px;min-height:86px;text-align:left;color:var(--txt);box-shadow:0 2px 8px #0000000b;cursor:pointer}
-.v78Tab.active{border:2px solid var(--r);background:#fff8ff;padding:12px 9px}
-.v78TabTitle{display:block;font-size:14px;font-weight:950;line-height:1.18;overflow-wrap:anywhere}
-.v78TabMetric{display:block;margin-top:8px;color:var(--r);font-size:22px;font-weight:950;line-height:1}
-.v78TabMetric small{font-size:11px;color:var(--mut);font-weight:850;margin-left:3px}
-.v78Panel{border:1px solid var(--line);border-radius:18px;background:#fff;padding:13px;min-height:120px}
-.v78PanelTitle{margin:0 0 12px;color:var(--r);font-size:19px;font-weight:950}
+<style id="v78-boceto2-css">
+#changesView .detail{padding:14px!important;overflow:hidden}
+#changesView .detail>h2,#changesView .detail>h3,#changesView #balances,#changesView #changesList{display:none!important}
+.v78Header{text-align:center;margin:2px 0 14px}
+.v78Header h2{margin:0;color:#35113d;font-size:27px;line-height:1.1;font-weight:950;letter-spacing:-.35px}
+.v78Header p{margin:5px 0 0;color:var(--mut);font-size:12px;font-weight:800}
+.v78Tabs{display:flex;gap:9px;overflow-x:auto;padding:2px 2px 10px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.v78Tabs::-webkit-scrollbar{display:none}
+.v78Tab{flex:0 0 122px;min-height:80px;border:1px solid var(--line);border-radius:18px;background:#fff;padding:10px 8px;text-align:center;font-weight:950;color:#4a3850;box-shadow:0 3px 12px #0000000c;scroll-snap-align:start;cursor:pointer}
+.v78Tab.active{border:2px solid var(--r);background:linear-gradient(180deg,#fff,#fbf1fc);color:var(--r);box-shadow:0 5px 16px #8a0f8218}
+.v78TabTitle{font-size:13px;line-height:1.15;min-height:30px;display:flex;align-items:center;justify-content:center}
+.v78TabMetric{margin-top:5px;font-size:20px;line-height:1;font-weight:950;color:var(--r)}
+.v78TabMetric small{display:block;margin-top:3px;font-size:10px;line-height:1.1;color:var(--mut);font-weight:900}
+.v78Panel{border:1px solid var(--line);border-radius:20px;background:#fff;padding:13px;min-height:160px;box-shadow:0 4px 16px #0000000b}
+.v78PanelTitle{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 10px;color:var(--r);font-size:19px;font-weight:950}
+.v78Empty{padding:25px 10px;text-align:center;color:var(--mut);font-weight:800}
 .v78TwoCols{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.v78Column{min-width:0;background:#faf6fb;border:1px solid var(--line);border-radius:15px;padding:10px}
-.v78Column h4{margin:0 0 9px;font-size:16px;color:var(--r)}
-.v78Person{border:1px solid var(--line);border-radius:13px;background:#fff;margin:7px 0;overflow:hidden}
-.v78Person summary,.v78Month summary{cursor:pointer;list-style:none;padding:10px;font-weight:950;display:flex;justify-content:space-between;gap:8px;align-items:center}
-.v78Person summary::-webkit-details-marker,.v78Month summary::-webkit-details-marker{display:none}
-.v78Items{padding:0 9px 9px}
-.v78Item{background:#fff;border:1px solid var(--line);border-left:4px solid var(--r);border-radius:13px;padding:10px;margin:7px 0;overflow-wrap:anywhere}
-.v78Item.license{border-left-color:#f97316;background:#fffaf5}.v78Item.ddreg{border-left-color:#dc2626;background:#fff7f8}.v78Item.obs{border-left-color:#3b82f6;background:#f7fbff}.v78Item.inc{border-left-color:#ef4444;background:#fff8f8}
-.v78Item b{display:block;margin-bottom:3px}.v78Item .muted{white-space:pre-wrap}
-.v78Month{border:1px solid var(--line);border-radius:15px;margin:8px 0;background:#fff;overflow:hidden}
-.v78Month summary{background:#faf6fb;color:var(--txt)}
-.v78Empty{color:var(--mut);font-weight:750;padding:12px 4px}
-@media(max-width:560px){.v78Cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.v78Tab{min-height:82px;padding:11px 8px}.v78Tab.active{padding:10px 7px}.v78TabTitle{font-size:13px}.v78TwoCols{grid-template-columns:1fr}.v78Panel{padding:10px}#changesView .v78Title{font-size:25px}}
+.v78Col{border:1px solid var(--line);border-radius:16px;padding:10px;background:#fcf9fc;min-width:0}
+.v78Col h4{margin:0 0 8px;color:var(--r);font-size:15px}
+.v78Person{margin:7px 0;border:1px solid var(--line);border-radius:13px;background:#fff;overflow:hidden}
+.v78Person summary{cursor:pointer;padding:10px;font-weight:950;display:flex;justify-content:space-between;gap:8px;list-style:none}
+.v78Person summary::-webkit-details-marker{display:none}
+.v78PersonBody{padding:0 10px 10px}
+.v78Item{border-left:4px solid var(--r);background:#faf6fb;border-radius:12px;padding:10px;margin:8px 0;overflow-wrap:anywhere}
+.v78Item.license{border-left-color:#f97316;background:#fff7ed}
+.v78Item.dd{border-left-color:#dc2626;background:#fff1f2}
+.v78Item.obs{border-left-color:#3b82f6;background:#eff6ff}
+.v78Item.inc{border-left-color:#ef4444;background:#fff7f7}
+.v78Month{border:1px solid var(--line);border-radius:15px;background:#fff;margin:8px 0;overflow:hidden}
+.v78Month summary{cursor:pointer;padding:11px 12px;font-weight:950;color:var(--r);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.v78Month summary::-webkit-details-marker{display:none}
+.v78MonthBody{padding:0 10px 10px}
+.v78Count{display:inline-flex;min-width:25px;height:25px;padding:0 7px;align-items:center;justify-content:center;border-radius:999px;background:#f2e3f4;color:var(--r);font-size:12px}
+@media(max-width:560px){.v78Header h2{font-size:24px}.v78Tab{flex-basis:112px}.v78TwoCols{grid-template-columns:1fr 1fr;gap:7px}.v78Col{padding:8px}.v78Panel{padding:10px}}
 </style>
-<script id="v78-registro-boceto2-js">
+<script id="v78-boceto2-js">
 (function(){
-  const V78='7.8', UPDATED78='05/08/2026';
-  function e78(v){return typeof esc==='function'?esc(v):String(v??'').replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c]||c))}
-  function fecha78(c,k){return String(c?.fecha||k||'').slice(0,10)}
-  function dateObj78(ds){const m=String(ds||'').match(/^(\d{4})-(\d{2})-(\d{2})$/);return m?new Date(+m[1],+m[2]-1,+m[3],12):null}
-  function labelDate78(ds){const d=dateObj78(ds);return d?d.toLocaleDateString('es-ES',{weekday:'short',day:'numeric',month:'short',year:'numeric'}):e78(ds||'Sin fecha')}
-  function monthKey78(ds){return /^\d{4}-\d{2}/.test(ds||'')?ds.slice(0,7):'sin-fecha'}
-  function monthName78(k){if(k==='sin-fecha')return'Sin fecha';const [y,m]=k.split('-').map(Number);return new Date(y,m-1,1).toLocaleDateString('es-ES',{month:'long',year:'numeric'}).replace(/^./,x=>x.toUpperCase())}
-  function changes78(){return Object.entries((window.data&&data.changes)||{}).map(([k,c])=>({...c,fecha:fecha78(c,k)})).filter(c=>c.fecha).sort((a,b)=>b.fecha.localeCompare(a.fecha))}
-  function obs78(){return Object.entries((window.data&&data.observations)||{}).map(([k,o])=>({...o,fecha:fecha78(o,k)})).filter(o=>o.fecha).sort((a,b)=>b.fecha.localeCompare(a.fecha))}
-  function inc78(){return Object.entries((window.data&&data.incidents)||{}).map(([k,i])=>({...i,fecha:fecha78(i,k)})).filter(i=>i.fecha).sort((a,b)=>b.fecha.localeCompare(a.fecha))}
-  function isLZ78(c){return String(c.tipo||c.turno||'').toUpperCase()==='LZ'}
-  function isDD78(c){return String(c.tipo||'').toUpperCase()==='DD'}
-  function qty78(c){return Math.max(1,Number(c.cantidad||1)||1)}
-  function changeItem78(c,cls=''){
+  const VERSION='7.8', UPDATED='05/08/2026';
+  const MONTHS=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+  let active='balances';
+
+  function version(){
+    document.title='App Turnos Pro v'+VERSION;
+    document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+VERSION);
+    document.querySelectorAll('#loginVersionBadgeV58,#loginVersionBadgeV59,#loginVersionFinalV66,#loginVersionFinalV69').forEach(e=>e.textContent='v'+VERSION);
+    const login=document.querySelector('#login .loginbox');
+    if(login){
+      login.querySelectorAll('span').forEach(s=>{if(/^v\d/.test((s.textContent||'').trim()))s.textContent='v'+VERSION});
+      login.querySelectorAll('p').forEach(p=>{if((p.textContent||'').includes('Versión '))p.textContent='Versión '+VERSION+' · Actualizada '+UPDATED});
+    }
+  }
+  function changes(){return Object.values((window.data&&data.changes)||{}).filter(Boolean).sort((a,b)=>String(b.fecha||'').localeCompare(String(a.fecha||'')))}
+  function observations(){return Object.values((window.data&&data.observations)||{}).filter(Boolean).sort((a,b)=>String(b.fecha||'').localeCompare(String(a.fecha||'')))}
+  function incidents(){return Object.values((window.data&&data.incidents)||{}).filter(Boolean).sort((a,b)=>String(b.fecha||'').localeCompare(String(a.fecha||'')))}
+  function mk(fecha){return String(fecha||'').slice(0,7)}
+  function monthName(k){const [y,m]=String(k).split('-').map(Number);return (MONTHS[(m||1)-1]||k)+' '+(y||'')}
+  function group(arr){const g={};arr.forEach(x=>{const k=mk(x.fecha);if(k)(g[k]??=[]).push(x)});return g}
+  function e(s){return typeof esc==='function'?esc(s):String(s??'').replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c]))}
+  function cats(i){const lab={pai:'PAI',pirsc:'PIRSC',retrasos:'Retrasos',material:'Material',otros:'Otros'};return Object.entries(i.categories||{}).filter(([,v])=>v).map(([k])=>lab[k]||k).join(', ')||'Sin categoría'}
+  function amounts(){let debo=0,me=0;changes().forEach(c=>{const q=Number(c.cantidad||1);if(c.balance==='debo')debo+=q;if(c.balance==='meDebe')me+=q});return{debo,me}}
+  function peopleBy(balance){const g={};changes().filter(c=>c.balance===balance&&c.persona).forEach(c=>(g[c.persona]??=[]).push(c));return g}
+  function card(c,cls=''){
     const nuevo=c.tipo==='DD'?('DD '+(c.turno||'')):(c.tipo||c.turno||'—');
-    return '<div class="v78Item '+cls+'"><b>'+e78(labelDate78(c.fecha))+'</b>'+
-      '<div>Original: '+e78(c.originalTurno||'—')+(c.originalInicio||c.originalFin?' ('+e78(c.originalInicio||'—')+' → '+e78(c.originalFin||'—')+')':'')+'</div>'+
-      '<div>Nuevo: <b style="display:inline">'+e78(nuevo)+'</b></div>'+
-      (c.persona?'<div>Compañero: '+e78(c.persona)+'</div>':'')+
-      (c.balance&&c.balance!=='neutral'?'<div>Cantidad: '+qty78(c)+' turno(s)</div>':'')+
-      (c.nota?'<div class="muted">'+e78(c.nota)+'</div>':'')+'</div>'
+    return '<div class="v78Item '+cls+'"><b>'+e(c.fecha||'')+'</b><br>Original: '+e(c.originalTurno||'—')+' ('+e(c.originalInicio||'—')+' → '+e(c.originalFin||'—')+')<br>Nuevo: '+e(nuevo)+'<br>Con: '+e(c.persona||'—')+(c.cantidad?'<br>Cantidad: '+e(c.cantidad):'')+(c.nota?'<br><span class="muted">'+e(c.nota)+'</span>':'')+'</div>'
   }
-  function grouped78(arr,itemFn){
-    if(!arr.length)return'<div class="v78Empty">No hay datos guardados.</div>';
-    const g={};arr.forEach(x=>(g[monthKey78(x.fecha)]??=[]).push(x));
-    const now=new Date(),cur=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0');
-    return Object.keys(g).sort().reverse().map((k,idx)=>'<details class="v78Month" '+((k===cur||(!g[cur]&&idx===0))?'open':'')+'><summary><span>'+e78(monthName78(k))+'</span><span>'+g[k].length+' ▾</span></summary><div class="v78Items">'+g[k].map(itemFn).join('')+'</div></details>').join('')
+  function peopleColumn(balance,title){
+    const g=peopleBy(balance), names=Object.keys(g).sort((a,b)=>a.localeCompare(b,'es'));
+    return '<div class="v78Col"><h4>'+title+'</h4>'+(names.length?names.map(n=>{const total=g[n].reduce((s,c)=>s+Number(c.cantidad||1),0);return '<details class="v78Person"><summary><span>'+e(n)+'</span><span class="v78Count">'+total+'</span></summary><div class="v78PersonBody">'+g[n].map(c=>card(c)).join('')+'</div></details>'}).join(''):'<div class="v78Empty">Sin registros</div>')+'</div>'
   }
-  function categories78(i){const c=i.categories||{};const a=[];Object.keys(c).forEach(k=>{if(c[k])a.push(k)});return a.join(' · ')}
-  function personGroups78(chs,kind){
-    const list=chs.filter(c=>c.persona&&c.balance===kind),g={};list.forEach(c=>(g[c.persona]??=[]).push(c));
-    if(!list.length)return'<div class="v78Empty">Sin turnos registrados.</div>';
-    return Object.keys(g).sort((a,b)=>a.localeCompare(b,'es')).map(p=>{const total=g[p].reduce((s,c)=>s+qty78(c),0);return'<details class="v78Person"><summary><span>'+e78(p)+'</span><span>'+total+' turno(s) ▾</span></summary><div class="v78Items">'+g[p].map(c=>changeItem78(c)).join('')+'</div></details>'}).join('')
-  }
-  function panel78(id,chs,obs,incs){
-    if(id==='balance')return'<h3 class="v78PanelTitle">Debo / Me deben</h3><div class="v78TwoCols"><div class="v78Column"><h4>Debo</h4>'+personGroups78(chs,'debo')+'</div><div class="v78Column"><h4>Me deben</h4>'+personGroups78(chs,'meDebe')+'</div></div>';
-    if(id==='lz'){const a=chs.filter(isLZ78);return'<h3 class="v78PanelTitle">Licencias LZ</h3>'+ (a.length?a.map(c=>changeItem78(c,'license')).join(''):'<div class="v78Empty">Sin licencias registradas.</div>')}
-    if(id==='dd'){const a=chs.filter(isDD78);return'<h3 class="v78PanelTitle">Detraíbles pinchados DD</h3>'+ (a.length?a.map(c=>changeItem78(c,'ddreg')).join(''):'<div class="v78Empty">Sin detraíbles pinchados.</div>')}
-    if(id==='changes'){const a=chs.filter(c=>!isLZ78(c)&&!isDD78(c));return'<h3 class="v78PanelTitle">🔄 Cambios</h3>'+grouped78(a,c=>changeItem78(c))}
-    if(id==='obs')return'<h3 class="v78PanelTitle">🔎 Observaciones</h3>'+grouped78(obs,o=>'<div class="v78Item obs"><b>'+e78(labelDate78(o.fecha))+'</b>'+(o.materials?'<div>Materiales: '+e78(o.materials)+'</div>':'')+(o.note?'<div class="muted">'+e78(o.note)+'</div>':'')+'</div>')
-    return'<h3 class="v78PanelTitle">⚠️ Incidencias</h3>'+grouped78(incs,i=>'<div class="v78Item inc"><b>'+e78(labelDate78(i.fecha))+'</b>'+(categories78(i)?'<div>'+e78(categories78(i))+'</div>':'')+(i.note?'<div class="muted">'+e78(i.note)+'</div>':'')+'</div>')
-  }
-  function applyVersion78(){
-    document.title='App Turnos Pro v'+V78;
-    document.querySelectorAll('.ver').forEach(el=>el.textContent='v'+V78);
-    document.querySelectorAll('.loginbox').forEach(box=>{box.querySelectorAll('span').forEach(s=>{if(/^v\d/.test((s.textContent||'').trim()))s.textContent='v'+V78});const p=[...box.querySelectorAll('p')].find(x=>/Versión\s+\d/i.test(x.textContent||''));if(p)p.textContent='Versión '+V78+' · Actualizada '+UPDATED78});
-    const settings=document.querySelector('#settingsView .detail');if(settings){settings.querySelectorAll('p,b,span').forEach(x=>{if(/Versión\s+\d+(?:\.\d+)?/.test(x.textContent||''))x.innerHTML=(x.innerHTML||'').replace(/Versión\s+\d+(?:\.\d+)?/g,'Versión '+V78)});}
-  }
-  function build78(active='balance'){
-    const detail=document.querySelector('#changesView .detail');if(!detail)return;
-    const chs=changes78(),obs=obs78(),incs=inc78();
-    const lz=chs.filter(isLZ78).length,dd=chs.filter(isDD78).length;
-    const debo=chs.filter(c=>c.balance==='debo').reduce((s,c)=>s+qty78(c),0),me=chs.filter(c=>c.balance==='meDebe').reduce((s,c)=>s+qty78(c),0);
-    detail.innerHTML='<h2 class="v78Title">Cambios y registros</h2><p class="v78Subtitle">Consulta balances, licencias, detraíbles y anotaciones</p><div id="registryV78"><div class="v78Cards">'+
-      '<button class="v78Tab '+(active==='balance'?'active':'')+'" data-v78="balance"><span class="v78TabTitle">Debo / Me deben</span><span class="v78TabMetric">'+debo+' / '+me+' <small>turnos</small></span></button>'+ 
-      '<button class="v78Tab '+(active==='lz'?'active':'')+'" data-v78="lz"><span class="v78TabTitle">Licencias LZ</span><span class="v78TabMetric">'+lz+' <small>usadas</small></span></button>'+ 
-      '<button class="v78Tab '+(active==='dd'?'active':'')+'" data-v78="dd"><span class="v78TabTitle">Detraíbles DD</span><span class="v78TabMetric">'+dd+' <small>pinchados</small></span></button>'+ 
-      '<button class="v78Tab '+(active==='changes'?'active':'')+'" data-v78="changes"><span class="v78TabTitle">🔄 Cambios</span></button>'+ 
-      '<button class="v78Tab '+(active==='obs'?'active':'')+'" data-v78="obs"><span class="v78TabTitle">🔎 Observaciones</span></button>'+ 
-      '<button class="v78Tab '+(active==='inc'?'active':'')+'" data-v78="inc"><span class="v78TabTitle">⚠️ Incidencias</span></button>'+ 
-      '</div><div class="v78Panel" id="v78Panel">'+panel78(active,chs,obs,incs)+'</div></div>';
-    detail.querySelectorAll('[data-v78]').forEach(b=>b.addEventListener('click',()=>build78(b.dataset.v78)));
+  function balancesPanel(){return '<div class="v78PanelTitle"><span>Debo / Me deben</span></div><div class="v78TwoCols">'+peopleColumn('debo','Debo')+peopleColumn('meDebe','Me deben')+'</div>'}
+  function licensesPanel(){const a=changes().filter(c=>c.tipo==='LZ');return '<div class="v78PanelTitle"><span>Licencias LZ</span></div>'+(a.length?a.map(c=>'<div class="v78Item license"><b>'+e(c.fecha)+'</b> · LZ'+(c.nota?'<br><span class="muted">'+e(c.nota)+'</span>':'')+'</div>').join(''):'<div class="v78Empty">Sin licencias registradas</div>')}
+  function ddPanel(){const a=changes().filter(c=>c.tipo==='DD');return '<div class="v78PanelTitle"><span>Detraíbles DD</span></div>'+(a.length?a.map(c=>card(c,'dd')).join(''):'<div class="v78Empty">Sin detraíbles pinchados</div>')}
+  function monthly(arr,renderer,empty){if(!arr.length)return '<div class="v78Empty">'+empty+'</div>';const g=group(arr),now=new Date(),cur=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0'),keys=Object.keys(g).sort().reverse();return keys.map((k,i)=>'<details class="v78Month" '+((k===cur||(!keys.includes(cur)&&i===0))?'open':'')+'><summary><span>'+monthName(k)+'</span><span class="v78Count">'+g[k].length+'</span></summary><div class="v78MonthBody">'+g[k].map(renderer).join('')+'</div></details>').join('')}
+  function changesPanel(){const a=changes().filter(c=>c.tipo!=='LZ'&&c.tipo!=='DD');return '<div class="v78PanelTitle"><span>🔄 Cambios</span></div>'+monthly(a,c=>card(c),'Aún no hay cambios')}
+  function obsPanel(){return '<div class="v78PanelTitle"><span>🔎 Observaciones</span></div>'+monthly(observations(),o=>'<div class="v78Item obs"><b>'+e(o.fecha||'')+'</b>'+(o.materials?'<br><b>Materiales / trenes:</b> '+e(o.materials):'')+(o.note?'<br><span class="muted">'+e(o.note)+'</span>':'')+'</div>','Sin observaciones registradas')}
+  function incPanel(){return '<div class="v78PanelTitle"><span>⚠️ Incidencias</span></div>'+monthly(incidents(),i=>'<div class="v78Item inc"><b>'+e(i.fecha||'')+'</b><br><b>'+e(cats(i))+'</b>'+(i.note?'<br><span class="muted">'+e(i.note)+'</span>':'')+'</div>','Sin incidencias registradas')}
+  function panel(){return ({balances:balancesPanel,licenses:licensesPanel,dd:ddPanel,changes:changesPanel,observations:obsPanel,incidents:incPanel}[active]||balancesPanel)()}
+  function tab(id,title,metric){return '<button type="button" class="v78Tab '+(active===id?'active':'')+'" data-tab="'+id+'"><span class="v78TabTitle">'+title+'</span>'+metric+'</button>'}
+  function draw(){
+    const host=document.querySelector('#changesView .detail');if(!host)return;
+    const a=amounts(),lz=changes().filter(c=>c.tipo==='LZ').length,dd=changes().filter(c=>c.tipo==='DD').length;
+    host.innerHTML='<div class="v78Header"><h2>Cambios y registros</h2><p>Selecciona una sección para consultar su información</p></div><div class="v78Tabs">'+
+      tab('balances','Debo / Me deben','<div class="v78TabMetric">'+a.debo+' / '+a.me+'<small>debo · me deben</small></div>')+
+      tab('licenses','Licencias LZ','<div class="v78TabMetric">'+lz+'<small>usadas</small></div>')+
+      tab('dd','Detraíbles DD','<div class="v78TabMetric">'+dd+'<small>pinchados</small></div>')+
+      tab('changes','🔄 Cambios','')+tab('observations','🔎 Observaciones','')+tab('incidents','⚠️ Incidencias','')+
+      '</div><div id="v78Panel" class="v78Panel">'+panel()+'</div>';
+    host.querySelectorAll('.v78Tab').forEach(b=>b.addEventListener('click',()=>{active=b.dataset.tab;draw()}));
   }
   window.showChanges=function(){
-    if(typeof show==='function')show('changesView');else{document.querySelectorAll('.view').forEach(v=>v.classList.add('hidden'));document.getElementById('changesView')?.classList.remove('hidden')}
-    build78('balance');applyVersion78();
+    if(typeof show==='function')show('changesView');
+    draw();version();
   };
+  window.__drawChangesV78=draw;
   const oldShow=window.show;
-  if(typeof oldShow==='function')window.show=function(id){const r=oldShow.apply(this,arguments);if(id==='settingsView')setTimeout(applyVersion78,0);return r};
-  function boot78(){applyVersion78();}
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot78);else boot78();
-  window.addEventListener('pageshow',boot78);
-  document.addEventListener('visibilitychange',()=>{if(!document.hidden)boot78()});
-  setTimeout(boot78,300);
+  if(typeof oldShow==='function')window.show=function(id){const r=oldShow(id);if(id==='settingsView')setTimeout(version,0);return r};
+  version();
+  window.addEventListener('pageshow',version);
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden)version()});
 })();
 </script>
 
