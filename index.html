@@ -3369,4 +3369,111 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 <style id="v75-style">
 .v75Header{text-align:center;padding:8px 4px 14px}.v75Header h2{margin:0;color:var(--r);font-size:28px;letter-spacing:.2px}.v75Tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 10px;scroll-snap-type:x proximity}.v75Tabs button{flex:0 0 145px;border:1px solid var(--line);background:#fff;border-radius:16px;padding:10px;display:flex;flex-direction:column;gap:4px;align-items:flex-start;scroll-snap-align:start}.v75Tabs button.active{border:2px solid var(--r);background:#fff7ff}.v75Tabs small{color:var(--mut);font-weight:800}.v75Panel{margin-top:8px}.v75Grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.v75Col{background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px}.v75Col h3{margin:0 0 8px;color:var(--r)}.regMonth{border:1px solid var(--line);border-radius:14px;background:#fff;margin:8px 0;overflow:hidden}.regMonth summary{padding:10px 12px;font-weight:950;display:flex;justify-content:space-between;cursor:pointer}.regMonth>div{padding:0 10px 10px}@media(max-width:560px){.v75Grid2{grid-template-columns:1fr}.v75Tabs button{flex-basis:132px}.v75Header h2{font-size:25px}}
 </style>
+
+<style id="v76-registro-unico-css">
+#changesView .detail{padding-top:16px}
+.v76Title{text-align:center;margin:4px 0 6px;font-size:28px;line-height:1.12;font-weight:950;letter-spacing:-.5px;color:#35113d}
+.v76Subtitle{text-align:center;margin:0 0 16px;color:var(--mut);font-size:13px;font-weight:750}
+.v76Cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:10px 0 14px}
+.v76Card{border:1px solid var(--line);background:#fff;border-radius:17px;min-height:104px;padding:10px 6px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:var(--txt);font:inherit;box-shadow:0 2px 8px #0000000a}
+.v76Card.active{border:2px solid var(--r);background:#fff7ff;box-shadow:0 5px 16px #8a0f821a}
+.v76Icon{font-size:22px;line-height:1}.v76Label{font-size:12px;font-weight:950;text-align:center;line-height:1.15}.v76Metric{font-size:22px;font-weight:950;color:var(--r);line-height:1}.v76Metric small{display:block;margin-top:4px;font-size:10px;color:var(--mut);font-weight:900}.v76Pair{display:flex;align-items:center;gap:7px;color:var(--r);font-size:20px;font-weight:950}.v76Pair small{font-size:12px;color:var(--mut)}
+.v76Panel{border:1px solid var(--line);border-radius:18px;background:#fff;padding:12px;min-height:110px}.v76PanelTitle{margin:0 0 10px;color:var(--r);font-size:19px;font-weight:950}.v76Empty{padding:18px;text-align:center;color:var(--mut);font-weight:800}
+.v76DebtGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.v76DebtCol{border:1px solid var(--line);border-radius:15px;padding:10px;background:#faf6fb}.v76DebtHead{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-weight:950}.v76Badge{display:inline-flex;min-width:26px;height:26px;padding:0 7px;align-items:center;justify-content:center;border-radius:999px;background:#f2e3f4;color:var(--r);font-size:12px;font-weight:950}
+.v76Person,.v76Month{border:1px solid var(--line);border-radius:13px;background:#fff;margin:7px 0;overflow:hidden}.v76Person summary,.v76Month summary{list-style:none;cursor:pointer;padding:10px;display:flex;justify-content:space-between;align-items:center;gap:8px;font-weight:950}.v76Person summary::-webkit-details-marker,.v76Month summary::-webkit-details-marker{display:none}.v76Person summary:after,.v76Month summary:after{content:'⌄';color:var(--r);font-size:18px}.v76Person[open] summary:after,.v76Month[open] summary:after{content:'⌃'}.v76Body{padding:0 9px 9px}.v76Rec{border-left:4px solid var(--r);background:#faf6fb;border-radius:10px;padding:9px;margin-top:7px;overflow-wrap:anywhere;white-space:normal}.v76Rec small{color:var(--mut)}
+@media(max-width:560px){.v76Cards{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.v76Card{min-height:96px;padding:8px 3px}.v76Title{font-size:25px}.v76DebtGrid{grid-template-columns:1fr 1fr;gap:6px}.v76DebtCol{padding:7px}.v76Rec{font-size:12px}}
+</style>
+<script id="v76-fuente-unica-registro">
+(function(){
+  'use strict';
+  const V='7.6', VD='05/08/2026';
+  let activeTab='balances';
+
+  function esc76(v){return String(v??'').replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c]))}
+  function arr76(v){return Array.isArray(v)?v:[]}
+  function objValues76(v){return v&&typeof v==='object'&&!Array.isArray(v)?Object.values(v):[]}
+  function fecha76(v){
+    let s=String(v||'').trim(); if(!s)return'';
+    let m=s.match(/^(\d{4})-(\d{2})-(\d{2})/); if(m)return m[1]+'-'+m[2]+'-'+m[3];
+    m=s.match(/^(\d{1,2})[\/\-.](\d{1,2})[\/\-.](\d{4})/); if(m)return m[3]+'-'+String(m[2]).padStart(2,'0')+'-'+String(m[1]).padStart(2,'0');
+    return'';
+  }
+  function changeSource76(){
+    const d=window.data||{};
+    return objValues76(d.changes).map((x,i)=>({...x,fecha:fecha76(x?.fecha||x?.date||'')})).filter(x=>x.fecha);
+  }
+  function obsSource76(){
+    const d=window.data||{}, raw=d.observations||d.observaciones||{};
+    return (Array.isArray(raw)?raw:Object.entries(raw).map(([k,v])=>({...v,fecha:v?.fecha||k}))).map(x=>({...x,fecha:fecha76(x?.fecha||x?.date||'')})).filter(x=>x.fecha);
+  }
+  function incSource76(){
+    const d=window.data||{}, raw=d.incidents||d.incidencias||{};
+    return (Array.isArray(raw)?raw:Object.entries(raw).map(([k,v])=>({...v,fecha:v?.fecha||k}))).map(x=>({...x,fecha:fecha76(x?.fecha||x?.date||'')})).filter(x=>x.fecha);
+  }
+  function tipo76(c){return String(c?.tipo||c?.type||'').toUpperCase()}
+  function nuevo76(c){return String(c?.turno||c?.nuevo||c?.valorNuevo||c?.tipo||'')}
+  function qty76(c){const n=Number(c?.cantidad??c?.qty??1);return Number.isFinite(n)&&n>0?n:1}
+  function isLz76(c){return tipo76(c)==='LZ'||nuevo76(c).toUpperCase()==='LZ'}
+  function isDd76(c){return tipo76(c)==='DD'||nuevo76(c).toUpperCase().startsWith('DD')}
+  function normalChanges76(){return changeSource76().filter(c=>!isLz76(c)&&!isDd76(c))}
+  function monthKey76(f){return String(f||'').slice(0,7)}
+  function monthName76(k){const [y,m]=k.split('-').map(Number);return new Date(y,m-1,1).toLocaleDateString('es-ES',{month:'long',year:'numeric'}).replace(/^./,c=>c.toUpperCase())}
+  function recChange76(c){return '<div class="v76Rec"><b>'+esc76(c.fecha)+'</b><br>Original: '+esc76(c.originalTurno||c.original||'—')+' → '+esc76(nuevo76(c)||'—')+'<br>Compañero: '+esc76(c.persona||c.companero||'—')+' · '+esc76(c.balance||'registro')+' '+qty76(c)+(c.nota?'<br><small>'+esc76(c.nota)+'</small>':'')+'</div>'}
+  function grouped76(items,renderer){
+    const g={};items.forEach(x=>{const k=monthKey76(x.fecha);if(k)(g[k]||(g[k]=[])).push(x)});
+    const keys=Object.keys(g).sort().reverse(), now=new Date(), current=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0');
+    if(!keys.length)return '<div class="v76Empty">No hay datos guardados.</div>';
+    return keys.map((k,i)=>'<details class="v76Month" '+((k===current)||(!keys.includes(current)&&i===0)?'open':'')+'><summary><span>'+esc76(monthName76(k))+'</span><span class="v76Badge">'+g[k].length+'</span></summary><div class="v76Body">'+g[k].sort((a,b)=>a.fecha.localeCompare(b.fecha)).map(renderer).join('')+'</div></details>').join('');
+  }
+  function balances76(changes){
+    const debo={}, deben={};
+    changes.forEach(c=>{const p=String(c.persona||c.companero||'').trim();if(!p)return;const b=String(c.balance||'').toLowerCase(),q=qty76(c);let target=b==='debo'?debo:(b==='medebe'||b==='me_debe'||b==='me debe'?deben:null);if(!target)return;(target[p]||(target[p]={total:0,items:[]})).total+=q;target[p].items.push(c)});
+    function col(title,map){const entries=Object.entries(map).sort((a,b)=>b[1].total-a[1].total||a[0].localeCompare(b[0]));return '<div class="v76DebtCol"><div class="v76DebtHead"><span>'+title+'</span><span class="v76Badge">'+entries.reduce((s,[,v])=>s+v.total,0)+'</span></div>'+(entries.length?entries.map(([p,v])=>'<details class="v76Person"><summary><span>'+esc76(p)+'</span><span class="v76Badge">'+v.total+'</span></summary><div class="v76Body">'+v.items.map(recChange76).join('')+'</div></details>').join(''):'<div class="v76Empty">Sin registros</div>')+'</div>'}
+    return '<div class="v76DebtGrid">'+col('Debo',debo)+col('Me deben',deben)+'</div>';
+  }
+  function counts76(){const ch=changeSource76(),lz=ch.filter(isLz76),dd=ch.filter(isDd76);let owe=0,owed=0;ch.forEach(c=>{const b=String(c.balance||'').toLowerCase();if(b==='debo')owe+=qty76(c);if(['medebe','me_debe','me debe'].includes(b))owed+=qty76(c)});return{ch,lz,dd,owe,owed}}
+  function renderPanel76(){
+    const panel=document.getElementById('v76Panel');if(!panel)return;const c=counts76(),obs=obsSource76(),inc=incSource76();
+    const cats=x=>arr76(x.categorias||x.categories).join(', ')||String(x.categoria||'');
+    const views={
+      balances:()=>balances76(c.ch),
+      lz:()=>grouped76(c.lz,x=>'<div class="v76Rec"><b>'+esc76(x.fecha)+'</b> · LZ'+(x.nota?'<br><small>'+esc76(x.nota)+'</small>':'')+'</div>'),
+      dd:()=>grouped76(c.dd,x=>'<div class="v76Rec"><b>'+esc76(x.fecha)+'</b> · DD '+esc76(String(x.turno||'').replace(/^DD\s*/i,'')||'—')+(x.nota?'<br><small>'+esc76(x.nota)+'</small>':'')+'</div>'),
+      changes:()=>grouped76(normalChanges76(),recChange76),
+      obs:()=>grouped76(obs,x=>'<div class="v76Rec"><b>'+esc76(x.fecha)+'</b>'+(x.material||x.materiales?'<br>Material: '+esc76(x.material||x.materiales):'')+(x.trenes?'<br>Trenes: '+esc76(Array.isArray(x.trenes)?x.trenes.join(', '):x.trenes):'')+(x.nota||x.texto||x.observacion?'<br><small>'+esc76(x.nota||x.texto||x.observacion)+'</small>':'')+'</div>'),
+      inc:()=>grouped76(inc,x=>'<div class="v76Rec"><b>'+esc76(x.fecha)+'</b>'+(cats(x)?'<br>'+esc76(cats(x)):'')+(x.nota||x.texto||x.descripcion?'<br><small>'+esc76(x.nota||x.texto||x.descripcion)+'</small>':'')+'</div>')
+    };
+    panel.innerHTML=(views[activeTab]||views.balances)();
+    document.querySelectorAll('.v76Card').forEach(b=>b.classList.toggle('active',b.dataset.tab===activeTab));
+  }
+  function build76(){
+    const detail=document.querySelector('#changesView .detail');if(!detail)return;
+    detail.querySelectorAll('[id^="registryV"],#registryLoadV73,.v75Root,.v75Header').forEach(x=>x.remove());
+    const balances=document.getElementById('balances'),list=document.getElementById('changesList');if(balances)balances.style.display='none';if(list)list.style.display='none';if(list?.previousElementSibling?.tagName==='H3')list.previousElementSibling.style.display='none';
+    let h=detail.querySelector('h2');if(!h){h=document.createElement('h2');detail.prepend(h)}h.textContent='Cambios y registros';h.className='v76Title';
+    detail.querySelectorAll('.v76Subtitle').forEach(x=>x.remove());h.insertAdjacentHTML('afterend','<p class="v76Subtitle">Consulta toda la información guardada desde una única fuente.</p>');
+    const c=counts76(),root=document.createElement('div');root.id='registryV76';root.innerHTML='<div class="v76Cards">'+
+      '<button class="v76Card" data-tab="balances"><span class="v76Icon">👥</span><span class="v76Label">Debo / Me deben</span><span class="v76Pair"><b>'+c.owe+'</b><small>/</small><b>'+c.owed+'</b></span><span class="v76Metric"><small>turnos</small></span></button>'+
+      '<button class="v76Card" data-tab="lz"><span class="v76Icon">📅</span><span class="v76Label">Licencias LZ</span><span class="v76Metric">'+c.lz.length+'<small>usadas</small></span></button>'+
+      '<button class="v76Card" data-tab="dd"><span class="v76Icon">DD</span><span class="v76Label">Detraíbles DD</span><span class="v76Metric">'+c.dd.length+'<small>pinchados</small></span></button>'+
+      '<button class="v76Card" data-tab="changes"><span class="v76Icon">🔄</span><span class="v76Label">Cambios</span></button>'+
+      '<button class="v76Card" data-tab="obs"><span class="v76Icon">🔎</span><span class="v76Label">Observaciones</span></button>'+
+      '<button class="v76Card" data-tab="inc"><span class="v76Icon">⚠️</span><span class="v76Label">Incidencias</span></button></div><div id="v76Panel" class="v76Panel"></div>';
+    detail.appendChild(root);root.querySelectorAll('.v76Card').forEach(b=>b.addEventListener('click',()=>{activeTab=b.dataset.tab;renderPanel76()}));renderPanel76();
+  }
+  window.showChanges=function(){try{if(typeof show==='function')show('changesView');else document.getElementById('changesView')?.classList.remove('hidden')}catch(e){}build76();return true};
+
+  function setVersion76(){
+    document.title='App Turnos Pro v'+V;
+    document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+V);
+    document.querySelectorAll('.title').forEach(e=>{if(/App Turnos Pro/i.test(e.textContent||''))e.innerHTML='App Turnos Pro <span class="ver">v'+V+'</span>'});
+    const login=document.getElementById('login');if(login){login.querySelectorAll('.ver').forEach(e=>e.textContent='v'+V);const pills=login.querySelectorAll('span');pills.forEach(p=>{if(/^v\d/i.test((p.textContent||'').trim()))p.textContent='v'+V});const h=login.querySelector('h1');if(h)h.innerHTML='App Turnos Pro <span class="ver">v'+V+'</span>';}
+    const settings=document.querySelector('#settingsView .detail');if(settings){settings.querySelectorAll('[data-v76-version]').forEach(x=>x.remove());settings.insertAdjacentHTML('afterbegin','<div data-v76-version class="settingsBlock"><h3>App Turnos Pro</h3><p><b>Versión v'+V+'</b><br><span class="muted">Actualizada el '+VD+'</span></p></div>')}
+  }
+  function stabilizeVersion76(){setVersion76();setTimeout(setVersion76,50);setTimeout(setVersion76,400);setTimeout(setVersion76,1400)}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',stabilizeVersion76);else stabilizeVersion76();
+  window.addEventListener('pageshow',stabilizeVersion76);
+})();
+</script>
+
 </body></html>
