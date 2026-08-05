@@ -2780,4 +2780,163 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 })();
 </script>
 
+
+<style id="v71-registro-tabs-css">
+#changesView .detail{overflow:hidden}
+.v71Registry{margin-top:10px}
+.v71TopCard{border:1px solid var(--line);border-radius:18px;padding:14px;background:#fff;margin-bottom:12px}
+.v71TopTitle{font-size:22px;font-weight:950;margin:0 0 4px;color:var(--txt)}
+.v71TopSub{font-size:12px;color:var(--mut);font-weight:800}
+.v71Tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 10px;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity}
+.v71Tabs::-webkit-scrollbar{display:none}
+.v71Tab{flex:0 0 auto;min-width:116px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--txt);padding:9px 13px;font-weight:950;line-height:1.08;text-align:center;cursor:pointer;scroll-snap-align:start}
+.v71Tab.active{background:#f2e3f4;border-color:#d8a9dc;color:var(--r);box-shadow:0 2px 10px #8a0f8218}
+.v71Tab small{display:block;margin-top:4px;font-size:10px;font-weight:900;color:var(--mut);white-space:nowrap}
+.v71Tab.active small{color:#7a2676}
+.v71Panel{border:1px solid var(--line);border-radius:18px;background:#fff;padding:14px;min-height:150px}
+.v71PanelTitle{font-size:20px;font-weight:950;color:var(--r);margin:0 0 10px}
+.v71Empty{color:var(--mut);font-weight:800;padding:18px 6px;text-align:center}
+.v71DebtColumns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.v71DebtCol{border:1px solid var(--line);border-radius:16px;padding:10px;background:#faf6fb;min-width:0}
+.v71DebtHead{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;font-weight:950}
+.v71CountPill{display:inline-flex;min-width:29px;height:26px;padding:0 8px;align-items:center;justify-content:center;border-radius:999px;background:#fff;color:var(--r);border:1px solid var(--line);font-size:12px}
+.v71Person{border:1px solid var(--line);border-radius:13px;background:#fff;margin-top:8px;overflow:hidden}
+.v71Person summary,.v71Month summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:11px;font-weight:950}
+.v71Person summary::-webkit-details-marker,.v71Month summary::-webkit-details-marker{display:none}
+.v71Person summary::after,.v71Month summary::after{content:'⌄';font-size:18px;color:var(--r);transition:transform .15s ease}
+.v71Person[open] summary::after,.v71Month[open] summary::after{transform:rotate(180deg)}
+.v71PersonBody,.v71MonthBody{border-top:1px solid var(--line);padding:8px}
+.v71Record{padding:10px;border-bottom:1px solid #f0e4ef;line-height:1.35;overflow-wrap:anywhere}
+.v71Record:last-child{border-bottom:0}
+.v71Record b{color:#321536}
+.v71Record .muted{display:block;margin-top:3px}
+.v71Month{border:1px solid var(--line);border-radius:14px;background:#fff;margin:8px 0;overflow:hidden}
+.v71Badge{display:inline-flex;align-items:center;justify-content:center;min-width:25px;height:23px;padding:0 7px;border-radius:999px;background:#f2e3f4;color:var(--r);font-size:11px;font-weight:950;margin-left:auto}
+.v71TwoStats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.v71Stat{border:1px solid var(--line);border-radius:15px;padding:12px;background:#faf6fb;text-align:center}
+.v71Stat b{display:block;font-size:23px;color:var(--r)}
+.v71Stat small{font-weight:900;color:var(--mut)}
+@media(max-width:560px){
+ .v71Tab{min-width:108px;padding:8px 11px;font-size:12px}
+ .v71DebtColumns{grid-template-columns:1fr 1fr;gap:7px}
+ .v71DebtCol{padding:7px}
+ .v71DebtHead{font-size:12px;align-items:flex-start;flex-direction:column;gap:3px}
+ .v71Person summary{font-size:12px;padding:9px 7px}
+ .v71Record{font-size:12px;padding:8px 5px}
+ .v71Panel{padding:10px}
+}
+</style>
+<script id="v71-registro-tabs-js">
+(function(){
+  const V71='7.1', UPDATED71='05/08/2026';
+  const MONTHS71=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  let activeTab71='balances';
+
+  function applyVersion71(){
+    document.title='App Turnos Pro v'+V71;
+    document.querySelectorAll('.ver').forEach(el=>el.textContent='v'+V71);
+    document.querySelectorAll('#loginVersionBadgeV58,#loginVersionBadgeV59,#loginVersionFinalV66,#loginVersionFinalV69').forEach(el=>el.textContent='v'+V71);
+    const stamp=document.getElementById('loginVersionV57');
+    if(stamp)stamp.textContent='Versión '+V71+' · Actualizada '+UPDATED71;
+    const h=document.querySelector('.loginbox h1');
+    if(h)h.innerHTML='App Turnos Pro <span class="ver">v'+V71+'</span>';
+  }
+  function e71(v){return typeof esc==='function'?esc(v):String(v??'').replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c]||c))}
+  function changeArray71(){return Object.values((window.data&&data.changes)||{}).sort((a,b)=>String(b.fecha||'').localeCompare(String(a.fecha||'')))}
+  function qty71(c){const n=Number(c?.cantidad||1);return Number.isFinite(n)&&n>0?n:1}
+  function balanceGroups71(){
+    const owe={},owed={};
+    changeArray71().forEach(c=>{
+      if(!c.persona||!c.balance||c.balance==='neutral')return;
+      const target=c.balance==='debo'?owe:c.balance==='meDebe'?owed:null;
+      if(!target)return;
+      if(!target[c.persona])target[c.persona]={total:0,items:[]};
+      target[c.persona].total+=qty71(c);target[c.persona].items.push(c);
+    });
+    return {owe,owed};
+  }
+  function totals71(){
+    const bg=balanceGroups71();
+    return {
+      owe:Object.values(bg.owe).reduce((s,x)=>s+x.total,0),
+      owed:Object.values(bg.owed).reduce((s,x)=>s+x.total,0),
+      lz:changeArray71().filter(c=>c.tipo==='LZ').length,
+      dd:changeArray71().filter(c=>c.tipo==='DD').length,
+      obs:Object.keys((window.data&&data.observations)||{}).length,
+      inc:Object.keys((window.data&&data.incidents)||{}).length
+    };
+  }
+  function labelNew71(c){return c.tipo==='DD'?'DD '+(c.turno||''):c.tipo==='D'?'Descanso (D)':c.tipo==='LZ'?'LZ':(c.turno||c.tipo||'—')}
+  function changeCard71(c){
+    return '<div class="v71Record"><b>'+e71(c.fecha||'')+' · '+e71(c.originalTurno||'—')+' → '+e71(labelNew71(c))+'</b>'+
+      (c.persona?'<span class="muted">Compañero: '+e71(c.persona)+'</span>':'')+
+      '<span class="muted">Cantidad: '+e71(qty71(c))+' turno(s)</span>'+
+      (c.nota?'<span class="muted">Nota: '+e71(c.nota)+'</span>':'')+
+      (c.created?'<span class="muted">Registrado: '+e71(new Date(c.created).toLocaleString('es-ES'))+'</span>':'')+'</div>';
+  }
+  function peopleColumn71(title,groups,empty){
+    const entries=Object.entries(groups).sort((a,b)=>b[1].total-a[1].total||a[0].localeCompare(b[0]));
+    return '<div class="v71DebtCol"><div class="v71DebtHead"><span>'+title+'</span><span class="v71CountPill">'+entries.reduce((s,[,x])=>s+x.total,0)+'</span></div>'+
+      (entries.length?entries.map(([person,x])=>'<details class="v71Person"><summary><span>'+e71(person)+'</span><span class="v71Badge">'+x.total+'</span></summary><div class="v71PersonBody">'+x.items.map(changeCard71).join('')+'</div></details>').join(''):'<div class="v71Empty">'+empty+'</div>')+'</div>';
+  }
+  function panelBalances71(){
+    const bg=balanceGroups71(),t=totals71();
+    return '<h3 class="v71PanelTitle">Debo / Me deben</h3><div class="v71TwoStats"><div class="v71Stat"><b>'+t.owe+'</b><small>Turnos que debo</small></div><div class="v71Stat"><b>'+t.owed+'</b><small>Turnos que me deben</small></div></div><div class="v71DebtColumns">'+
+      peopleColumn71('Debo',bg.owe,'No debes turnos')+peopleColumn71('Me deben',bg.owed,'No te deben turnos')+'</div>';
+  }
+  function panelLZ71(){
+    const arr=changeArray71().filter(c=>c.tipo==='LZ');
+    return '<h3 class="v71PanelTitle">Licencias LZ ('+arr.length+')</h3>'+(arr.length?arr.map(c=>'<div class="v71Record"><b>'+e71(c.fecha||'')+' · LZ</b>'+(c.nota?'<span class="muted">'+e71(c.nota)+'</span>':'')+'</div>').join(''):'<div class="v71Empty">No hay licencias LZ registradas.</div>');
+  }
+  function panelDD71(){
+    const arr=changeArray71().filter(c=>c.tipo==='DD');
+    return '<h3 class="v71PanelTitle">Detraíbles DD ('+arr.length+')</h3>'+(arr.length?arr.map(c=>'<div class="v71Record"><b>'+e71(c.fecha||'')+' · DD '+e71(c.turno||'—')+'</b><span class="muted">Original: '+e71(c.originalTurno||'—')+' · '+e71(c.originalInicio||'—')+' → '+e71(c.originalFin||'—')+'</span>'+(c.nota?'<span class="muted">'+e71(c.nota)+'</span>':'')+'</div>').join(''):'<div class="v71Empty">No hay detraíbles pinchados.</div>');
+  }
+  function monthKey71(date){const d=new Date(String(date||'')+'T12:00:00');return isNaN(d)?'':d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')}
+  function monthLabel71(key){const [y,m]=key.split('-').map(Number);return MONTHS71[m-1].replace(/^./,x=>x.toUpperCase())+' '+y}
+  function groupedPanel71(title,arr,cardFn){
+    const groups={};arr.forEach(x=>{const k=monthKey71(x.fecha);if(k)(groups[k]||(groups[k]=[])).push(x)});
+    const keys=Object.keys(groups).sort().reverse();
+    return '<h3 class="v71PanelTitle">'+title+'</h3>'+(keys.length?keys.map((k,i)=>'<details class="v71Month" '+(i===0?'open':'')+'><summary><span>'+e71(monthLabel71(k))+'</span><span class="v71Badge">'+groups[k].length+'</span></summary><div class="v71MonthBody">'+groups[k].map(cardFn).join('')+'</div></details>').join(''):'<div class="v71Empty">No hay registros.</div>');
+  }
+  function panelChanges71(){
+    const arr=changeArray71().filter(c=>c.tipo!=='LZ'&&c.tipo!=='DD');
+    return groupedPanel71('🔄 Cambios',arr,changeCard71);
+  }
+  function obsCard71(o){return '<div class="v71Record"><b>'+e71(o.fecha||'')+'</b>'+(o.materials?'<span class="muted">Materiales / trenes: '+e71(o.materials)+'</span>':'')+(o.note?'<span class="muted">'+e71(o.note)+'</span>':'')+'</div>'}
+  function panelObs71(){const arr=Object.values((window.data&&data.observations)||{}).sort((a,b)=>String(b.fecha).localeCompare(String(a.fecha)));return groupedPanel71('🔎 Observaciones',arr,obsCard71)}
+  function categories71(i){if(typeof categoriesTextV59==='function')return categoriesTextV59(i);return Object.entries(i?.categories||{}).filter(([,v])=>v).map(([k])=>k).join(', ')}
+  function incCard71(i){return '<div class="v71Record"><b>'+e71(i.fecha||'')+'</b>'+(categories71(i)?'<span class="muted">Categorías: '+e71(categories71(i))+'</span>':'')+(i.note?'<span class="muted">'+e71(i.note)+'</span>':'')+'</div>'}
+  function panelInc71(){const arr=Object.values((window.data&&data.incidents)||{}).sort((a,b)=>String(b.fecha).localeCompare(String(a.fecha)));return groupedPanel71('⚠️ Incidencias',arr,incCard71)}
+  function renderPanel71(){
+    const p=document.getElementById('v71Panel');if(!p)return;
+    p.innerHTML=activeTab71==='balances'?panelBalances71():activeTab71==='lz'?panelLZ71():activeTab71==='dd'?panelDD71():activeTab71==='changes'?panelChanges71():activeTab71==='obs'?panelObs71():panelInc71();
+    document.querySelectorAll('.v71Tab').forEach(b=>b.classList.toggle('active',b.dataset.tab===activeTab71));
+  }
+  function buildRegistry71(){
+    const detail=document.querySelector('#changesView .detail');if(!detail)return;
+    detail.querySelectorAll('#registryV66,#registryV67,#registryV68,#registryV71').forEach(x=>x.remove());
+    const b=document.getElementById('balances'),l=document.getElementById('changesList');if(b)b.style.display='none';if(l)l.style.display='none';
+    const h=l?.previousElementSibling;if(h&&h.tagName==='H3')h.style.display='none';
+    const t=totals71();
+    const root=document.createElement('div');root.id='registryV71';root.className='v71Registry';
+    root.innerHTML='<div class="v71TopCard"><div class="v71TopTitle">Registro de cambios</div><div class="v71TopSub">Selecciona una sección para consultar sus registros.</div></div>'+
+      '<div class="v71Tabs" role="tablist">'+
+      '<button class="v71Tab" data-tab="balances">Debo / Me deben<small>'+t.owe+' debo · '+t.owed+' me deben</small></button>'+
+      '<button class="v71Tab" data-tab="lz">Licencias LZ<small>'+t.lz+' licencia(s)</small></button>'+
+      '<button class="v71Tab" data-tab="dd">Detraíbles DD<small>'+t.dd+' pinchado(s)</small></button>'+
+      '<button class="v71Tab" data-tab="changes">🔄 Cambios<small>Por meses</small></button>'+
+      '<button class="v71Tab" data-tab="obs">🔎 Observaciones<small>'+t.obs+' registro(s)</small></button>'+
+      '<button class="v71Tab" data-tab="inc">⚠️ Incidencias<small>'+t.inc+' registro(s)</small></button></div><div id="v71Panel" class="v71Panel"></div>';
+    detail.appendChild(root);
+    root.querySelectorAll('.v71Tab').forEach(btn=>btn.addEventListener('click',()=>{activeTab71=btn.dataset.tab;renderPanel71();btn.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'})}));
+    renderPanel71();applyVersion71();
+  }
+  const previousShow71=window.showChanges;
+  window.showChanges=function(){const r=previousShow71?previousShow71.apply(this,arguments):undefined;setTimeout(buildRegistry71,80);setTimeout(buildRegistry71,300);return r};
+  window.addEventListener('pageshow',applyVersion71);document.addEventListener('visibilitychange',()=>{if(!document.hidden)applyVersion71()});
+  setTimeout(applyVersion71,50);setTimeout(applyVersion71,500);
+})();
+</script>
+
 </body></html>
