@@ -2939,4 +2939,96 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 })();
 </script>
 
+
+<style id="v72-registro-compat-css">
+#changesView .detail > h2{margin-bottom:14px}
+.v72OnlyNumber{font-size:26px;font-weight:950;color:var(--r);text-align:center;padding:8px 0 14px}
+.v72CountLine{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.v72CountBox{border:1px solid var(--line);border-radius:15px;padding:12px;background:#faf6fb;text-align:center}
+.v72CountBox b{display:block;font-size:24px;color:var(--r)}
+.v72CountBox small{font-weight:900;color:var(--mut)}
+</style>
+<script id="v72-registro-compat-js">
+(function(){
+  const VERSION='7.2', UPDATED='05/08/2026';
+  const MONTHS=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  let active='balances';
+  const esc72=v=>typeof esc==='function'?esc(v):String(v??'').replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c]||c));
+  function version(){
+    document.title='App Turnos Pro v'+VERSION;
+    document.querySelectorAll('.ver').forEach(x=>x.textContent='v'+VERSION);
+    document.querySelectorAll('#loginVersionBadgeV58,#loginVersionBadgeV59,#loginVersionFinalV66,#loginVersionFinalV69').forEach(x=>x.textContent='v'+VERSION);
+    const s=document.getElementById('loginVersionV57');if(s)s.textContent='Versión '+VERSION+' · Actualizada '+UPDATED;
+    const h=document.querySelector('.loginbox h1');if(h)h.innerHTML='App Turnos Pro <span class="ver">v'+VERSION+'</span>';
+  }
+  function arr(v){if(!v)return[];return Array.isArray(v)?v:Object.entries(v).map(([k,x])=>typeof x==='object'&&x?{fecha:x.fecha||k,...x}:{fecha:k,nota:String(x??'')})}
+  function norm(x,key){
+    x=x||{};
+    const fecha=String(x.fecha||x.date||x.dia||x.day||key||'').slice(0,10);
+    let tipo=String(x.tipo||x.type||x.clase||x.category||'').toUpperCase();
+    let turno=String(x.turno||x.nuevoTurno||x.turnoNuevo||x.valorNuevo||x.newValue||x.nuevo||'');
+    const original=String(x.originalTurno||x.turnoOriginal||x.valorOriginal||x.oldValue||x.original||'');
+    if(!tipo){if(/^LZ$/i.test(turno))tipo='LZ';else if(/^DD\b/i.test(turno))tipo='DD';else if(/^D$/i.test(turno)||/DESCANSO/i.test(turno))tipo='D'}
+    if(tipo==='DD')turno=turno.replace(/^DD\s*/i,'')||String(x.dd_turno||x.turnoAsignado||'');
+    return {
+      ...x,fecha,tipo,turno,originalTurno:original,
+      originalInicio:x.originalInicio||x.inicioOriginal||'',originalFin:x.originalFin||x.finOriginal||'',
+      persona:x.persona||x.companero||x.compañero||x.conQuien||x.nombre||'',
+      balance:x.balance||x.deuda||x.tipoBalance||'neutral',cantidad:Number(x.cantidad||x.qty||x.turnos||1)||1,
+      nota:x.nota||x.note||x.observacion||x.observación||x.motivo||'',created:x.created||x.creado||x.fechaCambio||x.updated||''
+    }
+  }
+  function allChanges(){
+    const out=[],seen=new Set();
+    const push=(x,k)=>{const n=norm(x,k);if(!n.fecha)return;const id=[n.fecha,n.tipo,n.turno,n.originalTurno,n.persona,n.balance,n.cantidad,n.nota].join('|');if(seen.has(id))return;seen.add(id);out.push(n)};
+    Object.entries((window.data&&data.changes)||{}).forEach(([k,x])=>push(x,k));
+    arr((window.data&&data.records)||[]).forEach(x=>push(x,''));
+    return out.sort((a,b)=>String(b.fecha).localeCompare(String(a.fecha)));
+  }
+  function collection(names){
+    const out=[],seen=new Set();
+    names.forEach(n=>arr(window.data&&data[n]).forEach(x=>{const fecha=String(x.fecha||x.date||x.dia||'').slice(0,10);const note=x.note||x.nota||x.texto||x.observacion||x.observación||'';const materials=x.materials||x.materiales||x.trenes||x.material||'';const cats=x.categories||x.categorias||{};const id=[fecha,note,materials,JSON.stringify(cats)].join('|');if(fecha&&!seen.has(id)){seen.add(id);out.push({...x,fecha,note,materials,categories:cats})}}));
+    return out.sort((a,b)=>String(b.fecha).localeCompare(String(a.fecha)));
+  }
+  const qty=x=>Number(x.cantidad||1)||1;
+  function balanceGroups(){const owe={},owed={};allChanges().forEach(c=>{if(!c.persona)return;let target=null;const b=String(c.balance||'').toLowerCase();if(b==='debo'||b==='debe'||b==='iowe')target=owe;else if(b==='medebe'||b==='me_debe'||b==='owed')target=owed;if(!target)return;(target[c.persona]||(target[c.persona]={total:0,items:[]})).items.push(c);target[c.persona].total+=qty(c)});return{owe,owed}}
+  function isLZ(c){return c.tipo==='LZ'||/^LZ$/i.test(c.turno)}
+  function isDD(c){return c.tipo==='DD'||/^DD\b/i.test(c.turno)}
+  function isChange(c){return !isLZ(c)&&!isDD(c)}
+  function label(c){return isDD(c)?'DD '+(c.turno||''):c.tipo==='D'?'Descanso (D)':isLZ(c)?'LZ':(c.turno||c.tipo||'—')}
+  function card(c){return '<div class="v71Record"><b>'+esc72(c.fecha)+' · '+esc72(c.originalTurno||'—')+' → '+esc72(label(c))+'</b>'+(c.persona?'<span class="muted">Compañero: '+esc72(c.persona)+'</span>':'')+'<span class="muted">Cantidad: '+qty(c)+' turno(s)</span>'+(c.nota?'<span class="muted">Nota: '+esc72(c.nota)+'</span>':'')+(c.created?'<span class="muted">Registrado: '+esc72(new Date(c.created).toLocaleString('es-ES'))+'</span>':'')+'</div>'}
+  function people(title,groups,empty){const es=Object.entries(groups).sort((a,b)=>b[1].total-a[1].total||a[0].localeCompare(b[0]));return '<div class="v71DebtCol"><div class="v71DebtHead"><span>'+title+'</span><span class="v71CountPill">'+es.reduce((s,[,x])=>s+x.total,0)+'</span></div>'+(es.length?es.map(([p,x])=>'<details class="v71Person"><summary><span>'+esc72(p)+'</span><span class="v71Badge">'+x.total+'</span></summary><div class="v71PersonBody">'+x.items.map(card).join('')+'</div></details>').join(''):'<div class="v71Empty">'+empty+'</div>')+'</div>'}
+  function monthKey(d){const x=new Date(String(d||'')+'T12:00:00');return isNaN(x)?'':x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0')}
+  function monthLabel(k){const [y,m]=k.split('-').map(Number);return MONTHS[m-1].replace(/^./,x=>x.toUpperCase())+' '+y}
+  function grouped(items,fn){const g={};items.forEach(x=>{const k=monthKey(x.fecha);if(k)(g[k]||(g[k]=[])).push(x)});const keys=Object.keys(g).sort().reverse();const now=new Date(),current=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0');return keys.length?keys.map((k,i)=>'<details class="v71Month" '+(k===current||(!keys.includes(current)&&i===0)?'open':'')+'><summary><span>'+esc72(monthLabel(k))+'</span><span class="v71Badge">'+g[k].length+'</span></summary><div class="v71MonthBody">'+g[k].map(fn).join('')+'</div></details>').join(''):'<div class="v71Empty">No hay registros.</div>'}
+  function panel(){
+    const ch=allChanges(),bg=balanceGroups(),obs=collection(['observations','observaciones','notes','dailyNotes']),inc=collection(['incidents','incidencias']);
+    if(active==='balances'){const owe=Object.values(bg.owe).reduce((s,x)=>s+x.total,0),owed=Object.values(bg.owed).reduce((s,x)=>s+x.total,0);return '<div class="v72CountLine"><div class="v72CountBox"><b>'+owe+'</b><small>Debo</small></div><div class="v72CountBox"><b>'+owed+'</b><small>Me deben</small></div></div><div class="v71DebtColumns">'+people('Debo',bg.owe,'No debes turnos')+people('Me deben',bg.owed,'No te deben turnos')+'</div>'}
+    if(active==='lz'){const a=ch.filter(isLZ);return '<div class="v72OnlyNumber">'+a.length+'</div>'+(a.length?a.map(c=>'<div class="v71Record"><b>'+esc72(c.fecha)+' · LZ</b>'+(c.nota?'<span class="muted">'+esc72(c.nota)+'</span>':'')+'</div>').join(''):'<div class="v71Empty">No hay licencias LZ registradas.</div>')}
+    if(active==='dd'){const a=ch.filter(isDD);return '<div class="v72OnlyNumber">'+a.length+'</div>'+(a.length?a.map(c=>'<div class="v71Record"><b>'+esc72(c.fecha)+' · DD '+esc72(c.turno||'—')+'</b><span class="muted">Original: '+esc72(c.originalTurno||'—')+' · '+esc72(c.originalInicio||'—')+' → '+esc72(c.originalFin||'—')+'</span>'+(c.nota?'<span class="muted">'+esc72(c.nota)+'</span>':'')+'</div>').join(''):'<div class="v71Empty">No hay detraíbles pinchados.</div>')}
+    if(active==='changes')return grouped(ch.filter(isChange),card);
+    if(active==='obs')return grouped(obs,o=>'<div class="v71Record"><b>'+esc72(o.fecha)+'</b>'+(o.materials?'<span class="muted">Materiales / trenes: '+esc72(o.materials)+'</span>':'')+(o.note?'<span class="muted">'+esc72(o.note)+'</span>':'')+'</div>');
+    return grouped(inc,i=>{const cats=Object.entries(i.categories||{}).filter(([,v])=>v).map(([k])=>k).join(', ');return '<div class="v71Record"><b>'+esc72(i.fecha)+'</b>'+(cats?'<span class="muted">Categorías: '+esc72(cats)+'</span>':'')+(i.note?'<span class="muted">'+esc72(i.note)+'</span>':'')+'</div>'});
+  }
+  function render(){const p=document.getElementById('v72Panel');if(!p)return;p.innerHTML=panel();document.querySelectorAll('.v72Tab').forEach(b=>b.classList.toggle('active',b.dataset.tab===active))}
+  function build(){
+    const detail=document.querySelector('#changesView .detail');if(!detail)return;
+    detail.querySelectorAll('#registryV66,#registryV67,#registryV68,#registryV71,#registryV72').forEach(x=>x.remove());
+    const b=document.getElementById('balances'),l=document.getElementById('changesList');if(b)b.style.display='none';if(l)l.style.display='none';const oldh=l?.previousElementSibling;if(oldh&&oldh.tagName==='H3')oldh.style.display='none';
+    const h2=detail.querySelector('h2');if(h2)h2.textContent='Cambios y registros';
+    const ch=allChanges(),bg=balanceGroups(),owe=Object.values(bg.owe).reduce((s,x)=>s+x.total,0),owed=Object.values(bg.owed).reduce((s,x)=>s+x.total,0),lz=ch.filter(isLZ).length,dd=ch.filter(isDD).length;
+    const root=document.createElement('div');root.id='registryV72';root.innerHTML='<div class="v71Tabs">'+
+      '<button class="v71Tab v72Tab" data-tab="balances">Debo / Me deben<small>'+owe+' · '+owed+'</small></button>'+ 
+      '<button class="v71Tab v72Tab" data-tab="lz">Licencias LZ<small>'+lz+'</small></button>'+ 
+      '<button class="v71Tab v72Tab" data-tab="dd">Detraíbles DD<small>'+dd+'</small></button>'+ 
+      '<button class="v71Tab v72Tab" data-tab="changes">🔄 Cambios</button>'+ 
+      '<button class="v71Tab v72Tab" data-tab="obs">🔎 Observaciones</button>'+ 
+      '<button class="v71Tab v72Tab" data-tab="inc">⚠️ Incidencias</button></div><div id="v72Panel" class="v71Panel"></div>';
+    detail.appendChild(root);root.querySelectorAll('.v72Tab').forEach(btn=>btn.onclick=()=>{active=btn.dataset.tab;render();btn.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'})});render();version();
+  }
+  const prev=window.showChanges;window.showChanges=function(){const r=prev?prev.apply(this,arguments):undefined;setTimeout(build,100);setTimeout(build,450);return r};
+  setTimeout(version,20);setTimeout(version,600);window.addEventListener('pageshow',version);
+})();
+</script>
+
 </body></html>
