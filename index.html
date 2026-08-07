@@ -1,4 +1,4 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>App Turnos Pro v8.2</title><style>
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>App Turnos Pro v8.3</title><style>
 :root{--r:#8a0f82;--r2:#b65ac0;--bg:#fbf8fc;--line:#ead9ea;--txt:#1f1522;--mut:#75627a;--work:#edd0f4;--workb:#d79ae4;--rest:#d8f8e1;--restb:#62df91;--dd:#ffe0e7;--ddb:#ff9aad;--vac:#dff3ff;--vacb:#8bd4ff;--lz:#ffe0b2;--lzb:#fb923c}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;padding-bottom:74px}.hidden{display:none!important}header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:5;padding:8px 10px}.top{display:flex;gap:8px;align-items:center}.logo{font-weight:900;font-style:italic;color:var(--r);font-size:24px}.title{font-weight:900;font-size:17px}.ver{color:var(--r);font-size:12px}.sub{font-weight:700;color:var(--mut);font-size:11px}.btn{border:1px solid var(--line);background:#fff;border-radius:15px;padding:10px 12px;font-weight:900;color:var(--txt);white-space:nowrap}.primary{background:var(--r)!important;color:#fff!important}.wrap{padding:6px}.bar{display:grid;grid-template-columns:44px 1fr 44px 70px;align-items:center;gap:6px;margin:8px 0}.month{font-size:26px;font-weight:950;text-align:center}.navbtn{width:44px;height:44px;border:1px solid var(--line);border-radius:14px;background:#fff;font-size:24px;font-weight:900}.calendar{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}.week,.grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr))}.week div{padding:10px 2px;text-align:center;font-weight:950;color:#4d3d55;font-size:13px;border-bottom:1px solid var(--line)}.day{min-height:82px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:3px;position:relative;overflow:hidden}.day:nth-child(7n){border-right:0}.num{font-weight:950;font-size:18px}.today .num{background:#0b7cff;color:#fff;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px}.selected{outline:4px solid var(--r);outline-offset:-4px;background:#fff8ff}.today.selected{outline:4px dashed var(--r)}.shiftNo{display:inline-flex;align-items:center;justify-content:center;min-width:42px;height:28px;border-radius:999px;background:#fff;border:2px solid var(--r2);color:#35113d;font-size:18px;font-weight:950;margin:0 auto 4px}.badge{margin-top:2px;border-radius:14px;border:2px solid;padding:6px 2px;min-height:52px;text-align:center;font-weight:900;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2px}.work{background:var(--work);border-color:var(--workb);color:#5b1168}.rest{background:var(--rest);border-color:var(--restb);color:#087139}.restComp{background:repeating-linear-gradient(135deg,#d8f8e1 0 9px,#fff 9px 15px);border-color:#42c979;color:#087139}.dd{background:var(--dd);border-color:var(--ddb);color:#c20d34}.vac{background:var(--vac);border-color:var(--vacb);color:#00608f}.lz{background:var(--lz);border-color:var(--lzb);color:#7c2d12}.rest,.vac,.dd,.lz{position:absolute;left:3px;right:3px;top:30px;bottom:3px;min-height:0}.bigD{font-size:24px}.timeTop,.timeBot{font-size:13px;line-height:1;font-weight:950}.sep{font-size:14px;color:var(--r);font-weight:950}.changedDot{position:absolute;right:5px;top:5px;width:9px;height:9px;background:#facc15;border:2px solid #fff;border-radius:50%;box-shadow:0 0 0 1px #b45309}.dataToggle{margin-left:auto;border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 10px;font-weight:950;color:var(--r)}.adminPanel,.detail{background:#fff;border:1px solid var(--line);border-radius:20px;padding:14px;margin-top:10px}.detail h2{margin:4px 0 8px;font-size:26px}.pill{display:inline-block;border-radius:999px;padding:8px 12px;font-weight:950}.summaryCard{background:linear-gradient(135deg,var(--r),#6e267a);color:#fff;border-radius:20px;padding:16px;margin:12px 0}.summaryTop{display:flex;justify-content:space-between;gap:12px}.summaryTitle{font-size:30px;font-weight:950}.summaryDate{opacity:.92;font-weight:750}.servicePill{background:rgba(255,255,255,.16);padding:7px 10px;border-radius:999px;font-weight:900;display:flex;align-items:center;justify-content:center;text-align:center;min-width:86px}.summaryTimes{display:grid;grid-template-columns:1fr 44px 1fr;gap:8px;align-items:center;background:#fff;color:var(--txt);border-radius:18px;padding:12px;margin-top:14px;text-align:center}.summaryTimes b{display:block;color:var(--r);font-size:26px}.summaryTimes small{color:var(--mut);font-weight:800}.summaryArrow{font-size:26px;color:var(--r);font-weight:950}.miniGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}.miniBox{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center;color:var(--txt)}.miniBox b{display:block}.miniBox small{color:var(--mut);font-weight:800}.timeline{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;margin-top:12px}.timeline h3{margin:0 0 10px;color:var(--r)}.tl{display:grid;grid-template-columns:56px 30px 1fr;gap:10px;align-items:start;padding:9px 0;position:relative}.tl:not(:last-child)::after{content:"";position:absolute;left:70px;top:40px;bottom:-8px;width:2px;background:linear-gradient(var(--r2),#ead9ea)}.tlIcon{width:30px;height:30px;border:2px solid var(--r2);border-radius:50%;display:flex;align-items:center;justify-content:center;background:#fff;font-size:14px;z-index:1}.tlIcon.start{border-color:#4ade80}.tlIcon.train{border-color:#b65ac0}.tlIcon.mid{border-color:#93c5fd}.tlIcon.end{border-color:#fb7185}.tlIcon.arrival{border-color:#60a5fa}.tlIcon.restgap{border-color:#fbbf24}.tlIcon.deje{border-color:#fb7185}.tlIcon.pdf{border-color:#64748b}.pdfOverlay{position:fixed;inset:0;background:#fff;z-index:99;display:flex;flex-direction:column}.pdfTop{display:flex;align-items:center;gap:8px;padding:8px;border-bottom:1px solid var(--line);background:#fff}.pdfFrame{border:0;flex:1;width:100%}.tlText b{display:block}.tlText small{color:var(--mut)}.muted{color:var(--mut)}.row{border-left:4px solid var(--r);background:#faf6fb;padding:10px;border-radius:12px;margin-top:8px}.changePanel{background:#fff7df;border:1px solid #facc15;border-radius:16px;padding:12px;margin-top:12px}.changeGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.input,.select{width:100%;padding:12px;border:1px solid var(--line);border-radius:14px;font-size:15px;background:#fff}.login{position:fixed;inset:0;background:#fbf8fc;z-index:50;display:flex;align-items:center;justify-content:center;padding:20px}.loginbox{background:#fff;border:1px solid var(--line);border-radius:24px;padding:22px;max-width:380px;width:100%;box-shadow:0 12px 35px #0001}.ok{color:#087139;font-weight:900}.err{color:#c20d34;font-weight:900}.changesList{display:grid;gap:10px}.changeItem,.balanceBox{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px}.balanceGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:560px){.month{font-size:22px}.day{min-height:78px;padding:2px}.num{font-size:15px}.shiftNo{min-width:32px;height:22px;font-size:15px}.badge{min-height:42px;border-radius:11px}.timeTop,.timeBot{font-size:11px}.week div{font-size:11px}.bar{grid-template-columns:38px 1fr 38px 58px}.navbtn{width:38px;height:38px}.btn{padding:8px 10px;font-size:13px}.changeGrid{grid-template-columns:1fr}.summaryTitle{font-size:25px}.summaryTimes b{font-size:22px}.miniBox{padding:8px;font-size:12px}}
 
 /* v2.4 DD asignado + registro visual */
@@ -268,8 +268,8 @@
 .versionStampV54{font-size:11px;color:#75627a;font-weight:900;margin-top:1px}
 </style>
 </head><body>
-<div id="login" class="login"><div class="loginbox"><div class="logo">renfe</div><h1>App Turnos Pro <span class="ver">v8.2</span></h1><p class="muted">Acceso privado para administrar datos.</p><input id="user" class="input" placeholder="Usuario"><input id="pass" class="input" placeholder="Contraseña" type="password"><label style="display:flex;gap:8px;align-items:center;margin:8px 0;font-weight:800"><input id="remember" type="checkbox" checked> Recordar sesión 24 horas</label><button class="btn primary" style="width:100%" onclick="doLogin()">Entrar</button><p id="loginMsg" class="err"></p></div></div>
-<header><div class="top"><div class="logo">renfe</div><div><div class="title">App Turnos Pro <span class="ver">v8.2</span></div><div class="sub">Calendario visual · cambios · marcos · IndexedDB</div></div><button class="dataToggle" onclick="toggleAdmin()">Datos ▾</button></div><div id="adminPanel" class="adminPanel hidden"><b>Importación privada</b><p class="muted">Archivos guardados solo en este dispositivo.</p><button class="btn primary" onclick="pick('yearFile')">📅 Importar gráfico anual</button><button class="btn primary" onclick="pick('marcoFile')">🚄 Importar Marco mensual JSON</button><button class="btn" onclick="pick('pdfFile')">📄 Importar PDF Marco</button><button class="btn" onclick="exportExcel()">📤 Exportar Excel</button><button class="btn" onclick="exportBackup()">💾 Copia seguridad JSON</button><button class="btn" onclick="pick('historyFile')">📥 Importar histórico de cambios</button><button class="btn" onclick="clearData()">Borrar datos locales</button><div id="importStatus" class="muted"></div></div><input id="yearFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'year')"><input id="marcoFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'marco')"><input id="pdfFile" type="file" accept="application/pdf,.pdf" class="hidden" onchange="importPdf(event)"><input id="historyFile" type="file" accept=".json,application/json" class="hidden" onchange="importHistoryBackup(event)"></header>
+<div id="login" class="login"><div class="loginbox"><div class="logo">renfe</div><h1>App Turnos Pro <span class="ver">v8.3</span></h1><p class="muted">Acceso privado para administrar datos.</p><input id="user" class="input" placeholder="Usuario"><input id="pass" class="input" placeholder="Contraseña" type="password"><label style="display:flex;gap:8px;align-items:center;margin:8px 0;font-weight:800"><input id="remember" type="checkbox" checked> Recordar sesión 24 horas</label><button class="btn primary" style="width:100%" onclick="doLogin()">Entrar</button><p id="loginMsg" class="err"></p></div></div>
+<header><div class="top"><div class="logo">renfe</div><div><div class="title">App Turnos Pro <span class="ver">v8.3</span></div><div class="sub">Calendario visual · cambios · marcos · IndexedDB</div></div><button class="dataToggle" onclick="toggleAdmin()">Datos ▾</button></div><div id="adminPanel" class="adminPanel hidden"><b>Importación privada</b><p class="muted">Archivos guardados solo en este dispositivo.</p><button class="btn primary" onclick="pick('yearFile')">📅 Importar gráfico anual</button><button class="btn primary" onclick="pick('marcoFile')">🚄 Importar Marco mensual JSON</button><button class="btn" onclick="pick('pdfFile')">📄 Importar PDF Marco</button><button class="btn" onclick="exportExcel()">📤 Exportar Excel</button><button class="btn" onclick="exportBackup()">💾 Copia seguridad JSON</button><button class="btn" onclick="pick('historyFile')">📥 Importar histórico de cambios</button><button class="btn" onclick="clearData()">Borrar datos locales</button><div id="importStatus" class="muted"></div></div><input id="yearFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'year')"><input id="marcoFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'marco')"><input id="pdfFile" type="file" accept="application/pdf,.pdf" class="hidden" onchange="importPdf(event)"><input id="historyFile" type="file" accept=".json,application/json" class="hidden" onchange="importHistoryBackup(event)"></header>
 <div class="wrap"><section id="calendarView" class="view"><div class="bar"><button class="navbtn" onclick="move(-1)">‹</button><div class="month" id="monthTitle"></div><button class="navbtn" onclick="move(1)">›</button><button class="btn" onclick="today()">Hoy</button></div><div class="calendar"><div class="week"><div>LUN</div><div>MAR</div><div>MIÉ</div><div>JUE</div><div>VIE</div><div>SÁB</div><div>DOM</div></div><div id="grid" class="grid"></div></div><div id="detail" class="detail"><span class="pill" style="background:#f2e3f4;color:var(--r)">Selecciona un día</span><h2>Detalle del turno</h2><p class="muted">Pulsa una casilla para ver inicio, fin, desarrollo y cambios.</p></div></section><section id="changesView" class="view hidden"><div class="detail"><h2>Registro de cambios</h2><div id="balances" class="balanceGrid"></div><h3>Historial</h3><div id="changesList" class="changesList"></div></div></section><section id="settingsView" class="view hidden"><div class="detail"><h2>Ajustes</h2><p>Datos cargados: <b id="dataState"></b></p></div></section></div>
 <nav style="position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);z-index:10"><button class="btn" onclick="show('calendarView')">📅<br>Calendario</button><button class="btn" onclick="scrollToDetail()">📋<br>Detalle</button><button class="btn" onclick="showChanges()">🔁<br>Cambios<br>Registro</button><button class="btn" onclick="show('settingsView')">⚙️<br>Ajustes</button><button class="btn" onclick="lockApp()">🔒<br>Bloq.</button></nav>
 <script>
@@ -320,7 +320,7 @@ function openPdf(page){if(!data.pdf?.dataUrl)return;let o=document.createElement
 
 
 // ===== v2.8 overrides: alarmas, PDF multipágina, memoria estable y calendario continuo =====
-try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v8.2');document.title='App Turnos Pro v8.2'}catch(e){}
+try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v8.3');document.title='App Turnos Pro v8.3'}catch(e){}
 current=new Date();
 data.alarms=data.alarms||{};data.disabledAlarms=data.disabledAlarms||{};data.people=data.people||[];data.alarmSettings=data.alarmSettings||{enabled:true,startOffset:60,trainOffset:30};
 function doLogin(){if(user.value.trim().toLowerCase()===ADMIN_USER&&pass.value.trim()===ADMIN_PASS){localStorage.setItem(AUTH+'Unlocked','1');localStorage.setItem(AUTH+'SessionUntil',Date.now()+(remember.checked?86400000:3600000));localStorage.removeItem(AUTH+'Attempts');localStorage.removeItem(AUTH+'LockUntil');login.classList.add('hidden');admin=true;updateImportUI();return}loginMsg.textContent='Usuario o contraseña incorrectos.'}
@@ -690,7 +690,7 @@ setTimeout(openInitialViewV44,180);
 
 
 // ===== v5.0 memoria estable, histórico y lector JSON =====
-const APP_VERSION='8.2', BACKUP_KEY='AppTurnosBackupsV50';
+const APP_VERSION='8.3', BACKUP_KEY='AppTurnosBackupsV50';
 data.settings=data.settings||{}; data.settings.openMode=data.settings.openMode||'calendario';
 function safeSetV50(k,v){try{localStorage.setItem(k,v);return true}catch(e){console.warn(e);return false}}
 function fechaArchivoMemoria(){let d=new Date();return pad(d.getDate())+'-'+pad(d.getMonth()+1)+'-'+d.getFullYear()+'_memoria_turnos.json'}
@@ -957,9 +957,9 @@ function listDetraiblesV53(monthIndex){
     return dt.getMonth()===monthIndex;
   }).map(d=>Number(d.fecha.slice(8,10))).sort((a,b)=>a-b);
 }
-try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v8.2');document.title='App Turnos Pro v8.2'}catch(e){}
+try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v8.3');document.title='App Turnos Pro v8.3'}catch(e){}
 
-try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v8.2');document.title='App Turnos Pro v8.2'}catch(e){}
+try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v8.3');document.title='App Turnos Pro v8.3'}catch(e){}
 
 
 // ===== v5.3.1: DD trabajado = fondo rojo + rayas moradas + horas del turno asignado =====
@@ -1028,7 +1028,7 @@ changePanelHtml=function(ds,base,baseB,d,b){
 
 
 // ===== v5.4: una sola prioridad visual final para evitar que se pisen estados =====
-const APP_VERSION_V54='8.2';
+const APP_VERSION_V54='8.3';
 const APP_UPDATED_AT_V54='05/08/2026';
 function setVersionV54(){
   try{
@@ -1176,7 +1176,7 @@ setTimeout(bootIndexedDBV52,60);
 
 
 // ===== v5.7: base 5.4 limpia + persistencia segura + marcos por vigencia =====
-const APP_VERSION_V57='8.2';
+const APP_VERSION_V57='8.3';
 const APP_UPDATED_AT_V57='05/08/2026';
 const DB_NAME_V57='AppTurnosDBV57';
 const DB_VERSION_V57=1;
@@ -1377,7 +1377,7 @@ setTimeout(bootV57,120);
 
 
 // ===== v5.8: versión visible, historial mensual, PDFs gestionables y Ajustes sin duplicados =====
-const APP_VERSION_V58='8.2';
+const APP_VERSION_V58='8.3';
 const APP_UPDATED_AT_V58='05/08/2026';
 
 function setVersionV58(){
@@ -1510,7 +1510,7 @@ checkLogin();render();
 </style>
 <script id="v59-incidencias-js">
 // ===== v6.0: incidencias persistentes, iconos y cambio descanso/trabajo =====
-const APP_VERSION_V59='8.2';
+const APP_VERSION_V59='8.3';
 const APP_UPDATED_AT_V59='05/08/2026';
 data.incidents=data.incidents||{};
 
@@ -1640,7 +1640,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v60-final-js">
 (function(){
-  const APP_VERSION_V60='8.2';
+  const APP_VERSION_V60='8.3';
   const APP_UPDATED_V60='05/08/2026';
   function setVersionV60(){
     document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+APP_VERSION_V60);
@@ -1741,7 +1741,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v61-final-js">
 (function(){
-  const APP_VERSION_V61='8.2';
+  const APP_VERSION_V61='8.3';
   const APP_UPDATED_V61='05/08/2026';
 
   function setVersionV61(){
@@ -1858,7 +1858,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v62-final-js">
 (function(){
- const APP_VERSION_V62='8.2', APP_UPDATED_V62='05/08/2026';
+ const APP_VERSION_V62='8.3', APP_UPDATED_V62='05/08/2026';
  function setVersionV62(){
    document.title='App Turnos Pro v'+APP_VERSION_V62;
    document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+APP_VERSION_V62);
@@ -1943,7 +1943,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v63-final-js">
 (function(){
- const APP_VERSION_V63='8.2', APP_UPDATED_V63='05/08/2026';
+ const APP_VERSION_V63='8.3', APP_UPDATED_V63='05/08/2026';
  function setVersionV63(){
    document.title='App Turnos Pro v'+APP_VERSION_V63;
    document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+APP_VERSION_V63);
@@ -2104,7 +2104,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v65-final-js">
 (function(){
-  const APP_VERSION_V65='8.2', APP_UPDATED_V65='05/08/2026';
+  const APP_VERSION_V65='8.3', APP_UPDATED_V65='05/08/2026';
   function setVersionV65(){
     document.title='App Turnos Pro v'+APP_VERSION_V65;
     document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+APP_VERSION_V65);
@@ -2240,7 +2240,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v66-observaciones-js">
 (function(){
-  const APP_VERSION_V66='8.2', APP_UPDATED_V66='05/08/2026';
+  const APP_VERSION_V66='8.3', APP_UPDATED_V66='05/08/2026';
   data.observations=data.observations||{};
   function setVersionV66(){
     document.title='App Turnos Pro v'+APP_VERSION_V66;
@@ -2336,7 +2336,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v66-final-lock-js">
 (function(){
- const V='8.2', D='05/08/2026';
+ const V='8.3', D='05/08/2026';
  function lockV66(){
    if(document.title!=='App Turnos Pro v'+V)document.title='App Turnos Pro v'+V;
    document.querySelectorAll('.ver').forEach(e=>{if(e.textContent!=='v'+V)e.textContent='v'+V});
@@ -2372,7 +2372,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v67-cajas-registro-js">
 (function(){
-  const V='8.2', UPDATED='05/08/2026';
+  const V='8.3', UPDATED='05/08/2026';
   const MONTHS=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
   function setVersionV67(){
     document.title='App Turnos Pro v'+V;
@@ -2455,7 +2455,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
   const prevRender=window.render;
   window.render=function(){const r=prevRender?prevRender.apply(this,arguments):undefined;setVersionV67();return r};
   window.addEventListener('pageshow',setVersionV67);document.addEventListener('visibilitychange',()=>{if(!document.hidden)setVersionV67()});
-  /* temporizador v6.7 desactivado en v8.2 */
+  /* temporizador v6.7 desactivado en v8.3 */
   setTimeout(()=>{setVersionV67();if(selected)normalizeDayGroupsV67(selected)},700);
 })();
 </script>
@@ -2521,7 +2521,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v68-flechas-js">
 (function(){
-  const V='8.2', UPDATED='05/08/2026';
+  const V='8.3', UPDATED='05/08/2026';
   const MONTHS=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
   function setVersionV68(){
     document.title='App Turnos Pro v'+V;
@@ -2591,7 +2591,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
   window.render=function(){const r=prevRender?prevRender.apply(this,arguments):undefined;setVersionV68();return r};
   window.addEventListener('pageshow',setVersionV68);
   document.addEventListener('visibilitychange',()=>{if(!document.hidden)setVersionV68()});
-  /* temporizador v6.8 desactivado en v8.2 */
+  /* temporizador v6.8 desactivado en v8.3 */
   setTimeout(setVersionV68,200);
 })();
 </script>
@@ -2744,8 +2744,8 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
     fresh.dataset.rebuiltV69='1';
     fresh.innerHTML=''
       +'<div class="loginbox">'
-      +'<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><div class="logo">renfe</div><span style="display:inline-flex;padding:4px 10px;border-radius:999px;background:#f2e3f4;color:#8a0f82;font-weight:950">v8.2</span></div>'
-      +'<h1 style="margin-bottom:8px">App Turnos Pro <span class="ver">v8.2</span></h1>'
+      +'<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><div class="logo">renfe</div><span style="display:inline-flex;padding:4px 10px;border-radius:999px;background:#f2e3f4;color:#8a0f82;font-weight:950">v8.3</span></div>'
+      +'<h1 style="margin-bottom:8px">App Turnos Pro <span class="ver">v8.3</span></h1>'
       +'<p class="muted" style="font-weight:800">Versión 8.2 · Actualizada 05/08/2026</p>'
       +'<p class="muted">Acceso privado para administrar datos.</p>'
       +'<input id="user" name="username" type="text" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" placeholder="Usuario">'
@@ -2815,7 +2815,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v80-registry-boceto2-js">
 (function(){
-  const V80_VERSION='8.2', V80_DATE='07/08/2026';
+  const V80_VERSION='8.3', V80_DATE='07/08/2026';
   const MONTHS=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
   let activeSectionV80='debts';
 
@@ -2826,7 +2826,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
       document.querySelectorAll('#loginVersionBadgeV58,#loginVersionBadgeV59').forEach(e=>e.textContent='v'+V80_VERSION);
       const stamp=document.getElementById('loginVersionV57');
       if(stamp)stamp.textContent='Versión '+V80_VERSION+' · Actualizada '+V80_DATE;
-    }catch(e){console.warn('Versión v8.2',e)}
+    }catch(e){console.warn('Versión v8.3',e)}
   }
   function normalizeDateV82(value){
     if(value===undefined||value===null)return '';
@@ -2987,6 +2987,127 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
       }
     });
   }
+})();
+</script>
+
+
+<style id="v83-final-css">
+/* v8.3: días de excesos, cajas reactivas y Excel legible */
+.badge.dexcesos{background:linear-gradient(135deg,#243b75,#d8a4d8)!important;border-color:#243b75!important;color:#fff!important;font-size:13px!important;font-weight:950!important;text-align:center!important}
+.dexcesosPill{background:#243b75;color:#fff;border:1px solid #d8a4d8}
+#chgNote{min-height:92px;resize:vertical;overflow:hidden}
+.v83LicenseExcessGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.v83ExcessBox{background:#f4f1ff;border:1px solid #b7a7e8;border-radius:16px;padding:12px}
+.v83ExcessHead{font-weight:950;color:#243b75;margin-bottom:8px}
+.v83Counter{display:flex;align-items:center;justify-content:center;gap:12px;margin:10px 0}
+.v83Counter button{width:42px;height:42px;border-radius:999px;border:1px solid var(--line);background:#fff;font-size:24px;font-weight:950}
+.v83Counter b{font-size:30px;color:#243b75;min-width:42px;text-align:center}
+.v83TrainHint{font-size:12px;color:var(--mut);font-weight:800;margin-top:4px}
+.v83DscSss .shiftNo{margin-bottom:2px!important}
+@media(max-width:560px){.v83LicenseExcessGrid{grid-template-columns:1fr}.badge.dexcesos{font-size:11px!important}}
+</style>
+<script id="v83-final-js">
+(function(){
+  const V83='8.3', UPDATED83='07/08/2026';
+  data.excessBalance=Number(data.excessBalance||0);
+  data.excessAdjustments=Array.isArray(data.excessAdjustments)?data.excessAdjustments:[];
+
+  function setVersion83(){
+    try{
+      document.title='App Turnos Pro v'+V83;
+      document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+V83);
+      const loginBox=document.querySelector('.loginbox');
+      if(loginBox){
+        loginBox.querySelectorAll('#loginVersionBadgeV58,#loginVersionBadgeV59,#loginVersionFinalV66,#loginVersionV57,.v83Update').forEach(e=>e.remove());
+        const h=loginBox.querySelector('h1');
+        if(h){h.innerHTML='App Turnos Pro <span class="ver">v'+V83+'</span>';let p=document.createElement('p');p.className='muted v83Update';p.style='margin-top:-8px;font-weight:850';p.textContent='Actualizada '+UPDATED83;h.insertAdjacentElement('afterend',p)}
+      }
+      document.querySelectorAll('#settingsView .settingsBlock').forEach(b=>{const h=b.querySelector('h3');if(h&&h.textContent.trim()==='App Turnos Pro'){const p=b.querySelector('p');if(p)p.innerHTML='<b>Versión '+V83+'</b><br><span class="muted">Última actualización: '+UPDATED83+'</span>'}});
+    }catch(e){console.warn('setVersion83',e)}
+  }
+
+  function parseDate83(v){
+    if(v==null)return'';let s=String(v).trim(),m=s.match(/^(\d{4})[-\/](\d{1,2})[-\/](\d{1,2})/);if(m)return m[1]+'-'+String(+m[2]).padStart(2,'0')+'-'+String(+m[3]).padStart(2,'0');
+    m=s.match(/^(\d{1,2})[-\/](\d{1,2})[-\/](\d{2}|\d{4})/);if(!m)return'';let y=+m[3];if(m[3].length===2)y+=2000;return y+'-'+String(+m[2]).padStart(2,'0')+'-'+String(+m[1]).padStart(2,'0');
+  }
+  function mergedChanges83(){
+    const out=[],seen=new Set();
+    const norm=(raw,key,priority)=>{if(!raw||typeof raw!=='object')return;const n=raw.change&&typeof raw.change==='object'?raw.change:raw;const fecha=parseDate83(n.fecha||n.date||n.dia||key);if(!fecha)return;const c={...raw,...n,fecha,tipo:String(n.tipo||n.type||'').toUpperCase(),turno:String(n.turno||n.nuevoTurno||n.valorNuevo||''),persona:n.persona||n.companero||n.compañero||'',balance:n.balance||'neutral',cantidad:Number(n.cantidad||1)||1,nota:n.nota||n.note||'',tren:n.tren||n.train||n.material||'',_p:priority};const fp=[fecha,c.tipo,c.turno,c.originalTurno||'',c.persona,c.balance,c.cantidad].join('|').toLowerCase();if(seen.has(fp))return;seen.add(fp);out.push(c)};
+    Object.entries(data.changes||{}).forEach(([k,v])=>norm(v,k,1));
+    const r=data.records||[];(Array.isArray(r)?r.map((v,i)=>[i,v]):Object.entries(r)).forEach(([k,v])=>norm(v,k,2));
+    return out.sort((a,b)=>b.fecha.localeCompare(a.fecha));
+  }
+  function isDex(c){return ['DEXCESOS','DEXCESO','EXCESOS','DIA EXCESOS','DÍAS EXCESOS'].includes(String(c?.tipo||'').toUpperCase())}
+
+  const oldParse=window.parseChangeCommand;
+  window.parseChangeCommand=function(v){const s=String(v||'').trim().toUpperCase().replace(/\s+/g,' ');if(['DEXCESOS','D EXCESOS','DÍA EXCESOS','DIA EXCESOS','EXCESOS'].includes(s))return{tipo:'DEXCESOS',raw:'DEXCESOS'};return oldParse?oldParse(v):{turno:s,raw:s}};
+
+  const oldChangePanel=window.changePanelHtml;
+  window.changePanelHtml=function(ds,base,baseB,d,b){
+    let html=oldChangePanel?oldChangePanel(ds,base,baseB,d,b):'';const ch=data.changes?.[ds]||{};
+    html=html.replace(/<input id="chgNote"[^>]*value="([^"]*)"[^>]*>/, '<textarea id="chgNote" class="input" placeholder="Nota del cambio...">$1</textarea>');
+    html=html.replace(/<input id="chgNote"[^>]*>/, '<textarea id="chgNote" class="input" placeholder="Nota del cambio...">'+(typeof esc==='function'?esc(ch.nota||''):(ch.nota||''))+'</textarea>');
+    const train='<div><input id="chgTrainV83" class="input" inputmode="numeric" placeholder="Tren realizado / que llevas (mín. 7 dígitos)" value="'+(typeof esc==='function'?esc(ch.tren||''):(ch.tren||''))+'"><div class="v83TrainHint">Escribe el número completo del tren; debe contener al menos 7 dígitos.</div></div>';
+    html=html.replace(/(<textarea id="chgNote"[\s\S]*?<\/textarea>)/,'$1'+train);
+    html=html.replace(/Comandos:[\s\S]*?<\/p>/,'Comandos: <b>LZ</b> licencia · <b>D</b> descanso · <b>DD 123</b> detraíble pinchado · <b>DExcesos</b> día de exceso de jornada · o número de turno.</p>');
+    return html;
+  };
+  window.applyChange=function(ds){
+    const turnEl=document.getElementById('chgTurn'),personEl=document.getElementById('chgPerson'),balEl=document.getElementById('chgBalance'),qtyEl=document.getElementById('chgQty'),noteEl=document.getElementById('chgNote'),trainEl=document.getElementById('chgTrainV83');
+    const cmd=parseChangeCommand(turnEl?.value||''),persona=(personEl?.value||'').trim(),balance=balEl?.value||'neutral',cantidad=Number(qtyEl?.value||1),nota=(noteEl?.value||'').trim(),tren=(trainEl?.value||'').trim();
+    if(!cmd.raw)return;if(tren&&((tren.match(/\d/g)||[]).length<7)){alert('El número de tren debe contener al menos 7 dígitos.');return}
+    const base=dayData(ds),baseB=blockFor(base),prev=data.changes?.[ds]||{};if(persona&&!data.people.includes(persona))data.people.push(persona);
+    const rec={fecha:ds,originalTurno:base?.clave_turno||'',originalInicio:blockIni(baseB),originalFin:blockFin(baseB),originalMarco:data.meta?.marcoImported||'',persona,balance,cantidad,nota,tren,created:prev.created||new Date().toISOString(),updated:new Date().toISOString()};
+    if(cmd.tipo)rec.tipo=cmd.tipo;if(cmd.turno)rec.turno=cmd.turno;data.changes[ds]=rec;save();selectDay(ds);setTimeout(()=>refreshAlerts83(ds),80);
+  };
+
+  const prevEffective=window.effectiveDay,prevStatus=window.status,prevBlock=window.blockFor,prevBadge=window.typeBadge;
+  window.effectiveDay=function(ds){const ch=data.changes?.[ds],base=dayData(ds);if(ch&&isDex(ch))return{...(base||{fecha:ds}),fecha:ds,clave_turno:'DExcesos',tipo_dia:'Día exceso de jornada',tipo_norm:'DEXCESOS',changed:true,original:base,change:ch};return prevEffective?prevEffective(ds):base};
+  window.status=function(d){if(d&&(String(d.tipo_norm||'').toUpperCase()==='DEXCESOS'||String(d.clave_turno||'').toUpperCase()==='DEXCESOS'))return'dexcesos';return prevStatus?prevStatus(d):'empty'};
+  window.blockFor=function(d){if(d&&status(d)==='dexcesos')return null;return prevBlock?prevBlock(d):null};
+  window.typeBadge=function(d,b){const st=status(d);if(st==='dexcesos'){const mark=d?.changed?'<span class="dayIndicators"><span class="indChange">🔄</span></span>':'';return mark+'<div class="badge dexcesos">DExcesos</div>'}if(st==='dsc'||st==='sss'){const html=prevBadge?prevBadge(d,b):'';const turn=String(d?.clave_turno||'').trim();return turn?'<div class="v83DscSss"><div class="shiftNo">'+(typeof esc==='function'?esc(turn):turn)+'</div>'+html+'</div>':html}return prevBadge?prevBadge(d,b):''};
+
+  function refreshAlerts83(ds){
+    const detail=document.getElementById('detail');if(!detail)return;const groups=[...detail.querySelectorAll('.dayDetailGroupV66')];
+    const states={cambios:!!data.changes?.[ds],observaciones:!!data.observations?.[ds],incidencias:!!data.incidents?.[ds]};
+    groups.forEach(g=>{const sum=g.querySelector(':scope > summary');if(!sum)return;const t=sum.textContent.toLowerCase();let key=t.includes('cambio')?'cambios':t.includes('observ')?'observaciones':t.includes('incid')?'incidencias':'';if(!key)return;sum.querySelectorAll('.groupAlertV66').forEach(x=>x.remove());if(states[key]){const x=document.createElement('span');x.className='groupAlertV66';x.textContent='‼️';sum.appendChild(x)}});
+  }
+  const oldObs=window.saveObservationV66;window.saveObservationV66=function(ds){const r=oldObs?oldObs(ds):undefined;setTimeout(()=>refreshAlerts83(ds),80);return r};
+  const oldInc=window.saveIncidentV59;window.saveIncidentV59=async function(ds){const r=oldInc?await oldInc(ds):undefined;setTimeout(()=>refreshAlerts83(ds),80);return r};
+  const oldSelect=window.selectDay;window.selectDay=function(ds){const r=oldSelect?oldSelect(ds):undefined;setTimeout(()=>{refreshAlerts83(ds);const ta=document.getElementById('chgNote');if(ta){const grow=()=>{ta.style.height='auto';ta.style.height=Math.max(92,ta.scrollHeight)+'px'};grow();ta.addEventListener('input',grow,{passive:true})}if(status(effectiveDay(ds))==='dexcesos'){const detail=document.getElementById('detail');const pill=detail?.querySelector('.pill');if(pill){pill.className='pill dexcesosPill';pill.textContent='Día de exceso de jornada'}}},120);setVersion83();return r};
+
+  function adjustExcess83(delta){data.excessBalance=Number(data.excessBalance||0)+delta;data.excessAdjustments.push({fecha:new Date().toISOString(),delta,saldo:data.excessBalance});save();if(window.showChanges)showChanges()}
+  window.adjustExcess83=adjustExcess83;
+  const MONTHS83=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+  const e83=v=>typeof esc==='function'?esc(v):String(v||'');const pretty83=ds=>new Date(ds+'T12:00:00').toLocaleDateString('es-ES',{day:'numeric',month:'short',year:'numeric'});
+  function monthPanels83(items,card,empty){if(!items.length)return'<div class="v80Empty">'+empty+'</div>';const g={};items.forEach(x=>(g[x.fecha.slice(0,7)]??=[]).push(x));const cur=new Date().getFullYear()+'-'+String(new Date().getMonth()+1).padStart(2,'0');return Object.keys(g).sort().reverse().map((k,i)=>'<details class="v80Month" '+((k===cur||(!g[cur]&&i===0))?'open':'')+'><summary><span>'+MONTHS83[+k.slice(5)-1]+' '+k.slice(0,4)+'</span><span>'+g[k].length+'</span></summary><div class="v80MonthBody">'+g[k].map(card).join('')+'</div></details>').join('')}
+  let active83='debts';
+  function balances83(ch){const d={},m={};ch.forEach(c=>{if(!c.persona)return;const q=Number(c.cantidad)||1;if(c.balance==='debo')(d[c.persona]??=[]).push({...c,cantidad:q});if(c.balance==='meDebe')(m[c.persona]??=[]).push({...c,cantidad:q})});return{d,m}}
+  function total83(o){return Object.values(o).flat().reduce((s,c)=>s+(Number(c.cantidad)||1),0)}
+  function people83(o,cls){const ns=Object.keys(o);return ns.length?ns.map(n=>'<details class="v80Person '+cls+'"><summary><span>'+e83(n)+'</span><span class="v80PersonQty">'+o[n].reduce((s,c)=>s+c.cantidad,0)+' turnos</span></summary><div class="v80PersonDetail">'+o[n].map(c=>'<div><b>'+pretty83(c.fecha)+'</b> · '+e83(c.originalTurno||'—')+' → '+e83(c.tipo||c.turno||'—')+(c.nota?'<br>'+e83(c.nota):'')+'</div>').join('')+'</div></details>').join(''):'<div class="v80Empty">Sin turnos</div>'}
+  function registryPanel83(id,ch){
+    const lz=ch.filter(c=>c.tipo==='LZ'),dd=ch.filter(c=>c.tipo==='DD'),dex=ch.filter(isDex),reg=ch.filter(c=>!['LZ','DD','D','DEXCESOS'].includes(c.tipo));
+    if(id==='licenses')return'<div class="v80DetailTitle">Licencias y días de excesos</div><div class="v80DetailBody"><div class="v83LicenseExcessGrid"><div><div class="v83ExcessHead">Licencias LZ ('+lz.length+' usadas)</div>'+ (lz.length?lz.map(c=>'<div class="v80Row license"><b>'+pretty83(c.fecha)+'</b> · LZ'+(c.nota?'<br><span class="v80Small">'+e83(c.nota)+'</span>':'')+'</div>').join(''):'<div class="v80Empty">Sin licencias usadas.</div>')+'</div><div class="v83ExcessBox"><div class="v83ExcessHead">Días de excesos disponibles</div><div class="v83Counter"><button onclick="adjustExcess83(-1)">−</button><b>'+Number(data.excessBalance||0)+'</b><button onclick="adjustExcess83(1)">+</button></div><div class="v83ExcessHead">Días solicitados</div>'+(dex.length?dex.map(c=>'<div class="v80Row obs"><b>'+pretty83(c.fecha)+'</b> · DExcesos'+(c.nota?'<br><span class="v80Small">'+e83(c.nota)+'</span>':'')+'</div>').join(''):'<div class="v80Empty">Sin días de excesos solicitados.</div>')+'</div></div></div>';
+    if(id==='dd')return'<div class="v80DetailTitle">Detraíbles DD</div><div class="v80DetailBody">'+(dd.length?dd.map(c=>'<div class="v80Row dd"><b>'+pretty83(c.fecha)+'</b> · DD '+e83(c.turno||'—')+'</div>').join(''):'<div class="v80Empty">Sin detraíbles pinchados.</div>')+'</div>';
+    if(id==='changes')return'<div class="v80DetailTitle noLine">🔄 Cambios</div><div class="v80DetailBody">'+monthPanels83(reg,c=>'<div class="v80Row"><b>'+pretty83(c.fecha)+'</b><br>'+e83(c.originalTurno||'—')+' → '+e83(c.turno||c.tipo||'—')+(c.tren?'<br><b>Tren:</b> '+e83(c.tren):'')+(c.nota?'<br><span class="v80Small">'+e83(c.nota)+'</span>':''), 'Aún no hay cambios registrados.')+'</div>';
+    if(id==='observations'){const a=Object.entries(data.observations||{}).map(([k,o])=>({...o,fecha:parseDate83(o.fecha||k)})).filter(o=>o.fecha);return'<div class="v80DetailTitle noLine">🔎 Observaciones</div><div class="v80DetailBody">'+monthPanels83(a,o=>'<div class="v80Row obs"><b>'+pretty83(o.fecha)+'</b>'+(o.materials?'<br><b>Materiales:</b> '+e83(o.materials):'')+(o.note?'<br><span class="v80Small">'+e83(o.note)+'</span>':''),'Sin observaciones registradas.')+'</div>'}
+    if(id==='incidents'){const a=Object.entries(data.incidents||{}).map(([k,o])=>({...o,fecha:parseDate83(o.fecha||k)})).filter(o=>o.fecha);return'<div class="v80DetailTitle noLine">⚠️ Incidencias</div><div class="v80DetailBody">'+monthPanels83(a,o=>'<div class="v80Row inc"><b>'+pretty83(o.fecha)+'</b>'+(o.note?'<br><span class="v80Small">'+e83(o.note)+'</span>':''),'Sin incidencias registradas.')+'</div>'}
+    const b=balances83(ch);return'<div class="v80DetailTitle">Debo / Me deben</div><div class="v80DetailBody"><div class="v80DebtGrid"><div class="v80DebtCol"><div class="v80DebtHead debo">DEBO ('+total83(b.d)+' turnos)</div>'+people83(b.d,'debo')+'</div><div class="v80DebtCol"><div class="v80DebtHead meDeben">ME DEBEN ('+total83(b.m)+' turnos)</div>'+people83(b.m,'meDeben')+'</div></div></div>';
+  }
+  window.selectRegistryV83=function(id){active83=id;document.querySelectorAll('.v80Card').forEach(c=>c.classList.toggle('active',c.dataset.section===id));const h=document.getElementById('v80DetailHost');if(h)h.innerHTML=registryPanel83(id,mergedChanges83())};
+  window.showChanges=function(){show('changesView');const ch=mergedChanges83(),b=balances83(ch),lz=ch.filter(c=>c.tipo==='LZ'),dex=ch.filter(isDex),dd=ch.filter(c=>c.tipo==='DD');const root=document.getElementById('changesView');if(!root)return;const card=(id,ic,t,count,sub)=>'<button class="v80Card '+(active83===id?'active':'')+'" data-section="'+id+'" onclick="selectRegistryV83(\''+id+'\')"><span class="v80CardIcon">'+ic+'</span><span class="v80CardTitle">'+t+'</span><span class="v80CardCount">'+count+'</span><span class="v80CardSub">'+sub+'</span></button>';root.innerHTML='<div class="detail"><div class="v80RegistryHeader"><h2>Cambios y registros</h2><p>Resumen y detalle de tu actividad</p></div><div class="v80RegistryBody"><div class="v80Cards">'+card('debts','👥','Debo / Me deben',total83(b.d)+' / '+total83(b.m),'turnos')+card('licenses','🗓️','Licencias / Excesos',lz.length+' / '+dex.length,'usadas / solicitados')+card('dd','DD','Detraíbles DD',dd.length,'pinchados')+card('changes','🔄','Cambios','–','')+card('observations','🔎','Observaciones','–','')+card('incidents','⚠️','Incidencias','–','')+'</div><div class="v80Hint">Selecciona una sección para ver el detalle</div><div id="v80DetailHost" class="v80Detail">'+registryPanel83(active83,ch)+'</div></div></div>';setVersion83()};
+
+  function xml83(v){return String(v??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+  window.exportExcel=function(){
+    const heads=['Fecha','Día','Turno original','Turno realizado','Tipo de día','Modificación','Compañero','Balance','Cantidad','Nota del cambio','Tren realizado','Inicio','Final','Duración','Observaciones / materiales','Incidencia','Categorías','Nota incidencia'];
+    const rows=[heads];(data.calendar||[]).forEach(x=>{const ds=x.fecha,d=effectiveDay(ds),b=blockFor(d),c=data.changes?.[ds]||{},o=data.observations?.[ds]||{},i=data.incidents?.[ds]||{};const cats=Object.entries(i.categories||{}).filter(([,v])=>v).map(([k])=>k.toUpperCase()).join(', ');rows.push([ds,new Date(ds+'T12:00:00').toLocaleDateString('es-ES',{weekday:'long'}),x.clave_turno||'',d?.clave_turno||'',d?.tipo_dia||'',c.turno||c.tipo?'Sí':'No',c.persona||'',c.balance||'',c.cantidad||'',c.nota||'',c.tren||'',blockIni(b),blockFin(b),b?.duracion||'',[(o.materials||''),(o.note||'')].filter(Boolean).join(' · '),i.fecha?'Sí':'No',cats,i.note||''])});
+    const xml='<?xml version="1.0"?><Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"><Styles><Style ss:ID="Header"><Font ss:Bold="1"/><Interior ss:Color="#EAD9EA" ss:Pattern="Solid"/><Alignment ss:WrapText="1"/></Style><Style ss:ID="Cell"><Alignment ss:Vertical="Top" ss:WrapText="1"/></Style></Styles><Worksheet ss:Name="Calendario realizado"><Table>'+rows.map((r,ri)=>'<Row>'+r.map(v=>'<Cell ss:StyleID="'+(ri===0?'Header':'Cell')+'"><Data ss:Type="String">'+xml83(v)+'</Data></Cell>').join('')+'</Row>').join('')+'</Table><WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel"><FreezePanes/><FrozenNoSplit/><SplitHorizontal>1</SplitHorizontal><TopRowBottomPane>1</TopRowBottomPane><ActivePane>2</ActivePane><AutoFilter x:Range="R1C1:R'+rows.length+'C'+heads.length+'" xmlns:x="urn:schemas-microsoft-com:office:excel"/></WorksheetOptions></Worksheet></Workbook>';
+    downloadBlob('\ufeff'+xml,'AppTurnos_v83_calendario.xls','application/vnd.ms-excel;charset=utf-8');
+  };
+
+  const oldRender=window.render;window.render=function(){const r=oldRender?oldRender():undefined;setVersion83();return r};
+  const oldShow=window.show;window.show=function(id){const r=oldShow?oldShow(id):undefined;if(id==='settingsView')setTimeout(setVersion83,80);else setVersion83();return r};
+  setVersion83();window.addEventListener('pageshow',setVersion83);
 })();
 </script>
 
