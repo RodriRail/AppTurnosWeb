@@ -3294,196 +3294,200 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </script>
 
 
-<style id="v86-final-css">
-/* v8.6: login limpio + número de turno siempre visible + indicadores libres + hoy sin desplazar */
-/* El círculo del día actual es una superposición visual: no altera la altura de la fila. */
-.today .num{
+<style id="v87-final-css">
+/* v8.7 — capa final única: versión + calendario uniforme según boceto */
+
+/* LOGIN: una sola versión, junto a App Turnos Pro; nada junto a Renfe. */
+.loginbox h1{display:flex!important;align-items:center!important;gap:10px!important;flex-wrap:wrap!important}
+.loginbox h1 .ver{
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  padding:5px 11px!important;border-radius:999px!important;background:#f2e3f4!important;
+  color:var(--r)!important;font-size:.42em!important;line-height:1!important;font-weight:950!important;
+  white-space:nowrap!important;vertical-align:middle!important
+}
+.loginbox .v87Update{margin:-5px 0 13px!important;font-weight:850!important;color:var(--mut)!important}
+
+/* CALENDARIO: el número del día vive siempre en la banda superior, fuera de la asignación. */
+#grid .day,#grid .day.outsideMonth{
   position:relative!important;
-  display:inline-block!important;
-  min-width:0!important;
-  width:auto!important;
-  height:auto!important;
-  line-height:normal!important;
-  padding:0!important;
-  background:transparent!important;
-  color:#fff!important;
-  border-radius:0!important;
-  z-index:30!important;
-  isolation:isolate;
+  height:112px!important;min-height:112px!important;
+  padding:3px!important;overflow:hidden!important;
 }
-.today .num::before{
-  content:"";
-  position:absolute;
-  width:29px;
-  height:29px;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
-  border-radius:999px;
-  background:#0b7cff;
-  z-index:-1;
-  box-shadow:0 0 0 2px rgba(255,255,255,.92);
+#grid .day .num{
+  position:absolute!important;left:7px!important;top:5px!important;z-index:60!important;
+  margin:0!important;padding:0!important;width:auto!important;min-width:0!important;height:auto!important;
+  background:transparent!important;color:var(--txt)!important;border-radius:0!important;
+  font-size:18px!important;line-height:26px!important;font-weight:950!important;
 }
-.today.selected .num::before{box-shadow:0 0 0 2px #fff,0 0 0 4px rgba(11,124,255,.42)}
+#grid .day.today .num{color:#fff!important;text-align:center!important;width:29px!important;height:29px!important;line-height:29px!important;top:3px!important;left:4px!important}
+#grid .day.today .num::before{
+  content:"";position:absolute!important;inset:0!important;width:29px!important;height:29px!important;
+  transform:none!important;border-radius:999px!important;background:#0b7cff!important;z-index:-1!important;
+  box-shadow:0 0 0 2px rgba(255,255,255,.95)!important
+}
+#grid .day.today.selected .num::before{box-shadow:0 0 0 2px #fff,0 0 0 4px rgba(11,124,255,.35)!important}
 
-/* Los avisos quedan anclados a la esquina derecha y nunca pisan el número del día. */
-.dayIndicators,
-.dayMarkersV59,
-.dayIndicatorsV61,
-.dayIndicatorsV64,
-.dayIndicatorsV65{
-  left:auto!important;
-  right:3px!important;
-  top:4px!important;
-  z-index:35!important;
-  max-width:38px!important;
+/* Iconos: siempre esquina superior derecha. Incidencia a la izquierda de cambio; bicolor debajo. */
+#grid .day .dayIndicatorsV65,
+#grid .day .dayIndicators,
+#grid .day .dayMarkersV59,
+#grid .day .dayIndicatorsV61,
+#grid .day .dayIndicatorsV64{
+  position:absolute!important;left:auto!important;right:5px!important;top:5px!important;z-index:65!important;
+  display:flex!important;flex-direction:column!important;align-items:flex-end!important;gap:2px!important;
+  pointer-events:none!important;max-width:none!important
 }
-.dayIndicatorsV65 .topRowV65{justify-content:flex-end!important}
+#grid .day .dayIndicatorsV65 .topRowV65{display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:flex-end!important;gap:4px!important}
+#grid .day .dayIndicatorsV65 .incidentV65,#grid .day .dayIndicatorsV65 .changeV65{font-size:15px!important;line-height:17px!important;width:auto!important;height:auto!important}
+#grid .day .dayIndicatorsV65 .bicolorV65{width:22px!important;height:8px!important;border-radius:999px!important;margin:0!important}
 
-/* En DSC/SSS reservamos una banda fija para la pastilla con la clave del turno. */
-.day.v86SpecialDay .v86SpecialShift{
-  position:absolute!important;
-  top:27px!important;
-  left:50%!important;
-  transform:translateX(-50%)!important;
-  z-index:28!important;
-  margin:0!important;
-  height:23px!important;
-  min-width:36px!important;
-  padding:0 6px!important;
-  font-size:14px!important;
-  line-height:19px!important;
-  background:#fff!important;
-  border:2px solid var(--r2)!important;
-  border-radius:999px!important;
-  color:#35113d!important;
-  display:flex!important;
-  align-items:center!important;
-  justify-content:center!important;
+/* Toda asignación coloreada ocupa exactamente el mismo rectángulo. */
+#grid .day .badge.work,
+#grid .day .badge.rest,
+#grid .day .badge.vac,
+#grid .day .badge.dd,
+#grid .day .badge.lz,
+#grid .day .badge.dsc,
+#grid .day .badge.sss,
+#grid .day .badge.dexcesos,
+#grid .day .badge.ddworkV65,
+#grid .day .badge.ddworkFinal,
+#grid .day .badge.ddwork,
+#grid .day .badge.manualRest{
+  position:absolute!important;left:5px!important;right:5px!important;top:35px!important;bottom:5px!important;
+  width:auto!important;height:auto!important;min-height:0!important;margin:0!important;transform:none!important;
+  border-radius:13px!important;box-sizing:border-box!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;flex-direction:column!important;
 }
-.day.v86SpecialDay .badge.dsc,
-.day.v86SpecialDay .badge.sss{
-  top:52px!important;
-  bottom:4px!important;
-  height:auto!important;
-  min-height:0!important;
+
+/* La clave se sitúa DENTRO de la caja de asignación, en una pastilla superior. */
+#grid .day .shiftNo,
+#grid .day .v86SpecialShift{
+  position:absolute!important;left:50%!important;top:39px!important;transform:translateX(-50%)!important;
+  z-index:58!important;margin:0!important;min-width:36px!important;height:20px!important;padding:0 7px!important;
+  background:rgba(255,255,255,.94)!important;border:2px solid var(--r2)!important;border-radius:999px!important;
+  color:#35113d!important;font-size:13px!important;line-height:16px!important;font-weight:950!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;white-space:nowrap!important
 }
+/* Trabajo: deja hueco para la pastilla y conserva horas centradas. */
+#grid .day .badge.work{padding-top:18px!important}
+#grid .day .badge.work .timeTop{margin-top:2px!important}
+
+/* DSC / SSS: pastilla dentro de la propia caja rayada, no fuera. */
+#grid .day.v86SpecialDay .v86SpecialShift{top:39px!important}
+#grid .day.v86SpecialDay .badge.dsc,#grid .day.v86SpecialDay .badge.sss{top:35px!important;bottom:5px!important;padding-top:17px!important}
+#grid .day .v83DscSss .shiftNo{top:39px!important}
+
+/* Días sin clave no dejan pastillas fantasma. */
+#grid .day .badge.rest + .shiftNo,#grid .day .badge.vac + .shiftNo,#grid .day .badge.lz + .shiftNo{display:none!important}
+
 @media(max-width:560px){
-  .today .num::before{width:27px;height:27px}
-  .day.v86SpecialDay .v86SpecialShift{top:25px!important;height:21px!important;font-size:12px!important;min-width:32px!important}
-  .day.v86SpecialDay .badge.dsc,
-  .day.v86SpecialDay .badge.sss{top:48px!important}
+  #grid .day,#grid .day.outsideMonth{height:106px!important;min-height:106px!important}
+  #grid .day .num{font-size:16px!important;line-height:25px!important;left:5px!important;top:4px!important}
+  #grid .day.today .num{width:27px!important;height:27px!important;line-height:27px!important;left:3px!important;top:3px!important}
+  #grid .day.today .num::before{width:27px!important;height:27px!important}
+  #grid .day .badge.work,#grid .day .badge.rest,#grid .day .badge.vac,#grid .day .badge.dd,#grid .day .badge.lz,
+  #grid .day .badge.dsc,#grid .day .badge.sss,#grid .day .badge.dexcesos,#grid .day .badge.ddworkV65,
+  #grid .day .badge.ddworkFinal,#grid .day .badge.ddwork,#grid .day .badge.manualRest{top:33px!important;bottom:4px!important;left:4px!important;right:4px!important}
+  #grid .day .shiftNo,#grid .day .v86SpecialShift,#grid .day.v86SpecialDay .v86SpecialShift,#grid .day .v83DscSss .shiftNo{top:37px!important;height:18px!important;min-width:31px!important;padding:0 5px!important;font-size:11px!important}
+  #grid .day.v86SpecialDay .badge.dsc,#grid .day.v86SpecialDay .badge.sss{top:33px!important;bottom:4px!important}
+  #grid .day .dayIndicatorsV65{right:3px!important;top:4px!important}
+  #grid .day .dayIndicatorsV65 .incidentV65,#grid .day .dayIndicatorsV65 .changeV65{font-size:13px!important;line-height:15px!important}
+  #grid .day .dayIndicatorsV65 .bicolorV65{width:19px!important;height:7px!important}
 }
-
-/* En el login solo queda la versión junto al nombre y una única fecha debajo. */
-.loginbox .v86Update{margin:-4px 0 12px!important;font-weight:900!important;color:var(--r)!important}
 </style>
-<script id="v86-final-js">
+<script id="v87-final-js">
 (function(){
-  const V86='8.6', UPDATED86='13/08/2026';
+  const APP_VERSION_FINAL='8.7';
+  const APP_UPDATED_FINAL='13/08/2026';
 
-  function cleanLogin86(){
-    const box=document.querySelector('.loginbox');
-    if(!box)return;
-    /* Elimina todas las insignias y líneas de versión heredadas. */
-    box.querySelectorAll('#loginVersionBadgeV58,#loginVersionBadgeV59,#loginVersionFinalV66,#loginVersionFinalV69,#loginVersionV57,.v83Update,.v84Update,.v85Update').forEach(e=>e.remove());
+  function cleanLoginV87(){
+    const box=document.querySelector('.loginbox');if(!box)return;
+    /* Nada de versiones junto al logo Renfe. */
+    box.querySelectorAll('#loginVersionBadgeV58,#loginVersionBadgeV59,#loginVersionFinalV66,#loginVersionFinalV69,#loginVersionV57,.v83Update,.v84Update,.v85Update,.v86Update,.v87Update').forEach(e=>e.remove());
+    /* Borra cualquier línea heredada de versión/actualización, sin tocar el texto de acceso. */
     [...box.querySelectorAll('p')].forEach(p=>{
-      if(p.classList.contains('v86Update'))return;
       const t=(p.textContent||'').trim();
       if(/^(Versión\s+\d|Actualizada\s+\d|Última actualización\s*:)/i.test(t))p.remove();
     });
     const h=box.querySelector('h1');
     if(h){
-      const wanted='App Turnos Pro';
-      if(!h.querySelector('.ver') || (h.querySelector('.ver')?.textContent||'')!=='v'+V86 || !h.textContent.includes(wanted)){
-        h.innerHTML=wanted+' <span class="ver">v'+V86+'</span>';
-      }
-      let p=box.querySelector('.v86Update');
-      if(!p){p=document.createElement('p');p.className='muted v86Update';h.insertAdjacentElement('afterend',p)}
-      p.textContent='Última actualización: '+UPDATED86;
+      h.innerHTML='App Turnos Pro <span class="ver">v'+APP_VERSION_FINAL+'</span>';
+      const p=document.createElement('p');p.className='muted v87Update';
+      p.textContent='Última actualización: '+APP_UPDATED_FINAL;
+      h.insertAdjacentElement('afterend',p);
     }
   }
 
-  function setVersion86(){
-    try{
-      document.title='App Turnos Pro v'+V86;
-      document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+V86);
-      cleanLogin86();
-      document.querySelectorAll('#settingsView .settingsBlock').forEach(b=>{
-        const h=b.querySelector('h3');
-        if(h&&h.textContent.trim()==='App Turnos Pro'){
-          const p=b.querySelector('p');
-          if(p)p.innerHTML='<b>Versión '+V86+'</b><br><span class="muted">Última actualización: '+UPDATED86+'</span>';
-        }
-      });
-    }catch(e){console.warn('v8.6 versión',e)}
-  }
-
-  function dateFromDay86(day){
-    const m=(day.getAttribute('onclick')||'').match(/selectDay\('([^']+)'\)/);
-    return m?m[1]:'';
-  }
-
-  function numericTurn86(d){
-    const raw=String(d?.clave_turno||d?.turno||'').trim();
-    const m=raw.match(/\b(\d{1,5})\b/);
-    return m?m[1]:'';
-  }
-
-  function improveCalendar86(){
-    document.querySelectorAll('#grid .day').forEach(day=>{
-      const ds=dateFromDay86(day);if(!ds)return;
-      let d=null,st='';
-      try{d=typeof effectiveDay==='function'?effectiveDay(ds):null;st=d&&typeof status==='function'?status(d):''}catch(e){}
-      day.classList.toggle('v86SpecialDay',st==='dsc'||st==='sss');
-      day.querySelectorAll('.v86SpecialShift').forEach((x,i)=>{if(i>0)x.remove()});
-      if(st==='dsc'||st==='sss'){
-        const turn=numericTurn86(d);
-        let pill=day.querySelector('.v86SpecialShift');
-        /* Reutiliza la pastilla ya creada por versiones anteriores si existe. */
-        if(!pill){
-          const old=[...day.querySelectorAll('.shiftNo')].find(x=>/^\d{1,5}$/.test((x.textContent||'').trim()));
-          if(old){pill=old;pill.classList.add('v86SpecialShift')}
-        }
-        if(turn){
-          if(!pill){pill=document.createElement('div');pill.className='shiftNo v86SpecialShift';day.appendChild(pill)}
-          pill.textContent=turn;
-        }else if(pill){pill.remove()}
-      }else{
-        day.querySelectorAll('.v86SpecialShift').forEach(x=>x.classList.remove('v86SpecialShift'));
+  function cleanSettingsV87(){
+    const detail=document.querySelector('#settingsView .detail');if(!detail)return;
+    detail.querySelectorAll('.settingsBlock').forEach(b=>{
+      const h=b.querySelector('h3');
+      if(h&&h.textContent.trim()==='App Turnos Pro'){
+        let p=b.querySelector('p');if(!p){p=document.createElement('p');h.insertAdjacentElement('afterend',p)}
+        p.innerHTML='<b>Versión '+APP_VERSION_FINAL+'</b><br><span class="muted">Última actualización: '+APP_UPDATED_FINAL+'</span>';
       }
     });
   }
 
-  const prevRender86=window.render;
-  window.render=function(){
-    const r=prevRender86?prevRender86.apply(this,arguments):undefined;
-    setVersion86();
-    setTimeout(improveCalendar86,0);
-    return r;
-  };
-  const prevShow86=window.show;
-  window.show=function(id){
-    const r=prevShow86?prevShow86.apply(this,arguments):undefined;
-    setTimeout(()=>{setVersion86();improveCalendar86()},20);
-    return r;
-  };
-
-  /* Si un bloque antiguo intenta volver a insertar una versión, se limpia sin tocar los campos del login. */
-  const loginBox=document.querySelector('.loginbox');
-  if(loginBox){
-    let pending=false;
-    const mo=new MutationObserver(()=>{
-      if(pending)return;pending=true;
-      setTimeout(()=>{pending=false;cleanLogin86()},0);
-    });
-    mo.observe(loginBox,{childList:true,subtree:true,characterData:true});
+  function setVersionV87(){
+    document.title='App Turnos Pro v'+APP_VERSION_FINAL;
+    /* En cabecera y resto, cualquier .ver queda siempre en la actual. */
+    document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+APP_VERSION_FINAL);
+    cleanLoginV87();cleanSettingsV87();
   }
 
-  setVersion86();
-  setTimeout(()=>{setVersion86();improveCalendar86()},250);
-  setTimeout(()=>{setVersion86();improveCalendar86()},900);
-  window.addEventListener('pageshow',()=>{setVersion86();setTimeout(improveCalendar86,20)});
+  function dayDateV87(day){
+    const m=(day.getAttribute('onclick')||'').match(/selectDay\('([^']+)'\)/);return m?m[1]:'';
+  }
+  function numericTurnV87(d,ds){
+    let raw=String(d?.dd_turno||d?.clave_turno||d?.turno||'').trim();
+    let m=raw.match(/\b(\d{1,5})\b/);if(m)return m[1];
+    try{const base=typeof dayData==='function'?dayData(ds):null;raw=String(base?.clave_turno||base?.turno||'');m=raw.match(/\b(\d{1,5})\b/);if(m)return m[1]}catch(e){}
+    return '';
+  }
+
+  function calendarLayoutV87(){
+    document.querySelectorAll('#grid .day').forEach(day=>{
+      const ds=dayDateV87(day);if(!ds)return;
+      let d=null,st='';try{d=typeof effectiveDay==='function'?effectiveDay(ds):null;st=d&&typeof status==='function'?status(d):''}catch(e){}
+      /* Limpia pastillas duplicadas de capas antiguas. */
+      const pills=[...day.querySelectorAll('.shiftNo,.v86SpecialShift')];
+      const numeric=numericTurnV87(d,ds);
+      if(['work','dsc','sss','ddwork'].includes(st) && numeric){
+        let keep=pills.find(p=>/^\d{1,5}$/.test((p.textContent||'').trim()))||pills[0];
+        if(!keep){keep=document.createElement('div');keep.className='shiftNo';day.appendChild(keep)}
+        keep.textContent=numeric;keep.classList.add('v87ShiftInside');
+        pills.forEach(p=>{if(p!==keep)p.remove()});
+      }else{
+        pills.forEach(p=>{
+          /* En estados sin clave, no debe aparecer ninguna pastilla. */
+          if(!['work','dsc','sss','ddwork'].includes(st))p.remove();
+        });
+      }
+      day.classList.toggle('v87Special',st==='dsc'||st==='sss');
+    });
+  }
+
+  const oldRender=window.render;
+  window.render=function(){
+    const r=oldRender?oldRender.apply(this,arguments):undefined;
+    setVersionV87();setTimeout(calendarLayoutV87,0);return r;
+  };
+  const oldShow=window.show;
+  window.show=function(id){
+    const r=oldShow?oldShow.apply(this,arguments):undefined;
+    setTimeout(()=>{setVersionV87();calendarLayoutV87()},80);return r;
+  };
+
+  /* Ajustes puede reconstruirse al abrirse: se corrige después de cada mutación. */
+  const settings=document.getElementById('settingsView');
+  if(settings){let busy=false;new MutationObserver(()=>{if(busy)return;busy=true;setTimeout(()=>{busy=false;cleanSettingsV87()},0)}).observe(settings,{childList:true,subtree:true})}
+
+  setVersionV87();
+  setTimeout(()=>{setVersionV87();calendarLayoutV87()},250);
+  setTimeout(()=>{setVersionV87();calendarLayoutV87()},900);
+  window.addEventListener('pageshow',()=>setTimeout(()=>{setVersionV87();calendarLayoutV87()},20));
 })();
 </script>
 
