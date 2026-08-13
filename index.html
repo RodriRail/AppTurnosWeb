@@ -3292,4 +3292,199 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
   setVersion85();window.addEventListener('pageshow',setVersion85);
 })();
 </script>
+
+
+<style id="v86-final-css">
+/* v8.6: login limpio + número de turno siempre visible + indicadores libres + hoy sin desplazar */
+/* El círculo del día actual es una superposición visual: no altera la altura de la fila. */
+.today .num{
+  position:relative!important;
+  display:inline-block!important;
+  min-width:0!important;
+  width:auto!important;
+  height:auto!important;
+  line-height:normal!important;
+  padding:0!important;
+  background:transparent!important;
+  color:#fff!important;
+  border-radius:0!important;
+  z-index:30!important;
+  isolation:isolate;
+}
+.today .num::before{
+  content:"";
+  position:absolute;
+  width:29px;
+  height:29px;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  border-radius:999px;
+  background:#0b7cff;
+  z-index:-1;
+  box-shadow:0 0 0 2px rgba(255,255,255,.92);
+}
+.today.selected .num::before{box-shadow:0 0 0 2px #fff,0 0 0 4px rgba(11,124,255,.42)}
+
+/* Los avisos quedan anclados a la esquina derecha y nunca pisan el número del día. */
+.dayIndicators,
+.dayMarkersV59,
+.dayIndicatorsV61,
+.dayIndicatorsV64,
+.dayIndicatorsV65{
+  left:auto!important;
+  right:3px!important;
+  top:4px!important;
+  z-index:35!important;
+  max-width:38px!important;
+}
+.dayIndicatorsV65 .topRowV65{justify-content:flex-end!important}
+
+/* En DSC/SSS reservamos una banda fija para la pastilla con la clave del turno. */
+.day.v86SpecialDay .v86SpecialShift{
+  position:absolute!important;
+  top:27px!important;
+  left:50%!important;
+  transform:translateX(-50%)!important;
+  z-index:28!important;
+  margin:0!important;
+  height:23px!important;
+  min-width:36px!important;
+  padding:0 6px!important;
+  font-size:14px!important;
+  line-height:19px!important;
+  background:#fff!important;
+  border:2px solid var(--r2)!important;
+  border-radius:999px!important;
+  color:#35113d!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+}
+.day.v86SpecialDay .badge.dsc,
+.day.v86SpecialDay .badge.sss{
+  top:52px!important;
+  bottom:4px!important;
+  height:auto!important;
+  min-height:0!important;
+}
+@media(max-width:560px){
+  .today .num::before{width:27px;height:27px}
+  .day.v86SpecialDay .v86SpecialShift{top:25px!important;height:21px!important;font-size:12px!important;min-width:32px!important}
+  .day.v86SpecialDay .badge.dsc,
+  .day.v86SpecialDay .badge.sss{top:48px!important}
+}
+
+/* En el login solo queda la versión junto al nombre y una única fecha debajo. */
+.loginbox .v86Update{margin:-4px 0 12px!important;font-weight:900!important;color:var(--r)!important}
+</style>
+<script id="v86-final-js">
+(function(){
+  const V86='8.6', UPDATED86='13/08/2026';
+
+  function cleanLogin86(){
+    const box=document.querySelector('.loginbox');
+    if(!box)return;
+    /* Elimina todas las insignias y líneas de versión heredadas. */
+    box.querySelectorAll('#loginVersionBadgeV58,#loginVersionBadgeV59,#loginVersionFinalV66,#loginVersionFinalV69,#loginVersionV57,.v83Update,.v84Update,.v85Update').forEach(e=>e.remove());
+    [...box.querySelectorAll('p')].forEach(p=>{
+      if(p.classList.contains('v86Update'))return;
+      const t=(p.textContent||'').trim();
+      if(/^(Versión\s+\d|Actualizada\s+\d|Última actualización\s*:)/i.test(t))p.remove();
+    });
+    const h=box.querySelector('h1');
+    if(h){
+      const wanted='App Turnos Pro';
+      if(!h.querySelector('.ver') || (h.querySelector('.ver')?.textContent||'')!=='v'+V86 || !h.textContent.includes(wanted)){
+        h.innerHTML=wanted+' <span class="ver">v'+V86+'</span>';
+      }
+      let p=box.querySelector('.v86Update');
+      if(!p){p=document.createElement('p');p.className='muted v86Update';h.insertAdjacentElement('afterend',p)}
+      p.textContent='Última actualización: '+UPDATED86;
+    }
+  }
+
+  function setVersion86(){
+    try{
+      document.title='App Turnos Pro v'+V86;
+      document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+V86);
+      cleanLogin86();
+      document.querySelectorAll('#settingsView .settingsBlock').forEach(b=>{
+        const h=b.querySelector('h3');
+        if(h&&h.textContent.trim()==='App Turnos Pro'){
+          const p=b.querySelector('p');
+          if(p)p.innerHTML='<b>Versión '+V86+'</b><br><span class="muted">Última actualización: '+UPDATED86+'</span>';
+        }
+      });
+    }catch(e){console.warn('v8.6 versión',e)}
+  }
+
+  function dateFromDay86(day){
+    const m=(day.getAttribute('onclick')||'').match(/selectDay\('([^']+)'\)/);
+    return m?m[1]:'';
+  }
+
+  function numericTurn86(d){
+    const raw=String(d?.clave_turno||d?.turno||'').trim();
+    const m=raw.match(/\b(\d{1,5})\b/);
+    return m?m[1]:'';
+  }
+
+  function improveCalendar86(){
+    document.querySelectorAll('#grid .day').forEach(day=>{
+      const ds=dateFromDay86(day);if(!ds)return;
+      let d=null,st='';
+      try{d=typeof effectiveDay==='function'?effectiveDay(ds):null;st=d&&typeof status==='function'?status(d):''}catch(e){}
+      day.classList.toggle('v86SpecialDay',st==='dsc'||st==='sss');
+      day.querySelectorAll('.v86SpecialShift').forEach((x,i)=>{if(i>0)x.remove()});
+      if(st==='dsc'||st==='sss'){
+        const turn=numericTurn86(d);
+        let pill=day.querySelector('.v86SpecialShift');
+        /* Reutiliza la pastilla ya creada por versiones anteriores si existe. */
+        if(!pill){
+          const old=[...day.querySelectorAll('.shiftNo')].find(x=>/^\d{1,5}$/.test((x.textContent||'').trim()));
+          if(old){pill=old;pill.classList.add('v86SpecialShift')}
+        }
+        if(turn){
+          if(!pill){pill=document.createElement('div');pill.className='shiftNo v86SpecialShift';day.appendChild(pill)}
+          pill.textContent=turn;
+        }else if(pill){pill.remove()}
+      }else{
+        day.querySelectorAll('.v86SpecialShift').forEach(x=>x.classList.remove('v86SpecialShift'));
+      }
+    });
+  }
+
+  const prevRender86=window.render;
+  window.render=function(){
+    const r=prevRender86?prevRender86.apply(this,arguments):undefined;
+    setVersion86();
+    setTimeout(improveCalendar86,0);
+    return r;
+  };
+  const prevShow86=window.show;
+  window.show=function(id){
+    const r=prevShow86?prevShow86.apply(this,arguments):undefined;
+    setTimeout(()=>{setVersion86();improveCalendar86()},20);
+    return r;
+  };
+
+  /* Si un bloque antiguo intenta volver a insertar una versión, se limpia sin tocar los campos del login. */
+  const loginBox=document.querySelector('.loginbox');
+  if(loginBox){
+    let pending=false;
+    const mo=new MutationObserver(()=>{
+      if(pending)return;pending=true;
+      setTimeout(()=>{pending=false;cleanLogin86()},0);
+    });
+    mo.observe(loginBox,{childList:true,subtree:true,characterData:true});
+  }
+
+  setVersion86();
+  setTimeout(()=>{setVersion86();improveCalendar86()},250);
+  setTimeout(()=>{setVersion86();improveCalendar86()},900);
+  window.addEventListener('pageshow',()=>{setVersion86();setTimeout(improveCalendar86,20)});
+})();
+</script>
+
 </body></html>
