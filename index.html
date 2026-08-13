@@ -1,4 +1,4 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>App Turnos Pro v8.8</title><style>
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>App Turnos Pro v8.5</title><style>
 :root{--r:#8a0f82;--r2:#b65ac0;--bg:#fbf8fc;--line:#ead9ea;--txt:#1f1522;--mut:#75627a;--work:#edd0f4;--workb:#d79ae4;--rest:#d8f8e1;--restb:#62df91;--dd:#ffe0e7;--ddb:#ff9aad;--vac:#dff3ff;--vacb:#8bd4ff;--lz:#ffe0b2;--lzb:#fb923c}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;padding-bottom:74px}.hidden{display:none!important}header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:5;padding:8px 10px}.top{display:flex;gap:8px;align-items:center}.logo{font-weight:900;font-style:italic;color:var(--r);font-size:24px}.title{font-weight:900;font-size:17px}.ver{color:var(--r);font-size:12px}.sub{font-weight:700;color:var(--mut);font-size:11px}.btn{border:1px solid var(--line);background:#fff;border-radius:15px;padding:10px 12px;font-weight:900;color:var(--txt);white-space:nowrap}.primary{background:var(--r)!important;color:#fff!important}.wrap{padding:6px}.bar{display:grid;grid-template-columns:44px 1fr 44px 70px;align-items:center;gap:6px;margin:8px 0}.month{font-size:26px;font-weight:950;text-align:center}.navbtn{width:44px;height:44px;border:1px solid var(--line);border-radius:14px;background:#fff;font-size:24px;font-weight:900}.calendar{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}.week,.grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr))}.week div{padding:10px 2px;text-align:center;font-weight:950;color:#4d3d55;font-size:13px;border-bottom:1px solid var(--line)}.day{min-height:82px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:3px;position:relative;overflow:hidden}.day:nth-child(7n){border-right:0}.num{font-weight:950;font-size:18px}.today .num{background:#0b7cff;color:#fff;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px}.selected{outline:4px solid var(--r);outline-offset:-4px;background:#fff8ff}.today.selected{outline:4px dashed var(--r)}.shiftNo{display:inline-flex;align-items:center;justify-content:center;min-width:42px;height:28px;border-radius:999px;background:#fff;border:2px solid var(--r2);color:#35113d;font-size:18px;font-weight:950;margin:0 auto 4px}.badge{margin-top:2px;border-radius:14px;border:2px solid;padding:6px 2px;min-height:52px;text-align:center;font-weight:900;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2px}.work{background:var(--work);border-color:var(--workb);color:#5b1168}.rest{background:var(--rest);border-color:var(--restb);color:#087139}.restComp{background:repeating-linear-gradient(135deg,#d8f8e1 0 9px,#fff 9px 15px);border-color:#42c979;color:#087139}.dd{background:var(--dd);border-color:var(--ddb);color:#c20d34}.vac{background:var(--vac);border-color:var(--vacb);color:#00608f}.lz{background:var(--lz);border-color:var(--lzb);color:#7c2d12}.rest,.vac,.dd,.lz{position:absolute;left:3px;right:3px;top:30px;bottom:3px;min-height:0}.bigD{font-size:24px}.timeTop,.timeBot{font-size:13px;line-height:1;font-weight:950}.sep{font-size:14px;color:var(--r);font-weight:950}.changedDot{position:absolute;right:5px;top:5px;width:9px;height:9px;background:#facc15;border:2px solid #fff;border-radius:50%;box-shadow:0 0 0 1px #b45309}.dataToggle{margin-left:auto;border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 10px;font-weight:950;color:var(--r)}.adminPanel,.detail{background:#fff;border:1px solid var(--line);border-radius:20px;padding:14px;margin-top:10px}.detail h2{margin:4px 0 8px;font-size:26px}.pill{display:inline-block;border-radius:999px;padding:8px 12px;font-weight:950}.summaryCard{background:linear-gradient(135deg,var(--r),#6e267a);color:#fff;border-radius:20px;padding:16px;margin:12px 0}.summaryTop{display:flex;justify-content:space-between;gap:12px}.summaryTitle{font-size:30px;font-weight:950}.summaryDate{opacity:.92;font-weight:750}.servicePill{background:rgba(255,255,255,.16);padding:7px 10px;border-radius:999px;font-weight:900;display:flex;align-items:center;justify-content:center;text-align:center;min-width:86px}.summaryTimes{display:grid;grid-template-columns:1fr 44px 1fr;gap:8px;align-items:center;background:#fff;color:var(--txt);border-radius:18px;padding:12px;margin-top:14px;text-align:center}.summaryTimes b{display:block;color:var(--r);font-size:26px}.summaryTimes small{color:var(--mut);font-weight:800}.summaryArrow{font-size:26px;color:var(--r);font-weight:950}.miniGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}.miniBox{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center;color:var(--txt)}.miniBox b{display:block}.miniBox small{color:var(--mut);font-weight:800}.timeline{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;margin-top:12px}.timeline h3{margin:0 0 10px;color:var(--r)}.tl{display:grid;grid-template-columns:56px 30px 1fr;gap:10px;align-items:start;padding:9px 0;position:relative}.tl:not(:last-child)::after{content:"";position:absolute;left:70px;top:40px;bottom:-8px;width:2px;background:linear-gradient(var(--r2),#ead9ea)}.tlIcon{width:30px;height:30px;border:2px solid var(--r2);border-radius:50%;display:flex;align-items:center;justify-content:center;background:#fff;font-size:14px;z-index:1}.tlIcon.start{border-color:#4ade80}.tlIcon.train{border-color:#b65ac0}.tlIcon.mid{border-color:#93c5fd}.tlIcon.end{border-color:#fb7185}.tlIcon.arrival{border-color:#60a5fa}.tlIcon.restgap{border-color:#fbbf24}.tlIcon.deje{border-color:#fb7185}.tlIcon.pdf{border-color:#64748b}.pdfOverlay{position:fixed;inset:0;background:#fff;z-index:99;display:flex;flex-direction:column}.pdfTop{display:flex;align-items:center;gap:8px;padding:8px;border-bottom:1px solid var(--line);background:#fff}.pdfFrame{border:0;flex:1;width:100%}.tlText b{display:block}.tlText small{color:var(--mut)}.muted{color:var(--mut)}.row{border-left:4px solid var(--r);background:#faf6fb;padding:10px;border-radius:12px;margin-top:8px}.changePanel{background:#fff7df;border:1px solid #facc15;border-radius:16px;padding:12px;margin-top:12px}.changeGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.input,.select{width:100%;padding:12px;border:1px solid var(--line);border-radius:14px;font-size:15px;background:#fff}.login{position:fixed;inset:0;background:#fbf8fc;z-index:50;display:flex;align-items:center;justify-content:center;padding:20px}.loginbox{background:#fff;border:1px solid var(--line);border-radius:24px;padding:22px;max-width:380px;width:100%;box-shadow:0 12px 35px #0001}.ok{color:#087139;font-weight:900}.err{color:#c20d34;font-weight:900}.changesList{display:grid;gap:10px}.changeItem,.balanceBox{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px}.balanceGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:560px){.month{font-size:22px}.day{min-height:78px;padding:2px}.num{font-size:15px}.shiftNo{min-width:32px;height:22px;font-size:15px}.badge{min-height:42px;border-radius:11px}.timeTop,.timeBot{font-size:11px}.week div{font-size:11px}.bar{grid-template-columns:38px 1fr 38px 58px}.navbtn{width:38px;height:38px}.btn{padding:8px 10px;font-size:13px}.changeGrid{grid-template-columns:1fr}.summaryTitle{font-size:25px}.summaryTimes b{font-size:22px}.miniBox{padding:8px;font-size:12px}}
 
 /* v2.4 DD asignado + registro visual */
@@ -268,8 +268,8 @@
 .versionStampV54{font-size:11px;color:#75627a;font-weight:900;margin-top:1px}
 </style>
 </head><body>
-<div id="login" class="login"><div class="loginbox"><div class="logo">renfe</div><h1>App Turnos Pro <span class="ver">v8.8</span></h1><p class="muted">Acceso privado para administrar datos.</p><input id="user" class="input" placeholder="Usuario"><input id="pass" class="input" placeholder="Contraseña" type="password"><label style="display:flex;gap:8px;align-items:center;margin:8px 0;font-weight:800"><input id="remember" type="checkbox" checked> Recordar sesión 24 horas</label><button class="btn primary" style="width:100%" onclick="doLogin()">Entrar</button><p id="loginMsg" class="err"></p></div></div>
-<header><div class="top"><div class="logo">renfe</div><div><div class="title">App Turnos Pro <span class="ver">v8.8</span></div><div class="sub">Calendario visual · cambios · marcos · IndexedDB</div></div><button class="dataToggle" onclick="toggleAdmin()">Datos ▾</button></div><div id="adminPanel" class="adminPanel hidden"><b>Importación privada</b><p class="muted">Archivos guardados solo en este dispositivo.</p><button class="btn primary" onclick="pick('yearFile')">📅 Importar gráfico anual</button><button class="btn primary" onclick="pick('marcoFile')">🚄 Importar Marco mensual JSON</button><button class="btn" onclick="pick('pdfFile')">📄 Importar PDF Marco</button><button class="btn" onclick="exportExcel()">📤 Exportar Excel</button><button class="btn" onclick="exportBackup()">💾 Copia seguridad JSON</button><button class="btn" onclick="pick('historyFile')">📥 Importar histórico de cambios</button><button class="btn" onclick="clearData()">Borrar datos locales</button><div id="importStatus" class="muted"></div></div><input id="yearFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'year')"><input id="marcoFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'marco')"><input id="pdfFile" type="file" accept="application/pdf,.pdf" class="hidden" onchange="importPdf(event)"><input id="historyFile" type="file" accept=".json,application/json" class="hidden" onchange="importHistoryBackup(event)"></header>
+<div id="login" class="login"><div class="loginbox"><div class="logo">renfe</div><h1>App Turnos Pro <span class="ver">v8.5</span></h1><p class="muted">Acceso privado para administrar datos.</p><input id="user" class="input" placeholder="Usuario"><input id="pass" class="input" placeholder="Contraseña" type="password"><label style="display:flex;gap:8px;align-items:center;margin:8px 0;font-weight:800"><input id="remember" type="checkbox" checked> Recordar sesión 24 horas</label><button class="btn primary" style="width:100%" onclick="doLogin()">Entrar</button><p id="loginMsg" class="err"></p></div></div>
+<header><div class="top"><div class="logo">renfe</div><div><div class="title">App Turnos Pro <span class="ver">v8.5</span></div><div class="sub">Calendario visual · cambios · marcos · IndexedDB</div></div><button class="dataToggle" onclick="toggleAdmin()">Datos ▾</button></div><div id="adminPanel" class="adminPanel hidden"><b>Importación privada</b><p class="muted">Archivos guardados solo en este dispositivo.</p><button class="btn primary" onclick="pick('yearFile')">📅 Importar gráfico anual</button><button class="btn primary" onclick="pick('marcoFile')">🚄 Importar Marco mensual JSON</button><button class="btn" onclick="pick('pdfFile')">📄 Importar PDF Marco</button><button class="btn" onclick="exportExcel()">📤 Exportar Excel</button><button class="btn" onclick="exportBackup()">💾 Copia seguridad JSON</button><button class="btn" onclick="pick('historyFile')">📥 Importar histórico de cambios</button><button class="btn" onclick="clearData()">Borrar datos locales</button><div id="importStatus" class="muted"></div></div><input id="yearFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'year')"><input id="marcoFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'marco')"><input id="pdfFile" type="file" accept="application/pdf,.pdf" class="hidden" onchange="importPdf(event)"><input id="historyFile" type="file" accept=".json,application/json" class="hidden" onchange="importHistoryBackup(event)"></header>
 <div class="wrap"><section id="calendarView" class="view"><div class="bar"><button class="navbtn" onclick="move(-1)">‹</button><div class="month" id="monthTitle"></div><button class="navbtn" onclick="move(1)">›</button><button class="btn" onclick="today()">Hoy</button></div><div class="calendar"><div class="week"><div>LUN</div><div>MAR</div><div>MIÉ</div><div>JUE</div><div>VIE</div><div>SÁB</div><div>DOM</div></div><div id="grid" class="grid"></div></div><div id="detail" class="detail"><span class="pill" style="background:#f2e3f4;color:var(--r)">Selecciona un día</span><h2>Detalle del turno</h2><p class="muted">Pulsa una casilla para ver inicio, fin, desarrollo y cambios.</p></div></section><section id="changesView" class="view hidden"><div class="detail"><h2>Registro de cambios</h2><div id="balances" class="balanceGrid"></div><h3>Historial</h3><div id="changesList" class="changesList"></div></div></section><section id="settingsView" class="view hidden"><div class="detail"><h2>Ajustes</h2><p>Datos cargados: <b id="dataState"></b></p></div></section></div>
 <nav style="position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);z-index:10"><button class="btn" onclick="show('calendarView')">📅<br>Calendario</button><button class="btn" onclick="scrollToDetail()">📋<br>Detalle</button><button class="btn" onclick="showChanges()">🔁<br>Cambios<br>Registro</button><button class="btn" onclick="show('settingsView')">⚙️<br>Ajustes</button><button class="btn" onclick="lockApp()">🔒<br>Bloq.</button></nav>
 <script>
@@ -320,7 +320,7 @@ function openPdf(page){if(!data.pdf?.dataUrl)return;let o=document.createElement
 
 
 // ===== v2.8 overrides: alarmas, PDF multipágina, memoria estable y calendario continuo =====
-try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v8.8');document.title='App Turnos Pro v8.8'}catch(e){}
+try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v8.5');document.title='App Turnos Pro v8.5'}catch(e){}
 current=new Date();
 data.alarms=data.alarms||{};data.disabledAlarms=data.disabledAlarms||{};data.people=data.people||[];data.alarmSettings=data.alarmSettings||{enabled:true,startOffset:60,trainOffset:30};
 function doLogin(){if(user.value.trim().toLowerCase()===ADMIN_USER&&pass.value.trim()===ADMIN_PASS){localStorage.setItem(AUTH+'Unlocked','1');localStorage.setItem(AUTH+'SessionUntil',Date.now()+(remember.checked?86400000:3600000));localStorage.removeItem(AUTH+'Attempts');localStorage.removeItem(AUTH+'LockUntil');login.classList.add('hidden');admin=true;updateImportUI();return}loginMsg.textContent='Usuario o contraseña incorrectos.'}
@@ -690,7 +690,7 @@ setTimeout(openInitialViewV44,180);
 
 
 // ===== v5.0 memoria estable, histórico y lector JSON =====
-const APP_VERSION='8.8', BACKUP_KEY='AppTurnosBackupsV50';
+const APP_VERSION='8.5', BACKUP_KEY='AppTurnosBackupsV50';
 data.settings=data.settings||{}; data.settings.openMode=data.settings.openMode||'calendario';
 function safeSetV50(k,v){try{localStorage.setItem(k,v);return true}catch(e){console.warn(e);return false}}
 function fechaArchivoMemoria(){let d=new Date();return pad(d.getDate())+'-'+pad(d.getMonth()+1)+'-'+d.getFullYear()+'_memoria_turnos.json'}
@@ -957,9 +957,9 @@ function listDetraiblesV53(monthIndex){
     return dt.getMonth()===monthIndex;
   }).map(d=>Number(d.fecha.slice(8,10))).sort((a,b)=>a-b);
 }
-try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v8.8');document.title='App Turnos Pro v8.8'}catch(e){}
+try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v8.5');document.title='App Turnos Pro v8.5'}catch(e){}
 
-try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v8.8');document.title='App Turnos Pro v8.8'}catch(e){}
+try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v8.5');document.title='App Turnos Pro v8.5'}catch(e){}
 
 
 // ===== v5.3.1: DD trabajado = fondo rojo + rayas moradas + horas del turno asignado =====
@@ -1028,8 +1028,8 @@ changePanelHtml=function(ds,base,baseB,d,b){
 
 
 // ===== v5.4: una sola prioridad visual final para evitar que se pisen estados =====
-const APP_VERSION_V54='8.8';
-const APP_UPDATED_AT_V54='13/08/2026';
+const APP_VERSION_V54='8.5';
+const APP_UPDATED_AT_V54='05/08/2026';
 function setVersionV54(){
   try{
     document.title='App Turnos Pro v'+APP_VERSION_V54;
@@ -1176,8 +1176,8 @@ setTimeout(bootIndexedDBV52,60);
 
 
 // ===== v5.7: base 5.4 limpia + persistencia segura + marcos por vigencia =====
-const APP_VERSION_V57='8.8';
-const APP_UPDATED_AT_V57='13/08/2026';
+const APP_VERSION_V57='8.5';
+const APP_UPDATED_AT_V57='05/08/2026';
 const DB_NAME_V57='AppTurnosDBV57';
 const DB_VERSION_V57=1;
 const DB_STORE_V57='app';
@@ -1377,8 +1377,8 @@ setTimeout(bootV57,120);
 
 
 // ===== v5.8: versión visible, historial mensual, PDFs gestionables y Ajustes sin duplicados =====
-const APP_VERSION_V58='8.8';
-const APP_UPDATED_AT_V58='13/08/2026';
+const APP_VERSION_V58='8.5';
+const APP_UPDATED_AT_V58='05/08/2026';
 
 function setVersionV58(){
   try{
@@ -1510,8 +1510,8 @@ checkLogin();render();
 </style>
 <script id="v59-incidencias-js">
 // ===== v6.0: incidencias persistentes, iconos y cambio descanso/trabajo =====
-const APP_VERSION_V59='8.8';
-const APP_UPDATED_AT_V59='13/08/2026';
+const APP_VERSION_V59='8.5';
+const APP_UPDATED_AT_V59='05/08/2026';
 data.incidents=data.incidents||{};
 
 function setVersionV59(){
@@ -1640,8 +1640,8 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v60-final-js">
 (function(){
-  const APP_VERSION_V60='8.8';
-  const APP_UPDATED_V60='13/08/2026';
+  const APP_VERSION_V60='8.5';
+  const APP_UPDATED_V60='05/08/2026';
   function setVersionV60(){
     document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+APP_VERSION_V60);
     document.title='App Turnos Pro v'+APP_VERSION_V60;
@@ -1741,8 +1741,8 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v61-final-js">
 (function(){
-  const APP_VERSION_V61='8.8';
-  const APP_UPDATED_V61='13/08/2026';
+  const APP_VERSION_V61='8.5';
+  const APP_UPDATED_V61='05/08/2026';
 
   function setVersionV61(){
     document.title='App Turnos Pro v'+APP_VERSION_V61;
@@ -1858,7 +1858,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v62-final-js">
 (function(){
- const APP_VERSION_V62='8.8', APP_UPDATED_V62='13/08/2026';
+ const APP_VERSION_V62='8.5', APP_UPDATED_V62='05/08/2026';
  function setVersionV62(){
    document.title='App Turnos Pro v'+APP_VERSION_V62;
    document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+APP_VERSION_V62);
@@ -1943,7 +1943,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v63-final-js">
 (function(){
- const APP_VERSION_V63='8.8', APP_UPDATED_V63='13/08/2026';
+ const APP_VERSION_V63='8.5', APP_UPDATED_V63='05/08/2026';
  function setVersionV63(){
    document.title='App Turnos Pro v'+APP_VERSION_V63;
    document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+APP_VERSION_V63);
@@ -2104,7 +2104,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v65-final-js">
 (function(){
-  const APP_VERSION_V65='8.8', APP_UPDATED_V65='13/08/2026';
+  const APP_VERSION_V65='8.5', APP_UPDATED_V65='05/08/2026';
   function setVersionV65(){
     document.title='App Turnos Pro v'+APP_VERSION_V65;
     document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+APP_VERSION_V65);
@@ -2240,7 +2240,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v66-observaciones-js">
 (function(){
-  const APP_VERSION_V66='8.8', APP_UPDATED_V66='13/08/2026';
+  const APP_VERSION_V66='8.5', APP_UPDATED_V66='05/08/2026';
   data.observations=data.observations||{};
   function setVersionV66(){
     document.title='App Turnos Pro v'+APP_VERSION_V66;
@@ -2336,7 +2336,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v66-final-lock-js">
 (function(){
- const V='8.8', D='13/08/2026';
+ const V='8.5', D='05/08/2026';
  function lockV66(){
    if(document.title!=='App Turnos Pro v'+V)document.title='App Turnos Pro v'+V;
    document.querySelectorAll('.ver').forEach(e=>{if(e.textContent!=='v'+V)e.textContent='v'+V});
@@ -2372,7 +2372,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v67-cajas-registro-js">
 (function(){
-  const V='8.8', UPDATED='13/08/2026';
+  const V='8.5', UPDATED='05/08/2026';
   const MONTHS=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
   function setVersionV67(){
     document.title='App Turnos Pro v'+V;
@@ -2455,7 +2455,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
   const prevRender=window.render;
   window.render=function(){const r=prevRender?prevRender.apply(this,arguments):undefined;setVersionV67();return r};
   window.addEventListener('pageshow',setVersionV67);document.addEventListener('visibilitychange',()=>{if(!document.hidden)setVersionV67()});
-  /* temporizador v6.7 desactivado en v8.8 */
+  /* temporizador v6.7 desactivado en v8.5 */
   setTimeout(()=>{setVersionV67();if(selected)normalizeDayGroupsV67(selected)},700);
 })();
 </script>
@@ -2521,7 +2521,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v68-flechas-js">
 (function(){
-  const V='8.8', UPDATED='13/08/2026';
+  const V='8.5', UPDATED='05/08/2026';
   const MONTHS=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
   function setVersionV68(){
     document.title='App Turnos Pro v'+V;
@@ -2591,7 +2591,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
   window.render=function(){const r=prevRender?prevRender.apply(this,arguments):undefined;setVersionV68();return r};
   window.addEventListener('pageshow',setVersionV68);
   document.addEventListener('visibilitychange',()=>{if(!document.hidden)setVersionV68()});
-  /* temporizador v6.8 desactivado en v8.8 */
+  /* temporizador v6.8 desactivado en v8.5 */
   setTimeout(setVersionV68,200);
 })();
 </script>
@@ -2601,7 +2601,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v69-version-unificada-js">
 (function(){
-  const VERSION='8.2', UPDATED='13/08/2026';
+  const VERSION='8.2', UPDATED='05/08/2026';
   function applyVersionV69(){
     document.title='App Turnos Pro v'+VERSION;
     document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+VERSION);
@@ -2624,7 +2624,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 <script id="v69-acceso-final-corregido">
 (function(){
   const VERSION_FINAL = '8.2';
-  const UPDATED_FINAL = '13/08/2026';
+  const UPDATED_FINAL = '05/08/2026';
 
   function setVersionFinal(){
     document.title = 'App Turnos Pro v' + VERSION_FINAL;
@@ -2744,9 +2744,9 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
     fresh.dataset.rebuiltV69='1';
     fresh.innerHTML=''
       +'<div class="loginbox">'
-      +'<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><div class="logo">renfe</div><span style="display:inline-flex;padding:4px 10px;border-radius:999px;background:#f2e3f4;color:#8a0f82;font-weight:950">v8.8</span></div>'
-      +'<h1 style="margin-bottom:8px">App Turnos Pro <span class="ver">v8.8</span></h1>'
-      +'<p class="muted" style="font-weight:800">Última actualización: 13/08/2026</p>'
+      +'<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><div class="logo">renfe</div><span style="display:inline-flex;padding:4px 10px;border-radius:999px;background:#f2e3f4;color:#8a0f82;font-weight:950">v8.5</span></div>'
+      +'<h1 style="margin-bottom:8px">App Turnos Pro <span class="ver">v8.5</span></h1>'
+      +'<p class="muted" style="font-weight:800">Versión 8.2 · Actualizada 05/08/2026</p>'
       +'<p class="muted">Acceso privado para administrar datos.</p>'
       +'<input id="user" name="username" type="text" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" placeholder="Usuario">'
       +'<input id="pass" name="password" type="password" autocomplete="current-password" placeholder="Contraseña">'
@@ -2815,7 +2815,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v80-registry-boceto2-js">
 (function(){
-  const V80_VERSION='8.8', V80_DATE='13/08/2026';
+  const V80_VERSION='8.5', V80_DATE='07/08/2026';
   const MONTHS=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
   let activeSectionV80='debts';
 
@@ -2826,7 +2826,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
       document.querySelectorAll('#loginVersionBadgeV58,#loginVersionBadgeV59').forEach(e=>e.textContent='v'+V80_VERSION);
       const stamp=document.getElementById('loginVersionV57');
       if(stamp)stamp.textContent='Versión '+V80_VERSION+' · Actualizada '+V80_DATE;
-    }catch(e){console.warn('Versión v8.8',e)}
+    }catch(e){console.warn('Versión v8.5',e)}
   }
   function normalizeDateV82(value){
     if(value===undefined||value===null)return '';
@@ -2992,7 +2992,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 
 
 <style id="v83-final-css">
-/* v8.8: días de excesos, cajas reactivas y Excel legible */
+/* v8.5: días de excesos, cajas reactivas y Excel legible */
 .badge.dexcesos{background:#4f78a8!important;border-color:#315b88!important;color:#fff!important;font-size:15px!important;font-weight:950!important;text-align:center!important;position:absolute!important;left:3px!important;right:3px!important;top:32px!important;bottom:4px!important;height:auto!important;min-height:0!important;display:flex!important;align-items:center!important;justify-content:center!important;border-radius:14px!important}
 .dexcesosPill{background:#4f78a8;color:#fff;border:1px solid #315b88}
 #chgNote{min-height:92px;resize:vertical;overflow:hidden}
@@ -3009,7 +3009,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v83-final-js">
 (function(){
-  const V83='8.8', UPDATED83='13/08/2026';
+  const V83='8.5', UPDATED83='07/08/2026';
   data.excessBalance=Number(data.excessBalance||0);
   data.excessAdjustments=Array.isArray(data.excessAdjustments)?data.excessAdjustments:[];
 
@@ -3113,13 +3113,13 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 
 
 <style id="v84-final-css">
-/* v8.8: trenes/materiales dentro de Observaciones y registros separados */
+/* v8.5: trenes/materiales dentro de Observaciones y registros separados */
 .v84PlannedTitle{font-weight:950;color:#315b88;margin-top:10px}
 .v80MonthBody>.v80Row{display:block;margin:8px 0!important}
 </style>
 <script id="v84-final-js">
 (function(){
-  const V84='8.8', UPDATED84='13/08/2026';
+  const V84='8.5', UPDATED84='07/08/2026';
   function e84(v){return typeof esc==='function'?esc(v):String(v||'')}
   function plannedTrains84(ds){
     try{
@@ -3171,7 +3171,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 
 
 <style id="v85-final-css">
-/* v8.8: ajustes finales de registros, incidencias y observaciones */
+/* v8.5: ajustes finales de registros, incidencias y observaciones */
 .v84TrainRow{grid-template-columns:minmax(72px,.72fr) minmax(0,1.28fr)!important;gap:7px!important;padding:8px!important}
 .v84TrainCode{font-size:13px;overflow-wrap:anywhere}
 .v84UsedTrain{min-width:0;padding:10px!important}
@@ -3189,7 +3189,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v85-final-js">
 (function(){
-  const V85='8.8', UPDATED85='13/08/2026';
+  const V85='8.5', UPDATED85='07/08/2026';
   const E=v=>typeof esc==='function'?esc(v):String(v??'');
   const MONTHS=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
 
@@ -3292,389 +3292,4 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
   setVersion85();window.addEventListener('pageshow',setVersion85);
 })();
 </script>
-
-
-<style id="v87-final-css">
-/* v8.8 — capa final única: versión + calendario uniforme según boceto */
-
-/* LOGIN: una sola versión, junto a App Turnos Pro; nada junto a Renfe. */
-.loginbox h1{display:flex!important;align-items:center!important;gap:10px!important;flex-wrap:wrap!important}
-.loginbox h1 .ver{
-  display:inline-flex!important;align-items:center!important;justify-content:center!important;
-  padding:5px 11px!important;border-radius:999px!important;background:#f2e3f4!important;
-  color:var(--r)!important;font-size:.42em!important;line-height:1!important;font-weight:950!important;
-  white-space:nowrap!important;vertical-align:middle!important
-}
-.loginbox .v87Update{margin:-5px 0 13px!important;font-weight:850!important;color:var(--mut)!important}
-
-/* CALENDARIO: el número del día vive siempre en la banda superior, fuera de la asignación. */
-#grid .day,#grid .day.outsideMonth{
-  position:relative!important;
-  height:112px!important;min-height:112px!important;
-  padding:3px!important;overflow:hidden!important;
-}
-#grid .day .num{
-  position:absolute!important;left:7px!important;top:5px!important;z-index:60!important;
-  margin:0!important;padding:0!important;width:auto!important;min-width:0!important;height:auto!important;
-  background:transparent!important;color:var(--txt)!important;border-radius:0!important;
-  font-size:18px!important;line-height:26px!important;font-weight:950!important;
-}
-#grid .day.today .num{color:#fff!important;text-align:center!important;width:29px!important;height:29px!important;line-height:29px!important;top:3px!important;left:4px!important}
-#grid .day.today .num::before{
-  content:"";position:absolute!important;inset:0!important;width:29px!important;height:29px!important;
-  transform:none!important;border-radius:999px!important;background:#0b7cff!important;z-index:-1!important;
-  box-shadow:0 0 0 2px rgba(255,255,255,.95)!important
-}
-#grid .day.today.selected .num::before{box-shadow:0 0 0 2px #fff,0 0 0 4px rgba(11,124,255,.35)!important}
-
-/* Iconos: siempre esquina superior derecha. Incidencia a la izquierda de cambio; bicolor debajo. */
-#grid .day .dayIndicatorsV65,
-#grid .day .dayIndicators,
-#grid .day .dayMarkersV59,
-#grid .day .dayIndicatorsV61,
-#grid .day .dayIndicatorsV64{
-  position:absolute!important;left:auto!important;right:5px!important;top:5px!important;z-index:65!important;
-  display:flex!important;flex-direction:column!important;align-items:flex-end!important;gap:2px!important;
-  pointer-events:none!important;max-width:none!important
-}
-#grid .day .dayIndicatorsV65 .topRowV65{display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:flex-end!important;gap:4px!important}
-#grid .day .dayIndicatorsV65 .incidentV65,#grid .day .dayIndicatorsV65 .changeV65{font-size:15px!important;line-height:17px!important;width:auto!important;height:auto!important}
-#grid .day .dayIndicatorsV65 .bicolorV65{width:22px!important;height:8px!important;border-radius:999px!important;margin:0!important}
-
-/* Toda asignación coloreada ocupa exactamente el mismo rectángulo. */
-#grid .day .badge.work,
-#grid .day .badge.rest,
-#grid .day .badge.vac,
-#grid .day .badge.dd,
-#grid .day .badge.lz,
-#grid .day .badge.dsc,
-#grid .day .badge.sss,
-#grid .day .badge.dexcesos,
-#grid .day .badge.ddworkV65,
-#grid .day .badge.ddworkFinal,
-#grid .day .badge.ddwork,
-#grid .day .badge.manualRest{
-  position:absolute!important;left:5px!important;right:5px!important;top:35px!important;bottom:5px!important;
-  width:auto!important;height:auto!important;min-height:0!important;margin:0!important;transform:none!important;
-  border-radius:13px!important;box-sizing:border-box!important;
-  display:flex!important;align-items:center!important;justify-content:center!important;flex-direction:column!important;
-}
-
-/* La clave se sitúa DENTRO de la caja de asignación, en una pastilla superior. */
-#grid .day .shiftNo,
-#grid .day .v86SpecialShift{
-  position:absolute!important;left:50%!important;top:39px!important;transform:translateX(-50%)!important;
-  z-index:58!important;margin:0!important;min-width:36px!important;height:20px!important;padding:0 7px!important;
-  background:rgba(255,255,255,.94)!important;border:2px solid var(--r2)!important;border-radius:999px!important;
-  color:#35113d!important;font-size:13px!important;line-height:16px!important;font-weight:950!important;
-  display:flex!important;align-items:center!important;justify-content:center!important;white-space:nowrap!important
-}
-/* Trabajo: deja hueco para la pastilla y conserva horas centradas. */
-#grid .day .badge.work{padding-top:18px!important}
-#grid .day .badge.work .timeTop{margin-top:2px!important}
-
-/* DSC / SSS: pastilla dentro de la propia caja rayada, no fuera. */
-#grid .day.v86SpecialDay .v86SpecialShift{top:39px!important}
-#grid .day.v86SpecialDay .badge.dsc,#grid .day.v86SpecialDay .badge.sss{top:35px!important;bottom:5px!important;padding-top:17px!important}
-#grid .day .v83DscSss .shiftNo{top:39px!important}
-
-/* Días sin clave no dejan pastillas fantasma. */
-#grid .day .badge.rest + .shiftNo,#grid .day .badge.vac + .shiftNo,#grid .day .badge.lz + .shiftNo{display:none!important}
-
-@media(max-width:560px){
-  #grid .day,#grid .day.outsideMonth{height:106px!important;min-height:106px!important}
-  #grid .day .num{font-size:16px!important;line-height:25px!important;left:5px!important;top:4px!important}
-  #grid .day.today .num{width:27px!important;height:27px!important;line-height:27px!important;left:3px!important;top:3px!important}
-  #grid .day.today .num::before{width:27px!important;height:27px!important}
-  #grid .day .badge.work,#grid .day .badge.rest,#grid .day .badge.vac,#grid .day .badge.dd,#grid .day .badge.lz,
-  #grid .day .badge.dsc,#grid .day .badge.sss,#grid .day .badge.dexcesos,#grid .day .badge.ddworkV65,
-  #grid .day .badge.ddworkFinal,#grid .day .badge.ddwork,#grid .day .badge.manualRest{top:33px!important;bottom:4px!important;left:4px!important;right:4px!important}
-  #grid .day .shiftNo,#grid .day .v86SpecialShift,#grid .day.v86SpecialDay .v86SpecialShift,#grid .day .v83DscSss .shiftNo{top:37px!important;height:18px!important;min-width:31px!important;padding:0 5px!important;font-size:11px!important}
-  #grid .day.v86SpecialDay .badge.dsc,#grid .day.v86SpecialDay .badge.sss{top:33px!important;bottom:4px!important}
-  #grid .day .dayIndicatorsV65{right:3px!important;top:4px!important}
-  #grid .day .dayIndicatorsV65 .incidentV65,#grid .day .dayIndicatorsV65 .changeV65{font-size:13px!important;line-height:15px!important}
-  #grid .day .dayIndicatorsV65 .bicolorV65{width:19px!important;height:7px!important}
-}
-</style>
-<script id="v87-final-js">
-(function(){
-  const APP_VERSION_FINAL='8.8';
-  const APP_UPDATED_FINAL='13/08/2026';
-
-  function cleanLoginV87(){
-    const box=document.querySelector('.loginbox');if(!box)return;
-    /* Nada de versiones junto al logo Renfe. */
-    box.querySelectorAll('#loginVersionBadgeV58,#loginVersionBadgeV59,#loginVersionFinalV66,#loginVersionFinalV69,#loginVersionV57,.v83Update,.v84Update,.v85Update,.v86Update,.v87Update').forEach(e=>e.remove());
-    /* Borra cualquier línea heredada de versión/actualización, sin tocar el texto de acceso. */
-    [...box.querySelectorAll('p')].forEach(p=>{
-      const t=(p.textContent||'').trim();
-      if(/^(Versión\s+\d|Actualizada\s+\d|Última actualización\s*:)/i.test(t))p.remove();
-    });
-    const h=box.querySelector('h1');
-    if(h){
-      h.innerHTML='App Turnos Pro <span class="ver">v'+APP_VERSION_FINAL+'</span>';
-      const p=document.createElement('p');p.className='muted v87Update';
-      p.textContent='Última actualización: '+APP_UPDATED_FINAL;
-      h.insertAdjacentElement('afterend',p);
-    }
-  }
-
-  function cleanSettingsV87(){
-    const detail=document.querySelector('#settingsView .detail');if(!detail)return;
-    detail.querySelectorAll('.settingsBlock').forEach(b=>{
-      const h=b.querySelector('h3');
-      if(h&&h.textContent.trim()==='App Turnos Pro'){
-        let p=b.querySelector('p');if(!p){p=document.createElement('p');h.insertAdjacentElement('afterend',p)}
-        p.innerHTML='<b>Versión '+APP_VERSION_FINAL+'</b><br><span class="muted">Última actualización: '+APP_UPDATED_FINAL+'</span>';
-      }
-    });
-  }
-
-  function setVersionV87(){
-    document.title='App Turnos Pro v'+APP_VERSION_FINAL;
-    /* En cabecera y resto, cualquier .ver queda siempre en la actual. */
-    document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+APP_VERSION_FINAL);
-    cleanLoginV87();cleanSettingsV87();
-  }
-
-  function dayDateV87(day){
-    const m=(day.getAttribute('onclick')||'').match(/selectDay\('([^']+)'\)/);return m?m[1]:'';
-  }
-  function numericTurnV87(d,ds){
-    let raw=String(d?.dd_turno||d?.clave_turno||d?.turno||'').trim();
-    let m=raw.match(/\b(\d{1,5})\b/);if(m)return m[1];
-    try{const base=typeof dayData==='function'?dayData(ds):null;raw=String(base?.clave_turno||base?.turno||'');m=raw.match(/\b(\d{1,5})\b/);if(m)return m[1]}catch(e){}
-    return '';
-  }
-
-  function calendarLayoutV87(){
-    document.querySelectorAll('#grid .day').forEach(day=>{
-      const ds=dayDateV87(day);if(!ds)return;
-      let d=null,st='';try{d=typeof effectiveDay==='function'?effectiveDay(ds):null;st=d&&typeof status==='function'?status(d):''}catch(e){}
-      /* Limpia pastillas duplicadas de capas antiguas. */
-      const pills=[...day.querySelectorAll('.shiftNo,.v86SpecialShift')];
-      const numeric=numericTurnV87(d,ds);
-      if(['work','dsc','sss','ddwork'].includes(st) && numeric){
-        let keep=pills.find(p=>/^\d{1,5}$/.test((p.textContent||'').trim()))||pills[0];
-        if(!keep){keep=document.createElement('div');keep.className='shiftNo';day.appendChild(keep)}
-        keep.textContent=numeric;keep.classList.add('v87ShiftInside');
-        pills.forEach(p=>{if(p!==keep)p.remove()});
-      }else{
-        pills.forEach(p=>{
-          /* En estados sin clave, no debe aparecer ninguna pastilla. */
-          if(!['work','dsc','sss','ddwork'].includes(st))p.remove();
-        });
-      }
-      day.classList.toggle('v87Special',st==='dsc'||st==='sss');
-    });
-  }
-
-  const oldRender=window.render;
-  window.render=function(){
-    const r=oldRender?oldRender.apply(this,arguments):undefined;
-    setVersionV87();setTimeout(calendarLayoutV87,0);return r;
-  };
-  const oldShow=window.show;
-  window.show=function(id){
-    const r=oldShow?oldShow.apply(this,arguments):undefined;
-    setTimeout(()=>{setVersionV87();calendarLayoutV87()},80);return r;
-  };
-
-  /* Ajustes puede reconstruirse al abrirse: se corrige después de cada mutación. */
-  const settings=document.getElementById('settingsView');
-  if(settings){let busy=false;new MutationObserver(()=>{if(busy)return;busy=true;setTimeout(()=>{busy=false;cleanSettingsV87()},0)}).observe(settings,{childList:true,subtree:true})}
-
-  setVersionV87();
-  setTimeout(()=>{setVersionV87();calendarLayoutV87()},250);
-  setTimeout(()=>{setVersionV87();calendarLayoutV87()},900);
-  window.addEventListener('pageshow',()=>setTimeout(()=>{setVersionV87();calendarLayoutV87()},20));
-})();
-</script>
-
-
-<style id="v88-final-clean-css">
-/* v8.8 — calendario más ancho, celdas uniformes y versión visual única */
-@media(max-width:700px){
-  .wrap{padding-left:1px!important;padding-right:1px!important}
-  #calendarView{width:100%!important;max-width:none!important;margin:0!important}
-  #calendarView .bar{margin-left:3px!important;margin-right:3px!important}
-  #calendarView .calendar{width:100%!important;max-width:none!important;border-radius:12px!important}
-  #calendarView .week div{padding-left:0!important;padding-right:0!important}
-}
-
-/* Celdas: aprovechar al máximo el ancho disponible sin tocar la cuadrícula de 7 días. */
-#grid .day,#grid .day.outsideMonth{
-  position:relative!important;
-  height:114px!important;min-height:114px!important;
-  padding:1px!important;overflow:hidden!important;
-}
-#grid .day .num{
-  position:absolute!important;left:3px!important;top:3px!important;z-index:80!important;
-  margin:0!important;padding:0!important;background:transparent!important;
-  color:var(--txt)!important;font-size:18px!important;line-height:27px!important;font-weight:950!important;
-}
-#grid .day.today .num{
-  left:2px!important;top:2px!important;width:29px!important;height:29px!important;line-height:29px!important;
-  color:#fff!important;text-align:center!important;
-}
-#grid .day.today .num::before{
-  content:""!important;position:absolute!important;inset:0!important;border-radius:999px!important;
-  background:#0b7cff!important;z-index:-1!important;box-shadow:0 0 0 2px #fff!important;
-}
-
-/* Iconos arriba a la derecha y más discretos. */
-#grid .day .dayIndicatorsV65,
-#grid .day .dayIndicators,
-#grid .day .dayMarkersV59,
-#grid .day .dayIndicatorsV61,
-#grid .day .dayIndicatorsV64{
-  position:absolute!important;left:auto!important;right:2px!important;top:3px!important;z-index:85!important;
-  display:flex!important;flex-direction:column!important;align-items:flex-end!important;gap:1px!important;
-  pointer-events:none!important;
-}
-#grid .day .dayIndicatorsV65 .topRowV65{display:flex!important;gap:3px!important;align-items:center!important;justify-content:flex-end!important}
-#grid .day .dayIndicatorsV65 .incidentV65,
-#grid .day .dayIndicatorsV65 .changeV65{font-size:13px!important;line-height:14px!important;width:auto!important;height:auto!important}
-#grid .day .dayIndicatorsV65 .bicolorV65{width:19px!important;height:7px!important;border-radius:999px!important;margin:0!important}
-
-/* Todas las asignaciones usan el mismo rectángulo y llegan más cerca de los bordes. */
-#grid .day .badge.work,
-#grid .day .badge.rest,
-#grid .day .badge.vac,
-#grid .day .badge.dd,
-#grid .day .badge.lz,
-#grid .day .badge.dsc,
-#grid .day .badge.sss,
-#grid .day .badge.dexcesos,
-#grid .day .badge.ddworkV65,
-#grid .day .badge.ddworkFinal,
-#grid .day .badge.ddwork,
-#grid .day .badge.manualRest{
-  position:absolute!important;left:2px!important;right:2px!important;top:31px!important;bottom:2px!important;
-  width:auto!important;height:auto!important;min-height:0!important;margin:0!important;transform:none!important;
-  border-radius:11px!important;box-sizing:border-box!important;
-  display:flex!important;align-items:center!important;justify-content:center!important;flex-direction:column!important;
-}
-
-/* Pastilla del turno más arriba dentro de la caja; horas centradas y separadas. */
-#grid .day .shiftNo,#grid .day .v86SpecialShift{
-  position:absolute!important;left:50%!important;top:34px!important;transform:translateX(-50%)!important;z-index:88!important;
-  margin:0!important;min-width:34px!important;height:18px!important;padding:0 5px!important;
-  background:rgba(255,255,255,.95)!important;border:1.5px solid var(--r2)!important;border-radius:999px!important;
-  color:#35113d!important;font-size:11px!important;line-height:15px!important;font-weight:950!important;
-  display:flex!important;align-items:center!important;justify-content:center!important;white-space:nowrap!important;
-}
-#grid .day .badge.work{padding-top:18px!important;gap:1px!important}
-#grid .day .badge.work .timeTop,#grid .day .badge.work .timeBot{
-  margin:0!important;padding:0!important;font-size:12px!important;line-height:1.05!important;text-align:center!important;
-}
-#grid .day .badge.work .sep{margin:0!important;padding:0!important;line-height:.95!important;font-size:13px!important}
-#grid .day.v86SpecialDay .badge.dsc,#grid .day.v86SpecialDay .badge.sss,
-#grid .day.v87Special .badge.dsc,#grid .day.v87Special .badge.sss{top:31px!important;bottom:2px!important;padding-top:16px!important}
-#grid .day.v86SpecialDay .v86SpecialShift,#grid .day .v83DscSss .shiftNo{top:34px!important}
-
-/* El indicador visual de selección no altera tamaños internos. */
-#grid .day.selected{outline:3px solid var(--r)!important;outline-offset:-3px!important}
-#grid .day.today.selected{outline:3px dashed var(--r)!important}
-
-/* Login: no debe existir una segunda insignia junto a Renfe. */
-.loginbox>.logo + span,
-.loginbox #loginVersionBadgeV58,
-.loginbox #loginVersionBadgeV59,
-.loginbox #loginVersionFinalV66,
-.loginbox #loginVersionFinalV69{display:none!important}
-.loginbox h1{display:flex!important;align-items:center!important;gap:9px!important;flex-wrap:wrap!important}
-.loginbox h1 .ver{
-  display:inline-flex!important;align-items:center!important;justify-content:center!important;
-  padding:5px 10px!important;border-radius:999px!important;background:#f2e3f4!important;color:var(--r)!important;
-  font-size:.42em!important;line-height:1!important;font-weight:950!important;white-space:nowrap!important;
-}
-.loginbox .v88Update{margin:-4px 0 13px!important;color:var(--mut)!important;font-weight:850!important}
-
-@media(max-width:560px){
-  #grid .day,#grid .day.outsideMonth{height:110px!important;min-height:110px!important}
-  #grid .day .num{left:2px!important;top:2px!important;font-size:16px!important;line-height:25px!important}
-  #grid .day.today .num{width:27px!important;height:27px!important;line-height:27px!important;left:1px!important;top:1px!important}
-  #grid .day .badge.work,#grid .day .badge.rest,#grid .day .badge.vac,#grid .day .badge.dd,#grid .day .badge.lz,
-  #grid .day .badge.dsc,#grid .day .badge.sss,#grid .day .badge.dexcesos,#grid .day .badge.ddworkV65,
-  #grid .day .badge.ddworkFinal,#grid .day .badge.ddwork,#grid .day .badge.manualRest{top:29px!important;left:1px!important;right:1px!important;bottom:1px!important}
-  #grid .day .shiftNo,#grid .day .v86SpecialShift,#grid .day.v86SpecialDay .v86SpecialShift,#grid .day .v83DscSss .shiftNo{top:32px!important;height:17px!important;min-width:30px!important;font-size:10px!important;padding:0 4px!important}
-  #grid .day .badge.work{padding-top:17px!important}
-  #grid .day .badge.work .timeTop,#grid .day .badge.work .timeBot{font-size:11px!important}
-  #grid .day .dayIndicatorsV65{right:1px!important;top:2px!important}
-  #grid .day .dayIndicatorsV65 .incidentV65,#grid .day .dayIndicatorsV65 .changeV65{font-size:12px!important;line-height:13px!important}
-  #grid .day .dayIndicatorsV65 .bicolorV65{width:18px!important;height:6px!important}
-}
-</style>
-<script id="v88-final-clean-js">
-(function(){
-  const VERSION='8.8';
-  const UPDATED='13/08/2026';
-
-  function cleanLoginV88(){
-    const box=document.querySelector('.loginbox');if(!box)return;
-    /* Elimina cualquier insignia o línea heredada de cualquier versión anterior. */
-    box.querySelectorAll('#loginVersionBadgeV58,#loginVersionBadgeV59,#loginVersionFinalV66,#loginVersionFinalV69,#loginVersionV57,.v83Update,.v84Update,.v85Update,.v86Update,.v87Update,.v88Update').forEach(e=>e.remove());
-    [...box.querySelectorAll('p')].forEach(p=>{
-      const t=(p.textContent||'').trim();
-      if(/^(Versión\s+\d|Actualizada\s+\d|Última actualización\s*:)/i.test(t))p.remove();
-    });
-    const logo=box.querySelector('.logo');
-    if(logo){
-      let n=logo.nextElementSibling;
-      while(n && n.tagName!=='H1'){
-        const next=n.nextElementSibling;
-        if(/v\d+\.\d+/i.test(n.textContent||''))n.remove();
-        n=next;
-      }
-    }
-    const h=box.querySelector('h1');
-    if(h){
-      h.innerHTML='App Turnos Pro <span class="ver">v'+VERSION+'</span>';
-      const p=document.createElement('p');p.className='muted v88Update';p.textContent='Última actualización: '+UPDATED;
-      h.insertAdjacentElement('afterend',p);
-    }
-  }
-
-  function cleanSettingsV88(){
-    const detail=document.querySelector('#settingsView .detail');if(!detail)return;
-    detail.querySelectorAll('.settingsBlock').forEach(b=>{
-      const h=b.querySelector('h3');
-      if(h&&h.textContent.trim()==='App Turnos Pro'){
-        let p=b.querySelector('p');if(!p){p=document.createElement('p');h.insertAdjacentElement('afterend',p)}
-        p.innerHTML='<b>Versión '+VERSION+'</b><br><span class="muted">Última actualización: '+UPDATED+'</span>';
-      }
-    });
-  }
-
-  function enforceVersionV88(){
-    document.title='App Turnos Pro v'+VERSION;
-    document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+VERSION);
-    cleanLoginV88();cleanSettingsV88();
-  }
-
-  const oldRender=window.render;
-  window.render=function(){
-    const r=oldRender?oldRender.apply(this,arguments):undefined;
-    enforceVersionV88();return r;
-  };
-  const oldShow=window.show;
-  window.show=function(id){
-    const r=oldShow?oldShow.apply(this,arguments):undefined;
-    setTimeout(enforceVersionV88,20);return r;
-  };
-
-  const settings=document.getElementById('settingsView');
-  if(settings){
-    let busy=false;
-    new MutationObserver(()=>{if(busy)return;busy=true;setTimeout(()=>{busy=false;cleanSettingsV88()},0)}).observe(settings,{childList:true,subtree:true});
-  }
-
-  enforceVersionV88();
-  setTimeout(enforceVersionV88,200);
-  setTimeout(enforceVersionV88,900);
-  window.addEventListener('pageshow',()=>setTimeout(enforceVersionV88,20));
-})();
-</script>
-
 </body></html>
