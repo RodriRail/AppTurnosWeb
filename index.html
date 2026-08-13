@@ -3313,4 +3313,440 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
   setVersion85();window.addEventListener('pageshow',setVersion85);
 })();
 </script>
+
+<style id="v90-calendar-final-css">
+/* ===== v9.0 · Boceto final del calendario. Solo presentación visual. ===== */
+:root{
+  --v90-work:#e9c8f1;
+  --v90-work-border:#cb83da;
+  --v90-rest:#d4f5de;
+  --v90-rest-border:#58cf83;
+  --v90-lz:#fff3d7;          /* mismo fondo que LZ de la app */
+  --v90-lz-border:#f3a64d;
+  --v90-dd:#ffdbe3;
+  --v90-dd-border:#f58aa0;
+  --v90-vac:#dcefff;
+  --v90-vac-border:#78c2ef;
+  --v90-text:#231326;
+  --v90-purple:#65136f;
+}
+
+/* Aprovechar prácticamente todo el ancho disponible */
+.wrap{padding:3px!important;max-width:none!important;width:100%!important}
+.calendar{width:100%!important;border-radius:16px!important}
+.week,.grid{grid-template-columns:repeat(7,minmax(0,1fr))!important}
+.week div{padding:8px 0!important;font-size:12px!important}
+
+/* Todas las filas exactamente iguales */
+.day,.day.outsideMonth{
+  position:relative!important;
+  box-sizing:border-box!important;
+  min-height:118px!important;
+  height:118px!important;
+  padding:2px!important;
+  overflow:hidden!important;
+}
+
+/* Número del día: una sola vez, arriba a la izquierda */
+.day .num{
+  position:absolute!important;
+  left:4px!important;
+  top:4px!important;
+  z-index:30!important;
+  margin:0!important;
+  padding:0!important;
+  font-size:18px!important;
+  line-height:26px!important;
+  font-weight:950!important;
+  color:var(--v90-text)!important;
+  background:transparent!important;
+  min-width:26px!important;
+  height:26px!important;
+  text-align:left!important;
+  display:block!important;
+}
+.day.today .num{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  left:3px!important;
+  top:2px!important;
+  width:30px!important;
+  min-width:30px!important;
+  height:30px!important;
+  border-radius:999px!important;
+  background:#0b82f6!important;
+  color:#fff!important;
+  line-height:30px!important;
+  box-shadow:0 0 0 2px #fff!important;
+}
+
+/* La caja de asignación empieza muy cerca del encabezado superior */
+.day .badge,
+.day .badge.work,
+.day .badge.rest,
+.day .badge.vac,
+.day .badge.dd,
+.day .badge.lz,
+.day .badge.dsc,
+.day .badge.sss,
+.day .badge.dexcesos,
+.day .badge.ddworkFinal,
+.day .badge.ddworked{
+  position:absolute!important;
+  left:3px!important;
+  right:3px!important;
+  top:34px!important;
+  bottom:3px!important;
+  width:auto!important;
+  height:auto!important;
+  min-height:0!important;
+  margin:0!important;
+  transform:none!important;
+  border-width:1.5px!important;
+  border-radius:12px!important;
+  box-sizing:border-box!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  overflow:hidden!important;
+}
+
+/* Intensidad pastel algo mayor */
+.day .badge.work{background:var(--v90-work)!important;border-color:var(--v90-work-border)!important;color:var(--v90-purple)!important}
+.day .badge.rest{background:var(--v90-rest)!important;border-color:var(--v90-rest-border)!important;color:#08723b!important}
+.day .badge.lz{background:var(--v90-lz)!important;border-color:var(--v90-lz-border)!important;color:#8a3a05!important}
+.day .badge.dd{background:var(--v90-dd)!important;border-color:var(--v90-dd-border)!important;color:#c61232!important}
+.day .badge.vac{background:var(--v90-vac)!important;border-color:var(--v90-vac-border)!important;color:#06699d!important}
+.day .badge.dsc,
+.day .badge.sss{
+  background:repeating-linear-gradient(135deg,#d8f6df 0 10px,#c573cf 10px 13px,#d8f6df 13px 23px)!important;
+  border-color:#8a0f82!important;
+  color:#35113d!important;
+}
+
+/* Texto grande para días no laborales */
+.day .bigD,
+.day .bigLZ,
+.day .badge.dd,
+.day .badge.vac,
+.day .badge.dsc,
+.day .badge.sss,
+.day .badge.dexcesos{
+  font-size:23px!important;
+  line-height:1!important;
+  font-weight:950!important;
+}
+
+/* Número de turno integrado visualmente DENTRO de la tarjeta de trabajo */
+.day .shiftNo{
+  position:absolute!important;
+  top:39px!important;
+  left:50%!important;
+  transform:translateX(-50%)!important;
+  z-index:22!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-width:43px!important;
+  height:21px!important;
+  margin:0!important;
+  padding:0 6px!important;
+  border:1.7px solid #9a35a5!important;
+  border-radius:999px!important;
+  background:rgba(255,255,255,.88)!important;
+  color:#4f1357!important;
+  font-size:13px!important;
+  line-height:19px!important;
+  font-weight:950!important;
+  box-shadow:none!important;
+}
+
+/* Reserva zona superior interna de la tarjeta para la clave */
+.day .badge.work{
+  padding:25px 2px 4px!important;
+  justify-content:center!important;
+}
+.day .badge.work .timeTop,
+.day .badge.work .timeBot,
+.day .badge.ddworkFinal .timeTop,
+.day .badge.ddworkFinal .timeBot,
+.day .badge.ddworked .timeTop,
+.day .badge.ddworked .timeBot{
+  color:#54115f!important;
+  font-size:13px!important;
+  line-height:1.05!important;
+  font-weight:950!important;
+}
+.day .badge.work .sep,
+.day .badge.ddworkFinal .sep,
+.day .badge.ddworked .sep{
+  color:#7c1488!important;
+  font-size:16px!important;
+  line-height:1!important;
+  margin:1px 0!important;
+}
+
+/* Evitar que envoltorios antiguos alteren el tamaño uniforme */
+.v83DscSss{position:static!important;display:contents!important}
+
+/* Ocultar TODOS los indicadores emoji heredados: v9.0 inserta SVG propios */
+.dayIndicators,
+.dayIndicatorsV61,
+.dayIndicatorsV64,
+.dayIndicatorsV65,
+.dayMarkersV59,
+.changedDot,
+.changeDot,
+.indChange,
+.indIncident{
+  display:none!important;
+}
+
+/* Indicadores vectoriales v9.0 */
+.v90Indicators{
+  position:absolute!important;
+  top:4px!important;
+  right:4px!important;
+  z-index:40!important;
+  display:flex!important;
+  align-items:flex-start!important;
+  justify-content:flex-end!important;
+  gap:4px!important;
+  height:28px!important;
+  pointer-events:none!important;
+}
+.v90IndicatorCol{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  gap:1px!important;
+}
+.v90Icon{
+  display:block!important;
+  flex:0 0 auto!important;
+}
+.v90Icon.incident{width:15px!important;height:15px!important}
+.v90Icon.change{width:18px!important;height:18px!important}
+.v90Indicators.hasBicolor .v90Icon.change{width:15px!important;height:15px!important}
+.v90Bicolor{
+  width:15px!important;
+  height:6px!important;
+  border-radius:999px!important;
+  overflow:hidden!important;
+  border:1px solid rgba(36,19,39,.30)!important;
+  background:linear-gradient(90deg,#58cf83 0 50%,#8a0f82 50% 100%)!important;
+  box-shadow:0 0 0 1px rgba(255,255,255,.85)!important;
+}
+
+/* LZ en Registro de cambios: exactamente el mismo fondo que LZ del calendario */
+.v89LZChange,
+.v80Row.v89LZChange,
+.v80Row.license{
+  background:var(--v90-lz)!important;
+  border-color:var(--v90-lz-border)!important;
+}
+
+/* Última fila y días fuera de mes: mismo tamaño, solo menor énfasis */
+.day.outsideMonth{opacity:.56!important}
+.day.outsideMonth .badge{opacity:.72!important}
+
+@media(max-width:560px){
+  .day,.day.outsideMonth{min-height:114px!important;height:114px!important}
+  .week div{font-size:11px!important;padding:7px 0!important}
+  .day .num{font-size:17px!important;left:3px!important}
+  .day.today .num{width:29px!important;min-width:29px!important;height:29px!important}
+  .day .badge,.day .badge.work,.day .badge.rest,.day .badge.vac,.day .badge.dd,.day .badge.lz,.day .badge.dsc,.day .badge.sss,.day .badge.dexcesos,.day .badge.ddworkFinal,.day .badge.ddworked{
+    top:33px!important;left:2px!important;right:2px!important;bottom:2px!important;
+  }
+  .day .shiftNo{top:38px!important;min-width:39px!important;height:20px!important;font-size:12px!important}
+  .day .badge.work{padding-top:24px!important}
+  .day .badge.work .timeTop,.day .badge.work .timeBot{font-size:12px!important}
+  .v90Indicators{top:4px!important;right:3px!important;gap:3px!important}
+  .v90Icon.incident{width:14px!important;height:14px!important}
+  .v90Icon.change{width:17px!important;height:17px!important}
+  .v90Indicators.hasBicolor .v90Icon.change{width:14px!important;height:14px!important}
+  .v90Bicolor{width:14px!important;height:6px!important}
+}
+</style>
+
+<script id="v90-calendar-final-js">
+(function(){
+  const APP_VERSION_V90='9.0';
+  const APP_UPDATED_V90='13/08/2026';
+
+  const incidentSvgV90=()=>`
+    <svg class="v90Icon incident" viewBox="0 0 24 24" aria-label="Incidencia" role="img">
+      <path d="M12 2.8 22 20.2c.45.78-.11 1.78-1.02 1.78H3.02c-.91 0-1.47-1-1.02-1.78L12 2.8Z" fill="#F7C928" stroke="#C99D00" stroke-width="1"/>
+      <path d="M12 8v6.2" stroke="#2E2510" stroke-width="2.25" stroke-linecap="round"/>
+      <circle cx="12" cy="17.5" r="1.25" fill="#2E2510"/>
+    </svg>`;
+
+  const changeSvgV90=()=>`
+    <svg class="v90Icon change" viewBox="0 0 24 24" aria-label="Cambio de turno" role="img">
+      <path d="M18.2 8.5A7.2 7.2 0 0 0 6.1 6.1L4.2 8" fill="none" stroke="#52667A" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M4.1 4.6V8h3.4" fill="none" stroke="#52667A" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M5.8 15.5a7.2 7.2 0 0 0 12.1 2.4l1.9-1.9" fill="none" stroke="#52667A" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M19.9 19.4V16h-3.4" fill="none" stroke="#52667A" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>`;
+
+  function cleanVersionV90(){
+    try{
+      document.title='App Turnos Pro v'+APP_VERSION_V90;
+      document.querySelectorAll('.ver').forEach(el=>el.textContent='v'+APP_VERSION_V90);
+
+      const loginBox=document.querySelector('.loginbox');
+      if(loginBox){
+        // eliminar insignias o líneas de versión heredadas
+        [
+          '#loginVersionBadgeV58','#loginVersionBadgeV59','#loginVersionV57',
+          '.v85LoginMeta','.v89LoginMeta','.loginVersionBadge','.versionStampV54'
+        ].forEach(sel=>loginBox.querySelectorAll(sel).forEach(x=>x.remove()));
+
+        // eliminar cualquier línea textual antigua "Versión X..." o "Última actualización..."
+        [...loginBox.querySelectorAll('p,div,span')].forEach(el=>{
+          if(el.closest('h1'))return;
+          const t=(el.textContent||'').trim();
+          if(/^(Versión|Version)\s+\d/i.test(t)||/^Última actualización\s*:/i.test(t)){
+            el.remove();
+          }
+        });
+
+        const logo=loginBox.querySelector('.logo');
+        if(logo){
+          // el logo queda solo
+          [...loginBox.children].forEach(el=>{
+            if(el!==logo && el.tagName==='SPAN' && /v\d/i.test(el.textContent||''))el.remove();
+          });
+        }
+        const h=loginBox.querySelector('h1');
+        if(h){
+          h.innerHTML='App Turnos Pro <span class="ver" style="display:inline-block;background:#f2e3f4;color:#8a0f82;border-radius:999px;padding:3px 9px;font-size:.42em;vertical-align:middle;margin-left:6px">v'+APP_VERSION_V90+'</span>';
+          let stamp=document.getElementById('loginUpdatedV90');
+          if(!stamp){
+            stamp=document.createElement('p');
+            stamp.id='loginUpdatedV90';
+            stamp.className='muted';
+            stamp.style='margin:-4px 0 12px;font-weight:850';
+            h.insertAdjacentElement('afterend',stamp);
+          }
+          stamp.textContent='Última actualización: '+APP_UPDATED_V90;
+        }
+      }
+
+      // Cabecera superior normal
+      const topTitle=document.querySelector('header .title');
+      if(topTitle)topTitle.innerHTML='App Turnos Pro <span class="ver">v'+APP_VERSION_V90+'</span>';
+
+      // Ajustes: actualizar la caja App Turnos Pro sin alterar el resto.
+      const settings=document.querySelector('#settingsView');
+      if(settings){
+        const blocks=[...settings.querySelectorAll('.settingsBlock')];
+        const appBlock=blocks.find(b=>/App Turnos Pro/i.test(b.querySelector('h3')?.textContent||''));
+        if(appBlock){
+          const p=appBlock.querySelector('p')||document.createElement('p');
+          p.innerHTML='<b>Versión '+APP_VERSION_V90+'</b><br><span class="muted">Última actualización: '+APP_UPDATED_V90+'</span>';
+          if(!p.parentNode)appBlock.appendChild(p);
+        }
+      }
+    }catch(e){console.warn('v9.0 versión',e)}
+  }
+
+  function dateFromDayV90(day){
+    const oc=day.getAttribute('onclick')||'';
+    const m=oc.match(/selectDay\(['"](\d{4}-\d{2}-\d{2})['"]\)/);
+    return m?m[1]:'';
+  }
+
+  function transitionV90(ds){
+    try{
+      const ch=data?.changes?.[ds];
+      if(!ch)return false;
+      const base=dayData(ds),eff=effectiveDay(ds);
+      if(!base||!eff)return false;
+      const a=status(base),b=status(eff);
+      const rests=new Set(['rest','dsc','sss']);
+      return (rests.has(a)&&b==='work')||(a==='work'&&rests.has(b));
+    }catch(e){return false}
+  }
+
+  function applyIndicatorsV90(){
+    document.querySelectorAll('#grid .day').forEach(day=>{
+      day.querySelectorAll('.v90Indicators').forEach(x=>x.remove());
+      const ds=dateFromDayV90(day);
+      if(!ds)return;
+      const hasChange=!!(data?.changes&&data.changes[ds]);
+      const hasIncident=!!(data?.incidents&&data.incidents[ds]);
+      const hasBicolor=hasChange&&transitionV90(ds);
+      if(!hasChange&&!hasIncident)return;
+
+      const box=document.createElement('div');
+      box.className='v90Indicators'+(hasBicolor?' hasBicolor':'');
+      box.setAttribute('aria-hidden','false');
+
+      if(hasIncident){
+        const inc=document.createElement('span');
+        inc.className='v90IndicatorCol';
+        inc.title='Incidencia';
+        inc.innerHTML=incidentSvgV90();
+        box.appendChild(inc);
+      }
+      if(hasChange){
+        const ch=document.createElement('span');
+        ch.className='v90IndicatorCol';
+        ch.title='Cambio de turno';
+        ch.innerHTML=changeSvgV90()+(hasBicolor?'<span class="v90Bicolor" title="Cambio descanso/trabajo"></span>':'');
+        box.appendChild(ch);
+      }
+      day.appendChild(box);
+    });
+  }
+
+  function polishCalendarV90(){
+    // Evitar un segundo número del día si alguna capa antigua lo hubiera generado.
+    document.querySelectorAll('#grid .day').forEach(day=>{
+      const nums=day.querySelectorAll(':scope > .num');
+      nums.forEach((n,i)=>{if(i>0)n.remove()});
+    });
+    applyIndicatorsV90();
+  }
+
+  // Envolver solo al final: conserva toda la lógica de 8.9.
+  const oldRenderV90=window.render;
+  window.render=function(){
+    const r=oldRenderV90?oldRenderV90():undefined;
+    cleanVersionV90();
+    requestAnimationFrame(polishCalendarV90);
+    return r;
+  };
+
+  const oldShowV90=window.show;
+  window.show=function(id){
+    const r=oldShowV90?oldShowV90(id):undefined;
+    setTimeout(()=>{cleanVersionV90();if(id==='calendarView')polishCalendarV90()},20);
+    return r;
+  };
+
+  const oldShowChangesV90=window.showChanges;
+  window.showChanges=function(){
+    const r=oldShowChangesV90?oldShowChangesV90():undefined;
+    // Igualar LZ del registro al color de las tarjetas LZ del calendario.
+    setTimeout(()=>{
+      document.querySelectorAll('.v89LZChange,.v80Row.license').forEach(el=>{
+        el.style.background='var(--v90-lz)';
+        el.style.borderColor='var(--v90-lz-border)';
+      });
+      cleanVersionV90();
+    },30);
+    return r;
+  };
+
+  cleanVersionV90();
+  setTimeout(()=>{cleanVersionV90();polishCalendarV90()},180);
+  window.addEventListener('pageshow',()=>setTimeout(()=>{cleanVersionV90();polishCalendarV90()},20));
+})();
+</script>
+
 </body></html>
