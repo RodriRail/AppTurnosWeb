@@ -1,4 +1,4 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>App Turnos Pro v8.9</title><style>
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>App Turnos Pro v9.5</title><style>
 :root{--r:#8a0f82;--r2:#b65ac0;--bg:#fbf8fc;--line:#ead9ea;--txt:#1f1522;--mut:#75627a;--work:#edd0f4;--workb:#d79ae4;--rest:#d8f8e1;--restb:#62df91;--dd:#ffe0e7;--ddb:#ff9aad;--vac:#dff3ff;--vacb:#8bd4ff;--lz:#ffe0b2;--lzb:#fb923c}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;padding-bottom:74px}.hidden{display:none!important}header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:5;padding:8px 10px}.top{display:flex;gap:8px;align-items:center}.logo{font-weight:900;font-style:italic;color:var(--r);font-size:24px}.title{font-weight:900;font-size:17px}.ver{color:var(--r);font-size:12px}.sub{font-weight:700;color:var(--mut);font-size:11px}.btn{border:1px solid var(--line);background:#fff;border-radius:15px;padding:10px 12px;font-weight:900;color:var(--txt);white-space:nowrap}.primary{background:var(--r)!important;color:#fff!important}.wrap{padding:6px}.bar{display:grid;grid-template-columns:44px 1fr 44px 70px;align-items:center;gap:6px;margin:8px 0}.month{font-size:26px;font-weight:950;text-align:center}.navbtn{width:44px;height:44px;border:1px solid var(--line);border-radius:14px;background:#fff;font-size:24px;font-weight:900}.calendar{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}.week,.grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr))}.week div{padding:10px 2px;text-align:center;font-weight:950;color:#4d3d55;font-size:13px;border-bottom:1px solid var(--line)}.day{min-height:82px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:3px;position:relative;overflow:hidden}.day:nth-child(7n){border-right:0}.num{font-weight:950;font-size:18px}.today .num{background:#0b7cff;color:#fff;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px}.selected{outline:4px solid var(--r);outline-offset:-4px;background:#fff8ff}.today.selected{outline:4px dashed var(--r)}.shiftNo{display:inline-flex;align-items:center;justify-content:center;min-width:42px;height:28px;border-radius:999px;background:#fff;border:2px solid var(--r2);color:#35113d;font-size:18px;font-weight:950;margin:0 auto 4px}.badge{margin-top:2px;border-radius:14px;border:2px solid;padding:6px 2px;min-height:52px;text-align:center;font-weight:900;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2px}.work{background:var(--work);border-color:var(--workb);color:#5b1168}.rest{background:var(--rest);border-color:var(--restb);color:#087139}.restComp{background:repeating-linear-gradient(135deg,#d8f8e1 0 9px,#fff 9px 15px);border-color:#42c979;color:#087139}.dd{background:var(--dd);border-color:var(--ddb);color:#c20d34}.vac{background:var(--vac);border-color:var(--vacb);color:#00608f}.lz{background:var(--lz);border-color:var(--lzb);color:#7c2d12}.rest,.vac,.dd,.lz{position:absolute;left:3px;right:3px;top:30px;bottom:3px;min-height:0}.bigD{font-size:24px}.timeTop,.timeBot{font-size:13px;line-height:1;font-weight:950}.sep{font-size:14px;color:var(--r);font-weight:950}.changedDot{position:absolute;right:5px;top:5px;width:9px;height:9px;background:#facc15;border:2px solid #fff;border-radius:50%;box-shadow:0 0 0 1px #b45309}.dataToggle{margin-left:auto;border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 10px;font-weight:950;color:var(--r)}.adminPanel,.detail{background:#fff;border:1px solid var(--line);border-radius:20px;padding:14px;margin-top:10px}.detail h2{margin:4px 0 8px;font-size:26px}.pill{display:inline-block;border-radius:999px;padding:8px 12px;font-weight:950}.summaryCard{background:linear-gradient(135deg,var(--r),#6e267a);color:#fff;border-radius:20px;padding:16px;margin:12px 0}.summaryTop{display:flex;justify-content:space-between;gap:12px}.summaryTitle{font-size:30px;font-weight:950}.summaryDate{opacity:.92;font-weight:750}.servicePill{background:rgba(255,255,255,.16);padding:7px 10px;border-radius:999px;font-weight:900;display:flex;align-items:center;justify-content:center;text-align:center;min-width:86px}.summaryTimes{display:grid;grid-template-columns:1fr 44px 1fr;gap:8px;align-items:center;background:#fff;color:var(--txt);border-radius:18px;padding:12px;margin-top:14px;text-align:center}.summaryTimes b{display:block;color:var(--r);font-size:26px}.summaryTimes small{color:var(--mut);font-weight:800}.summaryArrow{font-size:26px;color:var(--r);font-weight:950}.miniGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}.miniBox{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center;color:var(--txt)}.miniBox b{display:block}.miniBox small{color:var(--mut);font-weight:800}.timeline{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;margin-top:12px}.timeline h3{margin:0 0 10px;color:var(--r)}.tl{display:grid;grid-template-columns:56px 30px 1fr;gap:10px;align-items:start;padding:9px 0;position:relative}.tl:not(:last-child)::after{content:"";position:absolute;left:70px;top:40px;bottom:-8px;width:2px;background:linear-gradient(var(--r2),#ead9ea)}.tlIcon{width:30px;height:30px;border:2px solid var(--r2);border-radius:50%;display:flex;align-items:center;justify-content:center;background:#fff;font-size:14px;z-index:1}.tlIcon.start{border-color:#4ade80}.tlIcon.train{border-color:#b65ac0}.tlIcon.mid{border-color:#93c5fd}.tlIcon.end{border-color:#fb7185}.tlIcon.arrival{border-color:#60a5fa}.tlIcon.restgap{border-color:#fbbf24}.tlIcon.deje{border-color:#fb7185}.tlIcon.pdf{border-color:#64748b}.pdfOverlay{position:fixed;inset:0;background:#fff;z-index:99;display:flex;flex-direction:column}.pdfTop{display:flex;align-items:center;gap:8px;padding:8px;border-bottom:1px solid var(--line);background:#fff}.pdfFrame{border:0;flex:1;width:100%}.tlText b{display:block}.tlText small{color:var(--mut)}.muted{color:var(--mut)}.row{border-left:4px solid var(--r);background:#faf6fb;padding:10px;border-radius:12px;margin-top:8px}.changePanel{background:#fff7df;border:1px solid #facc15;border-radius:16px;padding:12px;margin-top:12px}.changeGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.input,.select{width:100%;padding:12px;border:1px solid var(--line);border-radius:14px;font-size:15px;background:#fff}.login{position:fixed;inset:0;background:#fbf8fc;z-index:50;display:flex;align-items:center;justify-content:center;padding:20px}.loginbox{background:#fff;border:1px solid var(--line);border-radius:24px;padding:22px;max-width:380px;width:100%;box-shadow:0 12px 35px #0001}.ok{color:#087139;font-weight:900}.err{color:#c20d34;font-weight:900}.changesList{display:grid;gap:10px}.changeItem,.balanceBox{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px}.balanceGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:560px){.month{font-size:22px}.day{min-height:78px;padding:2px}.num{font-size:15px}.shiftNo{min-width:32px;height:22px;font-size:15px}.badge{min-height:42px;border-radius:11px}.timeTop,.timeBot{font-size:11px}.week div{font-size:11px}.bar{grid-template-columns:38px 1fr 38px 58px}.navbtn{width:38px;height:38px}.btn{padding:8px 10px;font-size:13px}.changeGrid{grid-template-columns:1fr}.summaryTitle{font-size:25px}.summaryTimes b{font-size:22px}.miniBox{padding:8px;font-size:12px}}
 
 /* v2.4 DD asignado + registro visual */
@@ -268,8 +268,8 @@
 .versionStampV54{font-size:11px;color:#75627a;font-weight:900;margin-top:1px}
 </style>
 </head><body>
-<div id="login" class="login"><div class="loginbox"><div class="logo">renfe</div><h1>App Turnos Pro <span class="ver">v8.9</span></h1><p class="muted">Acceso privado para administrar datos.</p><input id="user" class="input" placeholder="Usuario"><input id="pass" class="input" placeholder="Contraseña" type="password"><label style="display:flex;gap:8px;align-items:center;margin:8px 0;font-weight:800"><input id="remember" type="checkbox" checked> Recordar sesión 24 horas</label><button class="btn primary" style="width:100%" onclick="doLogin()">Entrar</button><p id="loginMsg" class="err"></p></div></div>
-<header><div class="top"><div class="logo">renfe</div><div><div class="title">App Turnos Pro <span class="ver">v8.9</span></div><div class="sub">Calendario visual · cambios · marcos · IndexedDB</div></div><button class="dataToggle" onclick="toggleAdmin()">Datos ▾</button></div><div id="adminPanel" class="adminPanel hidden"><b>Importación privada</b><p class="muted">Archivos guardados solo en este dispositivo.</p><button class="btn primary" onclick="pick('yearFile')">📅 Importar gráfico anual</button><button class="btn primary" onclick="pick('marcoFile')">🚄 Importar Marco mensual JSON</button><button class="btn" onclick="pick('pdfFile')">📄 Importar PDF Marco</button><button class="btn" onclick="exportExcel()">📤 Exportar Excel</button><button class="btn" onclick="exportBackup()">💾 Copia seguridad JSON</button><button class="btn" onclick="pick('historyFile')">📥 Importar histórico de cambios</button><button class="btn" onclick="clearData()">Borrar datos locales</button><div id="importStatus" class="muted"></div></div><input id="yearFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'year')"><input id="marcoFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'marco')"><input id="pdfFile" type="file" accept="application/pdf,.pdf" class="hidden" onchange="importPdf(event)"><input id="historyFile" type="file" accept=".json,application/json" class="hidden" onchange="importHistoryBackup(event)"></header>
+<div id="login" class="login"><div class="loginbox"><div class="logo">renfe</div><h1>App Turnos Pro <span class="ver">v9.5</span></h1><p class="muted">Acceso privado para administrar datos.</p><input id="user" class="input" placeholder="Usuario"><input id="pass" class="input" placeholder="Contraseña" type="password"><label style="display:flex;gap:8px;align-items:center;margin:8px 0;font-weight:800"><input id="remember" type="checkbox" checked> Recordar sesión 24 horas</label><button class="btn primary" style="width:100%" onclick="doLogin()">Entrar</button><p id="loginMsg" class="err"></p></div></div>
+<header><div class="top"><div class="logo">renfe</div><div><div class="title">App Turnos Pro <span class="ver">v9.5</span></div><div class="sub">Calendario visual · cambios · marcos · IndexedDB</div></div><button class="dataToggle" onclick="toggleAdmin()">Datos ▾</button></div><div id="adminPanel" class="adminPanel hidden"><b>Importación privada</b><p class="muted">Archivos guardados solo en este dispositivo.</p><button class="btn primary" onclick="pick('yearFile')">📅 Importar gráfico anual</button><button class="btn primary" onclick="pick('marcoFile')">🚄 Importar Marco mensual JSON</button><button class="btn" onclick="pick('pdfFile')">📄 Importar PDF Marco</button><button class="btn" onclick="exportExcel()">📤 Exportar Excel</button><button class="btn" onclick="exportBackup()">💾 Copia seguridad JSON</button><button class="btn" onclick="pick('historyFile')">📥 Importar histórico de cambios</button><button class="btn" onclick="clearData()">Borrar datos locales</button><div id="importStatus" class="muted"></div></div><input id="yearFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'year')"><input id="marcoFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'marco')"><input id="pdfFile" type="file" accept="application/pdf,.pdf" class="hidden" onchange="importPdf(event)"><input id="historyFile" type="file" accept=".json,application/json" class="hidden" onchange="importHistoryBackup(event)"></header>
 <div class="wrap"><section id="calendarView" class="view"><div class="bar"><button class="navbtn" onclick="move(-1)">‹</button><div class="month" id="monthTitle"></div><button class="navbtn" onclick="move(1)">›</button><button class="btn" onclick="today()">Hoy</button></div><div class="calendar"><div class="week"><div>LUN</div><div>MAR</div><div>MIÉ</div><div>JUE</div><div>VIE</div><div>SÁB</div><div>DOM</div></div><div id="grid" class="grid"></div></div><div id="detail" class="detail"><span class="pill" style="background:#f2e3f4;color:var(--r)">Selecciona un día</span><h2>Detalle del turno</h2><p class="muted">Pulsa una casilla para ver inicio, fin, desarrollo y cambios.</p></div></section><section id="changesView" class="view hidden"><div class="detail"><h2>Registro de cambios</h2><div id="balances" class="balanceGrid"></div><h3>Historial</h3><div id="changesList" class="changesList"></div></div></section><section id="settingsView" class="view hidden"><div class="detail"><h2>Ajustes</h2><p>Datos cargados: <b id="dataState"></b></p></div></section></div>
 <nav style="position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);z-index:10"><button class="btn" onclick="show('calendarView')">📅<br>Calendario</button><button class="btn" onclick="scrollToDetail()">📋<br>Detalle</button><button class="btn" onclick="showChanges()">🔁<br>Cambios<br>Registro</button><button class="btn" onclick="show('settingsView')">⚙️<br>Ajustes</button><button class="btn" onclick="lockApp()">🔒<br>Bloq.</button></nav>
 <script>
@@ -3574,7 +3574,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 
 <script id="v90-calendar-final-js">
 (function(){
-  const APP_VERSION_V90='9.2';
+  const APP_VERSION_V90='9.3';
   const APP_UPDATED_V90='13/08/2026';
 
   const incidentSvgV90=()=>`
@@ -3791,7 +3791,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 
 <script id="v92-dormida-version-js">
 (function(){
-  const APP_VERSION_V92='9.2';
+  const APP_VERSION_V92='9.3';
   const APP_UPDATED_V92='14/08/2026';
   let versionGuardV92=false;
 
@@ -3939,11 +3939,14 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
       const ds=dateFromDayV92(day);
       if(!ds || !isSleepDayV92(ds))return;
 
+      const card=day.querySelector('.badge.work');
+      if(!card)return;
       const mark=document.createElement('span');
       mark.className='v92SleepMark';
       mark.title=isSleepOutboundV92(ds)?'Dormida · ida':'Dormida · regreso';
+      mark.setAttribute('aria-label',mark.title);
       mark.innerHTML=moonSvgV92();
-      day.appendChild(mark);
+      card.appendChild(mark);
     });
   }
 
@@ -3979,6 +3982,540 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
   setTimeout(refreshV92,200);
   setTimeout(refreshV92,700);
   window.addEventListener('pageshow',()=>setTimeout(refreshV92,30));
+})();
+</script>
+
+
+<style id="v93-final-icons-css">
+/* ===== v9.3: iconos SVG más limpios + zona reservada + luna integrada en tarjeta ===== */
+
+/* Reserva fija de la esquina superior derecha para incidencia/cambio/pastilla */
+.v90Indicators{
+  position:absolute!important;
+  top:4px!important;
+  right:3px!important;
+  width:32px!important;
+  height:28px!important;
+  display:flex!important;
+  align-items:flex-start!important;
+  justify-content:flex-end!important;
+  gap:1px!important;
+  z-index:45!important;
+  pointer-events:none!important;
+}
+.v90IndicatorCol{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  gap:0!important;
+  flex:0 0 auto!important;
+}
+.v90Icon.incident{
+  width:13px!important;
+  height:13px!important;
+}
+.v90Icon.change{
+  width:16px!important;
+  height:16px!important;
+}
+.v90Indicators.hasBicolor .v90Icon.change{
+  width:14px!important;
+  height:14px!important;
+}
+.v90Bicolor{
+  width:14px!important;
+  height:5px!important;
+  margin-top:0!important;
+}
+
+/* Asegurar que la zona del número del día queda libre */
+.day .num{
+  max-width:calc(100% - 38px)!important;
+  z-index:50!important;
+}
+
+/* Luna: badge integrado y ANCLADO a la tarjeta morada de trabajo.
+   La tarjeta es el padre de referencia; nunca la celda ni la pastilla del turno. */
+.day .badge.work{
+  position:relative!important;
+  overflow:visible!important;
+}
+.v92SleepMark{
+  position:absolute!important;
+  top:-3px!important;
+  right:-3px!important;
+  z-index:44!important;
+  width:22px!important;
+  height:22px!important;
+  min-width:22px!important;
+  min-height:22px!important;
+  max-width:22px!important;
+  max-height:22px!important;
+  border-radius:50%!important;
+  background:#7B1F8F!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  margin:0!important;
+  padding:0!important;
+  transform:none!important;
+  box-shadow:none!important;
+  pointer-events:none!important;
+}
+.v92SleepMark svg{
+  width:14px!important;
+  height:14px!important;
+  min-width:14px!important;
+  min-height:14px!important;
+  max-width:14px!important;
+  max-height:14px!important;
+  display:block!important;
+  flex:none!important;
+  filter:none!important;
+}
+
+@media(max-width:560px){
+  .v90Indicators{
+    right:3px!important;
+    width:30px!important;
+    gap:1px!important;
+  }
+  .v90Icon.incident{width:12px!important;height:12px!important}
+  .v90Icon.change{width:15px!important;height:15px!important}
+  .v90Indicators.hasBicolor .v90Icon.change{width:13px!important;height:13px!important}
+  .v90Bicolor{width:13px!important;height:5px!important}
+
+  .v92SleepMark{
+    top:-3px!important;
+    right:-3px!important;
+    width:21px!important;
+    height:21px!important;
+    min-width:21px!important;
+    min-height:21px!important;
+    max-width:21px!important;
+    max-height:21px!important;
+  }
+  .v92SleepMark svg{width:13px!important;height:13px!important;min-width:13px!important;min-height:13px!important;max-width:13px!important;max-height:13px!important}
+}
+</style>
+
+<script id="v93-final-icons-js">
+(function(){
+  const APP_VERSION_V93='9.3';
+  const APP_UPDATED_V93='14/08/2026';
+
+  // SVG limpio de incidencia
+  function incidentSvgV93(){
+    return `
+      <svg class="v90Icon incident" viewBox="0 0 24 24" role="img" aria-label="Incidencia">
+        <path d="M12 3.3 21.1 19a1.15 1.15 0 0 1-.99 1.72H3.89A1.15 1.15 0 0 1 2.9 19L12 3.3Z"
+              fill="#F4C928" stroke="#C89A00" stroke-width="1.25"/>
+        <path d="M12 8.3v5.8" stroke="#352A0A" stroke-width="2.2" stroke-linecap="round"/>
+        <circle cx="12" cy="17.15" r="1.18" fill="#352A0A"/>
+      </svg>`;
+  }
+
+  // SVG más moderno y uniforme de cambio
+  function changeSvgV93(){
+    return `
+      <svg class="v90Icon change" viewBox="0 0 24 24" role="img" aria-label="Cambio de turno">
+        <path d="M17.8 7.2A7 7 0 0 0 6.4 5.9L4.3 8"
+              fill="none" stroke="#536A7E" stroke-width="2.15"
+              stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M4.3 4.8V8h3.2"
+              fill="none" stroke="#536A7E" stroke-width="2.15"
+              stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M6.2 16.8A7 7 0 0 0 17.6 18l2.1-2.1"
+              fill="none" stroke="#536A7E" stroke-width="2.15"
+              stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M19.7 19.2V16h-3.2"
+              fill="none" stroke="#536A7E" stroke-width="2.15"
+              stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>`;
+  }
+
+  // Luna blanca exacta sobre círculo morado
+  function moonSvgV93(){
+    return `
+      <svg viewBox="0 0 24 24" role="img" aria-label="Dormida">
+        <path d="M15.9 4.2a7.6 7.6 0 1 0 3.4 13.6A8.3 8.3 0 0 1 15.9 4.2Z"
+              fill="#FFFFFF"/>
+      </svg>`;
+  }
+
+  function enforceVersionV93(){
+    try{
+      document.title='App Turnos Pro v'+APP_VERSION_V93;
+      document.querySelectorAll('.ver').forEach(el=>el.textContent='v'+APP_VERSION_V93);
+
+      const loginBox=document.querySelector('.loginbox');
+      if(loginBox){
+        [
+          '#loginVersionBadgeV58','#loginVersionBadgeV59','#loginVersionV57',
+          '#loginUpdatedV90','#loginUpdatedV92','#loginUpdatedV93',
+          '.v85LoginMeta','.v89LoginMeta','.loginVersionBadge','.versionStampV54'
+        ].forEach(sel=>loginBox.querySelectorAll(sel).forEach(el=>el.remove()));
+
+        [...loginBox.querySelectorAll('p,div,span')].forEach(el=>{
+          if(el.closest('h1'))return;
+          const t=(el.textContent||'').trim();
+          if(/^(Versión|Version)\s+\d/i.test(t)||/^Última actualización\s*:/i.test(t))el.remove();
+        });
+
+        const h=loginBox.querySelector('h1');
+        if(h){
+          h.innerHTML='App Turnos Pro <span class="ver" style="display:inline-block;background:#f2e3f4;color:#8a0f82;border-radius:999px;padding:3px 9px;font-size:.42em;vertical-align:middle;margin-left:6px">v'+APP_VERSION_V93+'</span>';
+          const stamp=document.createElement('p');
+          stamp.id='loginUpdatedV93';
+          stamp.className='muted';
+          stamp.style='margin:-4px 0 12px;font-weight:850';
+          stamp.textContent='Última actualización: '+APP_UPDATED_V93;
+          h.insertAdjacentElement('afterend',stamp);
+        }
+      }
+
+      const topTitle=document.querySelector('header .title');
+      if(topTitle)topTitle.innerHTML='App Turnos Pro <span class="ver">v'+APP_VERSION_V93+'</span>';
+
+      const settings=document.querySelector('#settingsView');
+      if(settings){
+        const blocks=[...settings.querySelectorAll('.settingsBlock')];
+        const appBlock=blocks.find(b=>/App Turnos Pro/i.test(b.querySelector('h3')?.textContent||''));
+        if(appBlock){
+          let p=appBlock.querySelector('p');
+          if(!p){p=document.createElement('p');appBlock.appendChild(p)}
+          p.innerHTML='<b>Versión '+APP_VERSION_V93+'</b><br><span class="muted">Última actualización: '+APP_UPDATED_V93+'</span>';
+        }
+      }
+    }catch(e){console.warn('v9.3 versión',e)}
+  }
+
+  function rebuildIndicatorsV93(){
+    document.querySelectorAll('#grid .day').forEach(day=>{
+      const box=day.querySelector('.v90Indicators');
+      if(!box)return;
+
+      box.querySelectorAll('.v90Icon.incident').forEach(svg=>{
+        const parent=svg.parentElement;
+        if(parent)parent.innerHTML=incidentSvgV93();
+      });
+
+      box.querySelectorAll('.v90Icon.change').forEach(svg=>{
+        const parent=svg.parentElement;
+        if(parent){
+          const hasBi=!!parent.querySelector('.v90Bicolor');
+          parent.innerHTML=changeSvgV93()+(hasBi?'<span class="v90Bicolor" title="Cambio descanso/trabajo"></span>':'');
+        }
+      });
+    });
+  }
+
+  function rebuildMoonV93(){
+    document.querySelectorAll('#grid .day .v92SleepMark').forEach(mark=>{
+      mark.innerHTML=moonSvgV93();
+    });
+  }
+
+  function refreshV93(){
+    enforceVersionV93();
+    requestAnimationFrame(()=>{
+      rebuildIndicatorsV93();
+      rebuildMoonV93();
+    });
+  }
+
+  const oldRenderV93=window.render;
+  window.render=function(){
+    const out=oldRenderV93?oldRenderV93():undefined;
+    refreshV93();
+    return out;
+  };
+
+  const oldShowV93=window.show;
+  window.show=function(id){
+    const out=oldShowV93?oldShowV93(id):undefined;
+    setTimeout(refreshV93,20);
+    return out;
+  };
+
+  refreshV93();
+  setTimeout(refreshV93,180);
+  setTimeout(refreshV93,600);
+  window.addEventListener('pageshow',()=>setTimeout(refreshV93,30));
+})();
+</script>
+
+
+<!-- ===== v9.4: corrección final de anclaje de luna al tarjetín ===== -->
+<script id="v94-moon-anchor-final-js">
+(function(){
+  const V='9.4', UPDATED='14/08/2026';
+  function enforceV94(){
+    try{
+      document.title='App Turnos Pro v'+V;
+      document.querySelectorAll('.ver').forEach(el=>el.textContent='v'+V);
+      const h=document.querySelector('.loginbox h1');
+      if(h)h.innerHTML='App Turnos Pro <span class="ver" style="display:inline-block;background:#f2e3f4;color:#8a0f82;border-radius:999px;padding:3px 9px;font-size:.42em;vertical-align:middle;margin-left:6px">v'+V+'</span>';
+      let stamp=document.getElementById('loginUpdatedV93')||document.getElementById('loginUpdatedV94');
+      if(stamp){stamp.id='loginUpdatedV94';stamp.textContent='Última actualización: '+UPDATED;}
+      const topTitle=document.querySelector('header .title');
+      if(topTitle)topTitle.innerHTML='App Turnos Pro <span class="ver">v'+V+'</span>';
+      const settings=document.querySelector('#settingsView');
+      if(settings){
+        const blocks=[...settings.querySelectorAll('.settingsBlock')];
+        const appBlock=blocks.find(b=>/App Turnos Pro/i.test(b.querySelector('h3')?.textContent||''));
+        if(appBlock){
+          let p=appBlock.querySelector('p');
+          if(p)p.innerHTML='<b>Versión '+V+'</b><br><span class="muted">Última actualización: '+UPDATED+'</span>';
+        }
+      }
+    }catch(e){}
+  }
+  function anchorMoonsV94(){
+    document.querySelectorAll('#grid .day').forEach(day=>{
+      const mark=day.querySelector('.v92SleepMark');
+      if(!mark)return;
+      const card=day.querySelector('.badge.work');
+      if(card && mark.parentElement!==card)card.appendChild(mark);
+    });
+  }
+  function refreshV94(){enforceV94();requestAnimationFrame(anchorMoonsV94);}
+  const prevRender=window.render;
+  window.render=function(){const out=prevRender?prevRender():undefined;refreshV94();return out;};
+  const prevShow=window.show;
+  window.show=function(id){const out=prevShow?prevShow(id):undefined;setTimeout(refreshV94,20);return out;};
+  refreshV94();
+  setTimeout(refreshV94,180);
+  setTimeout(refreshV94,700);
+  window.addEventListener('pageshow',()=>setTimeout(refreshV94,30));
+})();
+</script>
+
+
+<!-- ===== v9.5: luna compacta anclada + indicadores más legibles + versión limpia ===== -->
+<style id="v95-final-polish-css">
+/*
+  Pernocta: el padre geométrico sigue siendo .badge.work.
+  El badge se hace pequeño y se desplaza hacia la propia esquina para no invadir
+  la pastilla del número de turno. No depende de emoji, font-size, vw ni porcentajes.
+*/
+.day .badge.work{
+  position:relative!important;
+  overflow:visible!important;
+}
+.v92SleepMark{
+  position:absolute!important;
+  top:-7px!important;
+  right:-1px!important;
+  width:18px!important;
+  height:18px!important;
+  min-width:18px!important;
+  min-height:18px!important;
+  max-width:18px!important;
+  max-height:18px!important;
+  border-radius:50%!important;
+  background:#7B1F8F!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  margin:0!important;
+  padding:0!important;
+  transform:none!important;
+  box-shadow:0 0 0 1px rgba(255,255,255,.72)!important;
+  pointer-events:none!important;
+  z-index:48!important;
+}
+.v92SleepMark svg{
+  width:11px!important;
+  height:11px!important;
+  min-width:11px!important;
+  min-height:11px!important;
+  max-width:11px!important;
+  max-height:11px!important;
+  display:block!important;
+  flex:none!important;
+  filter:none!important;
+}
+/* Solo en días con dormida: deja unos píxeles extra libres a la derecha de la pastilla. */
+.day.hasSleepV95 .shiftNo{
+  left:calc(50% - 5px)!important;
+}
+
+/* Indicadores superiores: siguen a la derecha, lejos del número del día. */
+.v90Indicators{
+  top:4px!important;
+  right:3px!important;
+  gap:3px!important;
+  min-width:20px!important;
+  height:30px!important;
+  overflow:visible!important;
+}
+/* Un solo indicador: deliberadamente más grande y fácil de reconocer. */
+.v90Indicators.singleV95 .v90Icon.incident{
+  width:18px!important;
+  height:18px!important;
+}
+.v90Indicators.singleV95 .v90Icon.change{
+  width:20px!important;
+  height:20px!important;
+}
+/* Dos indicadores: un poco mayores que en 9.3, pero compactos para no invadir el día. */
+.v90Indicators.multiV95 .v90Icon.incident{
+  width:16px!important;
+  height:16px!important;
+}
+.v90Indicators.multiV95 .v90Icon.change{
+  width:18px!important;
+  height:18px!important;
+}
+.v90Indicators.hasBicolor .v90Icon.change{
+  width:16px!important;
+  height:16px!important;
+}
+.v90Bicolor{
+  width:16px!important;
+  height:6px!important;
+}
+.day .num{
+  max-width:calc(100% - 40px)!important;
+}
+
+@media(max-width:560px){
+  .v92SleepMark{
+    top:-6px!important;
+    right:-1px!important;
+    width:17px!important;
+    height:17px!important;
+    min-width:17px!important;
+    min-height:17px!important;
+    max-width:17px!important;
+    max-height:17px!important;
+  }
+  .v92SleepMark svg{
+    width:10px!important;
+    height:10px!important;
+    min-width:10px!important;
+    min-height:10px!important;
+    max-width:10px!important;
+    max-height:10px!important;
+  }
+  .day.hasSleepV95 .shiftNo{left:calc(50% - 5px)!important}
+  .v90Indicators{right:2px!important;gap:2px!important}
+  .v90Indicators.singleV95 .v90Icon.incident{width:17px!important;height:17px!important}
+  .v90Indicators.singleV95 .v90Icon.change{width:19px!important;height:19px!important}
+  .v90Indicators.multiV95 .v90Icon.incident{width:15px!important;height:15px!important}
+  .v90Indicators.multiV95 .v90Icon.change{width:17px!important;height:17px!important}
+  .v90Indicators.hasBicolor .v90Icon.change{width:15px!important;height:15px!important}
+  .v90Bicolor{width:15px!important;height:6px!important}
+  .day .num{max-width:calc(100% - 38px)!important}
+}
+</style>
+
+<script id="v95-final-polish-js">
+(function(){
+  const V='9.5';
+  const UPDATED='14/08/2026';
+
+  function cleanVersionV95(){
+    try{
+      document.title='App Turnos Pro v'+V;
+      document.querySelectorAll('.ver').forEach(el=>el.textContent='v'+V);
+
+      const topTitle=document.querySelector('header .title');
+      if(topTitle) topTitle.innerHTML='App Turnos Pro <span class="ver">v'+V+'</span>';
+
+      const loginBox=document.querySelector('.loginbox');
+      if(loginBox){
+        // Elimina restos visuales de controladores antiguos (9.2/9.3/9.4 y anteriores).
+        [
+          '#loginVersionBadgeV58','#loginVersionBadgeV59','#loginVersionV57',
+          '#loginUpdatedV90','#loginUpdatedV92','#loginUpdatedV93','#loginUpdatedV94','#loginUpdatedV95',
+          '.v85LoginMeta','.v89LoginMeta','.loginVersionBadge','.versionStampV54'
+        ].forEach(sel=>loginBox.querySelectorAll(sel).forEach(el=>el.remove()));
+
+        [...loginBox.querySelectorAll('p,div,span')].forEach(el=>{
+          if(el.closest('h1'))return;
+          const t=(el.textContent||'').trim();
+          if(/^(Versión|Version)\s+\d/i.test(t)||/^Última actualización\s*:/i.test(t))el.remove();
+        });
+
+        const h=loginBox.querySelector('h1');
+        if(h){
+          h.innerHTML='App Turnos Pro <span class="ver" style="display:inline-block;background:#f2e3f4;color:#8a0f82;border-radius:999px;padding:3px 9px;font-size:.42em;vertical-align:middle;margin-left:6px">v'+V+'</span>';
+          const stamp=document.createElement('p');
+          stamp.id='loginUpdatedV95';
+          stamp.className='muted';
+          stamp.style='margin:-4px 0 12px;font-weight:850';
+          stamp.textContent='Última actualización: '+UPDATED;
+          h.insertAdjacentElement('afterend',stamp);
+        }
+      }
+
+      const settings=document.querySelector('#settingsView');
+      if(settings){
+        const blocks=[...settings.querySelectorAll('.settingsBlock')];
+        const appBlock=blocks.find(b=>/App Turnos Pro/i.test(b.querySelector('h3')?.textContent||''));
+        if(appBlock){
+          let p=appBlock.querySelector('p');
+          if(!p){p=document.createElement('p');appBlock.appendChild(p)}
+          p.innerHTML='<b>Versión '+V+'</b><br><span class="muted">Última actualización: '+UPDATED+'</span>';
+        }
+      }
+    }catch(e){console.warn('v9.5 versión',e)}
+  }
+
+  function polishCalendarV95(){
+    document.querySelectorAll('#grid .day').forEach(day=>{
+      // La luna debe seguir siendo hija directa del tarjetín morado.
+      const moon=day.querySelector('.v92SleepMark');
+      const card=day.querySelector('.badge.work');
+      day.classList.toggle('hasSleepV95',!!moon);
+      if(moon && card && moon.parentElement!==card) card.appendChild(moon);
+
+      // Escala contextual de los indicadores superiores.
+      const box=day.querySelector('.v90Indicators');
+      if(box){
+        const count=(box.querySelector('.v90Icon.incident')?1:0)+(box.querySelector('.v90Icon.change')?1:0);
+        box.classList.toggle('singleV95',count===1);
+        box.classList.toggle('multiV95',count>1);
+      }
+    });
+  }
+
+  function refreshV95(){
+    cleanVersionV95();
+    requestAnimationFrame(()=>requestAnimationFrame(polishCalendarV95));
+  }
+
+  // Queda como última capa: cualquier render heredado termina pasando por 9.5.
+  const prevRenderV95=window.render;
+  window.render=function(){
+    const out=prevRenderV95?prevRenderV95():undefined;
+    refreshV95();
+    return out;
+  };
+
+  const prevShowV95=window.show;
+  window.show=function(id){
+    const out=prevShowV95?prevShowV95(id):undefined;
+    setTimeout(refreshV95,25);
+    return out;
+  };
+
+  // Algunos controladores antiguos reconstruyen login/Ajustes después del arranque.
+  // Reafirmamos una sola versión visible y la geometría final sin tocar los datos.
+  const observerV95=new MutationObserver(()=>{
+    clearTimeout(window.__v95RefreshTimer);
+    window.__v95RefreshTimer=setTimeout(refreshV95,20);
+  });
+  observerV95.observe(document.documentElement,{childList:true,subtree:true});
+
+  refreshV95();
+  setTimeout(refreshV95,180);
+  setTimeout(refreshV95,700);
+  setTimeout(refreshV95,1400);
+  window.addEventListener('pageshow',()=>setTimeout(refreshV95,30));
 })();
 </script>
 
