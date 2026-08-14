@@ -1,4 +1,4 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>App Turnos Pro v9.5</title><style>
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>App Turnos Pro v9.6</title><style>
 :root{--r:#8a0f82;--r2:#b65ac0;--bg:#fbf8fc;--line:#ead9ea;--txt:#1f1522;--mut:#75627a;--work:#edd0f4;--workb:#d79ae4;--rest:#d8f8e1;--restb:#62df91;--dd:#ffe0e7;--ddb:#ff9aad;--vac:#dff3ff;--vacb:#8bd4ff;--lz:#ffe0b2;--lzb:#fb923c}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;padding-bottom:74px}.hidden{display:none!important}header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:5;padding:8px 10px}.top{display:flex;gap:8px;align-items:center}.logo{font-weight:900;font-style:italic;color:var(--r);font-size:24px}.title{font-weight:900;font-size:17px}.ver{color:var(--r);font-size:12px}.sub{font-weight:700;color:var(--mut);font-size:11px}.btn{border:1px solid var(--line);background:#fff;border-radius:15px;padding:10px 12px;font-weight:900;color:var(--txt);white-space:nowrap}.primary{background:var(--r)!important;color:#fff!important}.wrap{padding:6px}.bar{display:grid;grid-template-columns:44px 1fr 44px 70px;align-items:center;gap:6px;margin:8px 0}.month{font-size:26px;font-weight:950;text-align:center}.navbtn{width:44px;height:44px;border:1px solid var(--line);border-radius:14px;background:#fff;font-size:24px;font-weight:900}.calendar{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}.week,.grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr))}.week div{padding:10px 2px;text-align:center;font-weight:950;color:#4d3d55;font-size:13px;border-bottom:1px solid var(--line)}.day{min-height:82px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:3px;position:relative;overflow:hidden}.day:nth-child(7n){border-right:0}.num{font-weight:950;font-size:18px}.today .num{background:#0b7cff;color:#fff;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px}.selected{outline:4px solid var(--r);outline-offset:-4px;background:#fff8ff}.today.selected{outline:4px dashed var(--r)}.shiftNo{display:inline-flex;align-items:center;justify-content:center;min-width:42px;height:28px;border-radius:999px;background:#fff;border:2px solid var(--r2);color:#35113d;font-size:18px;font-weight:950;margin:0 auto 4px}.badge{margin-top:2px;border-radius:14px;border:2px solid;padding:6px 2px;min-height:52px;text-align:center;font-weight:900;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2px}.work{background:var(--work);border-color:var(--workb);color:#5b1168}.rest{background:var(--rest);border-color:var(--restb);color:#087139}.restComp{background:repeating-linear-gradient(135deg,#d8f8e1 0 9px,#fff 9px 15px);border-color:#42c979;color:#087139}.dd{background:var(--dd);border-color:var(--ddb);color:#c20d34}.vac{background:var(--vac);border-color:var(--vacb);color:#00608f}.lz{background:var(--lz);border-color:var(--lzb);color:#7c2d12}.rest,.vac,.dd,.lz{position:absolute;left:3px;right:3px;top:30px;bottom:3px;min-height:0}.bigD{font-size:24px}.timeTop,.timeBot{font-size:13px;line-height:1;font-weight:950}.sep{font-size:14px;color:var(--r);font-weight:950}.changedDot{position:absolute;right:5px;top:5px;width:9px;height:9px;background:#facc15;border:2px solid #fff;border-radius:50%;box-shadow:0 0 0 1px #b45309}.dataToggle{margin-left:auto;border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 10px;font-weight:950;color:var(--r)}.adminPanel,.detail{background:#fff;border:1px solid var(--line);border-radius:20px;padding:14px;margin-top:10px}.detail h2{margin:4px 0 8px;font-size:26px}.pill{display:inline-block;border-radius:999px;padding:8px 12px;font-weight:950}.summaryCard{background:linear-gradient(135deg,var(--r),#6e267a);color:#fff;border-radius:20px;padding:16px;margin:12px 0}.summaryTop{display:flex;justify-content:space-between;gap:12px}.summaryTitle{font-size:30px;font-weight:950}.summaryDate{opacity:.92;font-weight:750}.servicePill{background:rgba(255,255,255,.16);padding:7px 10px;border-radius:999px;font-weight:900;display:flex;align-items:center;justify-content:center;text-align:center;min-width:86px}.summaryTimes{display:grid;grid-template-columns:1fr 44px 1fr;gap:8px;align-items:center;background:#fff;color:var(--txt);border-radius:18px;padding:12px;margin-top:14px;text-align:center}.summaryTimes b{display:block;color:var(--r);font-size:26px}.summaryTimes small{color:var(--mut);font-weight:800}.summaryArrow{font-size:26px;color:var(--r);font-weight:950}.miniGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}.miniBox{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center;color:var(--txt)}.miniBox b{display:block}.miniBox small{color:var(--mut);font-weight:800}.timeline{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;margin-top:12px}.timeline h3{margin:0 0 10px;color:var(--r)}.tl{display:grid;grid-template-columns:56px 30px 1fr;gap:10px;align-items:start;padding:9px 0;position:relative}.tl:not(:last-child)::after{content:"";position:absolute;left:70px;top:40px;bottom:-8px;width:2px;background:linear-gradient(var(--r2),#ead9ea)}.tlIcon{width:30px;height:30px;border:2px solid var(--r2);border-radius:50%;display:flex;align-items:center;justify-content:center;background:#fff;font-size:14px;z-index:1}.tlIcon.start{border-color:#4ade80}.tlIcon.train{border-color:#b65ac0}.tlIcon.mid{border-color:#93c5fd}.tlIcon.end{border-color:#fb7185}.tlIcon.arrival{border-color:#60a5fa}.tlIcon.restgap{border-color:#fbbf24}.tlIcon.deje{border-color:#fb7185}.tlIcon.pdf{border-color:#64748b}.pdfOverlay{position:fixed;inset:0;background:#fff;z-index:99;display:flex;flex-direction:column}.pdfTop{display:flex;align-items:center;gap:8px;padding:8px;border-bottom:1px solid var(--line);background:#fff}.pdfFrame{border:0;flex:1;width:100%}.tlText b{display:block}.tlText small{color:var(--mut)}.muted{color:var(--mut)}.row{border-left:4px solid var(--r);background:#faf6fb;padding:10px;border-radius:12px;margin-top:8px}.changePanel{background:#fff7df;border:1px solid #facc15;border-radius:16px;padding:12px;margin-top:12px}.changeGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.input,.select{width:100%;padding:12px;border:1px solid var(--line);border-radius:14px;font-size:15px;background:#fff}.login{position:fixed;inset:0;background:#fbf8fc;z-index:50;display:flex;align-items:center;justify-content:center;padding:20px}.loginbox{background:#fff;border:1px solid var(--line);border-radius:24px;padding:22px;max-width:380px;width:100%;box-shadow:0 12px 35px #0001}.ok{color:#087139;font-weight:900}.err{color:#c20d34;font-weight:900}.changesList{display:grid;gap:10px}.changeItem,.balanceBox{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px}.balanceGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:560px){.month{font-size:22px}.day{min-height:78px;padding:2px}.num{font-size:15px}.shiftNo{min-width:32px;height:22px;font-size:15px}.badge{min-height:42px;border-radius:11px}.timeTop,.timeBot{font-size:11px}.week div{font-size:11px}.bar{grid-template-columns:38px 1fr 38px 58px}.navbtn{width:38px;height:38px}.btn{padding:8px 10px;font-size:13px}.changeGrid{grid-template-columns:1fr}.summaryTitle{font-size:25px}.summaryTimes b{font-size:22px}.miniBox{padding:8px;font-size:12px}}
 
 /* v2.4 DD asignado + registro visual */
@@ -4516,6 +4516,386 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
   setTimeout(refreshV95,700);
   setTimeout(refreshV95,1400);
   window.addEventListener('pageshow',()=>setTimeout(refreshV95,30));
+})();
+</script>
+
+<!-- ===== v9.6: geometría v9.1 restaurada + luna definitiva + versión estructural ===== -->
+<style id="v96-final-geometry-css">
+#calendarView .calendar .grid{
+  align-items:stretch!important;
+  grid-auto-rows:122px!important;
+}
+#calendarView .day,
+#calendarView .day.outsideMonth,
+#calendarView .grid > .day{
+  position:relative!important;
+  box-sizing:border-box!important;
+  min-height:122px!important;
+  height:122px!important;
+  padding:2px!important;
+  overflow:hidden!important;
+}
+#calendarView .day .num{
+  position:absolute!important;
+  left:4px!important;
+  top:4px!important;
+  z-index:30!important;
+  margin:0!important;
+  padding:0!important;
+  font-size:18px!important;
+  line-height:26px!important;
+  font-weight:950!important;
+  min-width:26px!important;
+  width:auto!important;
+  height:26px!important;
+  max-width:none!important;
+  text-align:left!important;
+  display:block!important;
+}
+#calendarView .day.today .num{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  left:3px!important;
+  top:3px!important;
+  width:28px!important;
+  min-width:28px!important;
+  height:28px!important;
+  line-height:28px!important;
+  border-radius:999px!important;
+  background:#0b82f6!important;
+  color:#fff!important;
+  box-shadow:0 0 0 1.5px #fff!important;
+}
+#calendarView .day .badge,
+#calendarView .day .badge.work,
+#calendarView .day .badge.rest,
+#calendarView .day .badge.vac,
+#calendarView .day .badge.dd,
+#calendarView .day .badge.lz,
+#calendarView .day .badge.dsc,
+#calendarView .day .badge.sss,
+#calendarView .day .badge.dexcesos,
+#calendarView .day .badge.ddworkFinal,
+#calendarView .day .badge.ddworked{
+  position:absolute!important;
+  left:3px!important;
+  right:3px!important;
+  top:34px!important;
+  bottom:3px!important;
+  width:auto!important;
+  height:auto!important;
+  min-height:0!important;
+  margin:0!important;
+  transform:none!important;
+  box-sizing:border-box!important;
+}
+#calendarView .day .badge.work{
+  padding-top:24px!important;
+  overflow:visible!important;
+}
+#calendarView .day .shiftNo,
+#calendarView .day.hasSleepV95 .shiftNo,
+#calendarView .day.hasSleepV96 .shiftNo{
+  position:absolute!important;
+  top:38px!important;
+  left:50%!important;
+  right:auto!important;
+  transform:translateX(-50%)!important;
+  margin:0!important;
+  min-width:39px!important;
+  height:20px!important;
+  font-size:12px!important;
+  z-index:42!important;
+}
+#calendarView .v92SleepMark{
+  position:absolute!important;
+  top:-5px!important;
+  right:-3px!important;
+  width:15px!important;
+  height:15px!important;
+  min-width:15px!important;
+  min-height:15px!important;
+  max-width:15px!important;
+  max-height:15px!important;
+  border-radius:50%!important;
+  background:#7B1F8F!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  margin:0!important;
+  padding:0!important;
+  transform:none!important;
+  box-shadow:0 0 0 1px rgba(255,255,255,.88)!important;
+  pointer-events:none!important;
+  z-index:48!important;
+}
+#calendarView .v92SleepMark svg{
+  width:9px!important;
+  height:9px!important;
+  min-width:9px!important;
+  min-height:9px!important;
+  max-width:9px!important;
+  max-height:9px!important;
+  display:block!important;
+  flex:none!important;
+}
+#calendarView .v90Indicators,
+#calendarView .v90Indicators.singleV95,
+#calendarView .v90Indicators.multiV95{
+  top:4px!important;
+  right:1px!important;
+  gap:3px!important;
+  min-width:0!important;
+  width:auto!important;
+  height:30px!important;
+  overflow:visible!important;
+  justify-content:flex-start!important;
+}
+#calendarView .v90Indicators .v90Icon.incident,
+#calendarView .v90Indicators.singleV95 .v90Icon.incident,
+#calendarView .v90Indicators.multiV95 .v90Icon.incident{
+  width:14px!important;
+  height:14px!important;
+}
+#calendarView .v90Indicators .v90Icon.change,
+#calendarView .v90Indicators.singleV95 .v90Icon.change,
+#calendarView .v90Indicators.multiV95 .v90Icon.change{
+  width:17px!important;
+  height:17px!important;
+}
+#calendarView .v90Indicators.hasBicolor .v90Icon.change{
+  width:14px!important;
+  height:14px!important;
+}
+#calendarView .v90Bicolor{
+  width:14px!important;
+  height:6px!important;
+}
+#calendarView .day.outsideMonth{opacity:.56!important}
+#calendarView .day.outsideMonth .badge{opacity:.72!important}
+
+@media(max-width:560px){
+  #calendarView .calendar .grid{grid-auto-rows:118px!important}
+  #calendarView .day,
+  #calendarView .day.outsideMonth,
+  #calendarView .grid > .day{
+    min-height:118px!important;
+    height:118px!important;
+  }
+  #calendarView .week div{
+    font-size:11px!important;
+    padding:7px 0!important;
+  }
+  #calendarView .day .num{
+    font-size:17px!important;
+    left:3px!important;
+  }
+  #calendarView .day.today .num{
+    width:27px!important;
+    min-width:27px!important;
+    height:27px!important;
+    line-height:27px!important;
+    left:3px!important;
+    top:3px!important;
+  }
+  #calendarView .day .badge,
+  #calendarView .day .badge.work,
+  #calendarView .day .badge.rest,
+  #calendarView .day .badge.vac,
+  #calendarView .day .badge.dd,
+  #calendarView .day .badge.lz,
+  #calendarView .day .badge.dsc,
+  #calendarView .day .badge.sss,
+  #calendarView .day .badge.dexcesos,
+  #calendarView .day .badge.ddworkFinal,
+  #calendarView .day .badge.ddworked{
+    top:33px!important;
+    left:2px!important;
+    right:2px!important;
+    bottom:2px!important;
+  }
+  #calendarView .day .shiftNo,
+  #calendarView .day.hasSleepV95 .shiftNo,
+  #calendarView .day.hasSleepV96 .shiftNo{
+    top:38px!important;
+    left:50%!important;
+    transform:translateX(-50%)!important;
+    min-width:39px!important;
+    height:20px!important;
+    font-size:12px!important;
+  }
+  #calendarView .day .badge.work{padding-top:24px!important}
+  #calendarView .day .badge.work .timeTop,
+  #calendarView .day .badge.work .timeBot{font-size:12px!important}
+
+  #calendarView .v92SleepMark{
+    top:-4px!important;
+    right:-2px!important;
+    width:14px!important;
+    height:14px!important;
+    min-width:14px!important;
+    min-height:14px!important;
+    max-width:14px!important;
+    max-height:14px!important;
+  }
+  #calendarView .v92SleepMark svg{
+    width:8px!important;
+    height:8px!important;
+    min-width:8px!important;
+    min-height:8px!important;
+    max-width:8px!important;
+    max-height:8px!important;
+  }
+
+  #calendarView .v90Indicators,
+  #calendarView .v90Indicators.singleV95,
+  #calendarView .v90Indicators.multiV95{
+    top:4px!important;
+    right:0!important;
+    gap:3px!important;
+  }
+  #calendarView .v90Indicators .v90Icon.incident,
+  #calendarView .v90Indicators.singleV95 .v90Icon.incident,
+  #calendarView .v90Indicators.multiV95 .v90Icon.incident{
+    width:14px!important;
+    height:14px!important;
+  }
+  #calendarView .v90Indicators .v90Icon.change,
+  #calendarView .v90Indicators.singleV95 .v90Icon.change,
+  #calendarView .v90Indicators.multiV95 .v90Icon.change{
+    width:17px!important;
+    height:17px!important;
+  }
+  #calendarView .v90Indicators.hasBicolor .v90Icon.change{
+    width:14px!important;
+    height:14px!important;
+  }
+  #calendarView .v90Bicolor{
+    width:14px!important;
+    height:6px!important;
+  }
+}
+</style>
+
+<script id="v96-structural-version-js">
+(function(){
+  const APP_RELEASE = Object.freeze({
+    VERSION: '9.6',
+    UPDATED: '14/08/2026'
+  });
+  window.APP_TURNOS_RELEASE = APP_RELEASE;
+
+  function applyReleaseVersion(){
+    try{
+      const V=APP_RELEASE.VERSION, D=APP_RELEASE.UPDATED;
+      document.title='App Turnos Pro v'+V;
+      document.querySelectorAll('.ver').forEach(el=>el.textContent='v'+V);
+
+      const topTitle=document.querySelector('header .title');
+      if(topTitle) topTitle.innerHTML='App Turnos Pro <span class="ver">v'+V+'</span>';
+
+      const loginBox=document.querySelector('.loginbox');
+      if(loginBox){
+        [
+          '#loginVersionBadgeV58','#loginVersionBadgeV59','#loginVersionV57',
+          '#loginUpdatedV90','#loginUpdatedV92','#loginUpdatedV93',
+          '#loginUpdatedV94','#loginUpdatedV95','#loginUpdatedV96',
+          '.v83Update','.v84Update','.v85Update','.v86Update','.v87Update',
+          '.v88Update','.v89Update','.v85LoginMeta','.v89LoginMeta',
+          '.loginVersionBadge','.versionStampV54'
+        ].forEach(sel=>loginBox.querySelectorAll(sel).forEach(el=>el.remove()));
+
+        [...loginBox.querySelectorAll('p,div,span')].forEach(el=>{
+          if(el.closest('h1'))return;
+          const t=(el.textContent||'').trim();
+          if(/^(Versión|Version)\s+\d/i.test(t) ||
+             /^Última actualización\s*:/i.test(t) ||
+             /^Actualizada\s+/i.test(t)) el.remove();
+        });
+
+        const h=loginBox.querySelector('h1');
+        if(h){
+          h.innerHTML='App Turnos Pro <span class="ver" style="display:inline-block;background:#f2e3f4;color:#8a0f82;border-radius:999px;padding:3px 9px;font-size:.42em;vertical-align:middle;margin-left:6px">v'+V+'</span>';
+          const stamp=document.createElement('p');
+          stamp.id='loginUpdatedV96';
+          stamp.className='muted';
+          stamp.style='margin:-4px 0 12px;font-weight:850';
+          stamp.textContent='Última actualización: '+D;
+          h.insertAdjacentElement('afterend',stamp);
+        }
+      }
+
+      const settings=document.querySelector('#settingsView');
+      if(settings){
+        const blocks=[...settings.querySelectorAll('.settingsBlock')];
+        const appBlock=blocks.find(b=>/App Turnos Pro/i.test(b.querySelector('h3')?.textContent||''));
+        if(appBlock){
+          let p=appBlock.querySelector('p');
+          if(!p){p=document.createElement('p');appBlock.appendChild(p)}
+          p.innerHTML='<b>Versión '+V+'</b><br><span class="muted">Última actualización: '+D+'</span>';
+        }
+      }
+    }catch(e){
+      console.warn('Control estructural de versión v9.6',e);
+    }
+  }
+
+  function anchorMoonAndNormalize(){
+    document.querySelectorAll('#grid .day').forEach(day=>{
+      const moon=day.querySelector('.v92SleepMark');
+      const card=day.querySelector('.badge.work');
+
+      day.classList.remove('hasSleepV95');
+      day.classList.toggle('hasSleepV96',!!moon);
+
+      if(moon && card && moon.parentElement!==card) card.appendChild(moon);
+
+      const indicators=day.querySelector('.v90Indicators');
+      if(indicators) indicators.classList.remove('singleV95','multiV95');
+    });
+  }
+
+  function finalizeV96(){
+    applyReleaseVersion();
+    requestAnimationFrame(()=>{
+      anchorMoonAndNormalize();
+      applyReleaseVersion();
+    });
+  }
+
+  const previousRenderV96=window.render;
+  window.render=function(){
+    const out=previousRenderV96?previousRenderV96.apply(this,arguments):undefined;
+    finalizeV96();
+    return out;
+  };
+
+  const previousShowV96=window.show;
+  window.show=function(id){
+    const out=previousShowV96?previousShowV96.apply(this,arguments):undefined;
+    setTimeout(finalizeV96,20);
+    return out;
+  };
+
+  let scheduled=false;
+  const observer=new MutationObserver(()=>{
+    if(scheduled)return;
+    scheduled=true;
+    requestAnimationFrame(()=>{
+      scheduled=false;
+      applyReleaseVersion();
+      anchorMoonAndNormalize();
+    });
+  });
+  observer.observe(document.documentElement,{childList:true,subtree:true});
+
+  finalizeV96();
+  [120,350,800,1500].forEach(ms=>setTimeout(finalizeV96,ms));
+  window.addEventListener('pageshow',()=>setTimeout(finalizeV96,25));
+  document.addEventListener('visibilitychange',()=>{
+    if(!document.hidden)setTimeout(finalizeV96,25);
+  });
 })();
 </script>
 
