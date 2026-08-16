@@ -1,4 +1,4 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>App Turnos Pro v10.0</title><style>
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>App Turnos Pro v10.1</title><style>
 :root{--r:#8a0f82;--r2:#b65ac0;--bg:#fbf8fc;--line:#ead9ea;--txt:#1f1522;--mut:#75627a;--work:#edd0f4;--workb:#d79ae4;--rest:#d8f8e1;--restb:#62df91;--dd:#ffe0e7;--ddb:#ff9aad;--vac:#dff3ff;--vacb:#8bd4ff;--lz:#ffe0b2;--lzb:#fb923c}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;padding-bottom:74px}.hidden{display:none!important}header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:5;padding:8px 10px}.top{display:flex;gap:8px;align-items:center}.logo{font-weight:900;font-style:italic;color:var(--r);font-size:24px}.title{font-weight:900;font-size:17px}.ver{color:var(--r);font-size:12px}.sub{font-weight:700;color:var(--mut);font-size:11px}.btn{border:1px solid var(--line);background:#fff;border-radius:15px;padding:10px 12px;font-weight:900;color:var(--txt);white-space:nowrap}.primary{background:var(--r)!important;color:#fff!important}.wrap{padding:6px}.bar{display:grid;grid-template-columns:44px 1fr 44px 70px;align-items:center;gap:6px;margin:8px 0}.month{font-size:26px;font-weight:950;text-align:center}.navbtn{width:44px;height:44px;border:1px solid var(--line);border-radius:14px;background:#fff;font-size:24px;font-weight:900}.calendar{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}.week,.grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr))}.week div{padding:10px 2px;text-align:center;font-weight:950;color:#4d3d55;font-size:13px;border-bottom:1px solid var(--line)}.day{min-height:82px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:3px;position:relative;overflow:hidden}.day:nth-child(7n){border-right:0}.num{font-weight:950;font-size:18px}.today .num{background:#0b7cff;color:#fff;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px}.selected{outline:4px solid var(--r);outline-offset:-4px;background:#fff8ff}.today.selected{outline:4px dashed var(--r)}.shiftNo{display:inline-flex;align-items:center;justify-content:center;min-width:42px;height:28px;border-radius:999px;background:#fff;border:2px solid var(--r2);color:#35113d;font-size:18px;font-weight:950;margin:0 auto 4px}.badge{margin-top:2px;border-radius:14px;border:2px solid;padding:6px 2px;min-height:52px;text-align:center;font-weight:900;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2px}.work{background:var(--work);border-color:var(--workb);color:#5b1168}.rest{background:var(--rest);border-color:var(--restb);color:#087139}.restComp{background:repeating-linear-gradient(135deg,#d8f8e1 0 9px,#fff 9px 15px);border-color:#42c979;color:#087139}.dd{background:var(--dd);border-color:var(--ddb);color:#c20d34}.vac{background:var(--vac);border-color:var(--vacb);color:#00608f}.lz{background:var(--lz);border-color:var(--lzb);color:#7c2d12}.rest,.vac,.dd,.lz{position:absolute;left:3px;right:3px;top:30px;bottom:3px;min-height:0}.bigD{font-size:24px}.timeTop,.timeBot{font-size:13px;line-height:1;font-weight:950}.sep{font-size:14px;color:var(--r);font-weight:950}.changedDot{position:absolute;right:5px;top:5px;width:9px;height:9px;background:#facc15;border:2px solid #fff;border-radius:50%;box-shadow:0 0 0 1px #b45309}.dataToggle{margin-left:auto;border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 10px;font-weight:950;color:var(--r)}.adminPanel,.detail{background:#fff;border:1px solid var(--line);border-radius:20px;padding:14px;margin-top:10px}.detail h2{margin:4px 0 8px;font-size:26px}.pill{display:inline-block;border-radius:999px;padding:8px 12px;font-weight:950}.summaryCard{background:linear-gradient(135deg,var(--r),#6e267a);color:#fff;border-radius:20px;padding:16px;margin:12px 0}.summaryTop{display:flex;justify-content:space-between;gap:12px}.summaryTitle{font-size:30px;font-weight:950}.summaryDate{opacity:.92;font-weight:750}.servicePill{background:rgba(255,255,255,.16);padding:7px 10px;border-radius:999px;font-weight:900;display:flex;align-items:center;justify-content:center;text-align:center;min-width:86px}.summaryTimes{display:grid;grid-template-columns:1fr 44px 1fr;gap:8px;align-items:center;background:#fff;color:var(--txt);border-radius:18px;padding:12px;margin-top:14px;text-align:center}.summaryTimes b{display:block;color:var(--r);font-size:26px}.summaryTimes small{color:var(--mut);font-weight:800}.summaryArrow{font-size:26px;color:var(--r);font-weight:950}.miniGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}.miniBox{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center;color:var(--txt)}.miniBox b{display:block}.miniBox small{color:var(--mut);font-weight:800}.timeline{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;margin-top:12px}.timeline h3{margin:0 0 10px;color:var(--r)}.tl{display:grid;grid-template-columns:56px 30px 1fr;gap:10px;align-items:start;padding:9px 0;position:relative}.tl:not(:last-child)::after{content:"";position:absolute;left:70px;top:40px;bottom:-8px;width:2px;background:linear-gradient(var(--r2),#ead9ea)}.tlIcon{width:30px;height:30px;border:2px solid var(--r2);border-radius:50%;display:flex;align-items:center;justify-content:center;background:#fff;font-size:14px;z-index:1}.tlIcon.start{border-color:#4ade80}.tlIcon.train{border-color:#b65ac0}.tlIcon.mid{border-color:#93c5fd}.tlIcon.end{border-color:#fb7185}.tlIcon.arrival{border-color:#60a5fa}.tlIcon.restgap{border-color:#fbbf24}.tlIcon.deje{border-color:#fb7185}.tlIcon.pdf{border-color:#64748b}.pdfOverlay{position:fixed;inset:0;background:#fff;z-index:99;display:flex;flex-direction:column}.pdfTop{display:flex;align-items:center;gap:8px;padding:8px;border-bottom:1px solid var(--line);background:#fff}.pdfFrame{border:0;flex:1;width:100%}.tlText b{display:block}.tlText small{color:var(--mut)}.muted{color:var(--mut)}.row{border-left:4px solid var(--r);background:#faf6fb;padding:10px;border-radius:12px;margin-top:8px}.changePanel{background:#fff7df;border:1px solid #facc15;border-radius:16px;padding:12px;margin-top:12px}.changeGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.input,.select{width:100%;padding:12px;border:1px solid var(--line);border-radius:14px;font-size:15px;background:#fff}.login{position:fixed;inset:0;background:#fbf8fc;z-index:50;display:flex;align-items:center;justify-content:center;padding:20px}.loginbox{background:#fff;border:1px solid var(--line);border-radius:24px;padding:22px;max-width:380px;width:100%;box-shadow:0 12px 35px #0001}.ok{color:#087139;font-weight:900}.err{color:#c20d34;font-weight:900}.changesList{display:grid;gap:10px}.changeItem,.balanceBox{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px}.balanceGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:560px){.month{font-size:22px}.day{min-height:78px;padding:2px}.num{font-size:15px}.shiftNo{min-width:32px;height:22px;font-size:15px}.badge{min-height:42px;border-radius:11px}.timeTop,.timeBot{font-size:11px}.week div{font-size:11px}.bar{grid-template-columns:38px 1fr 38px 58px}.navbtn{width:38px;height:38px}.btn{padding:8px 10px;font-size:13px}.changeGrid{grid-template-columns:1fr}.summaryTitle{font-size:25px}.summaryTimes b{font-size:22px}.miniBox{padding:8px;font-size:12px}}
 
 /* v2.4 DD asignado + registro visual */
@@ -268,8 +268,8 @@
 .versionStampV54{font-size:11px;color:#75627a;font-weight:900;margin-top:1px}
 </style>
 </head><body>
-<div id="login" class="login"><div class="loginbox"><div class="logo">renfe</div><h1>App Turnos Pro <span class="ver">v9.5</span></h1><p class="muted">Acceso privado para administrar datos.</p><input id="user" class="input" placeholder="Usuario"><input id="pass" class="input" placeholder="Contraseña" type="password"><label style="display:flex;gap:8px;align-items:center;margin:8px 0;font-weight:800"><input id="remember" type="checkbox" checked> Recordar sesión 24 horas</label><button class="btn primary" style="width:100%" onclick="doLogin()">Entrar</button><p id="loginMsg" class="err"></p></div></div>
-<header><div class="top"><div class="logo">renfe</div><div><div class="title">App Turnos Pro <span class="ver">v9.8</span></div><div class="sub">Calendario visual · cambios · marcos · IndexedDB</div></div><button class="dataToggle" onclick="toggleAdmin()">Datos ▾</button></div><div id="adminPanel" class="adminPanel hidden"><b>Importación privada</b><p class="muted">Archivos guardados solo en este dispositivo.</p><button class="btn primary" onclick="pick('yearFile')">📅 Importar gráfico anual</button><button class="btn primary" onclick="pick('marcoFile')">🚄 Importar Marco mensual JSON</button><button class="btn" onclick="pick('pdfFile')">📄 Importar PDF Marco</button><button class="btn" onclick="exportExcel()">📤 Exportar Excel</button><button class="btn" onclick="exportBackup()">💾 Copia seguridad JSON</button><button class="btn" onclick="pick('historyFile')">📥 Importar histórico de cambios</button><button class="btn" onclick="clearData()">Borrar datos locales</button><div id="importStatus" class="muted"></div></div><input id="yearFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'year')"><input id="marcoFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'marco')"><input id="pdfFile" type="file" accept="application/pdf,.pdf" class="hidden" onchange="importPdf(event)"><input id="historyFile" type="file" accept=".json,application/json" class="hidden" onchange="importHistoryBackup(event)"></header>
+<div id="login" class="login"><div class="loginbox"><div class="logo">renfe</div><h1>App Turnos Pro <span class="ver">v10.1</span></h1><p class="muted">Acceso privado para administrar datos.</p><input id="user" class="input" placeholder="Usuario"><input id="pass" class="input" placeholder="Contraseña" type="password"><label style="display:flex;gap:8px;align-items:center;margin:8px 0;font-weight:800"><input id="remember" type="checkbox" checked> Recordar sesión 24 horas</label><button class="btn primary" style="width:100%" onclick="doLogin()">Entrar</button><p id="loginMsg" class="err"></p></div></div>
+<header><div class="top"><div class="logo">renfe</div><div><div class="title">App Turnos Pro <span class="ver">v10.1</span></div><div class="sub">Calendario visual · cambios · marcos · IndexedDB</div></div><button class="dataToggle" onclick="toggleAdmin()">Datos ▾</button></div><div id="adminPanel" class="adminPanel hidden"><b>Importación privada</b><p class="muted">Archivos guardados solo en este dispositivo.</p><button class="btn primary" onclick="pick('yearFile')">📅 Importar gráfico anual</button><button class="btn primary" onclick="pick('marcoFile')">🚄 Importar Marco mensual JSON</button><button class="btn" onclick="pick('pdfFile')">📄 Importar PDF Marco</button><button class="btn" onclick="exportExcel()">📤 Exportar Excel</button><button class="btn" onclick="exportBackup()">💾 Copia seguridad JSON</button><button class="btn" onclick="pick('historyFile')">📥 Importar histórico de cambios</button><button class="btn" onclick="clearData()">Borrar datos locales</button><div id="importStatus" class="muted"></div></div><input id="yearFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'year')"><input id="marcoFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'marco')"><input id="pdfFile" type="file" accept="application/pdf,.pdf" class="hidden" onchange="importPdf(event)"><input id="historyFile" type="file" accept=".json,application/json" class="hidden" onchange="importHistoryBackup(event)"></header>
 <div class="wrap"><section id="calendarView" class="view"><div class="bar"><button class="navbtn" onclick="move(-1)">‹</button><div class="month" id="monthTitle"></div><button class="navbtn" onclick="move(1)">›</button><button class="btn" onclick="today()">Hoy</button></div><div class="calendar"><div class="week"><div>LUN</div><div>MAR</div><div>MIÉ</div><div>JUE</div><div>VIE</div><div>SÁB</div><div>DOM</div></div><div id="grid" class="grid"></div></div><div id="detail" class="detail"><span class="pill" style="background:#f2e3f4;color:var(--r)">Selecciona un día</span><h2>Detalle del turno</h2><p class="muted">Pulsa una casilla para ver inicio, fin, desarrollo y cambios.</p></div></section><section id="changesView" class="view hidden"><div class="detail"><h2>Registro de cambios</h2><div id="balances" class="balanceGrid"></div><h3>Historial</h3><div id="changesList" class="changesList"></div></div></section><section id="settingsView" class="view hidden"><div class="detail"><h2>Ajustes</h2><p>Datos cargados: <b id="dataState"></b></p></div></section></div>
 <nav style="position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);z-index:10"><button class="btn" onclick="show('calendarView')">📅<br>Calendario</button><button class="btn" onclick="scrollToDetail()">📋<br>Detalle</button><button class="btn" onclick="showChanges()">🔁<br>Cambios<br>Registro</button><button class="btn" onclick="show('settingsView')">⚙️<br>Ajustes</button><button class="btn" onclick="lockApp()">🔒<br>Bloq.</button></nav>
 <script>
@@ -690,7 +690,7 @@ setTimeout(openInitialViewV44,180);
 
 
 // ===== v5.0 memoria estable, histórico y lector JSON =====
-const APP_VERSION='8.9', BACKUP_KEY='AppTurnosBackupsV50';
+const APP_VERSION='10.1', BACKUP_KEY='AppTurnosBackupsV50';
 data.settings=data.settings||{}; data.settings.openMode=data.settings.openMode||'calendario';
 function safeSetV50(k,v){try{localStorage.setItem(k,v);return true}catch(e){console.warn(e);return false}}
 function fechaArchivoMemoria(){let d=new Date();return pad(d.getDate())+'-'+pad(d.getMonth()+1)+'-'+d.getFullYear()+'_memoria_turnos.json'}
@@ -1028,8 +1028,8 @@ changePanelHtml=function(ds,base,baseB,d,b){
 
 
 // ===== v5.4: una sola prioridad visual final para evitar que se pisen estados =====
-const APP_VERSION_V54='8.9';
-const APP_UPDATED_AT_V54='13/08/2026';
+const APP_VERSION_V54='10.1';
+const APP_UPDATED_AT_V54='16/08/2026';
 function setVersionV54(){
   try{
     document.title='App Turnos Pro v'+APP_VERSION_V54;
@@ -1176,8 +1176,8 @@ setTimeout(bootIndexedDBV52,60);
 
 
 // ===== v5.7: base 5.4 limpia + persistencia segura + marcos por vigencia =====
-const APP_VERSION_V57='8.9';
-const APP_UPDATED_AT_V57='13/08/2026';
+const APP_VERSION_V57='10.1';
+const APP_UPDATED_AT_V57='16/08/2026';
 const DB_NAME_V57='AppTurnosDBV57';
 const DB_VERSION_V57=1;
 const DB_STORE_V57='app';
@@ -1377,8 +1377,8 @@ setTimeout(bootV57,120);
 
 
 // ===== v5.8: versión visible, historial mensual, PDFs gestionables y Ajustes sin duplicados =====
-const APP_VERSION_V58='8.9';
-const APP_UPDATED_AT_V58='13/08/2026';
+const APP_VERSION_V58='10.1';
+const APP_UPDATED_AT_V58='16/08/2026';
 
 function setVersionV58(){
   try{
@@ -1510,8 +1510,8 @@ checkLogin();render();
 </style>
 <script id="v59-incidencias-js">
 // ===== v6.0: incidencias persistentes, iconos y cambio descanso/trabajo =====
-const APP_VERSION_V59='8.9';
-const APP_UPDATED_AT_V59='13/08/2026';
+const APP_VERSION_V59='10.1';
+const APP_UPDATED_AT_V59='16/08/2026';
 data.incidents=data.incidents||{};
 
 function setVersionV59(){
@@ -1640,8 +1640,8 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v60-final-js">
 (function(){
-  const APP_VERSION_V60='8.9';
-  const APP_UPDATED_V60='13/08/2026';
+  const APP_VERSION_V60='10.1';
+  const APP_UPDATED_V60='16/08/2026';
   function setVersionV60(){
     document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+APP_VERSION_V60);
     document.title='App Turnos Pro v'+APP_VERSION_V60;
@@ -1741,8 +1741,8 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v61-final-js">
 (function(){
-  const APP_VERSION_V61='8.9';
-  const APP_UPDATED_V61='13/08/2026';
+  const APP_VERSION_V61='10.1';
+  const APP_UPDATED_V61='16/08/2026';
 
   function setVersionV61(){
     document.title='App Turnos Pro v'+APP_VERSION_V61;
@@ -1858,7 +1858,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v62-final-js">
 (function(){
- const APP_VERSION_V62='8.9', APP_UPDATED_V62='13/08/2026';
+ const APP_VERSION_V62='10.1', APP_UPDATED_V62='16/08/2026';
  function setVersionV62(){
    document.title='App Turnos Pro v'+APP_VERSION_V62;
    document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+APP_VERSION_V62);
@@ -1943,7 +1943,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v63-final-js">
 (function(){
- const APP_VERSION_V63='8.9', APP_UPDATED_V63='13/08/2026';
+ const APP_VERSION_V63='10.1', APP_UPDATED_V63='16/08/2026';
  function setVersionV63(){
    document.title='App Turnos Pro v'+APP_VERSION_V63;
    document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+APP_VERSION_V63);
@@ -2104,7 +2104,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v65-final-js">
 (function(){
-  const APP_VERSION_V65='8.9', APP_UPDATED_V65='13/08/2026';
+  const APP_VERSION_V65='10.1', APP_UPDATED_V65='16/08/2026';
   function setVersionV65(){
     document.title='App Turnos Pro v'+APP_VERSION_V65;
     document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+APP_VERSION_V65);
@@ -2240,7 +2240,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v66-observaciones-js">
 (function(){
-  const APP_VERSION_V66='8.9', APP_UPDATED_V66='13/08/2026';
+  const APP_VERSION_V66='10.1', APP_UPDATED_V66='16/08/2026';
   data.observations=data.observations||{};
   function setVersionV66(){
     document.title='App Turnos Pro v'+APP_VERSION_V66;
@@ -2623,8 +2623,8 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 
 <script id="v69-acceso-final-corregido">
 (function(){
-  const VERSION_FINAL = '8.2';
-  const UPDATED_FINAL = '13/08/2026';
+  const VERSION_FINAL = '10.1';
+  const UPDATED_FINAL = '16/08/2026';
 
   function setVersionFinal(){
     document.title = 'App Turnos Pro v' + VERSION_FINAL;
@@ -2815,7 +2815,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v80-registry-boceto2-js">
 (function(){
-  const V80_VERSION='8.9', V80_DATE='13/08/2026';
+  const V80_VERSION='10.1', V80_DATE='16/08/2026';
   const MONTHS=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
   let activeSectionV80='debts';
 
@@ -3574,8 +3574,8 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 
 <script id="v90-calendar-final-js">
 (function(){
-  const APP_VERSION_V90='9.3';
-  const APP_UPDATED_V90='13/08/2026';
+  const APP_VERSION_V90='10.1';
+  const APP_UPDATED_V90='16/08/2026';
 
   const incidentSvgV90=()=>`
     <svg class="v90Icon incident" viewBox="0 0 24 24" aria-label="Incidencia" role="img">
@@ -4248,8 +4248,8 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 <script id="v97-calendar-final-js">
 (function(){
   const APP_RELEASE_V97 = Object.freeze({
-    VERSION:'9.7',
-    UPDATED:'14/08/2026'
+    VERSION:'10.1',
+    UPDATED:'16/08/2026'
   });
   window.APP_TURNOS_RELEASE = APP_RELEASE_V97;
 
@@ -5030,7 +5030,7 @@ header .dataToggle{
 
 <script id="v98-ui-redesign-js">
 (function(){
-  const RELEASE = Object.freeze({VERSION:'9.8', UPDATED:'14/08/2026'});
+  const RELEASE = Object.freeze({VERSION:'10.1', UPDATED:'16/08/2026'});
   window.APP_TURNOS_RELEASE = RELEASE;
   document.documentElement.setAttribute('data-app-theme','light');
 
@@ -6045,8 +6045,8 @@ header .dataToggle{
      No se tocan identificadores técnicos históricos.
      --------------------------------------------------------- */
   const APP_RELEASE = Object.freeze({
-    version:'9.9',
-    date:'15/08/2026'
+    version:'10.1',
+    date:'16/08/2026'
   });
 
   const AUTHOR='Rodrigo Prieto';
@@ -6623,428 +6623,744 @@ header .dataToggle{
 </script>
 
 <!-- =========================================================
-     App Turnos Pro v10.0
-     Opción 1 para SSS/DC y DD pinchados
-     Sólo cambios visuales del calendario.
+     APP TURNOS PRO · v10.1 · 16/08/2026
+     Refinado visual exclusivo del calendario.
      ========================================================= -->
-<style id="v100-sss-dd-option1-css">
+<style id="v101-calendar-refinement-css">
 :root{
-  --v100-green-bg:#d5f3dc;
-  --v100-green-border:#2eb85b;
-  --v100-green-text:#087039;
+  --v101-purple:#7a1b86;
+  --v101-purple-dark:#4f1058;
 
-  --v100-red-bg:#ffd6df;
-  --v100-red-border:#ef566c;
-  --v100-red-text:#9f071b;
+  --v101-green-bg:#d5f3dc;
+  --v101-green-border:#2eb85b;
+  --v101-green-text:#087039;
 
-  --v100-purple-stripe:#a44db3;
-  --v100-purple-stripe-soft:#c984d2;
+  --v101-red-bg:#ffd6df;
+  --v101-red-border:#ef566c;
+  --v101-red-text:#991125;
+
+  --v101-stripe:rgba(151,61,169,.30);
 }
 
-/* ============================================================
-   SSS / DESCANSO COMPENSADO — OPCIÓN 1
-   Fondo verde de descanso + rayas moradas gruesas.
-   El número de turno se mantiene en pastilla blanca centrada.
-   ============================================================ */
+/* ---------------------------------------------------------
+   1. Indicadores superiores: incidencia, cambio y bicolor
+   --------------------------------------------------------- */
+#calendarView .v90Indicators{
+  top:4px!important;
+  right:0!important;
+  gap:2px!important;
+  min-width:0!important;
+  width:auto!important;
+  height:29px!important;
+  align-items:flex-start!important;
+  justify-content:flex-end!important;
+  overflow:visible!important;
+  z-index:80!important;
+}
+#calendarView .v90IndicatorCol{
+  gap:0!important;
+}
+#calendarView .v90Icon.incident{
+  width:14px!important;
+  height:14px!important;
+  flex:0 0 14px!important;
+}
+#calendarView .v90Icon.change{
+  width:17px!important;
+  height:17px!important;
+  flex:0 0 17px!important;
+}
+#calendarView .v90Indicators.hasBicolor .v90Icon.change{
+  width:14px!important;
+  height:14px!important;
+  flex:0 0 14px!important;
+}
+#calendarView .v90Bicolor{
+  width:14px!important;
+  height:6px!important;
+  margin-top:1px!important;
+  border-radius:999px!important;
+}
+
+/* ---------------------------------------------------------
+   2. Círculo azul del día actual: 20 × 20 px.
+   No altera la tarjeta.
+   --------------------------------------------------------- */
+#calendarView .day.today .num{
+  position:absolute!important;
+  left:3px!important;
+  top:4px!important;
+  width:20px!important;
+  min-width:20px!important;
+  max-width:20px!important;
+  height:20px!important;
+  line-height:20px!important;
+  padding:0!important;
+  margin:0!important;
+  border-radius:50%!important;
+
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+
+  color:#fff!important;
+  background:#0b82f6!important;
+  font-size:12px!important;
+  font-weight:950!important;
+  text-align:center!important;
+
+  box-shadow:0 0 0 1px #fff!important;
+  z-index:55!important;
+}
+
+/* ---------------------------------------------------------
+   3. SSS / DSC
+   Más diagonales, uniformes y al 30 % aprox.
+   --------------------------------------------------------- */
 #calendarView .day .badge.sss,
 #calendarView .day .badge.dsc{
-  position:absolute!important;
-  overflow:hidden!important;
-
   background:
     repeating-linear-gradient(
       135deg,
-      rgba(164,77,179,.92) 0 5px,
-      rgba(164,77,179,.92) 5px 8px,
-      transparent 8px 30px
+      var(--v101-stripe) 0 4px,
+      transparent 4px 18px
     ),
-    var(--v100-green-bg)!important;
+    var(--v101-green-bg)!important;
 
-  border:2px solid var(--v100-green-border)!important;
+  border:2px solid var(--v101-green-border)!important;
   border-radius:12px!important;
-  color:var(--v100-green-text)!important;
-
+  color:var(--v101-green-text)!important;
+  overflow:hidden!important;
   box-shadow:none!important;
 }
 
-/* Mantener las rayas como indicador claro pero sin tapar el contenido */
+/* Evitar que pseudocapas antiguas dupliquen rayas */
 #calendarView .day .badge.sss::before,
 #calendarView .day .badge.dsc::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  background:
-    repeating-linear-gradient(
-      135deg,
-      transparent 0 30px,
-      rgba(201,132,210,.30) 30px 37px,
-      transparent 37px 60px
-    );
-  z-index:0;
+  content:none!important;
 }
 
-/* Contenido de SSS/DC por encima del patrón */
-#calendarView .day .badge.sss > *,
-#calendarView .day .badge.dsc > *{
-  position:relative;
-  z-index:2;
-}
-
-/* Texto SSS / DC más fuerte y claramente verde */
-#calendarView .day .badge.sss,
-#calendarView .day .badge.dsc,
-#calendarView .day .badge.sss .bigD,
-#calendarView .day .badge.dsc .bigD{
-  color:var(--v100-green-text)!important;
-  font-weight:950!important;
-}
-
-/* Número de turno dentro de pastilla blanca centrada */
-#calendarView .day .badge.sss .shiftNo,
-#calendarView .day .badge.dsc .shiftNo,
-#calendarView .day.sss .shiftNo,
-#calendarView .day.dsc .shiftNo{
-  position:absolute!important;
-  left:50%!important;
-  top:36px!important;
-  transform:translateX(-50%)!important;
-  z-index:5!important;
-
-  min-width:48px!important;
-  height:23px!important;
-  padding:0 7px!important;
-
-  display:flex!important;
-  align-items:center!important;
-  justify-content:center!important;
-
-  border:2px solid #aa53b8!important;
-  border-radius:999px!important;
-  background:#fff!important;
-  color:#591065!important;
-
-  font-size:14px!important;
-  line-height:1!important;
-  font-weight:950!important;
-  text-align:center!important;
-  box-shadow:none!important;
-}
-
-/* Texto central SSS/DC */
+/* SSS debe dominar visualmente sobre la textura */
 #calendarView .day .badge.sss,
 #calendarView .day .badge.dsc{
-  justify-content:center!important;
-}
-#calendarView .day .badge.sss .bigD,
-#calendarView .day .badge.dsc .bigD{
-  margin-top:14px!important;
   font-size:25px!important;
   line-height:1!important;
+  font-weight:950!important;
+  text-shadow:
+    0 1px 0 rgba(255,255,255,.72),
+    0 0 3px rgba(255,255,255,.72)!important;
 }
 
-/* ============================================================
-   DD PINCHADO — OPCIÓN 1
-   Fondo rosa/rojo + rayas moradas.
-   Número de turno en pastilla blanca.
-   DD grande y horario centrado.
-   ============================================================ */
-#calendarView .day .badge.ddworkFinal,
-#calendarView .day .badge.ddworked{
-  position:absolute!important;
-  overflow:hidden!important;
-
-  background:
-    repeating-linear-gradient(
-      135deg,
-      rgba(164,77,179,.90) 0 5px,
-      rgba(164,77,179,.90) 5px 8px,
-      transparent 8px 30px
-    ),
-    var(--v100-red-bg)!important;
-
-  border:2px solid var(--v100-red-border)!important;
-  border-radius:12px!important;
-  color:var(--v100-red-text)!important;
-
-  box-shadow:none!important;
-  padding-top:28px!important;
-  padding-bottom:4px!important;
-}
-
-/* Segunda pasada ligera de rayas para acercarlo al boceto */
-#calendarView .day .badge.ddworkFinal::before,
-#calendarView .day .badge.ddworked::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  background:
-    repeating-linear-gradient(
-      135deg,
-      transparent 0 30px,
-      rgba(201,132,210,.26) 30px 37px,
-      transparent 37px 60px
-    );
-  z-index:0;
-}
-
-#calendarView .day .badge.ddworkFinal > *,
-#calendarView .day .badge.ddworked > *{
-  position:relative;
-  z-index:2;
-}
-
-/* Pastilla del número de turno de DD pinchado */
-#calendarView .day .badge.ddworkFinal .shiftNo,
-#calendarView .day .badge.ddworked .shiftNo,
-#calendarView .day.ddwork .shiftNo{
-  position:absolute!important;
+/* Pastilla del turno SSS/DC = misma lógica que trabajo */
+#calendarView .day .v83DscSss > .shiftNo,
+#calendarView .day .badge.sss .shiftNo,
+#calendarView .day .badge.dsc .shiftNo{
   left:50%!important;
-  top:35px!important;
   transform:translateX(-50%)!important;
-  z-index:5!important;
-
-  min-width:48px!important;
+  min-width:47px!important;
   height:23px!important;
   padding:0 7px!important;
 
-  display:flex!important;
-  align-items:center!important;
-  justify-content:center!important;
-
-  border:2px solid var(--v100-red-border)!important;
+  border:2px solid #a950b7!important;
   border-radius:999px!important;
   background:#fff!important;
-  color:#7e0b1b!important;
+  color:#561061!important;
 
   font-size:14px!important;
   line-height:1!important;
   font-weight:950!important;
   text-align:center!important;
+}
+
+/* ---------------------------------------------------------
+   4–5. DD pinchado
+   Pastilla = turno real; DD debajo; horario muy legible.
+   --------------------------------------------------------- */
+#calendarView .day .badge.ddworkFinal,
+#calendarView .day .badge.ddworked,
+#calendarView .day .badge.ddworkV65,
+#calendarView .day .badge.ddwork{
+  background:
+    repeating-linear-gradient(
+      135deg,
+      var(--v101-stripe) 0 4px,
+      transparent 4px 18px
+    ),
+    var(--v101-red-bg)!important;
+
+  border:2px solid var(--v101-red-border)!important;
+  border-radius:12px!important;
+  overflow:hidden!important;
   box-shadow:none!important;
+
+  padding-top:27px!important;
+  padding-bottom:3px!important;
 }
 
-/* Etiqueta DD grande */
-#calendarView .day .badge.ddworkFinal .ddLabel,
-#calendarView .day .badge.ddworked .ddLabel,
-#calendarView .day .badge.ddworkFinal .bigD,
-#calendarView .day .badge.ddworked .bigD{
-  color:var(--v100-red-text)!important;
-  font-size:24px!important;
-  line-height:1!important;
-  font-weight:950!important;
-  margin:2px 0 4px!important;
+/* Sin segundas capas de diagonales */
+#calendarView .day .badge.ddworkFinal::before,
+#calendarView .day .badge.ddworked::before,
+#calendarView .day .badge.ddworkV65::before,
+#calendarView .day .badge.ddwork::before{
+  content:none!important;
 }
 
-/* Horarios y flecha DD pinchado */
-#calendarView .day .badge.ddworkFinal .timeTop,
-#calendarView .day .badge.ddworked .timeTop,
-#calendarView .day .badge.ddworkFinal .timeBot,
-#calendarView .day .badge.ddworked .timeBot{
-  color:var(--v100-red-text)!important;
+/* El número de turno real queda en la pastilla blanca estándar */
+#calendarView .day.ddworkV101 > .shiftNo,
+#calendarView .day .ddWorkedNo{
+  left:50%!important;
+  transform:translateX(-50%)!important;
+  min-width:47px!important;
+  height:23px!important;
+  padding:0 7px!important;
+
+  border:2px solid var(--v101-red-border)!important;
+  border-radius:999px!important;
+  background:#fff!important;
+  color:#74101e!important;
+
   font-size:14px!important;
-  line-height:1.03!important;
+  line-height:1!important;
+  font-weight:950!important;
+  text-align:center!important;
+}
+
+/* El antiguo valor repetido de turno dentro de la tarjeta no se muestra */
+#calendarView .day.ddworkV101 .ddTurn{
+  display:none!important;
+}
+
+/* "DD" grande debajo de la pastilla */
+#calendarView .day.ddworkV101 .ddSmall{
+  display:block!important;
+  margin:0 0 2px!important;
+  padding:0!important;
+
+  color:var(--v101-red-text)!important;
+  font-size:20px!important;
+  line-height:1!important;
+  font-weight:950!important;
+  text-align:center!important;
+  text-shadow:
+    0 1px 0 rgba(255,255,255,.75),
+    0 0 3px rgba(255,255,255,.75)!important;
+}
+
+/* Horarios DD pinchado: morado muy oscuro */
+#calendarView .day.ddworkV101 .timeTop,
+#calendarView .day.ddworkV101 .timeBot{
+  color:var(--v101-purple-dark)!important;
+  font-size:13.5px!important;
+  line-height:1!important;
+  font-weight:950!important;
+  text-shadow:
+    0 1px 0 rgba(255,255,255,.72),
+    0 0 3px rgba(255,255,255,.72)!important;
+}
+#calendarView .day.ddworkV101 .sep{
+  color:var(--v101-purple-dark)!important;
+  font-size:16px!important;
+  line-height:1!important;
+  margin:1px 0!important;
   font-weight:950!important;
 }
-#calendarView .day .badge.ddworkFinal .sep,
-#calendarView .day .badge.ddworked .sep{
-  color:var(--v100-red-text)!important;
-  font-size:17px!important;
-  line-height:1!important;
-  margin:2px 0!important;
+
+/* ---------------------------------------------------------
+   6 + Indicadores destino/pernocta
+   Un único contenedor vertical, geometría fija.
+   --------------------------------------------------------- */
+#calendarView .day .badge.work{
+  overflow:visible!important;
 }
 
-/* ============================================================
-   Indicadores de cambio/incidencia siguen en zona blanca superior
-   y nunca se mezclan con las rayas.
-   ============================================================ */
-#calendarView .v90Indicators{
-  z-index:70!important;
+#calendarView .v101CornerIndicators{
+  position:absolute!important;
+  top:-3px!important;
+  right:-2px!important;
+  z-index:90!important;
+
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  gap:2px!important;
+
+  width:15px!important;
+  min-width:15px!important;
+  height:auto!important;
+
+  margin:0!important;
+  padding:0!important;
+  pointer-events:none!important;
 }
 
-/* ============================================================
-   Ajustes móviles: mantener proporción y legibilidad.
-   ============================================================ */
+/* Destino: 15×15 */
+#calendarView .v101DestinationBadge{
+  width:15px!important;
+  min-width:15px!important;
+  max-width:15px!important;
+  height:15px!important;
+  min-height:15px!important;
+  max-height:15px!important;
+
+  border-radius:50%!important;
+  margin:0!important;
+  padding:0!important;
+
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+
+  box-shadow:0 0 0 1px rgba(255,255,255,.88)!important;
+  overflow:hidden!important;
+}
+
+#calendarView .v101DestinationText{
+  width:14px!important;
+  min-width:14px!important;
+  max-width:14px!important;
+  height:14px!important;
+  min-height:14px!important;
+  max-height:14px!important;
+
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+
+  color:#fff!important;
+  font-size:7px!important;
+  line-height:14px!important;
+  font-weight:950!important;
+  letter-spacing:-.25px!important;
+  text-align:center!important;
+  white-space:nowrap!important;
+}
+
+/* Pernocta: círculo exterior 13×13; luna blanca 9×9 */
+#calendarView .v101SleepBadge{
+  width:13px!important;
+  min-width:13px!important;
+  max-width:13px!important;
+  height:13px!important;
+  min-height:13px!important;
+  max-height:13px!important;
+
+  border-radius:50%!important;
+  margin:0!important;
+  padding:0!important;
+
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+
+  background:#771987!important;
+  box-shadow:0 0 0 1px rgba(255,255,255,.88)!important;
+  overflow:hidden!important;
+}
+
+#calendarView .v101SleepBadge svg{
+  width:9px!important;
+  min-width:9px!important;
+  max-width:9px!important;
+  height:9px!important;
+  min-height:9px!important;
+  max-height:9px!important;
+  display:block!important;
+  flex:none!important;
+}
+
+/* Ningún indicador mueve la pastilla del turno */
+#calendarView .day.hasV101Corner > .shiftNo,
+#calendarView .day.hasV101Corner .shiftNo{
+  left:50%!important;
+  right:auto!important;
+  transform:translateX(-50%)!important;
+}
+
+/* Desactivar visualmente la luna antigua; la lógica sigue intacta */
+#calendarView .v97SleepMark{
+  display:none!important;
+}
+
+/* ---------------------------------------------------------
+   7–8. El resto de tarjetas conserva su diseño y dimensiones.
+   No se redefinen trabajo, descanso, LZ, vacaciones ni DD normal.
+   --------------------------------------------------------- */
+
 @media(max-width:560px){
-  #calendarView .day .badge.sss .shiftNo,
-  #calendarView .day .badge.dsc .shiftNo,
-  #calendarView .day.sss .shiftNo,
-  #calendarView .day.dsc .shiftNo,
-  #calendarView .day .badge.ddworkFinal .shiftNo,
-  #calendarView .day .badge.ddworked .shiftNo,
-  #calendarView .day.ddwork .shiftNo{
-    top:34px!important;
-    min-width:45px!important;
-    height:22px!important;
-    padding:0 6px!important;
+  /* Las medidas de destino/pernocta son FIJAS también en móvil */
+  #calendarView .v101DestinationBadge{
+    width:15px!important;
+    min-width:15px!important;
+    max-width:15px!important;
+    height:15px!important;
+    min-height:15px!important;
+    max-height:15px!important;
+  }
+  #calendarView .v101DestinationText{
+    width:14px!important;
+    min-width:14px!important;
+    max-width:14px!important;
+    height:14px!important;
+    min-height:14px!important;
+    max-height:14px!important;
+  }
+  #calendarView .v101SleepBadge{
+    width:13px!important;
+    min-width:13px!important;
+    max-width:13px!important;
+    height:13px!important;
+    min-height:13px!important;
+    max-height:13px!important;
+  }
+  #calendarView .v101SleepBadge svg{
+    width:9px!important;
+    min-width:9px!important;
+    max-width:9px!important;
+    height:9px!important;
+    min-height:9px!important;
+    max-height:9px!important;
+  }
+
+  #calendarView .day.ddworkV101 .ddSmall{
+    font-size:19px!important;
+  }
+  #calendarView .day.ddworkV101 .timeTop,
+  #calendarView .day.ddworkV101 .timeBot{
     font-size:13px!important;
-  }
-
-  #calendarView .day .badge.sss .bigD,
-  #calendarView .day .badge.dsc .bigD{
-    font-size:24px!important;
-  }
-
-  #calendarView .day .badge.ddworkFinal .ddLabel,
-  #calendarView .day .badge.ddworked .ddLabel,
-  #calendarView .day .badge.ddworkFinal .bigD,
-  #calendarView .day .badge.ddworked .bigD{
-    font-size:23px!important;
-  }
-
-  #calendarView .day .badge.ddworkFinal .timeTop,
-  #calendarView .day .badge.ddworked .timeTop,
-  #calendarView .day .badge.ddworkFinal .timeBot,
-  #calendarView .day .badge.ddworked .timeBot{
-    font-size:13.5px!important;
   }
 }
 </style>
 
-<script id="v100-version-js">
+<script id="v101-calendar-refinement-js">
 (function(){
-  const VERSION='10.0';
-  const DATE='15/08/2026';
+  'use strict';
 
-  function applyV100Version(){
-    document.title='App Turnos Pro v'+VERSION;
+  const APP_VERSION_101='10.1';
+  const APP_DATE_101='16/08/2026';
+
+  /* -------------------------------------------------------
+     Versión visible coherente.
+     Los identificadores históricos se conservan únicamente
+     por compatibilidad con datos/migraciones antiguas.
+     ------------------------------------------------------- */
+  function applyVersion101(){
+    document.title='App Turnos Pro v'+APP_VERSION_101;
 
     document.querySelectorAll('.ver').forEach(el=>{
-      el.textContent='v'+VERSION;
+      el.textContent='v'+APP_VERSION_101;
     });
 
     const title=document.querySelector('header .title');
     if(title){
-      title.innerHTML='App Turnos Pro <span class="ver">v'+VERSION+'</span>';
+      title.innerHTML='App Turnos Pro <span class="ver">v'+APP_VERSION_101+'</span>';
     }
 
     const login=document.querySelector('.loginbox');
     if(login){
       const h=login.querySelector('h1');
       if(h){
-        h.innerHTML='App Turnos Pro <span class="ver">v'+VERSION+'</span>';
+        h.innerHTML='App Turnos Pro <span class="ver">v'+APP_VERSION_101+'</span>';
       }
 
-      let line=document.getElementById('v100LoginVersion');
-      if(!line && h){
-        line=document.createElement('p');
-        line.id='v100LoginVersion';
-        line.className='muted';
-        line.style='margin:-7px 0 12px;font-weight:800';
-        h.insertAdjacentElement('afterend',line);
+      /* Una sola línea discreta de autoría */
+      [
+        '#v100LoginVersion',
+        '#v100LoginCopyright'
+      ].forEach(sel=>login.querySelectorAll(sel).forEach(el=>el.remove()));
+
+      let cp=login.querySelector('#v101LoginCopyright');
+      if(!cp && h){
+        cp=document.createElement('p');
+        cp.id='v101LoginCopyright';
+        cp.className='muted';
+        cp.style='margin:-7px 0 12px;font-weight:800';
+        h.insertAdjacentElement('afterend',cp);
       }
-      if(line){
-        line.textContent='© 2026 Rodrigo Prieto · v'+VERSION;
+      if(cp){
+        cp.textContent='© 2026 Rodrigo Prieto';
       }
     }
 
     const settings=document.querySelector('#v98SettingsOverlay');
     if(settings){
       const info=settings.querySelector('details[data-section="info"] .v98SectionBody');
+
       if(info){
-        const versionItems=[...info.querySelectorAll('.v98InfoItem')];
-        versionItems.forEach(row=>{
+        [...info.querySelectorAll('.v98InfoItem')].forEach(row=>{
           const label=row.querySelector('span:first-child')?.textContent?.trim();
           const value=row.querySelector('b');
+
           if(!value)return;
-          if(label==='Versión')value.textContent=VERSION;
-          if(label==='Fecha de versión')value.textContent=DATE;
+          if(label==='Versión')value.textContent=APP_VERSION_101;
+          if(label==='Fecha de versión')value.textContent=APP_DATE_101;
+        });
+
+        if(!info.querySelector('#v101CopyrightBox')){
+          const box=document.createElement('div');
+          box.id='v101CopyrightBox';
+          box.style='margin-top:12px;padding-top:11px;border-top:1px solid #eee6ef;color:#5f5063;font-size:11px;line-height:1.45';
+          box.innerHTML=
+            '<b style="color:#332338">App Turnos Pro</b><br>'+
+            '© 2026 Rodrigo Prieto. Todos los derechos reservados.<br><br>'+
+            'Aplicación desarrollada para la gestión y consulta personal de turnos. '+
+            'Se autoriza su uso personal por las personas a las que el autor facilite acceso. '+
+            'No se permite su redistribución, modificación, publicación o comercialización sin autorización expresa del autor.';
+          info.appendChild(box);
+        }
+      }
+    }
+  }
+
+  /* -------------------------------------------------------
+     Utilidades de calendario.
+     ------------------------------------------------------- */
+  function dateFromCell101(day){
+    const oc=day.getAttribute('onclick')||'';
+    const m=oc.match(/selectDay\(['"](\d{4}-\d{2}-\d{2})['"]\)/);
+    return m?m[1]:'';
+  }
+
+  function stationSequence101(block){
+    const result=[];
+
+    try{
+      if(typeof getMovs==='function' && typeof extractStations==='function'){
+        (getMovs(block)||[]).forEach(move=>{
+          (extractStations(String(move))||[]).forEach(code=>{
+            code=String(code||'').toUpperCase().trim();
+            if(code && result[result.length-1]!==code){
+              result.push(code);
+            }
+          });
         });
       }
-    }
-  }
+    }catch(_){}
 
-  applyV100Version();
+    if(!result.length){
+      const txt=[
+        block?.resumen,
+        block?.detalle,
+        block?.raw?.detalle,
+        block?.raw?.resumen,
+        ...(Array.isArray(block?.movimientos)?block.movimientos:[])
+      ].filter(Boolean).join(' ').toUpperCase();
 
-  const oldRender=window.render;
-  if(typeof oldRender==='function'){
-    window.render=function(){
-      const out=oldRender.apply(this,arguments);
-      applyV100Version();
-      return out;
-    };
-  }
-
-  const oldOpenSettings=window.openSettingsV98;
-  if(typeof oldOpenSettings==='function'){
-    window.openSettingsV98=function(){
-      const out=oldOpenSettings.apply(this,arguments);
-      setTimeout(applyV100Version,20);
-      return out;
-    };
-  }
-
-  window.addEventListener('pageshow',applyV100Version);
-})();
-</script>
-
-<!-- v10.0 — Copyright / autoría -->
-<style id="v100-copyright-css">
-.v100CopyrightBox{
-  margin:14px 0 4px;
-  padding:14px;
-  border:1px solid #ead8ee;
-  border-radius:14px;
-  background:#fff;
-  color:#35253a;
-  font-size:13px;
-  line-height:1.45;
-}
-.v100CopyrightBox strong{
-  display:block;
-  color:#65136f;
-  font-size:15px;
-  margin-bottom:5px;
-}
-.v100CopyrightBox .v100Rights{
-  font-weight:800;
-  margin-bottom:7px;
-}
-.v100CopyrightBox p{margin:5px 0;}
-</style>
-
-<script id="v100-copyright-js">
-(function(){
-  const COPYRIGHT_HTML = `
-    <div class="v100CopyrightBox" id="v100CopyrightBox">
-      <strong>App Turnos Pro</strong>
-      <div class="v100Rights">© 2026 Rodrigo Prieto. Todos los derechos reservados.</div>
-      <p>Aplicación desarrollada para la gestión y consulta personal de turnos.</p>
-      <p>Se autoriza su uso personal por las personas a las que el autor facilite acceso.</p>
-      <p>No se permite su redistribución, modificación, publicación o comercialización sin autorización expresa del autor.</p>
-    </div>`;
-
-  function addCopyright(){
-    /* Ajustes → Información de la app */
-    const info =
-      document.querySelector('#v98SettingsOverlay details[data-section="info"] .v98SectionBody') ||
-      document.querySelector('details[data-section="info"] .v98SectionBody');
-
-    if(info && !info.querySelector('#v100CopyrightBox')){
-      info.insertAdjacentHTML('beforeend', COPYRIGHT_HTML);
-    }
-
-    /* Pantalla de acceso: versión discreta de autoría */
-    const login = document.querySelector('.loginbox');
-    if(login){
-      let line = login.querySelector('#v100LoginCopyright');
-      if(!line){
-        line = document.createElement('div');
-        line.id = 'v100LoginCopyright';
-        line.style.cssText =
-          'margin-top:10px;text-align:center;font-size:12px;font-weight:750;color:#75647a;';
-        login.appendChild(line);
+      const re=/\b(MA|MH|VC|BR|PP|OR|LE|LN|HU|ZD|LO|LG|SG|CT|CE|TN)\b/g;
+      let m;
+      while((m=re.exec(txt))){
+        if(result[result.length-1]!==m[1]){
+          result.push(m[1]);
+        }
       }
-      line.textContent = '© 2026 Rodrigo Prieto';
+    }
+
+    return result;
+  }
+
+  /* Destino visual = primera estación significativa fuera de MA/MH.
+     No altera la lógica de turnos ni los datos almacenados. */
+  function destinationForBlock101(block){
+    const seq=stationSequence101(block);
+
+    const external=seq.find(code=>code!=='MA' && code!=='MH');
+    return external||'';
+  }
+
+  function destinationColor101(code){
+    const colors={
+      VC:'#315a96',
+      BR:'#5a9344',
+      PP:'#7f4aaa',
+      OR:'#e58a2c',
+      LE:'#8b6647',
+      LN:'#547aa6',
+      HU:'#9a6b3f',
+      ZD:'#936583',
+      LO:'#3b8790',
+      LG:'#3b8790',
+      SG:'#5d7f9c',
+      CT:'#7c648f',
+      CE:'#497c7d',
+      TN:'#7b6a46'
+    };
+    return colors[code]||'#596b82';
+  }
+
+  function sleepSvg101(){
+    return '<svg viewBox="0 0 24 24" aria-hidden="true">'+
+      '<path d="M15.8 3.7a8.2 8.2 0 1 0 4.45 14.55A8.85 8.85 0 0 1 15.8 3.7Z" fill="#fff"/>'+
+      '</svg>';
+  }
+
+  /* -------------------------------------------------------
+     DD pinchado: corregir contenido, SIN alterar datos.
+     ------------------------------------------------------- */
+  function normalizeDdWorked101(day,ds){
+    let d,st;
+
+    try{
+      d=effectiveDay(ds);
+      st=status(d);
+    }catch(_){
+      return;
+    }
+
+    day.classList.toggle('ddworkV101',st==='ddwork');
+
+    if(st!=='ddwork')return;
+
+    const turn=String(
+      d?.dd_turno ||
+      d?.clave_turno ||
+      ''
+    ).trim();
+
+    const pill=day.querySelector(':scope > .shiftNo, .ddWorkedNo');
+
+    if(pill && turn){
+      pill.textContent=turn;
+      pill.classList.add('ddWorkedNo');
+    }
+
+    const badge=day.querySelector(
+      '.badge.ddworkFinal, .badge.ddworked, .badge.ddworkV65, .badge.ddwork'
+    );
+
+    if(!badge)return;
+
+    const label=badge.querySelector('.ddSmall');
+    if(label){
+      label.textContent='DD';
+    }
+
+    const repeatedTurn=badge.querySelector('.ddTurn');
+    if(repeatedTurn){
+      repeatedTurn.setAttribute('aria-hidden','true');
     }
   }
 
-  addCopyright();
-  document.addEventListener('click', function(){
-    setTimeout(addCopyright, 25);
+  /* -------------------------------------------------------
+     Destino + pernocta.
+     Se toma la existencia de la luna antigua como fuente de
+     verdad para NO cambiar la lógica de pernoctaciones.
+     ------------------------------------------------------- */
+  function normalizeCornerIndicators101(day,ds){
+    day.querySelectorAll('.v101CornerIndicators').forEach(el=>el.remove());
+
+    const work=day.querySelector('.badge.work');
+    if(!work){
+      day.classList.remove('hasV101Corner');
+      return;
+    }
+
+    const oldSleep=day.querySelector('.v97SleepMark');
+    const hasSleep=!!oldSleep;
+
+    let destination='';
+
+    try{
+      const d=effectiveDay(ds);
+      if(status(d)==='work'){
+        destination=destinationForBlock101(blockFor(d));
+      }
+    }catch(_){}
+
+    if(!hasSleep && !destination){
+      day.classList.remove('hasV101Corner');
+      return;
+    }
+
+    const group=document.createElement('span');
+    group.className='v101CornerIndicators';
+
+    /* Orden obligatorio: destino arriba, pernocta debajo */
+    if(destination){
+      const dest=document.createElement('span');
+      dest.className='v101DestinationBadge';
+      dest.style.backgroundColor=destinationColor101(destination);
+      dest.setAttribute('aria-label','Destino '+destination);
+      dest.title='Destino: '+destination;
+
+      const text=document.createElement('span');
+      text.className='v101DestinationText';
+      text.textContent=destination;
+
+      dest.appendChild(text);
+      group.appendChild(dest);
+    }
+
+    if(hasSleep){
+      const sleep=document.createElement('span');
+      sleep.className='v101SleepBadge';
+      sleep.setAttribute('aria-label','Pernocta');
+      sleep.title='Pernocta';
+      sleep.innerHTML=sleepSvg101();
+      group.appendChild(sleep);
+    }
+
+    work.appendChild(group);
+    day.classList.add('hasV101Corner');
+  }
+
+  function normalizeCalendar101(){
+    document.querySelectorAll('#grid .day').forEach(day=>{
+      const ds=dateFromCell101(day);
+      if(!ds)return;
+
+      normalizeDdWorked101(day,ds);
+      normalizeCornerIndicators101(day,ds);
+    });
+  }
+
+  /* -------------------------------------------------------
+     Enganches explícitos. Sin MutationObserver global.
+     ------------------------------------------------------- */
+  const previousRender101=window.render;
+  if(typeof previousRender101==='function'){
+    window.render=function(){
+      const result=previousRender101.apply(this,arguments);
+
+      requestAnimationFrame(()=>{
+        normalizeCalendar101();
+        applyVersion101();
+      });
+
+      return result;
+    };
+  }
+
+  const previousShow101=window.show;
+  if(typeof previousShow101==='function'){
+    window.show=function(){
+      const result=previousShow101.apply(this,arguments);
+      setTimeout(()=>{
+        normalizeCalendar101();
+        applyVersion101();
+      },15);
+      return result;
+    };
+  }
+
+  const previousOpenSettings101=window.openSettingsV98;
+  if(typeof previousOpenSettings101==='function'){
+    window.openSettingsV98=function(){
+      const result=previousOpenSettings101.apply(this,arguments);
+      setTimeout(applyVersion101,20);
+      return result;
+    };
+  }
+
+  function boot101(){
+    applyVersion101();
+    normalizeCalendar101();
+  }
+
+  boot101();
+  window.addEventListener('pageshow',boot101);
+  document.addEventListener('visibilitychange',()=>{
+    if(!document.hidden)boot101();
   });
-  window.addEventListener('pageshow', addCopyright);
 })();
 </script>
 
