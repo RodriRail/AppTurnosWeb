@@ -1,4 +1,4 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>App Turnos Pro v10.1</title><style>
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>App Turnos Pro v10.2</title><style>
 :root{--r:#8a0f82;--r2:#b65ac0;--bg:#fbf8fc;--line:#ead9ea;--txt:#1f1522;--mut:#75627a;--work:#edd0f4;--workb:#d79ae4;--rest:#d8f8e1;--restb:#62df91;--dd:#ffe0e7;--ddb:#ff9aad;--vac:#dff3ff;--vacb:#8bd4ff;--lz:#ffe0b2;--lzb:#fb923c}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;padding-bottom:74px}.hidden{display:none!important}header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:5;padding:8px 10px}.top{display:flex;gap:8px;align-items:center}.logo{font-weight:900;font-style:italic;color:var(--r);font-size:24px}.title{font-weight:900;font-size:17px}.ver{color:var(--r);font-size:12px}.sub{font-weight:700;color:var(--mut);font-size:11px}.btn{border:1px solid var(--line);background:#fff;border-radius:15px;padding:10px 12px;font-weight:900;color:var(--txt);white-space:nowrap}.primary{background:var(--r)!important;color:#fff!important}.wrap{padding:6px}.bar{display:grid;grid-template-columns:44px 1fr 44px 70px;align-items:center;gap:6px;margin:8px 0}.month{font-size:26px;font-weight:950;text-align:center}.navbtn{width:44px;height:44px;border:1px solid var(--line);border-radius:14px;background:#fff;font-size:24px;font-weight:900}.calendar{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}.week,.grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr))}.week div{padding:10px 2px;text-align:center;font-weight:950;color:#4d3d55;font-size:13px;border-bottom:1px solid var(--line)}.day{min-height:82px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:3px;position:relative;overflow:hidden}.day:nth-child(7n){border-right:0}.num{font-weight:950;font-size:18px}.today .num{background:#0b7cff;color:#fff;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px}.selected{outline:4px solid var(--r);outline-offset:-4px;background:#fff8ff}.today.selected{outline:4px dashed var(--r)}.shiftNo{display:inline-flex;align-items:center;justify-content:center;min-width:42px;height:28px;border-radius:999px;background:#fff;border:2px solid var(--r2);color:#35113d;font-size:18px;font-weight:950;margin:0 auto 4px}.badge{margin-top:2px;border-radius:14px;border:2px solid;padding:6px 2px;min-height:52px;text-align:center;font-weight:900;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2px}.work{background:var(--work);border-color:var(--workb);color:#5b1168}.rest{background:var(--rest);border-color:var(--restb);color:#087139}.restComp{background:repeating-linear-gradient(135deg,#d8f8e1 0 9px,#fff 9px 15px);border-color:#42c979;color:#087139}.dd{background:var(--dd);border-color:var(--ddb);color:#c20d34}.vac{background:var(--vac);border-color:var(--vacb);color:#00608f}.lz{background:var(--lz);border-color:var(--lzb);color:#7c2d12}.rest,.vac,.dd,.lz{position:absolute;left:3px;right:3px;top:30px;bottom:3px;min-height:0}.bigD{font-size:24px}.timeTop,.timeBot{font-size:13px;line-height:1;font-weight:950}.sep{font-size:14px;color:var(--r);font-weight:950}.changedDot{position:absolute;right:5px;top:5px;width:9px;height:9px;background:#facc15;border:2px solid #fff;border-radius:50%;box-shadow:0 0 0 1px #b45309}.dataToggle{margin-left:auto;border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 10px;font-weight:950;color:var(--r)}.adminPanel,.detail{background:#fff;border:1px solid var(--line);border-radius:20px;padding:14px;margin-top:10px}.detail h2{margin:4px 0 8px;font-size:26px}.pill{display:inline-block;border-radius:999px;padding:8px 12px;font-weight:950}.summaryCard{background:linear-gradient(135deg,var(--r),#6e267a);color:#fff;border-radius:20px;padding:16px;margin:12px 0}.summaryTop{display:flex;justify-content:space-between;gap:12px}.summaryTitle{font-size:30px;font-weight:950}.summaryDate{opacity:.92;font-weight:750}.servicePill{background:rgba(255,255,255,.16);padding:7px 10px;border-radius:999px;font-weight:900;display:flex;align-items:center;justify-content:center;text-align:center;min-width:86px}.summaryTimes{display:grid;grid-template-columns:1fr 44px 1fr;gap:8px;align-items:center;background:#fff;color:var(--txt);border-radius:18px;padding:12px;margin-top:14px;text-align:center}.summaryTimes b{display:block;color:var(--r);font-size:26px}.summaryTimes small{color:var(--mut);font-weight:800}.summaryArrow{font-size:26px;color:var(--r);font-weight:950}.miniGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}.miniBox{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center;color:var(--txt)}.miniBox b{display:block}.miniBox small{color:var(--mut);font-weight:800}.timeline{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;margin-top:12px}.timeline h3{margin:0 0 10px;color:var(--r)}.tl{display:grid;grid-template-columns:56px 30px 1fr;gap:10px;align-items:start;padding:9px 0;position:relative}.tl:not(:last-child)::after{content:"";position:absolute;left:70px;top:40px;bottom:-8px;width:2px;background:linear-gradient(var(--r2),#ead9ea)}.tlIcon{width:30px;height:30px;border:2px solid var(--r2);border-radius:50%;display:flex;align-items:center;justify-content:center;background:#fff;font-size:14px;z-index:1}.tlIcon.start{border-color:#4ade80}.tlIcon.train{border-color:#b65ac0}.tlIcon.mid{border-color:#93c5fd}.tlIcon.end{border-color:#fb7185}.tlIcon.arrival{border-color:#60a5fa}.tlIcon.restgap{border-color:#fbbf24}.tlIcon.deje{border-color:#fb7185}.tlIcon.pdf{border-color:#64748b}.pdfOverlay{position:fixed;inset:0;background:#fff;z-index:99;display:flex;flex-direction:column}.pdfTop{display:flex;align-items:center;gap:8px;padding:8px;border-bottom:1px solid var(--line);background:#fff}.pdfFrame{border:0;flex:1;width:100%}.tlText b{display:block}.tlText small{color:var(--mut)}.muted{color:var(--mut)}.row{border-left:4px solid var(--r);background:#faf6fb;padding:10px;border-radius:12px;margin-top:8px}.changePanel{background:#fff7df;border:1px solid #facc15;border-radius:16px;padding:12px;margin-top:12px}.changeGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.input,.select{width:100%;padding:12px;border:1px solid var(--line);border-radius:14px;font-size:15px;background:#fff}.login{position:fixed;inset:0;background:#fbf8fc;z-index:50;display:flex;align-items:center;justify-content:center;padding:20px}.loginbox{background:#fff;border:1px solid var(--line);border-radius:24px;padding:22px;max-width:380px;width:100%;box-shadow:0 12px 35px #0001}.ok{color:#087139;font-weight:900}.err{color:#c20d34;font-weight:900}.changesList{display:grid;gap:10px}.changeItem,.balanceBox{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px}.balanceGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:560px){.month{font-size:22px}.day{min-height:78px;padding:2px}.num{font-size:15px}.shiftNo{min-width:32px;height:22px;font-size:15px}.badge{min-height:42px;border-radius:11px}.timeTop,.timeBot{font-size:11px}.week div{font-size:11px}.bar{grid-template-columns:38px 1fr 38px 58px}.navbtn{width:38px;height:38px}.btn{padding:8px 10px;font-size:13px}.changeGrid{grid-template-columns:1fr}.summaryTitle{font-size:25px}.summaryTimes b{font-size:22px}.miniBox{padding:8px;font-size:12px}}
 
 /* v2.4 DD asignado + registro visual */
@@ -6626,740 +6626,262 @@ header .dataToggle{
      APP TURNOS PRO · v10.1 · 16/08/2026
      Refinado visual exclusivo del calendario.
      ========================================================= -->
-<style id="v101-calendar-refinement-css">
-:root{
-  --v101-purple:#7a1b86;
-  --v101-purple-dark:#4f1058;
 
-  --v101-green-bg:#d5f3dc;
-  --v101-green-border:#2eb85b;
-  --v101-green-text:#087039;
-
-  --v101-red-bg:#ffd6df;
-  --v101-red-border:#ef566c;
-  --v101-red-text:#991125;
-
-  --v101-stripe:rgba(151,61,169,.30);
-}
-
-/* ---------------------------------------------------------
-   1. Indicadores superiores: incidencia, cambio y bicolor
-   --------------------------------------------------------- */
-#calendarView .v90Indicators{
-  top:4px!important;
-  right:0!important;
-  gap:2px!important;
-  min-width:0!important;
-  width:auto!important;
-  height:29px!important;
-  align-items:flex-start!important;
-  justify-content:flex-end!important;
-  overflow:visible!important;
-  z-index:80!important;
-}
-#calendarView .v90IndicatorCol{
-  gap:0!important;
-}
-#calendarView .v90Icon.incident{
-  width:14px!important;
-  height:14px!important;
-  flex:0 0 14px!important;
-}
-#calendarView .v90Icon.change{
-  width:17px!important;
-  height:17px!important;
-  flex:0 0 17px!important;
-}
-#calendarView .v90Indicators.hasBicolor .v90Icon.change{
-  width:14px!important;
-  height:14px!important;
-  flex:0 0 14px!important;
-}
-#calendarView .v90Bicolor{
-  width:14px!important;
-  height:6px!important;
-  margin-top:1px!important;
-  border-radius:999px!important;
-}
-
-/* ---------------------------------------------------------
-   2. Círculo azul del día actual: 20 × 20 px.
-   No altera la tarjeta.
-   --------------------------------------------------------- */
-#calendarView .day.today .num{
-  position:absolute!important;
-  left:3px!important;
-  top:4px!important;
-  width:20px!important;
-  min-width:20px!important;
-  max-width:20px!important;
-  height:20px!important;
-  line-height:20px!important;
-  padding:0!important;
-  margin:0!important;
-  border-radius:50%!important;
-
-  display:flex!important;
-  align-items:center!important;
-  justify-content:center!important;
-
-  color:#fff!important;
-  background:#0b82f6!important;
-  font-size:12px!important;
-  font-weight:950!important;
-  text-align:center!important;
-
-  box-shadow:0 0 0 1px #fff!important;
-  z-index:55!important;
-}
-
-/* ---------------------------------------------------------
-   3. SSS / DSC
-   Más diagonales, uniformes y al 30 % aprox.
-   --------------------------------------------------------- */
-#calendarView .day .badge.sss,
-#calendarView .day .badge.dsc{
-  background:
-    repeating-linear-gradient(
-      135deg,
-      var(--v101-stripe) 0 4px,
-      transparent 4px 18px
-    ),
-    var(--v101-green-bg)!important;
-
-  border:2px solid var(--v101-green-border)!important;
-  border-radius:12px!important;
-  color:var(--v101-green-text)!important;
-  overflow:hidden!important;
-  box-shadow:none!important;
-}
-
-/* Evitar que pseudocapas antiguas dupliquen rayas */
-#calendarView .day .badge.sss::before,
-#calendarView .day .badge.dsc::before{
-  content:none!important;
-}
-
-/* SSS debe dominar visualmente sobre la textura */
-#calendarView .day .badge.sss,
-#calendarView .day .badge.dsc{
-  font-size:25px!important;
-  line-height:1!important;
-  font-weight:950!important;
-  text-shadow:
-    0 1px 0 rgba(255,255,255,.72),
-    0 0 3px rgba(255,255,255,.72)!important;
-}
-
-/* Pastilla del turno SSS/DC = misma lógica que trabajo */
-#calendarView .day .v83DscSss > .shiftNo,
-#calendarView .day .badge.sss .shiftNo,
-#calendarView .day .badge.dsc .shiftNo{
-  left:50%!important;
-  transform:translateX(-50%)!important;
-  min-width:47px!important;
-  height:23px!important;
-  padding:0 7px!important;
-
-  border:2px solid #a950b7!important;
-  border-radius:999px!important;
-  background:#fff!important;
-  color:#561061!important;
-
-  font-size:14px!important;
-  line-height:1!important;
-  font-weight:950!important;
-  text-align:center!important;
-}
-
-/* ---------------------------------------------------------
-   4–5. DD pinchado
-   Pastilla = turno real; DD debajo; horario muy legible.
-   --------------------------------------------------------- */
-#calendarView .day .badge.ddworkFinal,
-#calendarView .day .badge.ddworked,
-#calendarView .day .badge.ddworkV65,
-#calendarView .day .badge.ddwork{
-  background:
-    repeating-linear-gradient(
-      135deg,
-      var(--v101-stripe) 0 4px,
-      transparent 4px 18px
-    ),
-    var(--v101-red-bg)!important;
-
-  border:2px solid var(--v101-red-border)!important;
-  border-radius:12px!important;
-  overflow:hidden!important;
-  box-shadow:none!important;
-
-  padding-top:27px!important;
-  padding-bottom:3px!important;
-}
-
-/* Sin segundas capas de diagonales */
-#calendarView .day .badge.ddworkFinal::before,
-#calendarView .day .badge.ddworked::before,
-#calendarView .day .badge.ddworkV65::before,
-#calendarView .day .badge.ddwork::before{
-  content:none!important;
-}
-
-/* El número de turno real queda en la pastilla blanca estándar */
-#calendarView .day.ddworkV101 > .shiftNo,
-#calendarView .day .ddWorkedNo{
-  left:50%!important;
-  transform:translateX(-50%)!important;
-  min-width:47px!important;
-  height:23px!important;
-  padding:0 7px!important;
-
-  border:2px solid var(--v101-red-border)!important;
-  border-radius:999px!important;
-  background:#fff!important;
-  color:#74101e!important;
-
-  font-size:14px!important;
-  line-height:1!important;
-  font-weight:950!important;
-  text-align:center!important;
-}
-
-/* El antiguo valor repetido de turno dentro de la tarjeta no se muestra */
-#calendarView .day.ddworkV101 .ddTurn{
-  display:none!important;
-}
-
-/* "DD" grande debajo de la pastilla */
-#calendarView .day.ddworkV101 .ddSmall{
-  display:block!important;
-  margin:0 0 2px!important;
-  padding:0!important;
-
-  color:var(--v101-red-text)!important;
-  font-size:20px!important;
-  line-height:1!important;
-  font-weight:950!important;
-  text-align:center!important;
-  text-shadow:
-    0 1px 0 rgba(255,255,255,.75),
-    0 0 3px rgba(255,255,255,.75)!important;
-}
-
-/* Horarios DD pinchado: morado muy oscuro */
-#calendarView .day.ddworkV101 .timeTop,
-#calendarView .day.ddworkV101 .timeBot{
-  color:var(--v101-purple-dark)!important;
-  font-size:13.5px!important;
-  line-height:1!important;
-  font-weight:950!important;
-  text-shadow:
-    0 1px 0 rgba(255,255,255,.72),
-    0 0 3px rgba(255,255,255,.72)!important;
-}
-#calendarView .day.ddworkV101 .sep{
-  color:var(--v101-purple-dark)!important;
-  font-size:16px!important;
-  line-height:1!important;
-  margin:1px 0!important;
-  font-weight:950!important;
-}
-
-/* ---------------------------------------------------------
-   6 + Indicadores destino/pernocta
-   Un único contenedor vertical, geometría fija.
-   --------------------------------------------------------- */
-#calendarView .day .badge.work{
-  overflow:visible!important;
-}
-
-#calendarView .v101CornerIndicators{
-  position:absolute!important;
-  top:-3px!important;
-  right:-2px!important;
-  z-index:90!important;
-
-  display:flex!important;
-  flex-direction:column!important;
-  align-items:center!important;
-  justify-content:flex-start!important;
-  gap:2px!important;
-
-  width:15px!important;
-  min-width:15px!important;
-  height:auto!important;
-
-  margin:0!important;
-  padding:0!important;
-  pointer-events:none!important;
-}
-
-/* Destino: 15×15 */
-#calendarView .v101DestinationBadge{
-  width:15px!important;
-  min-width:15px!important;
-  max-width:15px!important;
-  height:15px!important;
-  min-height:15px!important;
-  max-height:15px!important;
-
-  border-radius:50%!important;
-  margin:0!important;
-  padding:0!important;
-
-  display:flex!important;
-  align-items:center!important;
-  justify-content:center!important;
-
-  box-shadow:0 0 0 1px rgba(255,255,255,.88)!important;
-  overflow:hidden!important;
-}
-
-#calendarView .v101DestinationText{
-  width:14px!important;
-  min-width:14px!important;
-  max-width:14px!important;
-  height:14px!important;
-  min-height:14px!important;
-  max-height:14px!important;
-
-  display:flex!important;
-  align-items:center!important;
-  justify-content:center!important;
-
-  color:#fff!important;
-  font-size:7px!important;
-  line-height:14px!important;
-  font-weight:950!important;
-  letter-spacing:-.25px!important;
-  text-align:center!important;
-  white-space:nowrap!important;
-}
-
-/* Pernocta: círculo exterior 13×13; luna blanca 9×9 */
-#calendarView .v101SleepBadge{
-  width:13px!important;
-  min-width:13px!important;
-  max-width:13px!important;
-  height:13px!important;
-  min-height:13px!important;
-  max-height:13px!important;
-
-  border-radius:50%!important;
-  margin:0!important;
-  padding:0!important;
-
-  display:flex!important;
-  align-items:center!important;
-  justify-content:center!important;
-
-  background:#771987!important;
-  box-shadow:0 0 0 1px rgba(255,255,255,.88)!important;
-  overflow:hidden!important;
-}
-
-#calendarView .v101SleepBadge svg{
-  width:9px!important;
-  min-width:9px!important;
-  max-width:9px!important;
-  height:9px!important;
-  min-height:9px!important;
-  max-height:9px!important;
-  display:block!important;
-  flex:none!important;
-}
-
-/* Ningún indicador mueve la pastilla del turno */
-#calendarView .day.hasV101Corner > .shiftNo,
-#calendarView .day.hasV101Corner .shiftNo{
-  left:50%!important;
-  right:auto!important;
-  transform:translateX(-50%)!important;
-}
-
-/* Desactivar visualmente la luna antigua; la lógica sigue intacta */
-#calendarView .v97SleepMark{
-  display:none!important;
-}
-
-/* ---------------------------------------------------------
-   7–8. El resto de tarjetas conserva su diseño y dimensiones.
-   No se redefinen trabajo, descanso, LZ, vacaciones ni DD normal.
-   --------------------------------------------------------- */
-
-@media(max-width:560px){
-  /* Las medidas de destino/pernocta son FIJAS también en móvil */
-  #calendarView .v101DestinationBadge{
-    width:15px!important;
-    min-width:15px!important;
-    max-width:15px!important;
-    height:15px!important;
-    min-height:15px!important;
-    max-height:15px!important;
-  }
-  #calendarView .v101DestinationText{
-    width:14px!important;
-    min-width:14px!important;
-    max-width:14px!important;
-    height:14px!important;
-    min-height:14px!important;
-    max-height:14px!important;
-  }
-  #calendarView .v101SleepBadge{
-    width:13px!important;
-    min-width:13px!important;
-    max-width:13px!important;
-    height:13px!important;
-    min-height:13px!important;
-    max-height:13px!important;
-  }
-  #calendarView .v101SleepBadge svg{
-    width:9px!important;
-    min-width:9px!important;
-    max-width:9px!important;
-    height:9px!important;
-    min-height:9px!important;
-    max-height:9px!important;
-  }
-
-  #calendarView .day.ddworkV101 .ddSmall{
-    font-size:19px!important;
-  }
-  #calendarView .day.ddworkV101 .timeTop,
-  #calendarView .day.ddworkV101 .timeBot{
-    font-size:13px!important;
-  }
-}
+<style id="v102-css">
+:root{--v102p:#7a1b86;--v102pd:#4f1058;--v102line:#eadbea}
+.v102Eye{appearance:none;border:1px solid var(--v102line);background:#fff;color:var(--v102p);border-radius:14px;width:38px;height:36px;display:inline-flex;align-items:center;justify-content:center;padding:0;margin-left:4px}
+.v102Eye svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.9}
+#v102Panel{position:fixed;z-index:5200;display:none;right:10px;width:min(300px,calc(100vw - 20px));background:#fff;border:1px solid var(--v102line);border-radius:16px;box-shadow:0 14px 42px rgba(43,18,48,.22);padding:10px}
+#v102Panel.open{display:block}.v102Head{display:flex;justify-content:space-between;align-items:center;padding:2px 2px 8px;font-size:15px;font-weight:950}.v102Close{border:0;background:none;font-size:21px}
+.v102Row{display:flex;align-items:center;justify-content:space-between;padding:9px 3px;border-top:1px solid #f0e8f1;font-size:12px;font-weight:800}
+.v102Switch{position:relative;width:36px;height:21px}.v102Switch input{opacity:0;width:0;height:0}.v102Slider{position:absolute;inset:0;background:#d8ceda;border-radius:99px}.v102Slider:before{content:"";position:absolute;width:17px;height:17px;left:2px;top:2px;background:#fff;border-radius:50%;box-shadow:0 1px 3px #999}.v102Switch input:checked+.v102Slider{background:var(--v102p)}.v102Switch input:checked+.v102Slider:before{transform:translateX(15px)}
+.v102All{width:100%;margin-top:9px;border:1px solid #d8bbdd;border-radius:10px;background:#fff;color:var(--v102p);padding:8px;font-weight:900}
+body.v102NoDest .v102Dest{display:none!important}body.v102NoSleep .v102Sleep{display:none!important}body.v102NoChange .v90Icon.change{display:none!important}body.v102NoIncident .v90Icon.incident{display:none!important}body.v102NoBicolor .v90Bicolor{display:none!important}
+#calendarView .day.today .num{position:absolute!important;left:3px!important;top:4px!important;width:20px!important;height:20px!important;min-width:20px!important;padding:0!important;margin:0!important;border-radius:50%!important;display:flex!important;align-items:center!important;justify-content:center!important;background:#0b82f6!important;color:#fff!important;font-size:12px!important;font-weight:950!important;z-index:55!important}
+#calendarView .v90Indicators{top:4px!important;right:0!important;gap:2px!important;width:auto!important;height:29px!important;justify-content:flex-end!important;overflow:visible!important;z-index:80!important}
+#calendarView .day .badge.sss,#calendarView .day .badge.dsc{background:repeating-linear-gradient(135deg,rgba(151,61,169,.30) 0 4px,transparent 4px 18px),#d5f3dc!important;border:2px solid #2eb85b!important;color:#087039!important;overflow:hidden!important;font-size:25px!important;font-weight:950!important}
+#calendarView .day .badge.ddworkFinal,#calendarView .day .badge.ddworked,#calendarView .day .badge.ddworkV65,#calendarView .day .badge.ddwork{background:repeating-linear-gradient(135deg,rgba(151,61,169,.30) 0 4px,transparent 4px 18px),#ffd6df!important;border:2px solid #ef566c!important;overflow:hidden!important;padding-top:27px!important}
+#calendarView .day.v102DD .ddTurn{display:none!important}#calendarView .day.v102DD .ddSmall{display:block!important;color:#991125!important;font-size:20px!important;font-weight:950!important;text-align:center!important}
+#calendarView .day.v102DD .timeTop,#calendarView .day.v102DD .timeBot,#calendarView .day.v102DD .sep{color:#4f1058!important;font-weight:950!important}
+#calendarView .badge.work{overflow:visible!important}.v102Corner{position:absolute!important;top:-3px!important;right:-2px!important;z-index:90!important;display:flex!important;flex-direction:column!important;align-items:center!important;gap:2px!important;width:15px!important;pointer-events:none!important}
+.v102Dest{width:15px!important;height:15px!important;border-radius:50%!important;display:flex!important;align-items:center!important;justify-content:center!important;box-shadow:0 0 0 1px #fff!important}.v102Dest span{width:14px!important;height:14px!important;display:flex!important;align-items:center!important;justify-content:center!important;color:#fff!important;font-size:7px!important;font-weight:950!important}
+.v102Sleep{width:13px!important;height:13px!important;border-radius:50%!important;display:flex!important;align-items:center!important;justify-content:center!important;background:#771987!important;box-shadow:0 0 0 1px #fff!important}.v102Sleep svg{width:9px!important;height:9px!important}.v97SleepMark{display:none!important}
+.v102Type{margin:7px 8px 0;padding:7px 9px;border-radius:9px;background:#faf6fb;color:#4f3555;font-size:11px;font-weight:900}.v102Dev{margin:8px;border:1px solid #eadbea;border-radius:11px;background:#fff;overflow:hidden}.v102DevTitle{padding:7px 9px;background:#faf6fb;border-bottom:1px solid #eee5ef;color:#65136f;font-size:11px;font-weight:950}.v102DevBody{padding:8px 9px;color:#493b4d;font-size:10.5px;line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere}
 </style>
+<script id="v102-js">
+(function(){
+'use strict';
+const V='10.2',VD='16/08/2026',PK='appTurnos.quickView.v102',DEF={dest:true,sleep:true,change:true,incident:true,bicolor:true};
+function version(){document.title='App Turnos Pro v'+V;document.querySelectorAll('.ver').forEach(x=>x.textContent='v'+V);let t=document.querySelector('header .title');if(t)t.innerHTML='App Turnos Pro <span class="ver">v'+V+'</span>';let l=document.querySelector('.loginbox h1');if(l)l.innerHTML='App Turnos Pro <span class="ver">v'+V+'</span>';let info=document.querySelector('#v98SettingsOverlay details[data-section="info"] .v98SectionBody');if(info)[...info.querySelectorAll('.v98InfoItem')].forEach(r=>{let a=r.querySelector('span:first-child')?.textContent?.trim(),b=r.querySelector('b');if(b&&a==='Versión')b.textContent=V;if(b&&a==='Fecha de versión')b.textContent=VD})}
+function prefs(){try{return {...DEF,...JSON.parse(localStorage.getItem(PK)||'{}')}}catch(e){return {...DEF}}}function save(p){try{localStorage.setItem(PK,JSON.stringify(p))}catch(e){}}
+function apply(p){let b=document.body;b.classList.toggle('v102NoDest',!p.dest);b.classList.toggle('v102NoSleep',!p.sleep);b.classList.toggle('v102NoChange',!p.change);b.classList.toggle('v102NoIncident',!p.incident);b.classList.toggle('v102NoBicolor',!p.bicolor);document.querySelectorAll('#v102Panel [data-p]').forEach(x=>x.checked=!!p[x.dataset.p])}
+const eye='<svg viewBox="0 0 24 24"><path d="M2.5 12s3.4-6 9.5-6 9.5 6 9.5 6-3.4 6-9.5 6-9.5-6-9.5-6Z"/><circle cx="12" cy="12" r="2.7"/></svg>';
+function installEye(){let top=document.querySelector('header .top');if(!top||document.getElementById('v102Eye'))return;let b=document.createElement('button');b.id='v102Eye';b.className='v102Eye';b.type='button';b.innerHTML=eye;b.title='Visualización';let q=document.getElementById('v99SearchBtn'),a=top.querySelector('.dataToggle');q?q.after(b):a?top.insertBefore(b,a):top.appendChild(b);b.onclick=e=>{e.stopPropagation();panel(b)}}
+function buildPanel(){if(document.getElementById('v102Panel'))return;let p=document.createElement('div');p.id='v102Panel';let rows=[['dest','Destinos / estaciones'],['sleep','Pernoctas'],['change','Cambios'],['incident','Incidencias'],['bicolor','Indicador bicolor']];p.innerHTML='<div class="v102Head"><span>Visualización</span><button class="v102Close">×</button></div>'+rows.map(r=>'<div class="v102Row"><span>'+r[1]+'</span><label class="v102Switch"><input type="checkbox" data-p="'+r[0]+'"><span class="v102Slider"></span></label></div>').join('')+'<button class="v102All">Mostrar todo</button>';document.body.appendChild(p);p.querySelector('.v102Close').onclick=()=>p.classList.remove('open');p.querySelectorAll('[data-p]').forEach(x=>x.onchange=()=>{let z=prefs();z[x.dataset.p]=x.checked;save(z);apply(z)});p.querySelector('.v102All').onclick=()=>{save(DEF);apply(DEF)};apply(prefs())}
+function panel(b){buildPanel();let p=document.getElementById('v102Panel');if(p.classList.contains('open'))return p.classList.remove('open');let r=b.getBoundingClientRect();p.style.top=(r.bottom+7)+'px';p.classList.add('open');apply(prefs())}
+function dateCell(d){let m=(d.getAttribute('onclick')||'').match(/selectDay\(['"](\d{4}-\d{2}-\d{2})['"]\)/);return m?m[1]:''}
+function bt(b){return [b?.resumen,b?.detalle,b?.tipo,b?.tipo_norm,b?.bloque,b?.raw?.detalle,b?.raw?.resumen,...(Array.isArray(b?.movimientos)?b.movimientos:[])].filter(Boolean).join(' ').toUpperCase()}
+function seq(b){let o=[];try{if(typeof getMovs==='function'&&typeof extractStations==='function')(getMovs(b)||[]).forEach(m=>(extractStations(String(m))||[]).forEach(c=>{c=String(c).toUpperCase().trim();if(c&&o[o.length-1]!==c)o.push(c)}))}catch(e){};if(!o.length){let re=/\b(MA|MH|VC|BR|PP|OR|LE|LN|HU|ZD|LO|LG|SG|CT|CE|TN)\b/g,m,t=bt(b);while((m=re.exec(t)))if(o[o.length-1]!==m[1])o.push(m[1])}return o}
+function sc(b){return /\b(SC|SCC)\b|SERVICIOS?\s+COMPLEMENTARIOS?/.test(bt(b))}function reserve(b){return /\bRESERVA\b/.test(bt(b))}
+function origin(b){let q=seq(b);if(q[0]==='MA'||q[0]==='MH')return q[0];let t=bt(b),a=t.search(/\bMA\b/),h=t.search(/\bMH\b/);if(a<0&&h<0)return'';if(a<0)return'MH';if(h<0)return'MA';return a<h?'MA':'MH'}
+function dest(b){if(!b)return'';if(sc(b)||reserve(b))return origin(b);return seq(b).find(x=>x!=='MA'&&x!=='MH')||''}
+function col(c){return({VC:'#315a96',BR:'#5a9344',PP:'#7f4aaa',OR:'#e58a2c',LE:'#8b6647',LN:'#547aa6',HU:'#9a6b3f',ZD:'#936583',MA:'#7a1b86',MH:'#596b82'})[c]||'#596b82'}
+function moon(){return'<svg viewBox="0 0 24 24"><path d="M15.8 3.7a8.2 8.2 0 1 0 4.45 14.55A8.85 8.85 0 0 1 15.8 3.7Z" fill="#fff"/></svg>'}
+function day(d,ds){let x,st,b;try{x=effectiveDay(ds);st=status(x);b=blockFor(x)}catch(e){return}d.classList.toggle('v102DD',st==='ddwork');if(st==='ddwork'){let n=String(x?.dd_turno||x?.clave_turno||'').trim(),p=d.querySelector(':scope > .shiftNo,.ddWorkedNo');if(p&&n)p.textContent=n;let z=d.querySelector('.ddSmall');if(z)z.textContent='DD'}d.querySelectorAll('.v102Corner').forEach(x=>x.remove());let w=d.querySelector('.badge.work');if(!w)return;let sl=!!d.querySelector('.v97SleepMark'),de=st==='work'?dest(b):'';if(!sl&&!de)return;let g=document.createElement('span');g.className='v102Corner';if(de){let e=document.createElement('span');e.className='v102Dest';e.style.background=col(de);e.title='Destino / estación: '+de;e.innerHTML='<span>'+de+'</span>';g.appendChild(e)}if(sl){let e=document.createElement('span');e.className='v102Sleep';e.title='Pernocta';e.innerHTML=moon();g.appendChild(e)}w.appendChild(g)}
+function calendar(){document.querySelectorAll('#grid .day').forEach(d=>{let ds=dateCell(d);if(ds)day(d,ds)});apply(prefs())}
+function blocks(){let a=[];if(Array.isArray(data.blocks))a.push(...data.blocks);if(Array.isArray(data.marcosV57))data.marcosV57.forEach(m=>{if(Array.isArray(m.blocks))a.push(...m.blocks)});let seen=new Set();return a.filter(b=>{let k=JSON.stringify([b.turno,b.dias,b.inicio,b.fin,b.tipo,b.resumen,b.bloque,b.detalle]);if(seen.has(k))return false;seen.add(k);return true})}
+function keyBlocks(k){return blocks().filter(b=>String(b.turno||'').trim()===String(k).trim())}
+function dlabel(b){let r=String(b?.dias||b?.bloque||'').trim(),u=r.toUpperCase();if(/L.*V|LUNES.*VIERNES/.test(u))return'L–V';if(/L.*S|LUNES.*S[ÁA]BADO/.test(u))return'L–S';if(/L.*D|LUNES.*DOMINGO/.test(u))return'L–D';if(/\bS\b|S[ÁA]B/.test(u))return'Sábado';if(/\bD\b|DOM/.test(u))return'Domingo';return r||'Bloque'}
+function typ(b){let t=bt(b);if(/DESCANSO\s+COMPENSADO|\bDSC\b|\bDC\b/.test(t))return'Descanso compensado';if(/\bSSS\b|SALIDA\s+SIN\s+SERVICIO/.test(t))return'Salida sin servicio (SSS)';if(sc(b))return'Servicio complementario';if(reserve(b))return'Reserva';if(/\bDESCANSO\b/.test(t))return'Descanso';return String(b?.tipo_norm||b?.tipo||'Servicio')}
+function dev(b){let a=[];if(Array.isArray(b?.movimientos)&&b.movimientos.length)a.push(...b.movimientos);else if(b?.detalle)a.push(b.detalle);else if(b?.raw?.detalle)a.push(b.raw.detalle);else if(b?.resumen)a.push(b.resumen);return a.map(String).join('\n')}
+function esc(v){return String(v??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function bh(k,b){let i=typeof blockIni==='function'?blockIni(b):(b.inicio||''),f=typeof blockFin==='function'?blockFin(b):(b.fin||''),route=seq(b).join(' → '),t=typ(b);return'<div class="v102Type">'+esc(dlabel(b))+' · '+esc(t)+'</div><div class="v99-block-detail"><div class="v99-shift-pill">'+esc(k)+'</div><div class="v99-times">'+esc(i||'—')+'<br>↓<br>'+esc(f||'—')+'</div>'+(route?'<div class="v99-route">'+esc(route)+'</div>':'')+'</div><div class="v102Dev"><div class="v102DevTitle">Desarrollo del bloque</div><div class="v102DevBody">'+esc(dev(b)||t)+'</div></div>'}
+function search(){let inp=document.getElementById('v99TurnKey'),h=document.getElementById('v99TurnResult');if(!inp||!h)return;let k=inp.value.trim(),bs=keyBlocks(k);if(!k)return h.innerHTML='';if(!bs.length)return h.innerHTML='<div class="v99-help" style="margin-top:8px">No se ha encontrado esa clave en los marcos cargados.</div>';h.innerHTML='<div class="v99-key-result"><div class="v99-key-title">Información de la clave '+esc(k)+'</div><div class="v99-block-tabs">'+bs.map((b,i)=>'<button class="v99-block-tab '+(i?'':'active')+'" data-i="'+i+'">'+esc(dlabel(b))+'</button>').join('')+'</div><div id="v102Detail">'+bh(k,bs[0])+'</div></div>';h.querySelectorAll('.v99-block-tab').forEach(q=>q.onclick=()=>{h.querySelectorAll('.v99-block-tab').forEach(x=>x.classList.remove('active'));q.classList.add('active');document.getElementById('v102Detail').innerHTML=bh(k,bs[+q.dataset.i])})}
+function installSearch(){let b=document.getElementById('v99TurnSearch'),i=document.getElementById('v99TurnKey');if(b&&!b.dataset.v102){b.dataset.v102=1;b.addEventListener('click',e=>{e.stopImmediatePropagation();search()},true)}if(i&&!i.dataset.v102){i.dataset.v102=1;i.addEventListener('keydown',e=>{if(e.key==='Enter'){e.stopImmediatePropagation();search()}},true)}}
+let R=window.render;if(typeof R==='function')window.render=function(){let r=R.apply(this,arguments);requestAnimationFrame(()=>{calendar();version();installEye();buildPanel();installSearch()});return r};
+let S=window.show;if(typeof S==='function')window.show=function(){let r=S.apply(this,arguments);setTimeout(()=>{calendar();version();installEye();buildPanel();installSearch()},15);return r};
+function boot(){version();installEye();buildPanel();calendar();installSearch();apply(prefs())}boot();window.addEventListener('pageshow',boot);
+})();
+</script>
 
-<script id="v101-calendar-refinement-js">
+<!-- =========================================================
+     CONTROL ÚNICO DE VERSIÓN VISIBLE · APP TURNOS PRO v10.2
+     ========================================================= -->
+<script id="v102-version-final">
 (function(){
   'use strict';
 
-  const APP_VERSION_101='10.1';
-  const APP_DATE_101='16/08/2026';
+  const APP_CURRENT_VERSION = '10.2';
+  const APP_CURRENT_DATE = '16/08/2026';
 
-  /* -------------------------------------------------------
-     Versión visible coherente.
-     Los identificadores históricos se conservan únicamente
-     por compatibilidad con datos/migraciones antiguas.
-     ------------------------------------------------------- */
-  function applyVersion101(){
-    document.title='App Turnos Pro v'+APP_VERSION_101;
+  window.APP_TURNOS_CURRENT_RELEASE = Object.freeze({
+    version: APP_CURRENT_VERSION,
+    date: APP_CURRENT_DATE
+  });
 
-    document.querySelectorAll('.ver').forEach(el=>{
-      el.textContent='v'+APP_VERSION_101;
+  function setTextVersion(){
+    /* Título de la pestaña / documento */
+    document.title = 'App Turnos Pro v' + APP_CURRENT_VERSION;
+
+    /* Cualquier marcador genérico de versión visible */
+    document.querySelectorAll('.ver').forEach(function(el){
+      el.textContent = 'v' + APP_CURRENT_VERSION;
     });
 
-    const title=document.querySelector('header .title');
-    if(title){
-      title.innerHTML='App Turnos Pro <span class="ver">v'+APP_VERSION_101+'</span>';
+    /* Cabecera principal */
+    const headerTitle = document.querySelector('header .title');
+    if(headerTitle){
+      headerTitle.innerHTML =
+        'App Turnos Pro <span class="ver">v' +
+        APP_CURRENT_VERSION +
+        '</span>';
     }
 
-    const login=document.querySelector('.loginbox');
+    /* Pantalla de acceso */
+    const login = document.querySelector('.loginbox');
     if(login){
-      const h=login.querySelector('h1');
-      if(h){
-        h.innerHTML='App Turnos Pro <span class="ver">v'+APP_VERSION_101+'</span>';
+      const h1 = login.querySelector('h1');
+      if(h1){
+        h1.innerHTML =
+          'App Turnos Pro <span class="ver">v' +
+          APP_CURRENT_VERSION +
+          '</span>';
       }
 
-      /* Una sola línea discreta de autoría */
-      [
-        '#v100LoginVersion',
-        '#v100LoginCopyright'
-      ].forEach(sel=>login.querySelectorAll(sel).forEach(el=>el.remove()));
-
-      let cp=login.querySelector('#v101LoginCopyright');
-      if(!cp && h){
-        cp=document.createElement('p');
-        cp.id='v101LoginCopyright';
-        cp.className='muted';
-        cp.style='margin:-7px 0 12px;font-weight:800';
-        h.insertAdjacentElement('afterend',cp);
-      }
-      if(cp){
-        cp.textContent='© 2026 Rodrigo Prieto';
-      }
-    }
-
-    const settings=document.querySelector('#v98SettingsOverlay');
-    if(settings){
-      const info=settings.querySelector('details[data-section="info"] .v98SectionBody');
-
-      if(info){
-        [...info.querySelectorAll('.v98InfoItem')].forEach(row=>{
-          const label=row.querySelector('span:first-child')?.textContent?.trim();
-          const value=row.querySelector('b');
-
-          if(!value)return;
-          if(label==='Versión')value.textContent=APP_VERSION_101;
-          if(label==='Fecha de versión')value.textContent=APP_DATE_101;
-        });
-
-        if(!info.querySelector('#v101CopyrightBox')){
-          const box=document.createElement('div');
-          box.id='v101CopyrightBox';
-          box.style='margin-top:12px;padding-top:11px;border-top:1px solid #eee6ef;color:#5f5063;font-size:11px;line-height:1.45';
-          box.innerHTML=
-            '<b style="color:#332338">App Turnos Pro</b><br>'+
-            '© 2026 Rodrigo Prieto. Todos los derechos reservados.<br><br>'+
-            'Aplicación desarrollada para la gestión y consulta personal de turnos. '+
-            'Se autoriza su uso personal por las personas a las que el autor facilite acceso. '+
-            'No se permite su redistribución, modificación, publicación o comercialización sin autorización expresa del autor.';
-          info.appendChild(box);
-        }
-      }
-    }
-  }
-
-  /* -------------------------------------------------------
-     Utilidades de calendario.
-     ------------------------------------------------------- */
-  function dateFromCell101(day){
-    const oc=day.getAttribute('onclick')||'';
-    const m=oc.match(/selectDay\(['"](\d{4}-\d{2}-\d{2})['"]\)/);
-    return m?m[1]:'';
-  }
-
-  function stationSequence101(block){
-    const result=[];
-
-    try{
-      if(typeof getMovs==='function' && typeof extractStations==='function'){
-        (getMovs(block)||[]).forEach(move=>{
-          (extractStations(String(move))||[]).forEach(code=>{
-            code=String(code||'').toUpperCase().trim();
-            if(code && result[result.length-1]!==code){
-              result.push(code);
-            }
-          });
-        });
-      }
-    }catch(_){}
-
-    if(!result.length){
-      const txt=[
-        block?.resumen,
-        block?.detalle,
-        block?.raw?.detalle,
-        block?.raw?.resumen,
-        ...(Array.isArray(block?.movimientos)?block.movimientos:[])
-      ].filter(Boolean).join(' ').toUpperCase();
-
-      const re=/\b(MA|MH|VC|BR|PP|OR|LE|LN|HU|ZD|LO|LG|SG|CT|CE|TN)\b/g;
-      let m;
-      while((m=re.exec(txt))){
-        if(result[result.length-1]!==m[1]){
-          result.push(m[1]);
-        }
-      }
-    }
-
-    return result;
-  }
-
-  /* Destino visual = primera estación significativa fuera de MA/MH.
-     No altera la lógica de turnos ni los datos almacenados. */
-  function destinationForBlock101(block){
-    const seq=stationSequence101(block);
-
-    const external=seq.find(code=>code!=='MA' && code!=='MH');
-    return external||'';
-  }
-
-  function destinationColor101(code){
-    const colors={
-      VC:'#315a96',
-      BR:'#5a9344',
-      PP:'#7f4aaa',
-      OR:'#e58a2c',
-      LE:'#8b6647',
-      LN:'#547aa6',
-      HU:'#9a6b3f',
-      ZD:'#936583',
-      LO:'#3b8790',
-      LG:'#3b8790',
-      SG:'#5d7f9c',
-      CT:'#7c648f',
-      CE:'#497c7d',
-      TN:'#7b6a46'
-    };
-    return colors[code]||'#596b82';
-  }
-
-  function sleepSvg101(){
-    return '<svg viewBox="0 0 24 24" aria-hidden="true">'+
-      '<path d="M15.8 3.7a8.2 8.2 0 1 0 4.45 14.55A8.85 8.85 0 0 1 15.8 3.7Z" fill="#fff"/>'+
-      '</svg>';
-  }
-
-  /* -------------------------------------------------------
-     DD pinchado: corregir contenido, SIN alterar datos.
-     ------------------------------------------------------- */
-  function normalizeDdWorked101(day,ds){
-    let d,st;
-
-    try{
-      d=effectiveDay(ds);
-      st=status(d);
-    }catch(_){
-      return;
-    }
-
-    day.classList.toggle('ddworkV101',st==='ddwork');
-
-    if(st!=='ddwork')return;
-
-    const turn=String(
-      d?.dd_turno ||
-      d?.clave_turno ||
-      ''
-    ).trim();
-
-    const pill=day.querySelector(':scope > .shiftNo, .ddWorkedNo');
-
-    if(pill && turn){
-      pill.textContent=turn;
-      pill.classList.add('ddWorkedNo');
-    }
-
-    const badge=day.querySelector(
-      '.badge.ddworkFinal, .badge.ddworked, .badge.ddworkV65, .badge.ddwork'
-    );
-
-    if(!badge)return;
-
-    const label=badge.querySelector('.ddSmall');
-    if(label){
-      label.textContent='DD';
-    }
-
-    const repeatedTurn=badge.querySelector('.ddTurn');
-    if(repeatedTurn){
-      repeatedTurn.setAttribute('aria-hidden','true');
-    }
-  }
-
-  /* -------------------------------------------------------
-     Destino + pernocta.
-     Se toma la existencia de la luna antigua como fuente de
-     verdad para NO cambiar la lógica de pernoctaciones.
-     ------------------------------------------------------- */
-  function normalizeCornerIndicators101(day,ds){
-    day.querySelectorAll('.v101CornerIndicators').forEach(el=>el.remove());
-
-    const work=day.querySelector('.badge.work');
-    if(!work){
-      day.classList.remove('hasV101Corner');
-      return;
-    }
-
-    const oldSleep=day.querySelector('.v97SleepMark');
-    const hasSleep=!!oldSleep;
-
-    let destination='';
-
-    try{
-      const d=effectiveDay(ds);
-      if(status(d)==='work'){
-        destination=destinationForBlock101(blockFor(d));
-      }
-    }catch(_){}
-
-    if(!hasSleep && !destination){
-      day.classList.remove('hasV101Corner');
-      return;
-    }
-
-    const group=document.createElement('span');
-    group.className='v101CornerIndicators';
-
-    /* Orden obligatorio: destino arriba, pernocta debajo */
-    if(destination){
-      const dest=document.createElement('span');
-      dest.className='v101DestinationBadge';
-      dest.style.backgroundColor=destinationColor101(destination);
-      dest.setAttribute('aria-label','Destino '+destination);
-      dest.title='Destino: '+destination;
-
-      const text=document.createElement('span');
-      text.className='v101DestinationText';
-      text.textContent=destination;
-
-      dest.appendChild(text);
-      group.appendChild(dest);
-    }
-
-    if(hasSleep){
-      const sleep=document.createElement('span');
-      sleep.className='v101SleepBadge';
-      sleep.setAttribute('aria-label','Pernocta');
-      sleep.title='Pernocta';
-      sleep.innerHTML=sleepSvg101();
-      group.appendChild(sleep);
-    }
-
-    work.appendChild(group);
-    day.classList.add('hasV101Corner');
-  }
-
-  function normalizeCalendar101(){
-    document.querySelectorAll('#grid .day').forEach(day=>{
-      const ds=dateFromCell101(day);
-      if(!ds)return;
-
-      normalizeDdWorked101(day,ds);
-      normalizeCornerIndicators101(day,ds);
-    });
-  }
-
-  /* -------------------------------------------------------
-     Enganches explícitos. Sin MutationObserver global.
-     ------------------------------------------------------- */
-  const previousRender101=window.render;
-  if(typeof previousRender101==='function'){
-    window.render=function(){
-      const result=previousRender101.apply(this,arguments);
-
-      requestAnimationFrame(()=>{
-        normalizeCalendar101();
-        applyVersion101();
+      /* Limpiar SOLO líneas visuales antiguas de versión.
+         No se tocan controles, datos ni elementos funcionales. */
+      login.querySelectorAll(
+        '#loginVersionV57,' +
+        '#loginUpdatedV90,' +
+        '#loginUpdatedV92,' +
+        '#loginUpdatedV93,' +
+        '#loginUpdatedV94,' +
+        '#loginUpdatedV95,' +
+        '#loginUpdatedV96,' +
+        '#loginUpdatedV97,' +
+        '#loginUpdatedV98,' +
+        '#v100LoginVersion,' +
+        '#v100LoginCopyright,' +
+        '#v101LoginCopyright,' +
+        '#v102LoginCopyright'
+      ).forEach(function(el){
+        el.remove();
       });
 
+      let meta = login.querySelector('#v102FinalLoginMeta');
+      if(!meta && h1){
+        meta = document.createElement('p');
+        meta.id = 'v102FinalLoginMeta';
+        meta.className = 'muted';
+        meta.style.cssText =
+          'margin:-7px 0 12px;font-weight:800;text-align:center;';
+        h1.insertAdjacentElement('afterend', meta);
+      }
+
+      if(meta){
+        meta.textContent =
+          '© 2026 Rodrigo Prieto · v' +
+          APP_CURRENT_VERSION;
+      }
+    }
+
+    /* Ajustes → Información de la app */
+    const info =
+      document.querySelector(
+        '#v98SettingsOverlay details[data-section="info"] .v98SectionBody'
+      ) ||
+      document.querySelector(
+        'details[data-section="info"] .v98SectionBody'
+      );
+
+    if(info){
+      const rows = Array.from(info.querySelectorAll('.v98InfoItem'));
+
+      rows.forEach(function(row){
+        const label = row.querySelector('span:first-child');
+        const value = row.querySelector('b');
+
+        if(!label || !value) return;
+
+        const text = (label.textContent || '').trim();
+
+        if(text === 'Versión' || text === 'Versión actual'){
+          value.textContent = 'v' + APP_CURRENT_VERSION;
+        }
+
+        if(
+          text === 'Fecha de versión' ||
+          text === 'Actualizada' ||
+          text === 'Última actualización'
+        ){
+          value.textContent = APP_CURRENT_DATE;
+        }
+      });
+
+      /* Si la sección no dispone todavía de filas de versión,
+         se crean sin alterar las demás. */
+      const hasVersion = rows.some(function(row){
+        const t = row.querySelector('span:first-child')?.textContent?.trim();
+        return t === 'Versión' || t === 'Versión actual';
+      });
+
+      const hasDate = rows.some(function(row){
+        const t = row.querySelector('span:first-child')?.textContent?.trim();
+        return (
+          t === 'Fecha de versión' ||
+          t === 'Actualizada' ||
+          t === 'Última actualización'
+        );
+      });
+
+      if(!hasVersion){
+        const row = document.createElement('div');
+        row.className = 'v98InfoItem';
+        row.innerHTML =
+          '<span>Versión actual</span><b>v' +
+          APP_CURRENT_VERSION +
+          '</b>';
+        info.insertBefore(row, info.firstChild);
+      }
+
+      if(!hasDate){
+        const row = document.createElement('div');
+        row.className = 'v98InfoItem';
+        row.innerHTML =
+          '<span>Actualizada</span><b>' +
+          APP_CURRENT_DATE +
+          '</b>';
+
+        const first = info.querySelector('.v98InfoItem');
+        if(first && first.nextSibling){
+          info.insertBefore(row, first.nextSibling);
+        }else{
+          info.appendChild(row);
+        }
+      }
+    }
+  }
+
+  /*
+    No se utiliza MutationObserver global.
+    Reafirmamos la versión únicamente en momentos explícitos
+    en los que la interfaz puede reconstruirse.
+  */
+  const previousRender = window.render;
+  if(typeof previousRender === 'function'){
+    window.render = function(){
+      const result = previousRender.apply(this, arguments);
+      setTextVersion();
       return result;
     };
   }
 
-  const previousShow101=window.show;
-  if(typeof previousShow101==='function'){
-    window.show=function(){
-      const result=previousShow101.apply(this,arguments);
-      setTimeout(()=>{
-        normalizeCalendar101();
-        applyVersion101();
-      },15);
+  const previousShow = window.show;
+  if(typeof previousShow === 'function'){
+    window.show = function(){
+      const result = previousShow.apply(this, arguments);
+      setTimeout(setTextVersion, 10);
       return result;
     };
   }
 
-  const previousOpenSettings101=window.openSettingsV98;
-  if(typeof previousOpenSettings101==='function'){
-    window.openSettingsV98=function(){
-      const result=previousOpenSettings101.apply(this,arguments);
-      setTimeout(applyVersion101,20);
+  const previousOpenSettings = window.openSettingsV98;
+  if(typeof previousOpenSettings === 'function'){
+    window.openSettingsV98 = function(){
+      const result = previousOpenSettings.apply(this, arguments);
+      setTimeout(setTextVersion, 15);
       return result;
     };
   }
 
-  function boot101(){
-    applyVersion101();
-    normalizeCalendar101();
-  }
+  setTextVersion();
 
-  boot101();
-  window.addEventListener('pageshow',boot101);
-  document.addEventListener('visibilitychange',()=>{
-    if(!document.hidden)boot101();
+  window.addEventListener('pageshow', setTextVersion);
+
+  document.addEventListener('visibilitychange', function(){
+    if(!document.hidden){
+      setTextVersion();
+    }
   });
 })();
 </script>
