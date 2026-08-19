@@ -320,7 +320,7 @@ function openPdf(page){if(!data.pdf?.dataUrl)return;let o=document.createElement
 
 
 // ===== v2.8 overrides: alarmas, PDF multipágina, memoria estable y calendario continuo =====
-try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v8.9');document.title='App Turnos Pro v8.9'}catch(e){}
+try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v10.3');document.title='App Turnos Pro v10.3'}catch(e){}
 current=new Date();
 data.alarms=data.alarms||{};data.disabledAlarms=data.disabledAlarms||{};data.people=data.people||[];data.alarmSettings=data.alarmSettings||{enabled:true,startOffset:60,trainOffset:30};
 function doLogin(){if(user.value.trim().toLowerCase()===ADMIN_USER&&pass.value.trim()===ADMIN_PASS){localStorage.setItem(AUTH+'Unlocked','1');localStorage.setItem(AUTH+'SessionUntil',Date.now()+(remember.checked?86400000:3600000));localStorage.removeItem(AUTH+'Attempts');localStorage.removeItem(AUTH+'LockUntil');login.classList.add('hidden');admin=true;updateImportUI();return}loginMsg.textContent='Usuario o contraseña incorrectos.'}
@@ -690,7 +690,7 @@ setTimeout(openInitialViewV44,180);
 
 
 // ===== v5.0 memoria estable, histórico y lector JSON =====
-const APP_VERSION='10.1', BACKUP_KEY='AppTurnosBackupsV50';
+const APP_VERSION='10.3', BACKUP_KEY='AppTurnosBackupsV50';
 data.settings=data.settings||{}; data.settings.openMode=data.settings.openMode||'calendario';
 function safeSetV50(k,v){try{localStorage.setItem(k,v);return true}catch(e){console.warn(e);return false}}
 function fechaArchivoMemoria(){let d=new Date();return pad(d.getDate())+'-'+pad(d.getMonth()+1)+'-'+d.getFullYear()+'_memoria_turnos.json'}
@@ -761,7 +761,7 @@ function importHistoryBackup(ev){let f=ev.target.files[0];if(!f)return;let r=new
 restoreHistoricalMemory=importHistoryBackup;
 
 const _exportBackup_v51=exportBackup;
-exportBackup=function(){if(typeof lightDataV50==='function'){let obj=lightDataV50();obj.version='8.9';obj.records=data.records||[];obj.changes=data.changes||{};obj.activeMarcoId=data.settings?.activeMarcoId||'';let txt=JSON.stringify(obj,null,2),name=fechaArchivoMemoria();if(typeof backupsV50==='function'){let list=backupsV50();list.unshift({id:'b'+Date.now(),name,created:new Date().toISOString(),size:new Blob([txt]).size,favorite:false,data:obj});saveBackupsV50(list);renderMemoryPanelV50()}downloadBlob(txt,name,'application/json')}else _exportBackup_v51()}
+exportBackup=function(){if(typeof lightDataV50==='function'){let obj=lightDataV50();obj.version='10.3';obj.records=data.records||[];obj.changes=data.changes||{};obj.activeMarcoId=data.settings?.activeMarcoId||'';let txt=JSON.stringify(obj,null,2),name=fechaArchivoMemoria();if(typeof backupsV50==='function'){let list=backupsV50();list.unshift({id:'b'+Date.now(),name,created:new Date().toISOString(),size:new Blob([txt]).size,favorite:false,data:obj});saveBackupsV50(list);renderMemoryPanelV50()}downloadBlob(txt,name,'application/json')}else _exportBackup_v51()}
 
 function injectMarcoSettingsV51(){let root=document.querySelector('#settings')||document.querySelector('#settingsView')||document.body;if(document.getElementById('marcoPanelV51'))return;let div=document.createElement('div');div.id='marcoPanelV51';div.className='card';div.style.margin='16px';root.appendChild(div);renderMarcoPanelV51()}
 function setOpenModeV51(){let v=document.getElementById('openModeV51')?.value||'calendario';data.settings.openMode=v;save();alert('Modo guardado')}
@@ -957,9 +957,9 @@ function listDetraiblesV53(monthIndex){
     return dt.getMonth()===monthIndex;
   }).map(d=>Number(d.fecha.slice(8,10))).sort((a,b)=>a-b);
 }
-try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v8.9');document.title='App Turnos Pro v8.9'}catch(e){}
+try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v10.3');document.title='App Turnos Pro v10.3'}catch(e){}
 
-try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v8.9');document.title='App Turnos Pro v8.9'}catch(e){}
+try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v10.3');document.title='App Turnos Pro v10.3'}catch(e){}
 
 
 // ===== v5.3.1: DD trabajado = fondo rojo + rayas moradas + horas del turno asignado =====
@@ -1028,8 +1028,8 @@ changePanelHtml=function(ds,base,baseB,d,b){
 
 
 // ===== v5.4: una sola prioridad visual final para evitar que se pisen estados =====
-const APP_VERSION_V54='10.1';
-const APP_UPDATED_AT_V54='16/08/2026';
+const APP_VERSION_V54='10.3';
+const APP_UPDATED_AT_V54='20/08/2026';
 function setVersionV54(){
   try{
     document.title='App Turnos Pro v'+APP_VERSION_V54;
@@ -1176,8 +1176,8 @@ setTimeout(bootIndexedDBV52,60);
 
 
 // ===== v5.7: base 5.4 limpia + persistencia segura + marcos por vigencia =====
-const APP_VERSION_V57='10.1';
-const APP_UPDATED_AT_V57='16/08/2026';
+const APP_VERSION_V57='10.3';
+const APP_UPDATED_AT_V57='20/08/2026';
 const DB_NAME_V57='AppTurnosDBV57';
 const DB_VERSION_V57=1;
 const DB_STORE_V57='app';
@@ -1377,8 +1377,8 @@ setTimeout(bootV57,120);
 
 
 // ===== v5.8: versión visible, historial mensual, PDFs gestionables y Ajustes sin duplicados =====
-const APP_VERSION_V58='10.1';
-const APP_UPDATED_AT_V58='16/08/2026';
+const APP_VERSION_V58='10.3';
+const APP_UPDATED_AT_V58='20/08/2026';
 
 function setVersionV58(){
   try{
@@ -1510,8 +1510,8 @@ checkLogin();render();
 </style>
 <script id="v59-incidencias-js">
 // ===== v6.0: incidencias persistentes, iconos y cambio descanso/trabajo =====
-const APP_VERSION_V59='10.1';
-const APP_UPDATED_AT_V59='16/08/2026';
+const APP_VERSION_V59='10.3';
+const APP_UPDATED_AT_V59='20/08/2026';
 data.incidents=data.incidents||{};
 
 function setVersionV59(){
@@ -1640,8 +1640,8 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v60-final-js">
 (function(){
-  const APP_VERSION_V60='10.1';
-  const APP_UPDATED_V60='16/08/2026';
+  const APP_VERSION_V60='10.3';
+  const APP_UPDATED_V60='20/08/2026';
   function setVersionV60(){
     document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+APP_VERSION_V60);
     document.title='App Turnos Pro v'+APP_VERSION_V60;
@@ -1741,8 +1741,8 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v61-final-js">
 (function(){
-  const APP_VERSION_V61='10.1';
-  const APP_UPDATED_V61='16/08/2026';
+  const APP_VERSION_V61='10.3';
+  const APP_UPDATED_V61='20/08/2026';
 
   function setVersionV61(){
     document.title='App Turnos Pro v'+APP_VERSION_V61;
@@ -1858,7 +1858,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v62-final-js">
 (function(){
- const APP_VERSION_V62='10.1', APP_UPDATED_V62='16/08/2026';
+ const APP_VERSION_V62='10.3', APP_UPDATED_V62='16/08/2026';
  function setVersionV62(){
    document.title='App Turnos Pro v'+APP_VERSION_V62;
    document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+APP_VERSION_V62);
@@ -1943,7 +1943,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v63-final-js">
 (function(){
- const APP_VERSION_V63='10.1', APP_UPDATED_V63='16/08/2026';
+ const APP_VERSION_V63='10.3', APP_UPDATED_V63='16/08/2026';
  function setVersionV63(){
    document.title='App Turnos Pro v'+APP_VERSION_V63;
    document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+APP_VERSION_V63);
@@ -2104,7 +2104,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v65-final-js">
 (function(){
-  const APP_VERSION_V65='10.1', APP_UPDATED_V65='16/08/2026';
+  const APP_VERSION_V65='10.3', APP_UPDATED_V65='16/08/2026';
   function setVersionV65(){
     document.title='App Turnos Pro v'+APP_VERSION_V65;
     document.querySelectorAll('.ver').forEach(e=>e.textContent='v'+APP_VERSION_V65);
@@ -2240,7 +2240,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v66-observaciones-js">
 (function(){
-  const APP_VERSION_V66='10.1', APP_UPDATED_V66='16/08/2026';
+  const APP_VERSION_V66='10.3', APP_UPDATED_V66='16/08/2026';
   data.observations=data.observations||{};
   function setVersionV66(){
     document.title='App Turnos Pro v'+APP_VERSION_V66;
@@ -3574,8 +3574,8 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 
 <script id="v90-calendar-final-js">
 (function(){
-  const APP_VERSION_V90='10.1';
-  const APP_UPDATED_V90='16/08/2026';
+  const APP_VERSION_V90='10.3';
+  const APP_UPDATED_V90='20/08/2026';
 
   const incidentSvgV90=()=>`
     <svg class="v90Icon incident" viewBox="0 0 24 24" aria-label="Incidencia" role="img">
@@ -6160,6 +6160,7 @@ header .dataToggle{
         <div class="v99-tabs">
           <button type="button" class="v99-tab active" data-tab="turno">Turno (clave)</button>
           <button type="button" class="v99-tab" data-tab="calendario">En calendario</button>
+          <button type="button" class="v99-tab" data-tab="comparacion">Comparación</button>
         </div>
 
         <div class="v99-body">
@@ -6255,6 +6256,58 @@ header .dataToggle{
               <div id="v99CalendarResults"></div>
             </div>
           </section>
+
+          <section class="v99-pane" data-pane="comparacion">
+            <div class="v99-card">
+              <div class="v99-step">Comparar dos turnos</div>
+              <div class="v99-help">Cada lado puede salir de una clave escrita a mano o de un día ya cargado en el calendario.</div>
+
+              <div class="v103-compare-grid">
+                <div class="v103-compare-side">
+                  <div class="v103-compare-title">Turno A</div>
+                  <label class="v99-label">Origen</label>
+                  <select id="v103CmpModeA" class="v99-select">
+                    <option value="manual">Escribir turno</option>
+                    <option value="calendar">Seleccionar fecha del calendario</option>
+                  </select>
+                  <div class="v103-manual" data-side="A">
+                    <label class="v99-label">Clave</label>
+                    <input id="v103CmpKeyA" class="v99-input" inputmode="numeric" placeholder="154">
+                    <label class="v99-label" style="margin-top:7px">Bloque / día</label>
+                    <select id="v103CmpBlockA" class="v99-select"><option value="">Selecciona clave primero</option></select>
+                  </div>
+                  <div class="v103-calendar hidden" data-side="A">
+                    <label class="v99-label">Fecha</label>
+                    <input id="v103CmpDateA" class="v99-input" type="date">
+                  </div>
+                </div>
+
+                <div class="v103-compare-side">
+                  <div class="v103-compare-title">Turno B</div>
+                  <label class="v99-label">Origen</label>
+                  <select id="v103CmpModeB" class="v99-select">
+                    <option value="manual">Escribir turno</option>
+                    <option value="calendar">Seleccionar fecha del calendario</option>
+                  </select>
+                  <div class="v103-manual" data-side="B">
+                    <label class="v99-label">Clave</label>
+                    <input id="v103CmpKeyB" class="v99-input" inputmode="numeric" placeholder="128">
+                    <label class="v99-label" style="margin-top:7px">Bloque / día</label>
+                    <select id="v103CmpBlockB" class="v99-select"><option value="">Selecciona clave primero</option></select>
+                  </div>
+                  <div class="v103-calendar hidden" data-side="B">
+                    <label class="v99-label">Fecha</label>
+                    <input id="v103CmpDateB" class="v99-input" type="date">
+                  </div>
+                </div>
+              </div>
+
+              <div style="text-align:center;margin-top:10px">
+                <button type="button" class="v99-btn" id="v103CompareBtn">Comparar turnos</button>
+              </div>
+              <div id="v103CompareResult"></div>
+            </div>
+          </section>
         </div>
       </div>`;
 
@@ -6278,6 +6331,18 @@ header .dataToggle{
 
     overlay.querySelector('#v99CalendarSearch').addEventListener('click',searchCalendar99);
 
+    ['A','B'].forEach(side=>{
+      const mode=overlay.querySelector('#v103CmpMode'+side);
+      const key=overlay.querySelector('#v103CmpKey'+side);
+      if(mode)mode.addEventListener('change',()=>syncCompareMode103(side));
+      if(key){
+        key.addEventListener('input',()=>fillCompareBlocks103(side));
+        key.addEventListener('keydown',ev=>{if(ev.key==='Enter'){fillCompareBlocks103(side);}});
+      }
+    });
+    overlay.querySelector('#v103CompareBtn')?.addEventListener('click',compareTurns103);
+    syncCompareMode103('A'); syncCompareMode103('B');
+
     overlay.querySelectorAll('input[name="v99Period"]').forEach(radio=>{
       radio.addEventListener('change',()=>{
         overlay.querySelectorAll('[data-period]').forEach(card=>{
@@ -6285,6 +6350,74 @@ header .dataToggle{
         });
       });
     });
+  }
+
+  function minutes103(t){
+    const m=String(t||'').match(/(\d{1,2})[:.](\d{2})/);
+    return m?(Number(m[1])*60+Number(m[2])):null;
+  }
+  function duration103(b){
+    if(!b)return '—';
+    const explicit=String(b.duracion||b.jornada||b.raw?.duracion||'').trim();
+    if(explicit)return explicit;
+    const a=minutes103(typeof blockIni==='function'?blockIni(b):b.inicio);
+    const z=minutes103(typeof blockFin==='function'?blockFin(b):(b.fin||b.final));
+    if(a==null||z==null)return '—';
+    let d=z-a;if(d<0)d+=1440;
+    return Math.floor(d/60)+' h '+String(d%60).padStart(2,'0')+' min';
+  }
+  function syncCompareMode103(side){
+    const mode=document.getElementById('v103CmpMode'+side)?.value||'manual';
+    const manual=document.querySelector('#v99SearchOverlay .v103-manual[data-side="'+side+'"]');
+    const cal=document.querySelector('#v99SearchOverlay .v103-calendar[data-side="'+side+'"]');
+    manual?.classList.toggle('hidden',mode!=='manual');
+    cal?.classList.toggle('hidden',mode!=='calendar');
+  }
+  function fillCompareBlocks103(side){
+    const key=(document.getElementById('v103CmpKey'+side)?.value||'').trim();
+    const sel=document.getElementById('v103CmpBlock'+side);
+    if(!sel)return;
+    const bs=key?getAllBlocks99().filter(b=>String(b.turno||'').trim()===key):[];
+    sel.innerHTML=bs.length
+      ? bs.map((b,i)=>'<option value="'+i+'">'+esc99(dayLabel99(b))+' · '+esc99(String(b.tipo_norm||b.tipo||'Servicio'))+'</option>').join('')
+      : '<option value="">'+(key?'Sin bloques para esa clave':'Selecciona clave primero')+'</option>';
+  }
+  function compareSource103(side){
+    const mode=document.getElementById('v103CmpMode'+side)?.value||'manual';
+    if(mode==='calendar'){
+      const ds=document.getElementById('v103CmpDate'+side)?.value||'';
+      if(!ds)return {error:'Selecciona una fecha para el turno '+side+'.'};
+      let d=null,b=null;
+      try{d=effectiveDay(ds);b=blockFor(d);}catch(e){}
+      if(!d)return {error:'No hay asignación cargada el '+ds+'.'};
+      return {key:String(d.dd_turno||d.clave_turno||'—').replace(/^DD\s*/i,''),block:b,date:ds,status:typeof status==='function'?status(d):''};
+    }
+    const key=(document.getElementById('v103CmpKey'+side)?.value||'').trim();
+    if(!key)return {error:'Escribe la clave del turno '+side+'.'};
+    const bs=getAllBlocks99().filter(b=>String(b.turno||'').trim()===key);
+    if(!bs.length)return {error:'No se ha encontrado la clave '+key+'.'};
+    const idx=Number(document.getElementById('v103CmpBlock'+side)?.value||0);
+    return {key,block:bs[idx]||bs[0],date:'',status:''};
+  }
+  function compareCard103(label,s){
+    const b=s.block;
+    const ini=b?(typeof blockIni==='function'?blockIni(b):(b.inicio||'')):'—';
+    const fin=b?(typeof blockFin==='function'?blockFin(b):(b.fin||b.final||'')):'—';
+    let route='';
+    try{route=b?stationSequence99(b).join(' → '):''}catch(e){}
+    const tipo=b?String(b.tipo_norm||b.tipo||'Servicio'):(s.status||'Asignación');
+    return '<div class="v103-compare-result-card"><div class="v103-compare-result-head">'+label+' · '+esc99(s.key)+'</div>'
+      +(s.date?'<div class="v103-compare-date">'+esc99(s.date)+'</div>':'')
+      +'<div class="v103-compare-metrics"><div><span>Inicio</span><b>'+esc99(ini||'—')+'</b></div><div><span>Final</span><b>'+esc99(fin||'—')+'</b></div><div><span>Duración</span><b>'+esc99(duration103(b))+'</b></div></div>'
+      +'<div class="v103-compare-line"><b>Tipo:</b> '+esc99(tipo||'—')+'</div>'
+      +'<div class="v103-compare-line"><b>Bloque:</b> '+esc99(b?dayLabel99(b):'—')+'</div>'
+      +'<div class="v103-compare-line"><b>Recorrido:</b> '+esc99(route||'—')+'</div></div>';
+  }
+  function compareTurns103(){
+    const host=document.getElementById('v103CompareResult');if(!host)return;
+    const a=compareSource103('A'),b=compareSource103('B');
+    if(a.error||b.error){host.innerHTML='<div class="v99-help" style="margin-top:10px">'+esc99(a.error||b.error)+'</div>';return}
+    host.innerHTML='<div class="v103-compare-results">'+compareCard103('Turno A',a)+compareCard103('Turno B',b)+'</div>';
   }
 
   function openSearch99(){
@@ -6623,7 +6756,7 @@ header .dataToggle{
 </script>
 
 <!-- =========================================================
-     APP TURNOS PRO · v10.1 · 16/08/2026
+     APP TURNOS PRO · v10.3 · 20/08/2026
      Refinado visual exclusivo del calendario.
      ========================================================= -->
 
@@ -6651,7 +6784,7 @@ body.v102NoDest .v102Dest{display:none!important}body.v102NoSleep .v102Sleep{dis
 <script id="v102-js">
 (function(){
 'use strict';
-const V='10.3',VD='19/08/2026',PK='appTurnos.quickView.v102',DEF={dest:true,sleep:true,change:true,incident:true,bicolor:true};
+const V='10.3',VD='20/08/2026',PK='appTurnos.quickView.v102',DEF={dest:true,sleep:true,change:true,incident:true,bicolor:true};
 function version(){document.title='App Turnos Pro v'+V;document.querySelectorAll('.ver').forEach(x=>x.textContent='v'+V);let t=document.querySelector('header .title');if(t)t.innerHTML='App Turnos Pro <span class="ver">v'+V+'</span>';let l=document.querySelector('.loginbox h1');if(l)l.innerHTML='App Turnos Pro <span class="ver">v'+V+'</span>';let info=document.querySelector('#v98SettingsOverlay details[data-section="info"] .v98SectionBody');if(info)[...info.querySelectorAll('.v98InfoItem')].forEach(r=>{let a=r.querySelector('span:first-child')?.textContent?.trim(),b=r.querySelector('b');if(b&&a==='Versión')b.textContent=V;if(b&&a==='Fecha de versión')b.textContent=VD})}
 function prefs(){try{return {...DEF,...JSON.parse(localStorage.getItem(PK)||'{}')}}catch(e){return {...DEF}}}function save(p){try{localStorage.setItem(PK,JSON.stringify(p))}catch(e){}}
 function apply(p){let b=document.body;b.classList.toggle('v102NoDest',!p.dest);b.classList.toggle('v102NoSleep',!p.sleep);b.classList.toggle('v102NoChange',!p.change);b.classList.toggle('v102NoIncident',!p.incident);b.classList.toggle('v102NoBicolor',!p.bicolor);document.querySelectorAll('#v102Panel [data-p]').forEach(x=>x.checked=!!p[x.dataset.p])}
@@ -6667,7 +6800,7 @@ function origin(b){let q=seq(b);if(q[0]==='MA'||q[0]==='MH')return q[0];let t=bt
 function dest(b){if(!b)return'';if(sc(b)||reserve(b))return origin(b);return seq(b).find(x=>x!=='MA'&&x!=='MH')||''}
 function col(c){return({VC:'#315a96',BR:'#5a9344',PP:'#7f4aaa',OR:'#e58a2c',LE:'#8b6647',LN:'#547aa6',HU:'#9a6b3f',ZD:'#936583',MA:'#7a1b86',MH:'#596b82'})[c]||'#596b82'}
 function moon(){return'<svg viewBox="0 0 24 24"><path d="M15.8 3.7a8.2 8.2 0 1 0 4.45 14.55A8.85 8.85 0 0 1 15.8 3.7Z" fill="#fff"/></svg>'}
-function day(d,ds){let x,st,b;try{x=effectiveDay(ds);st=status(x);b=blockFor(x)}catch(e){return}d.classList.toggle('v102DD',st==='ddwork');if(st==='ddwork'){let n=String(x?.dd_turno||x?.clave_turno||'').trim(),p=d.querySelector(':scope > .shiftNo,.ddWorkedNo');if(p&&n)p.textContent=n;let z=d.querySelector('.ddSmall');if(z)z.textContent='DD'}d.querySelectorAll('.v102Corner').forEach(x=>x.remove());let w=d.querySelector('.badge.work');if(!w)return;let sl=!!d.querySelector('.v97SleepMark'),de=st==='work'?dest(b):'';if(!sl&&!de)return;let g=document.createElement('span');g.className='v102Corner';if(de){let e=document.createElement('span');e.className='v102Dest';e.style.background=col(de);e.title='Destino / estación: '+de;e.innerHTML='<span>'+de+'</span>';g.appendChild(e)}if(sl){let e=document.createElement('span');e.className='v102Sleep';e.title='Pernocta';e.innerHTML=moon();g.appendChild(e)}w.appendChild(g)}
+function day(d,ds){let x,st,b;try{x=effectiveDay(ds);st=status(x);b=blockFor(x)}catch(e){return}d.classList.toggle('v102DD',st==='ddwork');if(st==='ddwork'){let n=String(x?.dd_turno||x?.clave_turno||'').trim(),p=d.querySelector(':scope > .shiftNo,.ddWorkedNo');if(p&&n)p.textContent=n;let z=d.querySelector('.ddSmall');if(z)z.textContent='DD'}d.querySelectorAll('.v102Corner').forEach(x=>x.remove());let w=d.querySelector('.badge.work,.badge.ddworkFinal,.badge.ddworked,.badge.ddworkV65,.badge.ddwork');if(!w)return;let sl=!!d.querySelector('.v97SleepMark'),de=(st==='work'||st==='ddwork')?dest(b):'';if(st==='ddwork'&&!sl){try{const prev=new Date(ds+'T12:00:00');prev.setDate(prev.getDate()-1);const pds=prev.getFullYear()+'-'+String(prev.getMonth()+1).padStart(2,'0')+'-'+String(prev.getDate()).padStart(2,'0');const px=effectiveDay(pds),pb=blockFor(px);const last=seq(pb).slice(-1)[0];sl=!!last&&last!=='MA'&&last!=='MH'}catch(e){}}if(!sl&&!de)return;let g=document.createElement('span');g.className='v102Corner';if(de){let e=document.createElement('span');e.className='v102Dest';e.style.background=col(de);e.title='Destino / estación: '+de;e.innerHTML='<span>'+de+'</span>';g.appendChild(e)}if(sl){let e=document.createElement('span');e.className='v102Sleep';e.title='Pernocta';e.innerHTML=moon();g.appendChild(e)}w.appendChild(g)}
 function calendar(){document.querySelectorAll('#grid .day').forEach(d=>{let ds=dateCell(d);if(ds)day(d,ds)});apply(prefs())}
 function blocks(){let a=[];if(Array.isArray(data.blocks))a.push(...data.blocks);if(Array.isArray(data.marcosV57))data.marcosV57.forEach(m=>{if(Array.isArray(m.blocks))a.push(...m.blocks)});let seen=new Set();return a.filter(b=>{let k=JSON.stringify([b.turno,b.dias,b.inicio,b.fin,b.tipo,b.resumen,b.bloque,b.detalle]);if(seen.has(k))return false;seen.add(k);return true})}
 function keyBlocks(k){return blocks().filter(b=>String(b.turno||'').trim()===String(k).trim())}
@@ -6685,14 +6818,14 @@ function boot(){version();installEye();buildPanel();calendar();installSearch();a
 </script>
 
 <!-- =========================================================
-     CONTROL ÚNICO DE VERSIÓN VISIBLE · APP TURNOS PRO v10.2
+     CONTROL ÚNICO DE VERSIÓN VISIBLE · APP TURNOS PRO v10.3
      ========================================================= -->
 <script id="v102-version-final">
 (function(){
   'use strict';
 
   const APP_CURRENT_VERSION = '10.3';
-  const APP_CURRENT_DATE = '19/08/2026';
+  const APP_CURRENT_DATE = '20/08/2026';
 
   window.APP_TURNOS_CURRENT_RELEASE = Object.freeze({
     version: APP_CURRENT_VERSION,
@@ -6886,608 +7019,204 @@ function boot(){version();installEye();buildPanel();calendar();installSearch();a
 })();
 </script>
 
-<!-- =========================================================
-     APP TURNOS PRO · v10.3 · 19/08/2026
-     Cambios exclusivos sobre v10.2:
-     - Destino/pernocta en DD pinchados/trabajados.
-     - Visor PDF sin cabecera del calendario superpuesta.
-     - Contador anual de detraíbles X/6 en registro y detalle.
-     - Control final único de versión visible v10.3.
-     ========================================================= -->
-<style id="v103-css">
-/* DD pinchado/trabajado: permitir los mismos indicadores de servicio que trabajo. */
-#calendarView .day .badge.ddworkFinal,
-#calendarView .day .badge.ddworked,
-#calendarView .day .badge.ddworkV65,
-#calendarView .day .badge.ddwork{
+
+<style id="v103-clean-final-css">
+/* v10.3 — consolidación final, sin alterar tarjetas normales */
+
+/* DD pinchado: subir DD y horario sin pisarse */
+#calendarView .day.v102DD .ddSmall{
   position:relative!important;
+  top:-4px!important;
+  margin-bottom:6px!important;
+}
+#calendarView .day.v102DD .timeTop,
+#calendarView .day.v102DD .sep,
+#calendarView .day.v102DD .timeBot{
+  position:relative!important;
+  top:-10px!important;
+}
+#calendarView .day.v102DD .badge.ddworkFinal,
+#calendarView .day.v102DD .badge.ddworked,
+#calendarView .day.v102DD .badge.ddworkV65,
+#calendarView .day.v102DD .badge.ddwork{
   overflow:visible!important;
 }
 
-/* Reutiliza exactamente el sistema visual v10.2 de destino/pernocta. */
-#calendarView .badge.ddworkFinal .v102Corner,
-#calendarView .badge.ddworked .v102Corner,
-#calendarView .badge.ddworkV65 .v102Corner,
-#calendarView .badge.ddwork .v102Corner{
-  top:-3px!important;
-  right:-2px!important;
+/* PDF: mientras esté abierto solo manda la cabecera del visor */
+body.v103PdfOpen > header{display:none!important}
+body.v103PdfOpen .pdfOverlay{inset:0!important;z-index:10050!important}
+
+/* Comparación */
+.v103-compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:10px}
+.v103-compare-side{border:1px solid var(--v99-line);border-radius:12px;padding:9px;background:#fff}
+.v103-compare-title{font-weight:950;color:#65116f;margin-bottom:7px}
+.v103-compare-side .v99-label{display:block;margin-top:6px}
+.v103-compare-results{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:11px}
+.v103-compare-result-card{border:1px solid var(--v99-line);border-radius:12px;background:#fff;overflow:hidden}
+.v103-compare-result-head{padding:9px;background:#faf6fb;color:#65116f;font-weight:950}
+.v103-compare-date{padding:0 9px 6px;color:#75627a;font-size:11px;font-weight:800}
+.v103-compare-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;padding:8px}
+.v103-compare-metrics div{background:#faf6fb;border-radius:9px;padding:7px 4px;text-align:center}
+.v103-compare-metrics span{display:block;color:#75627a;font-size:10px;font-weight:850}
+.v103-compare-metrics b{font-size:12px;color:#38123f}
+.v103-compare-line{padding:5px 9px;font-size:11px;border-top:1px solid #f0e8f1}
+@media(max-width:560px){
+  .v103-compare-grid,.v103-compare-results{grid-template-columns:1fr}
 }
 
-/* Mientras el PDF está abierto no se muestra la cabecera del calendario. */
-body.v103PdfOpen > header{
-  display:none!important;
-}
-body.v103PdfOpen .pdfOverlay{
-  inset:0!important;
-  z-index:10050!important;
-}
-body.v103PdfOpen .pdfTop{
-  position:relative!important;
-  z-index:2!important;
-}
-
-/* Contador DD: mantenerlo compacto dentro del diseño existente. */
-.v103DdCount{
-  white-space:nowrap!important;
-}
+/* Contador anual detraíbles */
+.v103-dd-count{white-space:nowrap!important}
 </style>
 
-<script id="v103-js">
+<script id="v103-clean-final-js">
 (function(){
-  'use strict';
+'use strict';
+const VERSION='10.3', UPDATED='20/08/2026';
 
-  const APP_CURRENT_VERSION_V103 = '10.3';
-  const APP_CURRENT_DATE_V103 = '19/08/2026';
+function setVersion103(){
+  document.title='App Turnos Pro v'+VERSION;
+  document.querySelectorAll('.ver').forEach(el=>el.textContent='v'+VERSION);
+  const ht=document.querySelector('header .title');
+  if(ht)ht.innerHTML='App Turnos Pro <span class="ver">v'+VERSION+'</span>';
+  const lh=document.querySelector('.loginbox h1');
+  if(lh)lh.innerHTML='App Turnos Pro <span class="ver">v'+VERSION+'</span>';
 
-  window.APP_TURNOS_CURRENT_RELEASE = Object.freeze({
-    version: APP_CURRENT_VERSION_V103,
-    date: APP_CURRENT_DATE_V103
+  const meta=document.getElementById('v102FinalLoginMeta');
+  if(meta)meta.textContent='© 2026 Rodrigo Prieto · v'+VERSION;
+
+  document.querySelectorAll('#v98SettingsOverlay .v98InfoItem').forEach(row=>{
+    const label=(row.querySelector('span:first-child')?.textContent||'').trim();
+    const value=row.querySelector('b');
+    if(!value)return;
+    if(label==='Versión'||label==='Versión actual')value.textContent='v'+VERSION;
+    if(label==='Fecha de versión'||label==='Actualizada'||label==='Última actualización')value.textContent=UPDATED;
   });
 
-  /* ---------------------------------------------------------
-     1) VERSIONADO VISIBLE FINAL
-     --------------------------------------------------------- */
-  function setVersionV103(){
-    document.title = 'App Turnos Pro v' + APP_CURRENT_VERSION_V103;
+  /* Ajustes clásicos si aún existen */
+  document.querySelectorAll('#settingsView .settingsBlock').forEach(block=>{
+    const h=block.querySelector('h3');
+    if(!h||!/App Turnos Pro/i.test(h.textContent||''))return;
+    const p=block.querySelector('p');
+    if(p)p.innerHTML='<b>Versión actual: v'+VERSION+'</b><br><span class="muted">Actualizada: '+UPDATED+'</span>';
+  });
+}
 
-    document.querySelectorAll('.ver').forEach(function(el){
-      el.textContent = 'v' + APP_CURRENT_VERSION_V103;
-    });
+function isAnnualDD103(ds){
+  try{
+    const base=typeof dayData==='function'?dayData(ds):null;
+    if(!base)return false;
+    if(typeof isDDAnnualV53==='function')return !!isDDAnnualV53(base);
+    const txt=[base.clave_turno,base.tipo_dia,base.tipo_norm,base.tipo].filter(Boolean).join(' ').toUpperCase();
+    return /\bDD\b|DETRA/.test(txt);
+  }catch(e){return false}
+}
+function ddRecords103(year){
+  const map=new Map();
+  Object.entries((window.data&&data.changes)||{}).forEach(([key,c])=>{
+    if(!c||typeof c!=='object')return;
+    const ds=String(c.fecha||key||'').slice(0,10);
+    if(!/^\d{4}-\d{2}-\d{2}$/.test(ds))return;
+    if(Number(ds.slice(0,4))!==Number(year))return;
+    const pinched=String(c.tipo||'').toUpperCase()==='DD' || (isAnnualDD103(ds)&&!!String(c.turno||'').trim());
+    if(pinched&&!map.has(ds))map.set(ds,{...c,fecha:ds});
+  });
+  return [...map.values()].sort((a,b)=>a.fecha.localeCompare(b.fecha));
+}
+function registryYear103(){
+  try{
+    if(typeof current!=='undefined'&&current instanceof Date)return current.getFullYear();
+  }catch(e){}
+  return new Date().getFullYear();
+}
+function updateRegistry103(){
+  const year=registryYear103(), list=ddRecords103(year), count=list.length, label=count+'/6';
 
-    const headerTitle = document.querySelector('header .title');
-    if(headerTitle){
-      headerTitle.innerHTML =
-        'App Turnos Pro <span class="ver">v' +
-        APP_CURRENT_VERSION_V103 +
-        '</span>';
-    }
+  document.querySelectorAll('.v80Card[data-section="dd"]').forEach(card=>{
+    const title=card.querySelector('.v80CardTitle');
+    const n=card.querySelector('.v80CardCount');
+    const sub=card.querySelector('.v80CardSub');
+    if(title)title.textContent='Detraíbles';
+    if(n){n.textContent=label;n.classList.add('v103-dd-count')}
+    if(sub)sub.textContent='pinchados';
+  });
 
-    const login = document.querySelector('.loginbox');
-    if(login){
-      const h1 = login.querySelector('h1');
-      if(h1){
-        h1.innerHTML =
-          'App Turnos Pro <span class="ver">v' +
-          APP_CURRENT_VERSION_V103 +
-          '</span>';
-      }
+  document.querySelectorAll('.v80DetailTitle').forEach(el=>{
+    if(/Detraíbles/i.test(el.textContent||''))el.textContent='Detraíbles pinchados · '+label;
+  });
+  document.querySelectorAll('.regTitle').forEach(el=>{
+    if(/Detraíbles/i.test(el.textContent||''))el.textContent='Detraíbles pinchados · '+label;
+  });
+}
 
-      /* Retirar únicamente metadatos visuales antiguos/duplicados. */
-      login.querySelectorAll(
-        '#loginVersionV57,' +
-        '#loginUpdatedV90,' +
-        '#loginUpdatedV92,' +
-        '#loginUpdatedV93,' +
-        '#loginUpdatedV94,' +
-        '#loginUpdatedV95,' +
-        '#loginUpdatedV96,' +
-        '#loginUpdatedV97,' +
-        '#loginUpdatedV98,' +
-        '#v100LoginVersion,' +
-        '#v100LoginCopyright,' +
-        '#v101LoginCopyright,' +
-        '#v102LoginCopyright,' +
-        '#v102FinalLoginMeta,' +
-        '#v103FinalLoginMeta'
-      ).forEach(function(el){ el.remove(); });
-
-      if(h1){
-        const meta = document.createElement('p');
-        meta.id = 'v103FinalLoginMeta';
-        meta.className = 'muted';
-        meta.style.cssText =
-          'margin:-7px 0 12px;font-weight:800;text-align:center;';
-        meta.textContent =
-          '© 2026 Rodrigo Prieto · v' + APP_CURRENT_VERSION_V103;
-        h1.insertAdjacentElement('afterend', meta);
-      }
-    }
-
-    /* Ajustes modernos → Información de la app. */
-    const info =
-      document.querySelector(
-        '#v98SettingsOverlay details[data-section="info"] .v98SectionBody'
-      ) ||
-      document.querySelector(
-        'details[data-section="info"] .v98SectionBody'
-      );
-
-    if(info){
-      const rows = Array.from(info.querySelectorAll('.v98InfoItem'));
-      let hasVersion = false;
-      let hasDate = false;
-
-      rows.forEach(function(row){
-        const label = row.querySelector('span:first-child');
-        const value = row.querySelector('b');
-        if(!label || !value) return;
-
-        const text = (label.textContent || '').trim();
-        if(text === 'Versión' || text === 'Versión actual'){
-          value.textContent = 'v' + APP_CURRENT_VERSION_V103;
-          hasVersion = true;
-        }
-        if(
-          text === 'Fecha de versión' ||
-          text === 'Actualizada' ||
-          text === 'Última actualización'
-        ){
-          value.textContent = APP_CURRENT_DATE_V103;
-          hasDate = true;
-        }
-      });
-
-      if(!hasVersion){
-        const row = document.createElement('div');
-        row.className = 'v98InfoItem';
-        row.innerHTML =
-          '<span>Versión actual</span><b>v' +
-          APP_CURRENT_VERSION_V103 +
-          '</b>';
-        info.insertBefore(row, info.firstChild);
-      }
-
-      if(!hasDate){
-        const row = document.createElement('div');
-        row.className = 'v98InfoItem';
-        row.innerHTML =
-          '<span>Actualizada</span><b>' +
-          APP_CURRENT_DATE_V103 +
-          '</b>';
-        const first = info.querySelector('.v98InfoItem');
-        if(first && first.nextSibling) info.insertBefore(row, first.nextSibling);
-        else info.appendChild(row);
-      }
-    }
-
-    /* Ajustes clásicos, por compatibilidad si llegan a mostrarse. */
-    document.querySelectorAll('#settingsView .settingsBlock').forEach(function(block){
-      const h = block.querySelector('h3');
-      if(!h || !/App Turnos Pro/i.test(h.textContent || '')) return;
-      const p = block.querySelector('p');
-      if(p){
-        p.innerHTML =
-          '<b>Versión ' + APP_CURRENT_VERSION_V103 + '</b><br>' +
-          '<span class="muted">Última actualización: ' +
-          APP_CURRENT_DATE_V103 +
-          '</span>';
-      }
-    });
-  }
-
-  /* ---------------------------------------------------------
-     2) DESTINO Y PERNOCTA EN DD PINCHADOS/TRABAJADOS
-     --------------------------------------------------------- */
-  function dateFromCellV103(cell){
-    const m = (cell.getAttribute('onclick') || '')
-      .match(/selectDay\(['"](\d{4}-\d{2}-\d{2})['"]\)/);
-    return m ? m[1] : '';
-  }
-
-  function addDaysV103(ds, delta){
-    const d = new Date(ds + 'T12:00:00');
-    d.setDate(d.getDate() + delta);
-    const p = n => String(n).padStart(2, '0');
-    return d.getFullYear() + '-' + p(d.getMonth()+1) + '-' + p(d.getDate());
-  }
-
-  function blockTextV103(b){
-    return [
-      b?.resumen,
-      b?.detalle,
-      b?.tipo,
-      b?.tipo_norm,
-      b?.bloque,
-      b?.raw?.detalle,
-      b?.raw?.resumen,
-      b?.raw?.descripcion,
-      ...(Array.isArray(b?.movimientos) ? b.movimientos : []),
-      ...(Array.isArray(b?.raw?.movimientos) ? b.raw.movimientos : [])
-    ].filter(Boolean).join(' ').toUpperCase();
-  }
-
-  function stationSequenceV103(b){
-    const out = [];
-    try{
-      if(typeof getMovs === 'function' && typeof extractStations === 'function'){
-        (getMovs(b) || []).forEach(function(move){
-          (extractStations(String(move)) || []).forEach(function(code){
-            code = String(code || '').toUpperCase().trim();
-            if(code && out[out.length - 1] !== code) out.push(code);
-          });
-        });
-      }
-    }catch(_e){}
-
-    if(!out.length){
-      const re = /\b(MA|MH|VC|BR|PP|OR|LE|LN|HU|ZD|LO|LG|SG|CT|CE|TN)\b/g;
-      const txt = blockTextV103(b);
-      let m;
-      while((m = re.exec(txt))){
-        if(out[out.length - 1] !== m[1]) out.push(m[1]);
-      }
-    }
-    return out;
-  }
-
-  function isComplementaryV103(b){
-    return /\b(SC|SCC)\b|SERVICIOS?\s+COMPLEMENTARIOS?/.test(blockTextV103(b));
-  }
-
-  function isReserveV103(b){
-    return /\bRESERVA\b/.test(blockTextV103(b));
-  }
-
-  function originV103(b){
-    const seq = stationSequenceV103(b);
-    if(seq[0] === 'MA' || seq[0] === 'MH') return seq[0];
-    const txt = blockTextV103(b);
-    const ma = txt.search(/\bMA\b/);
-    const mh = txt.search(/\bMH\b/);
-    if(ma < 0 && mh < 0) return '';
-    if(ma < 0) return 'MH';
-    if(mh < 0) return 'MA';
-    return ma < mh ? 'MA' : 'MH';
-  }
-
-  function destinationV103(b){
-    if(!b) return '';
-    if(isComplementaryV103(b) || isReserveV103(b)) return originV103(b);
-    return stationSequenceV103(b).find(function(code){
-      return code !== 'MA' && code !== 'MH';
-    }) || '';
-  }
-
-  function finalStationV103(b){
-    const seq = stationSequenceV103(b);
-    return seq.length ? seq[seq.length - 1] : '';
-  }
-
-  function colorV103(code){
-    return ({
-      VC:'#315a96', BR:'#5a9344', PP:'#7f4aaa', OR:'#e58a2c',
-      LE:'#8b6647', LN:'#547aa6', HU:'#9a6b3f', ZD:'#936583',
-      LO:'#3b8790', LG:'#3b8790', SG:'#5d7f9c', CT:'#7c648f',
-      CE:'#497c7d', TN:'#7b6a46', MA:'#7a1b86', MH:'#596b82'
-    })[code] || '#596b82';
-  }
-
-  function moonV103(){
-    return '<svg viewBox="0 0 24 24" aria-hidden="true">' +
-      '<path d="M15.8 3.7a8.2 8.2 0 1 0 4.45 14.55A8.85 8.85 0 0 1 15.8 3.7Z" fill="#fff"/>' +
-      '</svg>';
-  }
-
-  function effectiveV103(ds){
-    try{ return typeof effectiveDay === 'function' ? effectiveDay(ds) : null; }
-    catch(_e){ return null; }
-  }
-
-  function statusV103(d){
-    try{ return typeof status === 'function' ? status(d) : ''; }
-    catch(_e){ return ''; }
-  }
-
-  function blockV103(d){
-    try{ return typeof blockFor === 'function' ? blockFor(d) : null; }
-    catch(_e){ return null; }
-  }
-
-  function isWorkingStatusV103(st){
-    return st === 'work' || st === 'ddwork';
-  }
-
-  function isSleepOutboundV103(ds){
-    const d = effectiveV103(ds);
-    const st = statusV103(d);
-    if(!d || !isWorkingStatusV103(st)) return false;
-    const b = blockV103(d);
-    if(!b) return false;
-    const end = finalStationV103(b);
-    return !!end && end !== 'MA' && end !== 'MH';
-  }
-
-  function isSleepDayV103(ds){
-    return isSleepOutboundV103(ds) || isSleepOutboundV103(addDaysV103(ds, -1));
-  }
-
-  function applyServiceCornerV103(cell, ds){
-    let d, st, b;
-    try{
-      d = effectiveV103(ds);
-      st = statusV103(d);
-      b = blockV103(d);
-    }catch(_e){ return; }
-
-    /* Sustituir la esquina v10.2 por una única esquina vigente. */
-    cell.querySelectorAll('.v102Corner').forEach(function(el){ el.remove(); });
-
-    if(!isWorkingStatusV103(st)) return;
-
-    const card = st === 'ddwork'
-      ? cell.querySelector('.badge.ddworkFinal,.badge.ddworked,.badge.ddworkV65,.badge.ddwork')
-      : cell.querySelector('.badge.work');
-
-    if(!card) return;
-
-    const destination = destinationV103(b);
-    const sleep = isSleepDayV103(ds);
-    if(!destination && !sleep) return;
-
-    const group = document.createElement('span');
-    group.className = 'v102Corner';
-
-    if(destination){
-      const el = document.createElement('span');
-      el.className = 'v102Dest';
-      el.style.background = colorV103(destination);
-      el.title = 'Destino / estación: ' + destination;
-      el.setAttribute('aria-label', el.title);
-      el.innerHTML = '<span>' + destination + '</span>';
-      group.appendChild(el);
-    }
-
-    if(sleep){
-      const el = document.createElement('span');
-      el.className = 'v102Sleep';
-      el.title = isSleepOutboundV103(ds) ? 'Pernocta · ida' : 'Pernocta · regreso';
-      el.setAttribute('aria-label', el.title);
-      el.innerHTML = moonV103();
-      group.appendChild(el);
-    }
-
-    card.appendChild(group);
-  }
-
-  function refreshCalendarV103(){
-    document.querySelectorAll('#grid .day').forEach(function(cell){
-      const ds = dateFromCellV103(cell);
-      if(ds) applyServiceCornerV103(cell, ds);
-    });
-  }
-
-  /* ---------------------------------------------------------
-     3) DETRAÍBLES PINCHADOS EN REGISTRO + CONTADOR ANUAL X/6
-     --------------------------------------------------------- */
-  function parseDateV103(v){
-    const s = String(v || '').trim();
-    if(/^\d{4}-\d{2}-\d{2}/.test(s)) return s.slice(0,10);
-    const m = s.match(/^(\d{1,2})[\/-](\d{1,2})[\/-](\d{2}|\d{4})$/);
-    if(!m) return '';
-    let y = Number(m[3]);
-    if(y < 100) y += 2000;
-    return y + '-' + String(Number(m[2])).padStart(2,'0') + '-' + String(Number(m[1])).padStart(2,'0');
-  }
-
-  function registryYearV103(){
-    try{
-      if(typeof current !== 'undefined' && current instanceof Date){
-        return current.getFullYear();
-      }
-    }catch(_e){}
-    return new Date().getFullYear();
-  }
-
-  function detraibleDatesV103(year){
-    const dates = new Set();
-
-    Object.entries((window.data && data.changes) || {}).forEach(function(entry){
-      const key = entry[0];
-      const rec = entry[1] || {};
-      if(String(rec.tipo || '').toUpperCase() !== 'DD') return;
-      const ds = parseDateV103(rec.fecha || key);
-      if(ds && Number(ds.slice(0,4)) === Number(year)) dates.add(ds);
-    });
-
-    if(Array.isArray(window.data && data.records)){
-      data.records.forEach(function(rec){
-        if(String(rec?.tipo || '').toUpperCase() !== 'DD') return;
-        const ds = parseDateV103(rec.fecha || rec.date || rec.dia);
-        if(ds && Number(ds.slice(0,4)) === Number(year)) dates.add(ds);
-      });
-    }
-
-    return Array.from(dates).sort();
-  }
-
-  function ddCountV103(){
-    const year = registryYearV103();
-    return { year: year, count: detraibleDatesV103(year).length };
-  }
-
-  function refreshDdCountersV103(){
-    const info = ddCountV103();
-    const text = info.count + '/6';
-
-    document.querySelectorAll('.v80Card[data-section="dd"]').forEach(function(card){
-      const count = card.querySelector('.v80CardCount');
-      const sub = card.querySelector('.v80CardSub');
-      if(count){
-        count.textContent = text;
-        count.classList.add('v103DdCount');
-      }
-      if(sub) sub.textContent = 'pinchados';
-    });
-
-    const host = document.getElementById('v80DetailHost');
-    if(host){
-      const title = host.querySelector('.v80DetailTitle');
-      if(title && /Detraíbles/i.test(title.textContent || '')){
-        title.textContent = 'Detraíbles DD · ' + text;
-      }
-    }
-
-    /* Compatibilidad con el registro clásico si en algún momento se muestra. */
-    document.querySelectorAll('.regTitle').forEach(function(title){
-      if(/Detraíbles pinchados DD/i.test(title.textContent || '')){
-        title.textContent = 'Detraíbles pinchados DD · ' + text;
-      }
-    });
-  }
-
-  /* ---------------------------------------------------------
-     4) PDF SIN BARRA SUPERIOR DEL CALENDARIO
-     --------------------------------------------------------- */
-  function syncPdfStateV103(){
-    document.body.classList.toggle(
-      'v103PdfOpen',
-      !!document.querySelector('.pdfOverlay')
-    );
-  }
-
-  function attachPdfBackV103(){
-    const overlays = document.querySelectorAll('.pdfOverlay');
-    const overlay = overlays[overlays.length - 1];
-    if(!overlay){
-      syncPdfStateV103();
-      return;
-    }
-
+function syncPdf103(){
+  document.body.classList.toggle('v103PdfOpen',!!document.querySelector('.pdfOverlay'));
+}
+const oldOpenPdf103=window.openPdf;
+if(typeof oldOpenPdf103==='function'){
+  window.openPdf=function(){
     document.body.classList.add('v103PdfOpen');
+    try{
+      const r=oldOpenPdf103.apply(this,arguments);
+      setTimeout(syncPdf103,0);
+      setTimeout(syncPdf103,80);
+      return r;
+    }catch(e){syncPdf103();throw e}
+  };
+}
+document.addEventListener('click',ev=>{
+  const b=ev.target?.closest?.('.pdfOverlay .pdfTop button,.pdfOverlay > button');
+  if(b&&/volver/i.test(b.textContent||''))setTimeout(syncPdf103,0);
+},true);
 
-    const back = Array.from(overlay.querySelectorAll('.pdfTop button'))
-      .find(function(btn){ return /volver/i.test(btn.textContent || ''); });
-
-    if(back && !back.dataset.v103Back){
-      back.dataset.v103Back = '1';
-      back.addEventListener('click', function(){
-        setTimeout(syncPdfStateV103, 0);
-      }, {once:true});
-    }
-  }
-
-  /* ---------------------------------------------------------
-     5) ENGANCHES EXPLÍCITOS, SIN OBSERVADOR GLOBAL
-     --------------------------------------------------------- */
-  const previousRenderV103 = window.render;
-  if(typeof previousRenderV103 === 'function'){
-    window.render = function(){
-      const result = previousRenderV103.apply(this, arguments);
-      requestAnimationFrame(function(){
-        refreshCalendarV103();
-        refreshDdCountersV103();
-        setVersionV103();
-      });
-      return result;
+const oldShowChanges103=window.showChanges;
+if(typeof oldShowChanges103==='function'){
+  window.showChanges=function(){
+    const r=oldShowChanges103.apply(this,arguments);
+    setTimeout(()=>{updateRegistry103();setVersion103()},30);
+    return r;
+  };
+}
+['selectRegistryV80','selectRegistryV83','selectRegistryV85'].forEach(name=>{
+  const old=window[name];
+  if(typeof old==='function'){
+    window[name]=function(){
+      const r=old.apply(this,arguments);
+      setTimeout(updateRegistry103,20);
+      return r;
     };
   }
+});
 
-  const previousShowV103 = window.show;
-  if(typeof previousShowV103 === 'function'){
-    window.show = function(){
-      const result = previousShowV103.apply(this, arguments);
-      setTimeout(function(){
-        refreshCalendarV103();
-        refreshDdCountersV103();
-        setVersionV103();
-      }, 15);
-      return result;
-    };
-  }
+const oldRender103=window.render;
+if(typeof oldRender103==='function'){
+  window.render=function(){
+    const r=oldRender103.apply(this,arguments);
+    setVersion103();
+    return r;
+  };
+}
+const oldShow103=window.show;
+if(typeof oldShow103==='function'){
+  window.show=function(){
+    const r=oldShow103.apply(this,arguments);
+    setTimeout(()=>{setVersion103();updateRegistry103()},15);
+    return r;
+  };
+}
+const oldSettings103=window.openSettingsV98;
+if(typeof oldSettings103==='function'){
+  window.openSettingsV98=function(){
+    const r=oldSettings103.apply(this,arguments);
+    setTimeout(setVersion103,25);
+    return r;
+  };
+}
 
-  const previousShowChangesV103 = window.showChanges;
-  if(typeof previousShowChangesV103 === 'function'){
-    window.showChanges = function(){
-      const result = previousShowChangesV103.apply(this, arguments);
-      setTimeout(function(){
-        refreshDdCountersV103();
-        setVersionV103();
-      }, 10);
-      return result;
-    };
-  }
-
-  const previousSelectRegistryV103 = window.selectRegistryV85;
-  if(typeof previousSelectRegistryV103 === 'function'){
-    window.selectRegistryV85 = function(){
-      const result = previousSelectRegistryV103.apply(this, arguments);
-      setTimeout(refreshDdCountersV103, 0);
-      return result;
-    };
-  }
-
-  const previousOpenPdfV103 = window.openPdf;
-  if(typeof previousOpenPdfV103 === 'function'){
-    window.openPdf = function(){
-      document.body.classList.add('v103PdfOpen');
-      let result;
-      try{
-        result = previousOpenPdfV103.apply(this, arguments);
-      }catch(err){
-        syncPdfStateV103();
-        throw err;
-      }
-      requestAnimationFrame(attachPdfBackV103);
-      setTimeout(attachPdfBackV103, 30);
-      setTimeout(syncPdfStateV103, 150);
-      if(result && typeof result.catch === 'function'){
-        result.catch(function(){ syncPdfStateV103(); });
-      }
-      return result;
-    };
-  }
-
-  const previousOpenSettingsV103 = window.openSettingsV98;
-  if(typeof previousOpenSettingsV103 === 'function'){
-    window.openSettingsV98 = function(){
-      const result = previousOpenSettingsV103.apply(this, arguments);
-      setTimeout(setVersionV103, 15);
-      return result;
-    };
-  }
-
-  document.addEventListener('click', function(ev){
-    const back = ev.target && ev.target.closest
-      ? ev.target.closest('.pdfOverlay .pdfTop button')
-      : null;
-    if(back && /volver/i.test(back.textContent || '')){
-      setTimeout(syncPdfStateV103, 0);
-    }
-  }, true);
-
-  function bootV103(){
-    setVersionV103();
-    refreshCalendarV103();
-    refreshDdCountersV103();
-    syncPdfStateV103();
-  }
-
-  bootV103();
-  requestAnimationFrame(bootV103);
-  setTimeout(bootV103, 100);
-  setTimeout(bootV103, 500);
-
-  window.addEventListener('pageshow', bootV103);
-  document.addEventListener('visibilitychange', function(){
-    if(!document.hidden) bootV103();
-  });
-
-  window.AppTurnosV103 = Object.freeze({
-    version: APP_CURRENT_VERSION_V103,
-    date: APP_CURRENT_DATE_V103,
-    refresh: bootV103,
-    detraibles: detraibleDatesV103
-  });
+setVersion103();
+updateRegistry103();
+syncPdf103();
+setTimeout(()=>{setVersion103();updateRegistry103();syncPdf103()},250);
+window.addEventListener('pageshow',()=>setTimeout(()=>{setVersion103();updateRegistry103();syncPdf103()},20));
 })();
 </script>
 
