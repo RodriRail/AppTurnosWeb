@@ -3133,7 +3133,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
   function panel(id,ch){
     const lz=ch.filter(c=>String(c.tipo||'').toUpperCase()==='LZ'),dd=detraibles104(ch),dex=ch.filter(isDex),reg=ch.filter(c=>!isPinchedDD104(c));
     if(id==='licenses')return'<div class="v80DetailTitle">Licencias y días de excesos</div><div class="v80DetailBody"><div class="v83LicenseExcessGrid"><div><div class="v83ExcessHead">Licencias LZ ('+lz.length+' usadas)</div>'+(lz.length?lz.map(c=>'<div class="v80Row license"><b>'+pretty(c.fecha)+'</b> · LZ'+(c.nota?'<br><span class="v80Small">'+E(c.nota)+'</span>':'')+'</div>').join(''):'<div class="v80Empty">Sin licencias usadas.</div>')+'</div><div class="v83ExcessBox"><div class="v83ExcessHead">Días de excesos disponibles</div><div class="v83Counter"><button onclick="adjustExcess83(-1)">−</button><b>'+Number(data.excessBalance||0)+'</b><button onclick="adjustExcess83(1)">+</button></div><div class="v83ExcessHead">Días solicitados</div>'+(dex.length?dex.map(c=>'<div class="v80Row obs"><b>'+pretty(c.fecha)+'</b> · Excesos'+(c.nota?'<br><span class="v80Small">'+E(c.nota)+'</span>':'')+'</div>').join(''):'<div class="v80Empty">Sin días de excesos solicitados.</div>')+'</div></div></div>';
-    if(id==='dd'){const year=(typeof current!=='undefined'&&current instanceof Date)?current.getFullYear():new Date().getFullYear(),annual=detraibles104(ch,year);return'<div class="v80DetailTitle">Detraíbles pinchados · '+annual.length+'/6</div><div class="v80DetailBody">'+(dd.length?dd.map(c=>'<div class="v80Row dd v104DdRegistry"><b>'+pretty(c.fecha)+'</b> · DD pinchado · Turno '+E(c.turno||'—')+(c.nota?'<br><span class="v80Small">'+E(c.nota)+'</span>':'')+'</div>').join(''):'<div class="v80Empty">Sin detraíbles pinchados.</div>')+'</div>';}
+    if(id==='dd'){const year=(typeof current!=='undefined'&&current instanceof Date)?current.getFullYear():new Date().getFullYear(),annual=detraibles104(ch,year);return'<div class="v80DetailTitle">Detraíbles pinchados · '+annual.length+'/6</div><div class="v80DetailBody">'+(dd.length?dd.map(c=>'<div class="v80Row v104DdRegistry"><b>'+pretty(c.fecha)+'</b> · DD pinchado · Turno '+E(c.turno||'—')+(c.nota?'<br><span class="v80Small">'+E(c.nota)+'</span>':'')+'</div>').join(''):'<div class="v80Empty">Sin detraíbles pinchados.</div>')+'</div>';}
     if(id==='changes')return'<div class="v80DetailTitle noLine">🔄 Cambios</div><div class="v80DetailBody">'+monthPanels(reg,c=>'<div class="v80Row '+(String(c.tipo||'').toUpperCase()==='LZ'?'v89LZChange':String(c.tipo||'').toUpperCase()==='D'?'v89RestChange':'')+'"><b>'+pretty(c.fecha)+'</b><br>'+E(c.originalTurno||'—')+' → '+E(c.turno||c.tipo||'—')+'<br><span class="v85With">Con quién: '+E(c.persona||c.companero||'—')+'</span>'+(c.nota?'<br><span class="v80Small">'+E(c.nota)+'</span>':'')+'</div>','Aún no hay cambios registrados.')+'</div>';
     if(id==='observations'){const a=Object.entries(data.observations||{}).map(([k,o])=>({...o,fecha:parseDate(o.fecha||k)})).filter(o=>o.fecha);return'<div class="v80DetailTitle noLine">🔎 Observaciones</div><div class="v80DetailBody">'+monthPanels(a,o=>'<div class="v80Row obs"><b>'+pretty(o.fecha)+'</b>'+(o.serviceTrains&&Object.keys(o.serviceTrains).length?'<br><b>Trenes:</b> '+E(Object.entries(o.serviceTrains).map(([p,u])=>p+' → '+u).join(' · ')):'')+(o.materials?'<br><b>Materiales:</b> '+E(o.materials):'')+(o.note?'<br><span class="v80Small">'+E(o.note)+'</span>':'')+'</div>','Sin observaciones registradas.')+'</div>'}
     if(id==='incidents'){const a=Object.entries(data.incidents||{}).map(([k,o])=>({...o,fecha:parseDate(o.fecha||k)})).filter(o=>o.fecha);return'<div class="v80DetailTitle noLine">⚠️ Incidencias</div><div class="v80DetailBody">'+monthPanels(a,o=>'<div class="v80Row inc"><b>'+pretty(o.fecha)+'</b><br><span class="v85Cats">'+E(categoriesText(o))+'</span>'+(o.note?'<br><span class="v80Small">'+E(o.note)+'</span>':'')+'</div>','Sin incidencias registradas.')+'</div>'}
@@ -6128,6 +6128,13 @@ overlay.querySelectorAll('input[name="v99Period"]').forEach(radio=>{
     if(!block)return {error:'No se ha encontrado el turno '+key+' para '+dayName104(day)+'.'};
     return {key,day,block,date:'',status:String(block.tipo_norm||block.tipo||'Servicio')};
   }
+  function blockLabel104(b){
+    if(!b)return '—';
+    const dias=String(b.dias||b.dias_aplicacion||b.raw?.dias||'').trim();
+    const tipo=String(b.tipo_norm||b.tipo||b.raw?.tipo||'').trim();
+    if(dias && tipo)return dias+' · '+tipo;
+    return dias||tipo||'Bloque seleccionado';
+  }
   function compareCard104(label,src){
     const b=src.block;
     const ini=b?(typeof blockIni==='function'?blockIni(b):(b.inicio||'')):'—';
@@ -6138,7 +6145,7 @@ overlay.querySelectorAll('input[name="v99Period"]').forEach(radio=>{
       +(src.date?'<div class="v104-compare-date">'+esc99(src.date)+'</div>':'')
       +'<div class="v104-compare-day">'+esc99(dayName104(src.day))+'</div>'
       +'<div class="v104-compare-metrics"><div><span>Inicio</span><b>'+esc99(ini||'—')+'</b></div><div><span>Final</span><b>'+esc99(fin||'—')+'</b></div><div><span>Duración</span><b>'+esc99(duration104(b))+'</b></div></div>'
-      +'<div class="v104-compare-line"><b>Bloque:</b> '+esc99(dayLabel99(b))+'</div>'
+      +'<div class="v104-compare-line"><b>Bloque:</b> '+esc99(blockLabel104(b))+'</div>'
       +'<div class="v104-compare-line"><b>Tipo:</b> '+esc99(String(b?.tipo_norm||b?.tipo||src.status||'—'))+'</div>'
       +'<div class="v104-compare-line"><b>Recorrido:</b> '+esc99(route||'—')+'</div></div>';
   }
@@ -6640,7 +6647,7 @@ function boot(){version();installEye();buildPanel();calendar();installSearch();a
 #calendarView .day.v102DD .num::after{content:""!important;display:block!important;width:100%!important;min-width:100%!important;height:3px!important;background:#c1123b!important;border-radius:999px!important;margin-top:1px!important}
 
 /* Registro DD: mismo concepto de tarjeta que LZ, pero sombreado rojo. */
-.v80Row.dd.v104DdRegistry{background:#fff1f2!important;border-left:4px solid #dc2626!important;box-shadow:inset 0 0 0 1px #fecdd3!important}
+.v80Row.v104DdRegistry{position:relative!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;width:auto!important;height:auto!important;min-height:0!important;display:block!important;background:#fff1f2!important;border:1px solid #fecdd3!important;border-left:4px solid #dc2626!important;border-radius:12px!important;padding:10px!important;margin:8px 0!important;color:#5f1322!important;box-shadow:none!important}
 
 /* PDF: la cabecera del calendario no puede tapar la del visor. */
 body.v104PdfOpen > header{display:none!important}
@@ -6649,6 +6656,38 @@ body.v104PdfOpen .pdfOverlay{inset:0!important;z-index:10050!important}
 /* Login */
 #login .v104Updated{margin:-5px 0 12px!important;font-weight:850!important;color:var(--mut)!important}
 #login #v104Copyright{text-align:center!important;margin:10px 0 0!important;font-size:11px!important;font-weight:800!important;color:var(--mut)!important}
+</style>
+
+
+<style id="v104-correccion-destino-dd">
+/* DD pinchado: destino y pernocta siempre por encima del borde rojo */
+#calendarView .day.v102DD .badge.ddworkFinal,
+#calendarView .day.v102DD .badge.ddworked,
+#calendarView .day.v102DD .badge.ddworkV65,
+#calendarView .day.v102DD .badge.ddwork{
+  position:relative!important;
+  overflow:visible!important;
+}
+
+#calendarView .day.v102DD .v102Corner{
+  position:absolute!important;
+  top:-3px!important;
+  right:-2px!important;
+  z-index:10000!important;
+  overflow:visible!important;
+  pointer-events:none!important;
+}
+
+#calendarView .day.v102DD .v102Dest{
+  position:relative!important;
+  z-index:10002!important;
+  isolation:isolate!important;
+}
+
+#calendarView .day.v102DD .v102Sleep{
+  position:relative!important;
+  z-index:10001!important;
+}
 </style>
 
 <script id="v104-final-js">
