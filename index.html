@@ -6641,11 +6641,6 @@ function boot(){version();installEye();buildPanel();calendar();installSearch();a
 .v104-compare-line{padding:5px 9px;font-size:11px;border-top:1px solid #f0e8f1}
 @media(max-width:560px){.v104-compare-grid,.v104-compare-results{grid-template-columns:1fr}}
 
-/* Detraíble pinchado: subrayado de 3 px bajo el número del día.
-   El ancho de la recta coincide con el ancho visual del propio número. */
-#calendarView .day.v102DD .num{position:relative!important;display:inline-flex!important;flex-direction:column!important;align-items:center!important}
-#calendarView .day.v102DD .num::after{content:""!important;display:block!important;width:100%!important;min-width:100%!important;height:3px!important;background:#c1123b!important;border-radius:999px!important;margin-top:1px!important}
-
 /* Registro DD: mismo concepto de tarjeta que LZ, pero sombreado rojo. */
 .v80Row.v104DdRegistry{position:relative!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;width:auto!important;height:auto!important;min-height:0!important;display:block!important;background:#fff1f2!important;border:1px solid #fecdd3!important;border-left:4px solid #dc2626!important;border-radius:12px!important;padding:10px!important;margin:8px 0!important;color:#5f1322!important;box-shadow:none!important}
 
@@ -6660,7 +6655,20 @@ body.v104PdfOpen .pdfOverlay{inset:0!important;z-index:10050!important}
 
 
 <style id="v104-correccion-destino-dd">
-/* DD pinchado: destino y pernocta siempre por encima del borde rojo */
+/* DD pinchado: tarjeta como v10.3; destino/pernocta con prioridad local de v10.2. */
+
+/* DD pinchado: apariencia de v10.3 */
+#calendarView .day.v102DD .ddSmall{
+  position:relative!important;
+  top:-4px!important;
+  margin-bottom:6px!important;
+}
+#calendarView .day.v102DD .timeTop,
+#calendarView .day.v102DD .sep,
+#calendarView .day.v102DD .timeBot{
+  position:relative!important;
+  top:-10px!important;
+}
 #calendarView .day.v102DD .badge.ddworkFinal,
 #calendarView .day.v102DD .badge.ddworked,
 #calendarView .day.v102DD .badge.ddworkV65,
@@ -6669,24 +6677,32 @@ body.v104PdfOpen .pdfOverlay{inset:0!important;z-index:10050!important}
   overflow:visible!important;
 }
 
+#calendarView .day.v102DD{
+  isolation:isolate!important;
+}
+
 #calendarView .day.v102DD .v102Corner{
   position:absolute!important;
   top:-3px!important;
   right:-2px!important;
-  z-index:10000!important;
+  z-index:90!important;
   overflow:visible!important;
   pointer-events:none!important;
 }
 
 #calendarView .day.v102DD .v102Dest{
   position:relative!important;
-  z-index:10002!important;
-  isolation:isolate!important;
+  z-index:92!important;
 }
 
 #calendarView .day.v102DD .v102Sleep{
   position:relative!important;
-  z-index:10001!important;
+  z-index:91!important;
+}
+
+/* La lupa/comparación siempre queda por encima de cualquier icono del calendario. */
+#v99SearchOverlay{
+  z-index:5000!important;
 }
 </style>
 
