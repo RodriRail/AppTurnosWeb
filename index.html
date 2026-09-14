@@ -1,4 +1,4 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>App Turnos Pro v10.7</title><style>
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>App Turnos Pro v10.8</title><style>
 :root{--r:#8a0f82;--r2:#b65ac0;--bg:#fbf8fc;--line:#ead9ea;--txt:#1f1522;--mut:#75627a;--work:#edd0f4;--workb:#d79ae4;--rest:#d8f8e1;--restb:#62df91;--dd:#ffe0e7;--ddb:#ff9aad;--vac:#dff3ff;--vacb:#8bd4ff;--lz:#ffe0b2;--lzb:#fb923c}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;padding-bottom:74px}.hidden{display:none!important}header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:5;padding:8px 10px}.top{display:flex;gap:8px;align-items:center}.logo{font-weight:900;font-style:italic;color:var(--r);font-size:24px}.title{font-weight:900;font-size:17px}.ver{color:var(--r);font-size:12px}.sub{font-weight:700;color:var(--mut);font-size:11px}.btn{border:1px solid var(--line);background:#fff;border-radius:15px;padding:10px 12px;font-weight:900;color:var(--txt);white-space:nowrap}.primary{background:var(--r)!important;color:#fff!important}.wrap{padding:6px}.bar{display:grid;grid-template-columns:44px 1fr 44px 70px;align-items:center;gap:6px;margin:8px 0}.month{font-size:26px;font-weight:950;text-align:center}.navbtn{width:44px;height:44px;border:1px solid var(--line);border-radius:14px;background:#fff;font-size:24px;font-weight:900}.calendar{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}.week,.grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr))}.week div{padding:10px 2px;text-align:center;font-weight:950;color:#4d3d55;font-size:13px;border-bottom:1px solid var(--line)}.day{min-height:82px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:3px;position:relative;overflow:hidden}.day:nth-child(7n){border-right:0}.num{font-weight:950;font-size:18px}.today .num{background:#0b7cff;color:#fff;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px}.selected{outline:4px solid var(--r);outline-offset:-4px;background:#fff8ff}.today.selected{outline:4px dashed var(--r)}.shiftNo{display:inline-flex;align-items:center;justify-content:center;min-width:42px;height:28px;border-radius:999px;background:#fff;border:2px solid var(--r2);color:#35113d;font-size:18px;font-weight:950;margin:0 auto 4px}.badge{margin-top:2px;border-radius:14px;border:2px solid;padding:6px 2px;min-height:52px;text-align:center;font-weight:900;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2px}.work{background:var(--work);border-color:var(--workb);color:#5b1168}.rest{background:var(--rest);border-color:var(--restb);color:#087139}.restComp{background:repeating-linear-gradient(135deg,#d8f8e1 0 9px,#fff 9px 15px);border-color:#42c979;color:#087139}.dd{background:var(--dd);border-color:var(--ddb);color:#c20d34}.vac{background:var(--vac);border-color:var(--vacb);color:#00608f}.lz{background:var(--lz);border-color:var(--lzb);color:#7c2d12}.rest,.vac,.dd,.lz{position:absolute;left:3px;right:3px;top:30px;bottom:3px;min-height:0}.bigD{font-size:24px}.timeTop,.timeBot{font-size:13px;line-height:1;font-weight:950}.sep{font-size:14px;color:var(--r);font-weight:950}.changedDot{position:absolute;right:5px;top:5px;width:9px;height:9px;background:#facc15;border:2px solid #fff;border-radius:50%;box-shadow:0 0 0 1px #b45309}.dataToggle{margin-left:auto;border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 10px;font-weight:950;color:var(--r)}.adminPanel,.detail{background:#fff;border:1px solid var(--line);border-radius:20px;padding:14px;margin-top:10px}.detail h2{margin:4px 0 8px;font-size:26px}.pill{display:inline-block;border-radius:999px;padding:8px 12px;font-weight:950}.summaryCard{background:linear-gradient(135deg,var(--r),#6e267a);color:#fff;border-radius:20px;padding:16px;margin:12px 0}.summaryTop{display:flex;justify-content:space-between;gap:12px}.summaryTitle{font-size:30px;font-weight:950}.summaryDate{opacity:.92;font-weight:750}.servicePill{background:rgba(255,255,255,.16);padding:7px 10px;border-radius:999px;font-weight:900;display:flex;align-items:center;justify-content:center;text-align:center;min-width:86px}.summaryTimes{display:grid;grid-template-columns:1fr 44px 1fr;gap:8px;align-items:center;background:#fff;color:var(--txt);border-radius:18px;padding:12px;margin-top:14px;text-align:center}.summaryTimes b{display:block;color:var(--r);font-size:26px}.summaryTimes small{color:var(--mut);font-weight:800}.summaryArrow{font-size:26px;color:var(--r);font-weight:950}.miniGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}.miniBox{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center;color:var(--txt)}.miniBox b{display:block}.miniBox small{color:var(--mut);font-weight:800}.timeline{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;margin-top:12px}.timeline h3{margin:0 0 10px;color:var(--r)}.tl{display:grid;grid-template-columns:56px 30px 1fr;gap:10px;align-items:start;padding:9px 0;position:relative}.tl:not(:last-child)::after{content:"";position:absolute;left:70px;top:40px;bottom:-8px;width:2px;background:linear-gradient(var(--r2),#ead9ea)}.tlIcon{width:30px;height:30px;border:2px solid var(--r2);border-radius:50%;display:flex;align-items:center;justify-content:center;background:#fff;font-size:14px;z-index:1}.tlIcon.start{border-color:#4ade80}.tlIcon.train{border-color:#b65ac0}.tlIcon.mid{border-color:#93c5fd}.tlIcon.end{border-color:#fb7185}.tlIcon.arrival{border-color:#60a5fa}.tlIcon.restgap{border-color:#fbbf24}.tlIcon.deje{border-color:#fb7185}.tlIcon.pdf{border-color:#64748b}.pdfOverlay{position:fixed;inset:0;background:#fff;z-index:99;display:flex;flex-direction:column}.pdfTop{display:flex;align-items:center;gap:8px;padding:8px;border-bottom:1px solid var(--line);background:#fff}.pdfFrame{border:0;flex:1;width:100%}.tlText b{display:block}.tlText small{color:var(--mut)}.muted{color:var(--mut)}.row{border-left:4px solid var(--r);background:#faf6fb;padding:10px;border-radius:12px;margin-top:8px}.changePanel{background:#fff7df;border:1px solid #facc15;border-radius:16px;padding:12px;margin-top:12px}.changeGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.input,.select{width:100%;padding:12px;border:1px solid var(--line);border-radius:14px;font-size:15px;background:#fff}.login{position:fixed;inset:0;background:#fbf8fc;z-index:50;display:flex;align-items:center;justify-content:center;padding:20px}.loginbox{background:#fff;border:1px solid var(--line);border-radius:24px;padding:22px;max-width:380px;width:100%;box-shadow:0 12px 35px #0001}.ok{color:#087139;font-weight:900}.err{color:#c20d34;font-weight:900}.changesList{display:grid;gap:10px}.changeItem,.balanceBox{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px}.balanceGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:560px){.month{font-size:22px}.day{min-height:78px;padding:2px}.num{font-size:15px}.shiftNo{min-width:32px;height:22px;font-size:15px}.badge{min-height:42px;border-radius:11px}.timeTop,.timeBot{font-size:11px}.week div{font-size:11px}.bar{grid-template-columns:38px 1fr 38px 58px}.navbtn{width:38px;height:38px}.btn{padding:8px 10px;font-size:13px}.changeGrid{grid-template-columns:1fr}.summaryTitle{font-size:25px}.summaryTimes b{font-size:22px}.miniBox{padding:8px;font-size:12px}}
 
 /* v2.4 DD asignado + registro visual */
@@ -268,8 +268,8 @@
 .versionStampV54{font-size:11px;color:#75627a;font-weight:900;margin-top:1px}
 </style>
 </head><body>
-<div id="login" class="login"><div class="loginbox"><div class="logo">renfe</div><h1>App Turnos Pro <span class="ver">v10.7</span></h1><p class="muted v104Updated">Actualizada: 20/08/2026</p><p class="muted">Acceso privado para administrar datos.</p><input id="user" class="input" placeholder="Usuario"><input id="pass" class="input" placeholder="Contraseña" type="password"><label style="display:flex;gap:8px;align-items:center;margin:8px 0;font-weight:800"><input id="remember" type="checkbox" checked> Recordar sesión 24 horas</label><button class="btn primary" style="width:100%" onclick="doLogin()">Entrar</button><p id="v104Copyright" class="muted" style="text-align:center;margin:10px 0 0;font-size:11px;font-weight:800">© 2026 Rodrigo Prieto</p><p id="loginMsg" class="err"></p></div></div>
-<header><div class="top"><div class="logo">renfe</div><div><div class="title">App Turnos Pro <span class="ver">v10.7</span></div><div class="sub">Calendario visual · cambios · marcos · IndexedDB</div></div><button class="dataToggle" onclick="toggleAdmin()">Datos ▾</button></div><div id="adminPanel" class="adminPanel hidden"><b>Importación privada</b><p class="muted">Archivos guardados solo en este dispositivo.</p><button class="btn primary" onclick="pick('yearFile')">📅 Importar gráfico anual</button><button class="btn primary" onclick="pick('marcoFile')">🚄 Importar Marco mensual JSON</button><button class="btn" onclick="pick('pdfFile')">📄 Importar PDF Marco</button><button class="btn" onclick="exportExcel()">📤 Exportar Excel</button><button class="btn" onclick="exportBackup()">💾 Copia seguridad JSON</button><button class="btn" onclick="pick('historyFile')">📥 Importar histórico de cambios</button><button class="btn" onclick="clearData()">Borrar datos locales</button><div id="importStatus" class="muted"></div></div><input id="yearFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'year')"><input id="marcoFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'marco')"><input id="pdfFile" type="file" accept="application/pdf,.pdf" class="hidden" onchange="importPdf(event)"><input id="historyFile" type="file" accept=".json,application/json" class="hidden" onchange="importHistoryBackup(event)"></header>
+<div id="login" class="login"><div class="loginbox"><div class="logo">renfe</div><h1>App Turnos Pro <span class="ver">v10.8</span></h1><p class="muted v104Updated">Actualizada: 20/08/2026</p><p class="muted">Acceso privado para administrar datos.</p><input id="user" class="input" placeholder="Usuario"><input id="pass" class="input" placeholder="Contraseña" type="password"><label style="display:flex;gap:8px;align-items:center;margin:8px 0;font-weight:800"><input id="remember" type="checkbox" checked> Recordar sesión 24 horas</label><button class="btn primary" style="width:100%" onclick="doLogin()">Entrar</button><p id="v104Copyright" class="muted" style="text-align:center;margin:10px 0 0;font-size:11px;font-weight:800">© 2026 Rodrigo Prieto</p><p id="loginMsg" class="err"></p></div></div>
+<header><div class="top"><div class="logo">renfe</div><div><div class="title">App Turnos Pro <span class="ver">v10.8</span></div><div class="sub">Calendario visual · cambios · marcos · IndexedDB</div></div><button class="dataToggle" onclick="toggleAdmin()">Datos ▾</button></div><div id="adminPanel" class="adminPanel hidden"><b>Importación privada</b><p class="muted">Archivos guardados solo en este dispositivo.</p><button class="btn primary" onclick="pick('yearFile')">📅 Importar gráfico anual</button><button class="btn primary" onclick="pick('marcoFile')">🚄 Importar Marco mensual JSON</button><button class="btn" onclick="pick('pdfFile')">📄 Importar PDF Marco</button><button class="btn" onclick="exportExcel()">📤 Exportar Excel</button><button class="btn" onclick="exportBackup()">💾 Copia seguridad JSON</button><button class="btn" onclick="pick('historyFile')">📥 Importar histórico de cambios</button><button class="btn" onclick="clearData()">Borrar datos locales</button><div id="importStatus" class="muted"></div></div><input id="yearFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'year')"><input id="marcoFile" type="file" accept=".json,application/json" class="hidden" onchange="importFile(event,'marco')"><input id="pdfFile" type="file" accept="application/pdf,.pdf" class="hidden" onchange="importPdf(event)"><input id="historyFile" type="file" accept=".json,application/json" class="hidden" onchange="importHistoryBackup(event)"></header>
 <div class="wrap"><section id="calendarView" class="view"><div class="bar"><button class="navbtn" onclick="move(-1)">‹</button><div class="month" id="monthTitle"></div><button class="navbtn" onclick="move(1)">›</button><button class="btn" onclick="today()">Hoy</button></div><div class="calendar"><div class="week"><div>LUN</div><div>MAR</div><div>MIÉ</div><div>JUE</div><div>VIE</div><div>SÁB</div><div>DOM</div></div><div id="grid" class="grid"></div></div><div id="detail" class="detail"><span class="pill" style="background:#f2e3f4;color:var(--r)">Selecciona un día</span><h2>Detalle del turno</h2><p class="muted">Pulsa una casilla para ver inicio, fin, desarrollo y cambios.</p></div></section><section id="changesView" class="view hidden"><div class="detail"><h2>Registro de cambios</h2><div id="balances" class="balanceGrid"></div><h3>Historial</h3><div id="changesList" class="changesList"></div></div></section><section id="settingsView" class="view hidden"><div class="detail"><h2>Ajustes</h2><p>Datos cargados: <b id="dataState"></b></p></div></section></div>
 <nav style="position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);z-index:10"><button class="btn" onclick="show('calendarView')">📅<br>Calendario</button><button class="btn" onclick="scrollToDetail()">📋<br>Detalle</button><button class="btn" onclick="showChanges()">🔁<br>Cambios<br>Registro</button><button class="btn" onclick="show('settingsView')">⚙️<br>Ajustes</button><button class="btn" onclick="lockApp()">🔒<br>Bloq.</button></nav>
 <script>
@@ -320,7 +320,7 @@ function openPdf(page){if(!data.pdf?.dataUrl)return;let o=document.createElement
 
 
 // ===== v2.8 overrides: alarmas, PDF multipágina, memoria estable y calendario continuo =====
-try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v10.7');document.title='App Turnos Pro v10.7'}catch(e){}
+try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v10.8');document.title='App Turnos Pro v10.8'}catch(e){}
 current=new Date();
 data.alarms=data.alarms||{};data.disabledAlarms=data.disabledAlarms||{};data.people=data.people||[];data.alarmSettings=data.alarmSettings||{enabled:true,startOffset:60,trainOffset:30};
 function doLogin(){if(user.value.trim().toLowerCase()===ADMIN_USER&&pass.value.trim()===ADMIN_PASS){localStorage.setItem(AUTH+'Unlocked','1');localStorage.setItem(AUTH+'SessionUntil',Date.now()+(remember.checked?86400000:3600000));localStorage.removeItem(AUTH+'Attempts');localStorage.removeItem(AUTH+'LockUntil');login.classList.add('hidden');admin=true;updateImportUI();return}loginMsg.textContent='Usuario o contraseña incorrectos.'}
@@ -698,7 +698,7 @@ setTimeout(openInitialViewV44,180);
 
 
 // ===== v5.0 memoria estable, histórico y lector JSON =====
-const APP_VERSION='10.7', BACKUP_KEY='AppTurnosBackupsV50';
+const APP_VERSION='10.8', BACKUP_KEY='AppTurnosBackupsV50';
 data.settings=data.settings||{}; data.settings.openMode=data.settings.openMode||'calendario';
 function safeSetV50(k,v){try{localStorage.setItem(k,v);return true}catch(e){console.warn(e);return false}}
 function fechaArchivoMemoria(){let d=new Date();return pad(d.getDate())+'-'+pad(d.getMonth()+1)+'-'+d.getFullYear()+'_memoria_turnos.json'}
@@ -769,7 +769,7 @@ function importHistoryBackup(ev){let f=ev.target.files[0];if(!f)return;let r=new
 restoreHistoricalMemory=importHistoryBackup;
 
 const _exportBackup_v51=exportBackup;
-exportBackup=function(){if(typeof lightDataV50==='function'){let obj=lightDataV50();obj.version='10.7';obj.records=data.records||[];obj.changes=data.changes||{};obj.activeMarcoId=data.settings?.activeMarcoId||'';let txt=JSON.stringify(obj,null,2),name=fechaArchivoMemoria();if(typeof backupsV50==='function'){let list=backupsV50();list.unshift({id:'b'+Date.now(),name,created:new Date().toISOString(),size:new Blob([txt]).size,favorite:false,data:obj});saveBackupsV50(list);renderMemoryPanelV50()}downloadBlob(txt,name,'application/json')}else _exportBackup_v51()}
+exportBackup=function(){if(typeof lightDataV50==='function'){let obj=lightDataV50();obj.version='10.8';obj.records=data.records||[];obj.changes=data.changes||{};obj.activeMarcoId=data.settings?.activeMarcoId||'';let txt=JSON.stringify(obj,null,2),name=fechaArchivoMemoria();if(typeof backupsV50==='function'){let list=backupsV50();list.unshift({id:'b'+Date.now(),name,created:new Date().toISOString(),size:new Blob([txt]).size,favorite:false,data:obj});saveBackupsV50(list);renderMemoryPanelV50()}downloadBlob(txt,name,'application/json')}else _exportBackup_v51()}
 
 function injectMarcoSettingsV51(){let root=document.querySelector('#settings')||document.querySelector('#settingsView')||document.body;if(document.getElementById('marcoPanelV51'))return;let div=document.createElement('div');div.id='marcoPanelV51';div.className='card';div.style.margin='16px';root.appendChild(div);renderMarcoPanelV51()}
 function setOpenModeV51(){let v=document.getElementById('openModeV51')?.value||'calendario';data.settings.openMode=v;save();alert('Modo guardado')}
@@ -965,9 +965,9 @@ function listDetraiblesV53(monthIndex){
     return dt.getMonth()===monthIndex;
   }).map(d=>Number(d.fecha.slice(8,10))).sort((a,b)=>a-b);
 }
-try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v10.7');document.title='App Turnos Pro v10.7'}catch(e){}
+try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v10.8');document.title='App Turnos Pro v10.8'}catch(e){}
 
-try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v10.7');document.title='App Turnos Pro v10.7'}catch(e){}
+try{document.querySelectorAll('.ver').forEach(e=>e.textContent='v10.8');document.title='App Turnos Pro v10.8'}catch(e){}
 
 
 // ===== v5.3.1: DD trabajado = fondo rojo + rayas moradas + horas del turno asignado =====
@@ -1036,8 +1036,8 @@ changePanelHtml=function(ds,base,baseB,d,b){
 
 
 // ===== v5.4: una sola prioridad visual final para evitar que se pisen estados =====
-const APP_VERSION_V54='10.7';
-const APP_UPDATED_AT_V54='14/09/2026';
+const APP_VERSION_V54='10.8';
+const APP_UPDATED_AT_V54='15/09/2026';
 function setVersionV54(){return;}
 function canonTipoV54(v){
   let t=String(v||'').trim().toUpperCase();
@@ -1173,8 +1173,8 @@ setTimeout(bootIndexedDBV52,60);
 
 
 // ===== v5.7: base 5.4 limpia + persistencia segura + marcos por vigencia =====
-const APP_VERSION_V57='10.7';
-const APP_UPDATED_AT_V57='14/09/2026';
+const APP_VERSION_V57='10.8';
+const APP_UPDATED_AT_V57='15/09/2026';
 const DB_NAME_V57='AppTurnosDBV57';
 const DB_VERSION_V57=1;
 const DB_STORE_V57='app';
@@ -1360,8 +1360,8 @@ setTimeout(bootV57,120);
 
 
 // ===== v5.8: versión visible, historial mensual, PDFs gestionables y Ajustes sin duplicados =====
-const APP_VERSION_V58='10.7';
-const APP_UPDATED_AT_V58='14/09/2026';
+const APP_VERSION_V58='10.8';
+const APP_UPDATED_AT_V58='15/09/2026';
 
 function setVersionV58(){return;}
 
@@ -1475,8 +1475,8 @@ checkLogin();render();
 </style>
 <script id="v59-incidencias-js">
 // ===== v6.0: incidencias persistentes, iconos y cambio descanso/trabajo =====
-const APP_VERSION_V59='10.7';
-const APP_UPDATED_AT_V59='14/09/2026';
+const APP_VERSION_V59='10.8';
+const APP_UPDATED_AT_V59='15/09/2026';
 data.incidents=data.incidents||{};
 
 function setVersionV59(){return;}
@@ -1592,8 +1592,8 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v60-final-js">
 (function(){
-  const APP_VERSION_V60='10.7';
-  const APP_UPDATED_V60='14/09/2026';
+  const APP_VERSION_V60='10.8';
+  const APP_UPDATED_V60='15/09/2026';
   function setVersionV60(){return;}
   setVersionV60();
 
@@ -1689,8 +1689,8 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v61-final-js">
 (function(){
-  const APP_VERSION_V61='10.7';
-  const APP_UPDATED_V61='14/09/2026';
+  const APP_VERSION_V61='10.8';
+  const APP_UPDATED_V61='15/09/2026';
 
   function setVersionV61(){return;}
 
@@ -1797,7 +1797,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v62-final-js">
 (function(){
- const APP_VERSION_V62='10.7', APP_UPDATED_V62='14/09/2026';
+ const APP_VERSION_V62='10.8', APP_UPDATED_V62='15/09/2026';
  function setVersionV62(){return;}
  function originalRestV62(ds){
    const base=typeof dayData==='function'?dayData(ds):null;if(!base)return false;
@@ -1876,7 +1876,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v63-final-js">
 (function(){
- const APP_VERSION_V63='10.7', APP_UPDATED_V63='14/09/2026';
+ const APP_VERSION_V63='10.8', APP_UPDATED_V63='15/09/2026';
  function setVersionV63(){return;}
  function originalRestV63(ds){
    const b=typeof dayData==='function'?dayData(ds):null;if(!b)return false;
@@ -2031,7 +2031,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v65-final-js">
 (function(){
-  const APP_VERSION_V65='10.7', APP_UPDATED_V65='14/09/2026';
+  const APP_VERSION_V65='10.8', APP_UPDATED_V65='15/09/2026';
   function setVersionV65(){return;}
   function baseDayV65(ds){return typeof dayData==='function'?dayData(ds):null}
   function changeV65(ds){return data&&data.changes?data.changes[ds]:null}
@@ -2161,7 +2161,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v66-observaciones-js">
 (function(){
-  const APP_VERSION_V66='10.7', APP_UPDATED_V66='14/09/2026';
+  const APP_VERSION_V66='10.8', APP_UPDATED_V66='15/09/2026';
   data.observations=data.observations||{};
   function setVersionV66(){return;}
   function obsForV66(ds){return (data.observations||{})[ds]||null}
@@ -2251,7 +2251,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v66-final-lock-js">
 (function(){
- const V='10.7', D='13/08/2026';
+ const V='10.8', D='13/08/2026';
  function lockV66(){
    if(document.title!=='App Turnos Pro v'+V)document.title='App Turnos Pro v'+V;
    document.querySelectorAll('.ver').forEach(e=>{if(e.textContent!=='v'+V)e.textContent='v'+V});
@@ -2287,7 +2287,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v67-cajas-registro-js">
 (function(){
-  const V='10.7', UPDATED='14/09/2026';
+  const V='10.8', UPDATED='15/09/2026';
   const MONTHS=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
   function setVersionV67(){return;}
   function hasChange(ds){const c=data.changes?.[ds];return !!(c&&(c.turno||c.tipo||c.persona||c.nota))}
@@ -2429,7 +2429,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v68-flechas-js">
 (function(){
-  const V='10.7', UPDATED='14/09/2026';
+  const V='10.8', UPDATED='15/09/2026';
   const MONTHS=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
   function setVersionV68(){return;}
   function monthKey(ds){return String(ds||'').slice(0,7)}
@@ -2501,7 +2501,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v69-version-unificada-js">
 (function(){
-  const VERSION='10.7', UPDATED='14/09/2026';
+  const VERSION='10.8', UPDATED='15/09/2026';
   function applyVersionV69(){return;}
   applyVersionV69();
   window.addEventListener('pageshow',applyVersionV69);
@@ -2515,8 +2515,8 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 
 <script id="v69-acceso-final-corregido">
 (function(){
-  const VERSION_FINAL = '10.7';
-  const UPDATED_FINAL = '14/09/2026';
+  const VERSION_FINAL = '10.8';
+  const UPDATED_FINAL = '15/09/2026';
 
   function setVersionFinal(){return;}
 
@@ -2630,7 +2630,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
     fresh.innerHTML=''
       +'<div class="loginbox">'
       +'<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><div class="logo">renfe</div></div>'
-      +'<h1 style="margin-bottom:8px">App Turnos Pro <span class="v89TitleBadge">v10.7</span></h1>'
+      +'<h1 style="margin-bottom:8px">App Turnos Pro <span class="v89TitleBadge">v10.8</span></h1>'
       +'<p class="muted v89Update" style="font-weight:800">Actualizada: 20/08/2026</p>'
       +'<p class="muted">Acceso privado para administrar datos.</p>'
       +'<input id="user" name="username" type="text" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" placeholder="Usuario">'
@@ -2701,7 +2701,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v80-registry-boceto2-js">
 (function(){
-  const V80_VERSION='10.7', V80_DATE='14/09/2026';
+  const V80_VERSION='10.8', V80_DATE='15/09/2026';
   const MONTHS=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
   let activeSectionV80='debts';
 
@@ -2887,7 +2887,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v83-final-js">
 (function(){
-  const V83='10.7', UPDATED83='14/09/2026';
+  const V83='10.8', UPDATED83='15/09/2026';
   data.excessBalance=Number(data.excessBalance||0);
   data.excessAdjustments=Array.isArray(data.excessAdjustments)?data.excessAdjustments:[];
 
@@ -2985,7 +2985,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v84-final-js">
 (function(){
-  const V84='10.7', UPDATED84='14/09/2026';
+  const V84='10.8', UPDATED84='15/09/2026';
   function e84(v){return typeof esc==='function'?esc(v):String(v||'')}
   function plannedTrains84(ds){
     try{
@@ -3051,7 +3051,7 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 </style>
 <script id="v89-final-js">
 (function(){
-  const V85='10.7', UPDATED85='14/09/2026';
+  const V85='10.8', UPDATED85='15/09/2026';
   const E=v=>typeof esc==='function'?esc(v):String(v??'');
   const MONTHS=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
 
@@ -3420,8 +3420,8 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 
 <script id="v90-calendar-final-js">
 (function(){
-  const APP_VERSION_V90='10.7';
-  const APP_UPDATED_V90='14/09/2026';
+  const APP_VERSION_V90='10.8';
+  const APP_UPDATED_V90='15/09/2026';
 
   const incidentSvgV90=()=>`
     <svg class="v90Icon incident" viewBox="0 0 24 24" aria-label="Incidencia" role="img">
@@ -3453,16 +3453,24 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 
       const base=dayData(ds);
       const eff=effectiveDay(ds);
-      if(!base||!eff)return false;
+      if(!base)return false;
 
       const a=status(base);
-      const b=status(eff);
+      const b=eff?status(eff):'';
 
-      // "Trabajo" frente a cualquier asignación no trabajada.
-      // Incluye descanso, DSC, SSS, DD/festivo, vacaciones, LZ,
-      // excesos y cualquier otro tipo especial que no sea 'work'.
-      const isWork = s => s === 'work';
-      const isNonWork = s => !!s && s !== 'work' && s !== 'empty';
+      const isWork = s => s === 'work' || s === 'ddwork';
+      const isNonWork = s => !!s && !isWork(s) && s !== 'empty';
+
+      /* v10.8:
+         Para el indicador visual, un turno numérico/clave asignado en un cambio
+         prevalece sobre posibles vestigios antiguos de ch.tipo. Así un día cuyo
+         cuadro anual era descanso y pasa realmente a un turno de trabajo conserva
+         la píldora bicolor aunque el registro persistido arrastre tipo:'D'. */
+      const changedTurn=String(ch.turno||'').trim().toUpperCase();
+      const explicitNonWork=/^(D|DESCANSO|DC|DSC|SSS|SS|LZ|VAC|VACACIONES|VB)$/.test(changedTurn);
+      const hasWorkTurn=!!changedTurn && !explicitNonWork;
+
+      if(isNonWork(a) && hasWorkTurn)return true;
 
       return (isWork(a) && isNonWork(b)) ||
              (isNonWork(a) && isWork(b));
@@ -4030,8 +4038,8 @@ setTimeout(()=>{setVersionV59();data.incidents=data.incidents||{};render()},400)
 <script id="v97-calendar-final-js">
 (function(){
   const APP_RELEASE_V97 = Object.freeze({
-    VERSION:'10.7',
-    UPDATED:'14/09/2026'
+    VERSION:'10.8',
+    UPDATED:'15/09/2026'
   });
   window.APP_TURNOS_RELEASE = APP_RELEASE_V97;
 
@@ -4757,7 +4765,7 @@ header .dataToggle{
 
 <script id="v98-ui-redesign-js">
 (function(){
-  const RELEASE = Object.freeze({VERSION:'10.7', UPDATED:'14/09/2026'});
+  const RELEASE = Object.freeze({VERSION:'10.8', UPDATED:'15/09/2026'});
   window.APP_TURNOS_RELEASE = RELEASE;
   document.documentElement.setAttribute('data-app-theme','light');
 
@@ -5840,8 +5848,8 @@ header .dataToggle{
      No se tocan identificadores técnicos históricos.
      --------------------------------------------------------- */
   const APP_RELEASE = Object.freeze({
-    version:'10.7',
-    date:'14/09/2026'
+    version:'10.8',
+    date:'15/09/2026'
   });
 
   const AUTHOR='Rodrigo Prieto';
@@ -6202,11 +6210,12 @@ overlay.querySelectorAll('input[name="v99Period"]').forEach(radio=>{
     document.getElementById('v104CalendarPickHint')?.remove();
 
     setTimeout(()=>{
-      let d=null,b=null;
-      try{d=effectiveDay(ds);b=blockFor(d)}catch(e){}
+      let d=null;
+      try{d=effectiveDay(ds)}catch(e){}
       const key=String(d?.dd_turno||d?.clave_turno||'—').replace(/^DD\s*/i,'').trim();
       const day=dayCodeFromDate104(ds);
-      compareState104[side]={date:ds,day,key,block:b,status:typeof status==='function'?status(d):''};
+      const b=key&&key!=='—'?blockForKeyDay104(key,day):null;
+      compareState104[side]={date:ds,day,key,block:b,status:String(b?.tipo_norm||b?.tipo||'')};
 
       const other=side==='A'?'B':'A';
       if((document.getElementById('v104CmpMode'+other)?.value||'manual')==='manual'){
@@ -6226,7 +6235,9 @@ overlay.querySelectorAll('input[name="v99Period"]').forEach(radio=>{
     if(mode==='calendar'){
       const st=compareState104[side];
       if(!st?.date)return {error:'Selecciona un día del calendario para el turno '+side+'.'};
-      return {...st};
+      const block=blockForKeyDay104(st.key,st.day);
+      if(!block)return {error:'La clave '+st.key+' no existe para '+dayName104(st.day)+' en el Marco JSON vigente.'};
+      return {...st,block,status:String(block.tipo_norm||block.tipo||'Servicio')};
     }
     const key=(document.getElementById('v104CmpKey'+side)?.value||'').trim();
     if(!key)return {error:'Escribe la clave del turno '+side+'.'};
@@ -6248,6 +6259,8 @@ overlay.querySelectorAll('input[name="v99Period"]').forEach(radio=>{
     const fin=b?(typeof blockFin==='function'?blockFin(b):(b.fin||b.final||'')):'—';
     let route='';
     try{route=b?routeForBlock99(b):''}catch(e){}
+    const type=b?blockTypeLabel99(b):String(src.status||'—');
+    const development=b?blockDevelopment99(b):'';
     const mine=/Turno A/i.test(label);
     const visualTitle=mine?'MI TURNO':'TURNO A COMPARAR';
     const visualClass=mine?'mine':'other';
@@ -6257,9 +6270,10 @@ overlay.querySelectorAll('input[name="v99Period"]').forEach(radio=>{
       +'<div class="v104-compare-day">'+esc99(dayName104(src.day))+'</div>'
       +'<div class="v104-compare-metrics"><div><span>Inicio</span><b>'+esc99(ini||'—')+'</b></div><div><span>Final</span><b>'+esc99(fin||'—')+'</b></div><div><span>Duración</span><b>'+esc99(duration104(b))+'</b></div></div>'
       +'<details class="v105-development"><summary>Ver desarrollo completo</summary><div class="v105-development-body">'
-      +'<div class="v104-compare-line"><b>Bloque:</b> '+esc99(blockLabel104(b))+'</div>'
-      +'<div class="v104-compare-line"><b>Tipo:</b> '+esc99(String(b?.tipo_norm||b?.tipo||src.status||'—'))+'</div>'
+      +'<div class="v104-compare-line"><b>Bloque:</b> '+esc99(blockDayLabel99(b))+'</div>'
+      +'<div class="v104-compare-line"><b>Tipo:</b> '+esc99(type)+'</div>'
       +'<div class="v104-compare-line"><b>Recorrido:</b> '+esc99(route||'—')+'</div>'
+      +'<div class="v104-compare-line v108-compare-development"><b>Desarrollo del bloque:</b><br>'+esc99(development||type||'—').replace(/\n/g,'<br>')+'</div>'
       +'</div></details></div>';
   }
   function compareTurns104(){
@@ -6291,7 +6305,7 @@ overlay.querySelectorAll('input[name="v99Period"]').forEach(radio=>{
   }
 
   function allBlocks99(){
-    /* v10.7: Turno y Comparación consultan exclusivamente el Marco JSON vigente.
+    /* v10.8: Turno y Comparación consultan exclusivamente el Marco JSON vigente.
        Los marcos históricos quedan reservados para las búsquedas por fecha
        (En calendario), que siguen resolviéndose mediante effectiveDay/blockFor. */
     const list=Array.isArray(data.blocks)?data.blocks:[];
@@ -6328,14 +6342,41 @@ overlay.querySelectorAll('input[name="v99Period"]').forEach(radio=>{
     return stations.slice(0,7).join(' → ');
   }
 
+  function blockTypeLabel99(block){
+    const text=[
+      block?.tipo_norm,block?.tipo,block?.detalle,block?.resumen,block?.bloque,
+      block?.raw?.tipo,block?.raw?.tipo_norm,block?.raw?.detalle,block?.raw?.resumen,
+      ...(Array.isArray(block?.movimientos)?block.movimientos:[])
+    ].filter(Boolean).join(' ').toUpperCase();
+
+    if(/DESCANSO\s+COMPENSADO|\bDSC\b|\bDC\b|COMPENSADO/.test(text))return 'Descanso compensado';
+    if(/\bSSS\b|SALIDA\s+SIN\s+SERVICIO/.test(text))return 'Salida sin servicio';
+    if(/\bDESCANSO\b/.test(text))return 'Descanso';
+    if(/SERVICIOS?\s+COMPLEMENTARIOS?|\bSCC?\b/.test(text))return 'Servicio complementario';
+    if(/\bRESERVA\b/.test(text))return 'Reserva';
+    return String(block?.tipo_norm||block?.tipo||'Servicio');
+  }
+
+  function blockDayLabel99(block){
+    const raw=String(block?.dias||block?.bloque||'').trim();
+    const u=raw.toUpperCase();
+    if(/L.*V|LUNES.*VIERNES/.test(u))return 'L–V';
+    if(/L.*S|LUNES.*S[ÁA]BADO/.test(u))return 'L–S';
+    if(/L.*D|LUNES.*DOMINGO/.test(u))return 'L–D';
+    if(/\bS\b|S[ÁA]B/.test(u))return 'Sábado';
+    if(/\bD\b|DOM/.test(u))return 'Domingo';
+    return raw||'Bloque';
+  }
+
+  function blockDevelopment99(block){
+    if(!block)return '';
+    const mov=Array.isArray(block.movimientos)?block.movimientos.filter(Boolean):[];
+    if(mov.length)return mov.map(String).join('\n');
+    return String(block.detalle||block.raw?.detalle||block.resumen||block.raw?.resumen||blockTypeLabel99(block)||'');
+  }
+
   function labelForBlock99(block){
-    const type=String(block?.tipo_norm||block?.tipo||'').toUpperCase();
-
-    if(type.includes('DESCANS'))return 'Descanso';
-    if(type.includes('SSS'))return 'SSS';
-    if(type.includes('DSC')||type.includes('COMPENS'))return 'DC/DSC';
-
-    return String(block?.dias||block?.bloque||'Bloque');
+    return blockDayLabel99(block);
   }
 
   function blockHtml99(key,block){
@@ -6346,17 +6387,21 @@ overlay.querySelectorAll('input[name="v99Period"]').forEach(radio=>{
     const start=typeof blockIni==='function'?blockIni(block):(block.inicio||'');
     const end=typeof blockFin==='function'?blockFin(block):(block.fin||'');
     const route=routeForBlock99(block);
+    const type=blockTypeLabel99(block);
+    const development=blockDevelopment99(block);
 
-    return `<div class="v99-block-detail">
-      <div class="v99-shift-pill">${esc99(key)}</div>
-      <div style="margin-top:5px;color:#5d2c63;font-size:11px;font-weight:850">
-        ${esc99(labelForBlock99(block))}
+    return `<div class="v102Type">${esc99(blockDayLabel99(block))} · ${esc99(type)}</div>
+      <div class="v99-block-detail">
+        <div class="v99-shift-pill">${esc99(key)}</div>
+        <div class="v99-times">
+          ${esc99(start||'—')}<br>↓<br>${esc99(end||'—')}
+        </div>
+        ${route?`<div class="v99-route">${esc99(route)}</div>`:''}
       </div>
-      <div class="v99-times">
-        ${esc99(start||'—')}<br>↓<br>${esc99(end||'—')}
-      </div>
-      ${route?`<div class="v99-route">${esc99(route)}</div>`:''}
-    </div>`;
+      <div class="v102Dev">
+        <div class="v102DevTitle">Desarrollo del bloque</div>
+        <div class="v102DevBody">${esc99(development||type)}</div>
+      </div>`;
   }
 
   function searchTurn99(){
@@ -6601,7 +6646,7 @@ overlay.querySelectorAll('input[name="v99Period"]').forEach(radio=>{
 </script>
 
 <!-- =========================================================
-     APP TURNOS PRO · v10.7 · 14/09/2026
+     APP TURNOS PRO · v10.8 · 15/09/2026
      Refinado visual exclusivo del calendario.
      ========================================================= -->
 
@@ -6629,7 +6674,7 @@ body.v102NoDest .v102Dest{display:none!important}body.v102NoSleep .v102Sleep{dis
 <script id="v102-js">
 (function(){
 'use strict';
-const V='10.7',VD='14/09/2026',PK='appTurnos.quickView.v102',DEF={dest:true,sleep:true,change:true,incident:true,bicolor:true};
+const V='10.8',VD='15/09/2026',PK='appTurnos.quickView.v102',DEF={dest:true,sleep:true,change:true,incident:true,bicolor:true};
 function version(){return;}
 function prefs(){try{return {...DEF,...JSON.parse(localStorage.getItem(PK)||'{}')}}catch(e){return {...DEF}}}function save(p){try{localStorage.setItem(PK,JSON.stringify(p))}catch(e){}}
 function apply(p){let b=document.body;b.classList.toggle('v102NoDest',!p.dest);b.classList.toggle('v102NoSleep',!p.sleep);b.classList.toggle('v102NoChange',!p.change);b.classList.toggle('v102NoIncident',!p.incident);b.classList.toggle('v102NoBicolor',!p.bicolor);document.querySelectorAll('#v102Panel [data-p]').forEach(x=>x.checked=!!p[x.dataset.p])}
@@ -6647,30 +6692,21 @@ function col(c){return({VC:'#315a96',BR:'#5a9344',PP:'#7f4aaa',OR:'#e58a2c',LE:'
 function moon(){return'<svg viewBox="0 0 24 24"><path d="M15.8 3.7a8.2 8.2 0 1 0 4.45 14.55A8.85 8.85 0 0 1 15.8 3.7Z" fill="#fff"/></svg>'}
 function day(d,ds){let x,st,b;try{x=effectiveDay(ds);st=status(x);b=blockFor(x)}catch(e){return}d.classList.toggle('v102DD',st==='ddwork');if(st==='ddwork'){let n=String(x?.dd_turno||x?.clave_turno||'').trim(),p=d.querySelector(':scope > .shiftNo,.ddWorkedNo');if(p&&n)p.textContent=n;let z=d.querySelector('.ddSmall');if(z)z.textContent='DD'}d.querySelectorAll('.v102Corner').forEach(x=>x.remove());let w=d.querySelector('.badge.work,.badge.ddworkFinal,.badge.ddworked,.badge.ddworkV65,.badge.ddwork');if(!w)return;let sl=!!d.querySelector('.v97SleepMark'),de=(st==='work'||st==='ddwork')?dest(b):'';if(st==='ddwork'&&!sl){try{const prev=new Date(ds+'T12:00:00');prev.setDate(prev.getDate()-1);const pds=prev.getFullYear()+'-'+String(prev.getMonth()+1).padStart(2,'0')+'-'+String(prev.getDate()).padStart(2,'0');const px=effectiveDay(pds),pb=blockFor(px);const last=seq(pb).slice(-1)[0];sl=!!last&&last!=='MA'&&last!=='MH'}catch(e){}}if(!sl&&!de)return;let g=document.createElement('span');g.className='v102Corner';if(de){let e=document.createElement('span');e.className='v102Dest';e.style.background=col(de);e.title='Destino / estación: '+de;e.innerHTML='<span>'+de+'</span>';g.appendChild(e)}if(sl){let e=document.createElement('span');e.className='v102Sleep';e.title='Pernocta';e.innerHTML=moon();g.appendChild(e)}w.appendChild(g)}
 function calendar(){document.querySelectorAll('#grid .day').forEach(d=>{let ds=dateCell(d);if(ds)day(d,ds)});apply(prefs())}
-function blocks(){let a=[];if(Array.isArray(data.blocks))a.push(...data.blocks);if(Array.isArray(data.marcosV57))data.marcosV57.forEach(m=>{if(Array.isArray(m.blocks))a.push(...m.blocks)});let seen=new Set();return a.filter(b=>{let k=JSON.stringify([b.turno,b.dias,b.inicio,b.fin,b.tipo,b.resumen,b.bloque,b.detalle]);if(seen.has(k))return false;seen.add(k);return true})}
-function keyBlocks(k){return blocks().filter(b=>String(b.turno||'').trim()===String(k).trim())}
-function dlabel(b){let r=String(b?.dias||b?.bloque||'').trim(),u=r.toUpperCase();if(/L.*V|LUNES.*VIERNES/.test(u))return'L–V';if(/L.*S|LUNES.*S[ÁA]BADO/.test(u))return'L–S';if(/L.*D|LUNES.*DOMINGO/.test(u))return'L–D';if(/\bS\b|S[ÁA]B/.test(u))return'Sábado';if(/\bD\b|DOM/.test(u))return'Domingo';return r||'Bloque'}
-function typ(b){let t=bt(b);if(/DESCANSO\s+COMPENSADO|\bDSC\b|\bDC\b/.test(t))return'Descanso compensado';if(/\bSSS\b|SALIDA\s+SIN\s+SERVICIO/.test(t))return'Salida sin servicio (SSS)';if(sc(b))return'Servicio complementario';if(reserve(b))return'Reserva';if(/\bDESCANSO\b/.test(t))return'Descanso';return String(b?.tipo_norm||b?.tipo||'Servicio')}
-function dev(b){let a=[];if(Array.isArray(b?.movimientos)&&b.movimientos.length)a.push(...b.movimientos);else if(b?.detalle)a.push(b.detalle);else if(b?.raw?.detalle)a.push(b.raw.detalle);else if(b?.resumen)a.push(b.resumen);return a.map(String).join('\n')}
-function esc(v){return String(v??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
-function bh(k,b){let i=typeof blockIni==='function'?blockIni(b):(b.inicio||''),f=typeof blockFin==='function'?blockFin(b):(b.fin||''),route=seq(b).join(' → '),t=typ(b);return'<div class="v102Type">'+esc(dlabel(b))+' · '+esc(t)+'</div><div class="v99-block-detail"><div class="v99-shift-pill">'+esc(k)+'</div><div class="v99-times">'+esc(i||'—')+'<br>↓<br>'+esc(f||'—')+'</div>'+(route?'<div class="v99-route">'+esc(route)+'</div>':'')+'</div><div class="v102Dev"><div class="v102DevTitle">Desarrollo del bloque</div><div class="v102DevBody">'+esc(dev(b)||t)+'</div></div>'}
-function search(){let inp=document.getElementById('v99TurnKey'),h=document.getElementById('v99TurnResult');if(!inp||!h)return;let k=inp.value.trim(),bs=keyBlocks(k);if(!k)return h.innerHTML='';if(!bs.length)return h.innerHTML='<div class="v99-help" style="margin-top:8px">No se ha encontrado esa clave en los marcos cargados.</div>';h.innerHTML='<div class="v99-key-result"><div class="v99-key-title">Información de la clave '+esc(k)+'</div><div class="v99-block-tabs">'+bs.map((b,i)=>'<button class="v99-block-tab '+(i?'':'active')+'" data-i="'+i+'">'+esc(dlabel(b))+'</button>').join('')+'</div><div id="v102Detail">'+bh(k,bs[0])+'</div></div>';h.querySelectorAll('.v99-block-tab').forEach(q=>q.onclick=()=>{h.querySelectorAll('.v99-block-tab').forEach(x=>x.classList.remove('active'));q.classList.add('active');document.getElementById('v102Detail').innerHTML=bh(k,bs[+q.dataset.i])})}
-function installSearch(){let b=document.getElementById('v99TurnSearch'),i=document.getElementById('v99TurnKey');if(b&&!b.dataset.v102){b.dataset.v102=1;b.addEventListener('click',e=>{e.stopImmediatePropagation();search()},true)}if(i&&!i.dataset.v102){i.dataset.v102=1;i.addEventListener('keydown',e=>{if(e.key==='Enter'){e.stopImmediatePropagation();search()}},true)}}
-let R=window.render;if(typeof R==='function')window.render=function(){let r=R.apply(this,arguments);requestAnimationFrame(()=>{calendar();version();installEye();buildPanel();installSearch()});return r};
-let S=window.show;if(typeof S==='function')window.show=function(){let r=S.apply(this,arguments);setTimeout(()=>{calendar();version();installEye();buildPanel();installSearch()},15);return r};
-function boot(){version();installEye();buildPanel();calendar();installSearch();apply(prefs())}boot();window.addEventListener('pageshow',boot);
+let R=window.render;if(typeof R==='function')window.render=function(){let r=R.apply(this,arguments);requestAnimationFrame(()=>{calendar();version();installEye();buildPanel()});return r};
+let S=window.show;if(typeof S==='function')window.show=function(){let r=S.apply(this,arguments);setTimeout(()=>{calendar();version();installEye();buildPanel()},15);return r};
+function boot(){version();installEye();buildPanel();calendar();apply(prefs())}boot();window.addEventListener('pageshow',boot);
 })();
 </script>
 
 <!-- =========================================================
-     CONTROL ÚNICO DE VERSIÓN VISIBLE · APP TURNOS PRO v10.7
+     CONTROL ÚNICO DE VERSIÓN VISIBLE · APP TURNOS PRO v10.8
      ========================================================= -->
 <script id="v102-version-final">
 (function(){
   'use strict';
 
-  const APP_CURRENT_VERSION = '10.7';
-  const APP_CURRENT_DATE = '14/09/2026';
+  const APP_CURRENT_VERSION = '10.8';
+  const APP_CURRENT_DATE = '15/09/2026';
 
   window.APP_TURNOS_CURRENT_RELEASE = Object.freeze({
     version: APP_CURRENT_VERSION,
@@ -6726,14 +6762,14 @@ function boot(){version();installEye();buildPanel();calendar();installSearch();a
 
 
 <style id="v104-final-css">
-/* v10.7 — cambios integrados */
+/* v10.8 — cambios integrados */
 
 /* Buscador: tres pestañas siempre en la misma línea */
 .v99-tabs{grid-template-columns:repeat(3,minmax(0,1fr))!important}
 .v99-tab{min-width:0!important;white-space:nowrap!important;padding-left:4px!important;padding-right:4px!important}
 @media(max-width:390px){.v99-tab{font-size:11px!important}}
 
-/* Comparación — apariencia v10.7 */
+/* Comparación — apariencia v10.8 */
 .v104-compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
 .v104-compare-side{
   border:1px solid #e2d4e4;
@@ -6821,6 +6857,7 @@ function boot(){version();installEye();buildPanel();calendar();installSearch();a
 .v104-compare-metrics span{display:block;color:#826e85;font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.25px}
 .v104-compare-metrics b{display:block;margin-top:2px;font-size:13px;color:#37123d}
 .v104-compare-line{padding:6px 10px;font-size:11px;border-top:1px solid #f0e8f1;color:#4b394e}
+.v108-compare-development{line-height:1.45;white-space:normal}
 .v104-compare-result-card.other .v104-compare-line{border-top-color:#f4e7d6}
 .v105-development{margin:0 10px 10px}
 .v105-development summary{
@@ -6917,8 +6954,8 @@ body.v104PdfOpen .pdfOverlay{inset:0!important;z-index:10050!important}
 <script id="v104-final-js">
 (function(){
 'use strict';
-const APP_VERSION='10.7';
-const APP_VERSION_DATE='14/09/2026';
+const APP_VERSION='10.8';
+const APP_VERSION_DATE='15/09/2026';
 window.APP_TURNOS_RELEASE=Object.freeze({version:APP_VERSION,date:APP_VERSION_DATE});
 
 function applyVersion104(){
